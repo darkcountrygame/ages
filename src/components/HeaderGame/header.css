@@ -1,0 +1,157 @@
+.header{
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+.header-wrapper{
+    padding: 20px 75px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.header-wrapper::before{
+    content: '';
+    position: absolute;
+    content: url('../../images/era_title_bg.png');
+    top: 5%;
+    left: 0;
+    z-index: -1;
+}
+
+.header-stats__title{
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+
+.header-stats__under{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-stats__sp{
+    height: 20px;
+    color: #fff;
+    text-align: right;
+    background: #6B4C3E;
+    padding: 0px 5px;
+    border-radius: 5px;
+    position: relative;
+    flex: 0 0 85%;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.header-stats__sp::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background: #fff;
+    border-radius: 5px;
+}
+
+/* .header-stats__sp span{
+
+} */
+
+
+
+
+.header-items .header-items_list li{
+    display: flex;
+    align-items: center;
+    background: url('../../images/vector23.png') no-repeat center center;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+.header-items .header-items_list li:last-child{
+    margin: 0;
+}
+
+.header-items .header-items_list li span{
+    color: #fff;
+    font-size: 24px;
+    padding-left: 20px;
+}
+
+.header-items .header-items_list li img{
+    width: 35px;
+    height: 35px;
+
+}
+
+.header-user{
+    color: #fff;
+    font-weight: bold;
+
+}
+
+
+.header-user .money{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.header-user .money .wax{
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+.header-user .money .rtp{
+    color: #3BD946;
+
+    margin-right: 10px;
+}
+
+.header-user p:first-child{
+    margin-right: 20px;
+}
+
+.header-user p:last-child{
+    display: flex;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .header{
+        margin: 0;
+    }
+
+    .header-items{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .header-stats__title{
+        font-size: 18px;
+    }
+
+    .header-stats__under{
+        height: 23px;
+    }
+
+
+    .header-user .money p img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .header-user .money p:first-child{
+        display: none;
+    }
+}

@@ -1,0 +1,130 @@
+.modal {
+    font-size: 12px;
+    background: url('../images/modal.png');
+    height: 100%;
+    width: 100%;
+    color:#815F50;
+    padding: 30px 120px;
+  }
+.modal > .header-modal {
+    width: 100%;
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px 0 25px 0;
+  }
+.modal > .content {
+    width: 100%;
+    padding: 10px 5px;
+    text-align: center;
+}
+
+.upgrade > .content img{
+    padding: 5px;
+}
+
+.upgrade > .content p{
+      padding-bottom: 10px;
+}
+
+.modal > .actions {
+    width: 100%;
+   
+    margin: auto;
+    text-align: center;
+  
+
+}
+.modal > .actions a{
+      font-size: 24px;
+      font-weight: bold;
+      background: #12B124;
+      border-radius: 10px;
+      padding: 5px 40px;
+}
+
+  
+.modal > .close{
+    cursor: pointer;
+    position: absolute;
+    right: 4%;
+    top: 4%;
+}
+
+ 
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.822);
+}
+
+.popup-content {
+    max-width: 900px;
+    height: 507px;
+}
+
+.info-card{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.info-card__img{
+    background: #6b4c3e3f;
+    border-radius: 8px;
+    margin: 0 30px 0 10px;
+}
+
+.info-card__img-wrapper{
+    padding: 10px 20px 0;
+}
+
+.info-card__text h4{
+    font-size: 24px;
+}
+.info-card__text p{
+    padding: 0;
+}
+
+
+
+.info-card ul{
+    flex-direction: column;
+    text-align: left;
+    margin-right: 60px;
+}
+
+.info-card ul li{
+    font-size: 16px;
+    
+}
+
+.info-card ul span{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info-card__progress li{
+    font-weight: bold;
+    color: #000;
+}
+
+.li-wrapper{
+    display: flex;
+    align-items: center
+}
+
+.info-card__progress p:first-child{
+    font-size: 16px;
+    font-weight: 400;
+    color: #815F50;
+    text-align: left;
+}
+
+.info-card__progress p {
+    padding-bottom: 20px;
+    color: #000;
+    font-weight: bold;
+}
+
+.info-card__progress img{
+    width: 30px;
+}

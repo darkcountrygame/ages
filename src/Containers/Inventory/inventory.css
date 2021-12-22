@@ -1,0 +1,69 @@
+.main-workplace.inventory{
+    justify-content: center;
+}
+
+.inventory .main-main-list{
+    padding-top: 60px;
+} 
+
+.inventory .main-main-item{
+    text-align: center;    
+}
+
+.inventory .inventory-btn a{
+    background: #12B124;
+    border-radius: 10px;
+    padding: 10px 30px;
+    color: #fff;
+}
+
+
+
+.inventory .inventory-item__title{
+    margin-bottom: 40px;
+}
+
+
+.inventory .inventory-item__title h4{
+    font-size: 24px;
+    padding: 20px 0;
+}
+
+.inventory .inventory-img{
+    margin-bottom: 10px;
+}
+
+.inventory-img.wood{
+    margin-bottom: 50px;
+}
+
+.inventory-img.stone{
+    margin-bottom: 65px;
+}
+
+.inventory .inventory-info{
+    margin-bottom: 55px;
+}
+.inventory .inventory-info span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.inventory .inventory-info img{
+    width: 24px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 1400px) {
+
+    .main-workplace.inventory{
+        height: 80vh;
+    }
+    .inventory .inventory-img img {
+        width: 35%;
+    }
+    .inventory .main-main-item{
+        width: 180px;
+        height: 356px;
+    }
+}
