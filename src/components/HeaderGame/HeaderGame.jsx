@@ -1,6 +1,8 @@
 import React from 'react'
 import './header.css'
 
+import UserLogIn from './UserLogIn'
+
 
 import meat from  '../../images/market-items/meat.png'
 import rock from '../../images/market-items/rock.png'
@@ -41,12 +43,7 @@ export default function Header() {
                         <li><img src={wood} alt="wood" /> <span>25 000</span></li>
                     </ul>
                 </div>
-                <div className="header-user">
-                    <div className="money">
-                        <p><span className="rtp">100500 RTP</span>($111)</p>
-                        <p><img src={wax} alt="wax" /><span className="wax" onClick={modalAnchor}>Log In</span></p>
-                    </div>
-                </div>
+                <UserLogIn />
             </div>
         </header>
     )

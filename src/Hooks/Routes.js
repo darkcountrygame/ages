@@ -6,8 +6,8 @@ import {
     MainPage,
     Workpalces,
     Inventory,
-    // RewardsPage,
-    // InformationPage,
+    Market,
+    Research,
 } from "../Containers";
 
 export const useRoutes = () => {
@@ -26,6 +26,14 @@ export const useRoutes = () => {
 
             <Route exact path="/inventory">
                 <Inventory />
+            </Route>
+
+            <Route exact path="/market">
+                <Market />
+            </Route>
+
+            <Route exact path="/research">
+                <Research />
             </Route>
 
             <Redirect to="/workpalces" />

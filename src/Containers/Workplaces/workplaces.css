@@ -54,7 +54,7 @@
     background-position: center top;
     background-repeat: no-repeat;
     position: absolute;
-    top: -4%;
+    top: -3%;
     left: 0;
     width: 100%;
     height: 15%;
@@ -65,8 +65,9 @@
     display: inline-block;
     font-size: 32px;
     font-weight: bold;
-    padding: 13px;
+    padding: 15px;
     color: #fff;
+    margin: 0;
 }
 
 
@@ -172,17 +173,20 @@
 
 .btn-equip{
     margin-top: 40px;
-    color: #fff;
     font-weight: bold;
 }
 
 .btn-equip a{
+    color: #fff;
+    text-decoration: none;
     background: #ff0000;
     border-radius: 10px;
     padding: 10px 40px;
 }
 
 .btn-unequip a{
+    color: #fff;
+    text-decoration: none;
     background: #12B124;
     border-radius: 10px;
     padding: 10px 40px;
@@ -192,6 +196,8 @@
     background: #815F50;
     border-radius: 10px;
     padding: 10px 40px;
+    color: #fff;
+    text-decoration: none;
 }
 
 
@@ -237,10 +243,24 @@
     width: 100%;
     height: 100%;
 }
+
+    @media screen and (max-width: 1680px) {
+        .main-main-item{
+            width: 215px;
+            height: 370px;
+        }
+        .main-main-item_wrapper-equip{
+            padding: 10px 0 25px;
+        }
+        .main-main-item img{
+            width: 80%;
+        }
+    }
+
 @media screen and (max-width: 1400px) {
     .main-main-item{
-        width: 155px;
-        height: 285px;
+        width: 180px;
+        height: 300px;
     }
     .main-main-item_wrapper-equip{
         padding: 10px 0 25px;

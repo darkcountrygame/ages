@@ -1,0 +1,74 @@
+.main-main-contant.market{
+    justify-content: center;
+}
+
+.main-workplace.market{
+    justify-content: center;
+}
+
+.header-market{
+    margin-bottom: 55px;
+}
+
+.header-market__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-market__wrapper .filter select{
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid #815F50;
+    background: #EACC9B;
+    padding: 10px 30px;
+    text-align: left;
+    color: #664D41;
+}
+
+.header-market__wrapper button{
+    color: #E8D9BF;
+    background: #815F50;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+}
+
+.market-list{
+    overflow-y: hidden;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+}
+
+.markwet-list_item{
+    margin: 10px;
+}
+
+.markwet-list_item img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.market-btn{
+    margin-top: 10%;
+}
+
+.market-btn button{
+    background: #12B124;
+    border-radius: 10px;
+    padding: 10px 30px;
+    color: #fff;
+    border: 0;
+    font-size: 24px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1400px) {
+    .market-btn{
+        margin-top: 3%;
+    }
+}

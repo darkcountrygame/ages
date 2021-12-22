@@ -18,7 +18,7 @@
     content: '';
     position: absolute;
     content: url('../../images/era_title_bg.png');
-    top: 5%;
+    top: 20%;
     left: 0;
     z-index: -1;
 }
@@ -106,6 +106,15 @@
 
 .header-user .money .wax{
     margin-left: 10px;
+    cursor: pointer;
+}
+
+.header-user .money .wax.login{
+    margin-left: 10px;
+    cursor: default;
+}
+
+.header-user .money .logout{
     cursor: pointer;
 }
 

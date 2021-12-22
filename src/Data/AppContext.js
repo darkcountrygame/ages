@@ -36,6 +36,7 @@ export const AppProvider = ({ children }) => {
 
             userLoginHandler,
             userLogoutHandler,
+            setUserDataHandler,
 
         }}>
             { children }
