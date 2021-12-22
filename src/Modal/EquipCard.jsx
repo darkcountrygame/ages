@@ -9,7 +9,7 @@ import './equip.css'
 
 export default () => (
   <Popup
-    trigger={<a href="#"> Equip </a>}
+    trigger={<button> Equip </button>}
     modal
     nested
   >

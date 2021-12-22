@@ -9,7 +9,7 @@ import './modalCard.css'
 
 export default () => (
   <Popup
-    trigger={<a href="#">Unequip</a>}
+    trigger={<button>Unequip</button>}
     modal
     nested
   >

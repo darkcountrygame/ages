@@ -81,7 +81,7 @@
 
 .header-items .header-items_list li span{
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
     padding-left: 20px;
 }
 
@@ -101,7 +101,7 @@
 .header-user .money{
     display: flex;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .header-user .money .wax{

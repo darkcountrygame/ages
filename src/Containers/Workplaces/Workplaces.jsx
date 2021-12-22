@@ -163,47 +163,39 @@ const Workplaces = () => {
 
                             <div className="main-main-contant">
                                 <div className="main-main-list">
-                                    <div className="main-main-item">
-                                        <div className="main-main-item_wrapper-equip">
-
+                                    <div className="workplaces-item">
+                                        <div className="workplaces-img">
                                             <img src={spear} alt="spear" />
-
-                                            <div className="btn-equip">
-                                                <UnEquipCard />
-                                            </div>
+                                        </div>
+                                        <div className="btn-equip">
+                                            <UnEquipCard />
                                         </div>
                                     </div>
 
-                                    <div className="main-main-item">
-                                        <div className="main-main-item_wrapper-equip">
-
+                                    <div className="workplaces-item equip">
+                                        <div className="workplaces-img">
                                             <img src={equip} alt="spear" />
-
-                                            <div className="btn-unequip">
-                                                <EquipCard />
-                                            </div>
+                                        </div>
+                                        <div className="btn-unequip ">
+                                            <EquipCard />
                                         </div>
                                     </div>
 
-                                    <div className="main-main-item">
-                                        <div className="main-main-item_wrapper-equip">
-
+                                    <div className="workplaces-item lock">
+                                        <div className="workplaces-img">
                                             <img src={lock} alt="spear" />
-
-                                            <div className="btn-lock">
-                                                <UnlockCard />
-                                            </div>
+                                        </div>
+                                        <div className="btn-lock">
+                                            <UnlockCard />
                                         </div>
                                     </div>
 
-                                    <div className="main-main-item">
-                                        <div className="main-main-item_wrapper-equip">
-
+                                    <div className="workplaces-item lock">
+                                        <div className="workplaces-img">
                                             <img src={lock} alt="spear" />
-
-                                            <div className="btn-lock">
-                                                <UnlockCard />
-                                            </div>
+                                        </div>
+                                        <div className="btn-lock">
+                                            <UnlockCard />
                                         </div>
                                     </div>
                                 </div>
