@@ -2,7 +2,9 @@ import {
 
     USER_LOGIN,
     SET_USER_DATA,
-    USER_LOGOUT
+    USER_LOGOUT,
+    USER_WAX_BALANCE,
+    USER_RTP_BALANCE,
 
 } from './AppActionTypes';
 
@@ -20,8 +22,20 @@ const AppReducer = (state, action) => {
             return {
                 ...state,
                 isAuthenticated: false,
-                userData: null
+                userData: null,
+                waxBalance: 0,
+                waxBalanceFetched: false,
+                rtpBalance: 0.0000,
+                rtpBalanceFetched: false,
             };
+        }
+
+        case USER_WAX_BALANCE: {
+            return { ...state, waxBalance: action.value, waxBalanceFetched: true };
+        }
+
+        case USER_RTP_BALANCE: {
+            return { ...state, rtpBalance: action.value, rtpBalanceFetched: true };
         }
 
         default:

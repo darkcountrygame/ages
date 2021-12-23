@@ -104,6 +104,17 @@
     font-size: 16px;
 }
 
+.header-user .money .crypto{
+    margin-right: 10px;
+    text-align: right;
+}
+
+.header-user .money p{
+    margin: 0;
+}
+
+
+
 .header-user .money .wax{
     margin-left: 10px;
     cursor: pointer;
@@ -125,9 +136,7 @@
     margin-right: 10px;
 }
 
-.header-user p:first-child{
-    margin-right: 20px;
-}
+
 
 .header-user p:last-child{
     display: flex;

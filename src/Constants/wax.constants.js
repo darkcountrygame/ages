@@ -12,8 +12,8 @@ export const WAX_RPC_ENDPOINTS_PROTOCOL = "https";
 //export const ATOMIC_ASSETS_API = 'https://wax.api.atomicassets.io/atomicassets/v1'; //MAINNET
 export const ATOMIC_ASSETS_API = 'https://test.wax.api.atomicassets.io/atomicassets/v1'; //TESTNET
 
-export const RTP_GAME = 'deepminestak';
-export const RTP_GAME_COLLECTION = 'deepminegame';
+export const RTP_GAME = 'rtp';
+export const RTP_GAME_COLLECTION = 'rtp';
 export const EOSIO_TOKEN ='eosio.token';
 
 
