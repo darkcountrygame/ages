@@ -33,6 +33,7 @@ h4{
 .inventory-item__img{
     margin-top: 20px;
     width: 70%;
+    height: 40%;
     margin: 0 auto;
 }
 
@@ -76,9 +77,3 @@ h4{
 
 
 /*-------*/
-
-
-@media screen and (max-width: 1400px) {
-
-   
-}

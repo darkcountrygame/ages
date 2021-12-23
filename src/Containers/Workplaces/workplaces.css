@@ -118,8 +118,8 @@
 /* ITEMS */
 
 .workplaces-item{
-    width: 200px;
-    height: 360px;
+    width: 230px;
+    height: 380px;
     background-color: rgba(0, 0, 0, 0.103);
     border-radius: 10px;
 }
@@ -277,15 +277,16 @@
 
 
 
-@media screen and (max-width: 1120px) {
+@media screen and (max-width: 1450px) {
 
     .workplace{
-        height: 140vh;
+        height: 100vh;
     }
 
+
     .main-main{
-        max-width: 95%;
-        height: 760px;
+        max-width: 70%;
+        height: 550px;
         margin: 0 auto;
     }
 
@@ -293,12 +294,11 @@
         height: 85%;
     }
 
-
-
     .main-workplace{
         display: block;
     }
     .main-workplace-sidebar{
+        display: none;
         width: 95%;
         margin: 0 20px 70px 20px;
     }

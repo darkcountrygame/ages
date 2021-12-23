@@ -5,10 +5,15 @@ h3{
     justify-content: center;
 }
 
+.research .container{
+    height: 100%;
+}
+
 .research-wrapper{
     display: flex;
     padding: 40px 30px;
 }
+
 .research-left{
     margin-top: 40px;
     flex: 0 0 50%;
@@ -33,6 +38,7 @@ h3{
     flex-direction: column;
     list-style: none;
     padding: 20px 65px;
+    margin: 0 auto;
 }
 
 .research-left .research-left__info ul li{
@@ -46,7 +52,6 @@ h3{
 }
 
 .research-left .research-left__btn{
-    margin-top: 20px;
     text-align: center;
 }
 
@@ -115,6 +120,22 @@ h3{
     font-size: 20px;
 }
 
-@media screen and (max-width: 1400px) {
-   
+@media screen and (max-width: 1450px) {
+    .research{
+        height: 92%;
+    }
+   .research .main-main{
+       height: 715px;
+   }
+
+    .main-workplace.research .footer{
+        margin-top: 160px;
+    }
+}
+
+@media screen and (max-width: 1370px) {
+    .research .main-main{
+        height: 615px;
+    }
+
 }
