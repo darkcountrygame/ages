@@ -22,7 +22,7 @@
 .main-workplace{
     display: flex;
     margin: 0 auto;
-    height: 70vh;
+    height: 65vh;
 }
 
 .main-workplace-sidebar{
@@ -224,6 +224,7 @@
 
 .main-workplace-sidebar{
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .main-workplace-sidebar__wrapper{
@@ -261,8 +262,17 @@
   
 }
 
-@media screen and (max-width: 1255px) {
-   
+@media screen and (max-width: 1366px) {
+    .main-workplace{
+        height: 80vh;
+    }
+    .workplaces-item{
+        width: 170px;
+        height: 330px;
+    }
+    .main-workplace-sidebar__item{
+        width: 100px;
+    }
 }
 
 
@@ -271,7 +281,6 @@
 
     .workplace{
         height: 140vh;
-
     }
 
     .main-main{
