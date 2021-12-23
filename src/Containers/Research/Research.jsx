@@ -20,7 +20,6 @@ export default function Research() {
         <section className='workplace'>
             <Header />
             <div className="main-workplace research">
-                {/* <div className="main-wrapper"> */}
 
                 <div className="main-main">
                     <div className="main-title">
@@ -31,41 +30,41 @@ export default function Research() {
                             <img src={close} alt="close" />
                         </div>
                         <div className="research-wrapper">
-                            <div className="research-left">
-                                <div className="research-img">
+                           <div className="research-left">
+                                <div className="research-left_img">
                                     <img src={researchLeft} alt="img" />
                                 </div>
-                                <div className="research-info">
+                                <div className="research-left__info">
                                     <ul>
-                                        <li>Research duration: 24 H</li>
-                                        <li>Chance for success: 10%</li>
-                                        <li>Total science points: 10</li>
+                                        <li>Research duration: <span>24H</span></li>
+                                        <li>Chance for success: <span>10%</span></li>
+                                        <li>Total science points: <span>10</span></li>
                                     </ul>
                                 </div>
-                                <div className="research-btn">
-                                    <ResearchCard />
+                                <div className="research-left__btn">
+                                    <button>Research 123 RTP</button>
                                 </div>
-                            </div>
-                            <div className="research-right">
-                                <div className="research_r_title">
-                                    <h3>Copper Age</h3>
+                                
+                           </div>
+                           <div className="research-right">
+                                <div className="research-right__title">
                                     <img src={infoIcon} alt="info" />
+                                    <h3>Neolithic Age</h3>
                                 </div>
-                                <div className="research_r_img">
+                                <div className="research-right__img">
                                     <img src={researchRight} alt="img" />
                                 </div>
-                                <div className="research_r_stats">
-                                    <span>5 000 / 10 000 SP</span>
+                                <div className="research-right__info">
+                                    5 000/10 000 SP
                                 </div>
-                                <div className="research_r_btn">
+                                <div className="research-right__btn">
                                     <button disabled>Advance to New Era</button>
                                 </div>
-                            </div>
+                           </div>
                         </div>
                     </div>
                 </div>
 
-                {/* </div> */}
 
             </div>
             <Footer />
