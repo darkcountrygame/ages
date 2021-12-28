@@ -22,7 +22,7 @@ export default () => (
           <p>Open a cell to speed up progress</p>
         </div>
         <div className="actions" onClick={close}>
-            <a href="/">Unlock -120 RTP</a>
+            <button >Unlock -120 RTP</button>
         </div>
       </div>
     )}

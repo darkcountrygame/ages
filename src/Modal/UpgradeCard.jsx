@@ -56,7 +56,7 @@ export default () => (
           </div>
         </div>
         <div className="actions" onClick={close}>
-            <a href="/">Upgrade -12 RTP</a>
+            <button>Upgrade -12 RTP</button>
         </div>
       </div>
     )}

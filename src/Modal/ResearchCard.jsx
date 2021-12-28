@@ -32,7 +32,7 @@ export default () => (
           </div>
         </div>
         <div className="actions" onClick={close}>
-            <a href="/">OK</a>
+            <button>OK</button>
         </div>
       </div>
     )}

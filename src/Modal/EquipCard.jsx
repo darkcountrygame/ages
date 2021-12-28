@@ -71,7 +71,7 @@ export default () => (
             </div>
         </div>
         <div className="actions" onClick={close}>
-            <a href="/">Equip</a>
+            <button>Equip</button>
         </div>
       </div>
     )}

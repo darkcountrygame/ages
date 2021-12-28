@@ -1,0 +1,65 @@
+.modal {
+    font-size: 12px;
+    background: url('../images/modal.png');
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 75%;
+    color:#815F50;
+    padding: 30px;
+}
+.modal > .header-modal {
+    width: 100%;
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px 0 25px 0;
+}
+.modal > .content {
+    width: 100%;
+    padding: 10px 5px;
+    text-align: center;
+}
+
+.modal > .content img{
+    padding: 5px 0 25px 0;
+}
+
+.modal > .content p{
+    font-size: 18px;
+    padding-bottom: 60px;
+}
+
+.modal > .actions {
+    width: 100%;
+
+    margin: auto;
+    text-align: center;
+
+
+}
+.modal > .actions button{
+    font-size: 24px;
+    font-weight: bold;
+    background: #12B124;
+
+    padding: 5px 40px;
+}
+
+
+.modal > .close{
+    cursor: pointer;
+    position: absolute;
+    right: -4%;
+    top: 8%;
+}
+
+
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.822);
+}
+
+.popup-content {
+    max-width: 900px;
+    height: 507px;
+}

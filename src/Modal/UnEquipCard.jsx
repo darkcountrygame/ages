@@ -4,8 +4,7 @@ import Popup from 'reactjs-popup';
 import cardIcon from '../images/card.png'
 import closeImg from '../images/close.png'
 
-
-import './modalCard.css'
+import './unequip.css'
 
 export default () => (
   <Popup
@@ -22,7 +21,7 @@ export default () => (
           <p>You do not have a free card, choose in the store.</p>
         </div>
         <div className="actions" onClick={close}>
-            <a href="/">Market</a>
+            <button>Market</button>
         </div>
       </div>
     )}
