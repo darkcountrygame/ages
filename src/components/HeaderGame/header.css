@@ -60,12 +60,11 @@
     border-radius: 5px;
 }
 
-/* .header-stats__sp span{
-
-} */
 
 
-
+.header-items{
+    margin-left: 100px;
+}
 
 .header-items .header-items_list li{
     display: flex;

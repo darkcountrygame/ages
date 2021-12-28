@@ -45,7 +45,7 @@ export default function Inventory() {
                                 </div>
                                 <div className="inventory-item__info">
                                     <img src={meat} alt="food" />
-                                    <span>25 000</span>
+                                    <span>0</span>
                                 </div>
                                 <div className="inventory-item__btn">
                                     <button>Sell</button>
@@ -61,7 +61,7 @@ export default function Inventory() {
                                 </div>
                                 <div className="inventory-item__info">
                                     <img src={wood} alt="food" />
-                                    <span>25 000</span>
+                                    <span>0</span>
                                 </div>
                                 <div className="inventory-item__btn">
                                     <button>Sell</button>
@@ -77,7 +77,7 @@ export default function Inventory() {
                                 </div>
                                 <div className="inventory-item__info">
                                     <img src={rock} alt="food" />
-                                    <span>25 000</span>
+                                    <span>0</span>
                                 </div>
                                 <div className="inventory-item__btn">
                                     <button>Sell</button>
@@ -93,7 +93,7 @@ export default function Inventory() {
                                 </div>
                                 <div className="inventory-item__info">
                                     <img src={wheel} alt="food" />
-                                    <span>25 000</span>
+                                    <span>0</span>
                                 </div>
                                 <div className="inventory-item__btn">
                                     <button>Sell</button>

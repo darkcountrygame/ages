@@ -60,10 +60,10 @@ export default function Header() {
                 </div>
                 <div className="header-items">
                     <ul className="header-items_list">
-                        <li><img src={meat} alt="meat" /> <span>25 000</span></li>
-                        <li><img src={rock} alt="rock" /> <span>25 000</span></li>
-                        <li><img src={wheel} alt="wheel" /> <span>25 000</span></li>
-                        <li><img src={wood} alt="wood" /> <span>25 000</span></li>
+                        <li><img src={meat} alt="meat" /> <span>0</span></li>
+                        <li><img src={rock} alt="rock" /> <span>0</span></li>
+                        <li><img src={wheel} alt="wheel" /> <span>0</span></li>
+                        <li><img src={wood} alt="wood" /> <span>0</span></li>
                     </ul>
                 </div>
                 <UserLogIn waxBalance={waxBalance} rtpBalance={rtpBalance} />

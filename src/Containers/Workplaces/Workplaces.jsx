@@ -157,7 +157,7 @@ const Workplaces = () => {
                         <div className="main-main-wrapper">
                             <div className="main-workplace-header">
                                 <button>Start Work</button>
-                                <p>Total Prodused: <span>3 000</span><img src={meat} alt="meat" /></p>
+                                <p>Total Prodused: <span>0</span><img src={meat} alt="meat" /></p>
                             </div>
 
 
