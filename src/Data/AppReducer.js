@@ -5,6 +5,7 @@ import {
     USER_LOGOUT,
     USER_WAX_BALANCE,
     USER_RTP_BALANCE,
+    USER_NOT_STAKED_ITEMS,
 
 } from './AppActionTypes';
 
@@ -36,6 +37,10 @@ const AppReducer = (state, action) => {
 
         case USER_RTP_BALANCE: {
             return { ...state, rtpBalance: action.value, rtpBalanceFetched: true };
+        }
+
+        case USER_NOT_STAKED_ITEMS: {
+            return { ...state, unstakedList: action.value, unstakedListFetched: true }
         }
 
         default:

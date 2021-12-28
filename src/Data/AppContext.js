@@ -7,6 +7,7 @@ import {
     USER_LOGOUT,
     USER_WAX_BALANCE,
     USER_RTP_BALANCE,
+    USER_NOT_STAKED_ITEMS
 
 } from './AppActionTypes';
 
@@ -26,6 +27,9 @@ const initialState = {
     rtpBalance: 0,
     rtpBalanceFetched: false,
 
+    itemList: [],
+    itemListFetched: false,
+
 }
 
 export const AppProvider = ({ children }) => {
@@ -38,6 +42,8 @@ export const AppProvider = ({ children }) => {
     const setWaxBalance = value => dispatch({ type: USER_WAX_BALANCE, value });
     const setRtpBalance = value => dispatch({ type: USER_RTP_BALANCE, value });
 
+    const setUserNotStakedItems = value => dispatch({ type: USER_NOT_STAKED_ITEMS, value });
+
 
     return (
         <AppContext.Provider value={{
@@ -49,11 +55,14 @@ export const AppProvider = ({ children }) => {
             rtpBalance: state.rtpBalance,
             rtpBalanceFetched: state.rtpBalanceFetched,
 
+            unstakedListFetched: state.unstakedListFetched,
+
             userLoginHandler,
             userLogoutHandler,
             setUserDataHandler,
             setWaxBalance,
             setRtpBalance,
+            setUserNotStakedItems,
 
         }}>
             { children }

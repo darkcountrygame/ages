@@ -13,7 +13,7 @@ export const WAX_RPC_ENDPOINTS_PROTOCOL = "https";
 export const ATOMIC_ASSETS_API = 'https://test.wax.api.atomicassets.io/atomicassets/v1'; //TESTNET
 
 export const RTP_GAME = 'rush2prosper';
-export const RTP_GAME_COLLECTION = 'rtp';
+export const RTP_GAME_COLLECTION = 'rush2prosper';
 export const EOSIO_TOKEN ='eosio.token';
 
 

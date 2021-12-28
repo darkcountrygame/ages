@@ -7,7 +7,7 @@ import closeImg from '../images/close.png'
 
 import './equip.css'
 
-export default () => (
+const EquipCard = () => (
   <Popup
     trigger={<button> Equip </button>}
     modal
@@ -78,3 +78,5 @@ export default () => (
   </Popup>
   
 );
+
+export default EquipCard

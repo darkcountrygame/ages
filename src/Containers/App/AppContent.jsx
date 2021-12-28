@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { UALContext } from "ual-reactjs-renderer";
 
-
-
 import { useApp } from '../../Data/AppContext';
 import { useRoutes } from '../../Hooks/Routes';
 
@@ -12,6 +10,7 @@ import { useRoutes } from '../../Hooks/Routes';
 import {
     fetchWaxBalance,
     fetchRtpBalance,
+    fetchItems,
 } from "../../Services";
 
 const AppContent = () => {
@@ -26,12 +25,17 @@ const AppContent = () => {
         waxBalanceFetched,
         setRtpBalance,
         rtpBalanceFetched,
+        itemListFetched,
+        itemList,
+        setUserNotStakedItems
     } = useApp();
 
     const { activeUser } = useContext(UALContext);
 
     const [waxBalanceLoading, setWaxBalanceLoading] = useState(false);
     const [rtpBalanceLoading, setRtpBalanceLoading] = useState(false);
+
+    const [notStakedItemsLoading, setNotStakedItemsLoading] = useState(false);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && setUserDataHandler && userLoginHandler && !isAuthenticated) {
@@ -76,15 +80,36 @@ const AppContent = () => {
         }
     }, [activeUser, rtpBalanceLoading, setRtpBalance, rtpBalanceFetched]);
 
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !itemListFetched && setUserNotStakedItems
+            && !notStakedItemsLoading
+        ) {
+            setNotStakedItemsLoading(true);
+
+            fetchItems({
+                account: activeUser.accountName
+                // miningMultiplier,
+                // stakingConfig,
+            })
+                .then((items) => setUserNotStakedItems(items))
+                .catch(e => {
+                    console.log(e)
+
+                    setUserNotStakedItems([]);
+                })
+                .finally(() => setNotStakedItemsLoading(false));
+        }
+    }, [activeUser]);
+
+
+
 
     return (
-
             <div>
                 <main>
                     { routes }
                 </main>
             </div>
-
     )
 }
 
