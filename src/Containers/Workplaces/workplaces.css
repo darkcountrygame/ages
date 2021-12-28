@@ -87,9 +87,9 @@
     margin-bottom: 20px;
 }
 
-.main-workplace-header a{
+.main-workplace-header button{
     background: #12B124;
-    border-radius: 10px;
+    color: #fff;
     padding: 10px 20px;
     font-weight: 700;
 }
@@ -255,11 +255,21 @@
 }
 
     @media screen and (max-width: 1680px) {
-        
+        .workplaces-item{
+            width: 200px;
+            height: 380px;
+            background-color: rgba(0, 0, 0, 0.103);
+            border-radius: 10px;
+        }
     }
 
 @media screen and (max-width: 1400px) {
-  
+    .workplaces-item{
+        width: 200px;
+        height: 350px;
+        background-color: rgba(0, 0, 0, 0.103);
+        border-radius: 10px;
+    }
 }
 
 @media screen and (max-width: 1366px) {

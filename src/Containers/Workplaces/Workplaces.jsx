@@ -156,7 +156,7 @@ const Workplaces = () => {
                         {/*</div>*/}
                         <div className="main-main-wrapper">
                             <div className="main-workplace-header">
-                                <a href="#">Start Work</a>
+                                <button>Start Work</button>
                                 <p>Total Prodused: <span>3 000</span><img src={meat} alt="meat" /></p>
                             </div>
 
