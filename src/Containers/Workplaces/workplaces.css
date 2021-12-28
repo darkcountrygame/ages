@@ -92,6 +92,7 @@
     color: #fff;
     padding: 10px 20px;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .main-workplace-header p{
@@ -185,8 +186,8 @@
     color: #fff;
     text-decoration: none;
     background: #ff0000;
-
     padding: 10px 40px;
+    cursor: pointer;
 }
 
 .btn-unequip button{
@@ -195,18 +196,18 @@
     color: #fff;
     text-decoration: none;
     background: #12B124;
-
     padding: 10px 40px;
+    cursor: pointer;
 }
 
 .btn-lock button{
     display: block;
     margin: 0 auto;
     background: #815F50;
-
     padding: 10px 40px;
     color: #fff;
     text-decoration: none;
+    cursor: pointer;
 }
 
 
@@ -224,7 +225,7 @@
 
 .main-workplace-sidebar{
     overflow-y: scroll;
-    overflow-x: hidden;
+
 }
 
 .main-workplace-sidebar__wrapper{
@@ -245,7 +246,6 @@
 }
 .main-workplace-sidebar__item:hover{
     border: 3px solid #B7997E;
-    cursor: pointer;
 }
 
 

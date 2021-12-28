@@ -40,13 +40,12 @@
       font-size: 24px;
       font-weight: bold;
       background: #12B124;
-
+    cursor: pointer;
       padding: 5px 40px;
 }
 
   
 .modal > .close{
-    cursor: pointer;
     position: absolute;
     right: 2%;
     top: 5%;

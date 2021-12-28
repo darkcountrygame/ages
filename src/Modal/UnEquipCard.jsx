@@ -1,5 +1,6 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
+import { NavLink } from 'react-router-dom'
 
 import cardIcon from '../images/card.png'
 import closeImg from '../images/close.png'
@@ -21,7 +22,7 @@ export default () => (
           <p>You do not have a free card, choose in the store.</p>
         </div>
         <div className="actions" onClick={close}>
-            <button>Market</button>
+            <NavLink to='/market'>Market</NavLink>
         </div>
       </div>
     )}
