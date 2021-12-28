@@ -1,13 +1,19 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
+import { useApp } from '../Data/AppContext';
 
 import arrowIcon from '../images/arrow.png'
 import closeImg from '../images/close.png'
 
+import { fetchItems } from '../Services'
 
 import './equip.css'
 
+
 const EquipCard = () => (
+
+
+    
   <Popup
     trigger={<button> Equip </button>}
     modal

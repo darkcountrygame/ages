@@ -42,9 +42,9 @@ export const AppProvider = ({ children }) => {
     const setWaxBalance = value => dispatch({ type: USER_WAX_BALANCE, value });
     const setRtpBalance = value => dispatch({ type: USER_RTP_BALANCE, value });
 
-    const setItems = items => dispatch({ type: USER_ITEMS, items });
+    const setItems = value => dispatch({ type: USER_ITEMS, value });
 
-
+ 
     return (
         <AppContext.Provider value={{
             userData: state.userData,

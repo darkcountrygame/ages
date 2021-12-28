@@ -43,6 +43,12 @@ export default () => (
                                 <div className="era-update__item">
                                     <img src={itemsImg} alt="img"/>
                                 </div>
+                                <div className="era-update__item">
+                                    <img src={itemsImg} alt="img"/>
+                                </div>
+                                <div className="era-update__item">
+                                    <img src={itemsImg} alt="img"/>
+                                </div>
 
 
                             </div>
