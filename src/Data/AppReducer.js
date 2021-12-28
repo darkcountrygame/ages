@@ -5,7 +5,7 @@ import {
     USER_LOGOUT,
     USER_WAX_BALANCE,
     USER_RTP_BALANCE,
-    USER_NOT_STAKED_ITEMS,
+    USER_ITEMS,
 
 } from './AppActionTypes';
 
@@ -28,6 +28,9 @@ const AppReducer = (state, action) => {
                 waxBalanceFetched: false,
                 rtpBalance: 0.0000,
                 rtpBalanceFetched: false,
+                itemList: [],
+                itemdListFetched: false,
+
             };
         }
 
@@ -39,8 +42,8 @@ const AppReducer = (state, action) => {
             return { ...state, rtpBalance: action.value, rtpBalanceFetched: true };
         }
 
-        case USER_NOT_STAKED_ITEMS: {
-            return { ...state, unstakedList: action.value, unstakedListFetched: true }
+        case USER_ITEMS: {
+            return { ...state, itemList: action.value, itemListFetched: true }
         }
 
         default:

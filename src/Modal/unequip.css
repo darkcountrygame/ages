@@ -49,8 +49,8 @@
 
 .modal.unequip > .close{
     position: absolute;
-    right: -30%;
-    top: 5%;
+    right: 3%;
+    top: 4%;
     cursor: pointer;
 }
 

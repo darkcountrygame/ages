@@ -48,8 +48,8 @@
 
 .modal.unlock > .close{
     position: absolute;
-    right: -20%;
-    top: 5%;
+    right: 4%;
+    top: 4%;
     cursor: pointer;
 }
 

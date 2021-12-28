@@ -84,8 +84,8 @@
   
 .modal.equip  > .close{
     position: absolute;
-    right: -5%;
-    top: 6%;
+    right: 4%;
+    top: 4%;
     cursor: pointer;
 
 }

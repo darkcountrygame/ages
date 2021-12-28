@@ -11,8 +11,8 @@
 .newera > .close{
     cursor: pointer;
     position: absolute;
-    right: -17%;
-    top: 6%;
+    right: 2%;
+    top: 4%;
 }
 .era-wrapper{
     display: flex;

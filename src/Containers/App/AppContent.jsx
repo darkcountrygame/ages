@@ -27,7 +27,7 @@ const AppContent = () => {
         rtpBalanceFetched,
         itemListFetched,
         itemList,
-        setUserNotStakedItems
+        setItems
     } = useApp();
 
     const { activeUser } = useContext(UALContext);
@@ -35,7 +35,7 @@ const AppContent = () => {
     const [waxBalanceLoading, setWaxBalanceLoading] = useState(false);
     const [rtpBalanceLoading, setRtpBalanceLoading] = useState(false);
 
-    const [notStakedItemsLoading, setNotStakedItemsLoading] = useState(false);
+    const [ItemsLoading, setItemsLoading] = useState(false);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && setUserDataHandler && userLoginHandler && !isAuthenticated) {
@@ -52,7 +52,6 @@ const AppContent = () => {
                 .then(balance => setWaxBalance(balance))
                 .catch(e => {
                     setWaxBalance(0);
-
 
                     console.log(e.message)
                     console.log(e)
@@ -81,23 +80,21 @@ const AppContent = () => {
     }, [activeUser, rtpBalanceLoading, setRtpBalance, rtpBalanceFetched]);
 
     useEffect(() => {
-        if (activeUser && activeUser.accountName && !itemListFetched && setUserNotStakedItems
-            && !notStakedItemsLoading
+        if (activeUser && activeUser.accountName && !itemListFetched && setItems
+            && !ItemsLoading
         ) {
-            setNotStakedItemsLoading(true);
+            setItemsLoading(true);
 
             fetchItems({
                 account: activeUser.accountName
-                // miningMultiplier,
-                // stakingConfig,
             })
-                .then((items) => setUserNotStakedItems(items))
+                .then((items) => setItems(items))
                 .catch(e => {
                     console.log(e)
 
-                    setUserNotStakedItems([]);
+                    setItems([]);
                 })
-                .finally(() => setNotStakedItemsLoading(false));
+                .finally(() => setItemsLoading(false));
         }
     }, [activeUser]);
 

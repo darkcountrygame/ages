@@ -2,6 +2,7 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import { NavLink } from 'react-router-dom'
 
+
 import cardIcon from '../images/card.png'
 import closeImg from '../images/close.png'
 
@@ -9,7 +10,7 @@ import './unequip.css'
 
 export default () => (
   <Popup
-    trigger={<button>Unequip</button>}
+    trigger={<button>Unequip</button>}F
     modal
     nested
   >
@@ -27,5 +28,5 @@ export default () => (
       </div>
     )}
   </Popup>
-  
+
 );
