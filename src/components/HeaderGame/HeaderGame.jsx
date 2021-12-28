@@ -13,8 +13,35 @@ import plus from '../../images/plus.png'
 
 
 export default function Header() {
-    const { waxBalance, rtpBalance } = useApp();
-    return (
+
+    const { waxBalance, rtpBalance, isAuthenticated } = useApp();
+
+    if(!isAuthenticated) {
+        return (
+            <header className="header">
+                <div className="header-wrapper">
+                    <div className="header-stats">
+                        <div className="header-stats__title">
+                            <h2>Prehistoric age</h2>
+                        </div>
+                        <div className="header-stats__under">
+                            <div className="header-stats__sp">
+                                <span></span>
+                                5 000 / 10 000
+                            </div>
+                            <div className="add">
+                                <img src={plus} alt="plus" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <UserLogIn waxBalance={waxBalance} rtpBalance={rtpBalance} />
+                </div>
+            </header>
+        )
+    }
+
+    return(
         <header className="header">
             <div className="header-wrapper">
                 <div className="header-stats">
@@ -43,4 +70,5 @@ export default function Header() {
             </div>
         </header>
     )
+
 }

@@ -3,10 +3,10 @@ import Popup from 'reactjs-popup';
 
 
 import closeImg from '../images/close.png'
-import houseImg from '../images/research-1.png'
+import leftImg from '../images/prehistoric_illustration_.png'
 
 
-import './modalCard.css'
+import './research.css'
 
 export default () => (
   <Popup
@@ -19,14 +19,15 @@ export default () => (
           <img className="close" src={closeImg} alt="close" onClick={close} />
         <div className="header-modal"> Research +10 SP </div>
         <div className="content">
-          <div className="research-bg">
-            <div className="research-bg_img">
-              <img src={houseImg} alt="img" />
+          <div className="research-wrapper">
+            <div className="research-left-img-modal">
+              <img src={leftImg} alt="img"/>
             </div>
-            <div className="research-bg_info">
-              <div className="research_title">
-                <h3>Prehistoric age</h3>
+            <div className="research-right-modal">
+              <div className="research-right-modal__header">
+                <h3>Prehistoric Age</h3>
               </div>
+                <p>5 000 / 10 000 SP</p>
             </div>
           </div>
         </div>

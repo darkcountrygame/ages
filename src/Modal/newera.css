@@ -1,0 +1,76 @@
+.modal > .close{
+    cursor: pointer;
+    position: absolute;
+    right: 2%;
+    top: 5%;
+}
+.era-wrapper{
+    display: flex;
+    align-items: center;
+
+}
+
+.era-left{
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.era-left__title{
+    background: url('../images/orange_title.png');
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center;
+    padding: 15px 0;
+    position: relative;
+}
+
+.era-left__title h3{
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.era-right{
+    flex: 0 0 50%;
+    max-width: 50%;
+    background: #b190506b;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #a57f3b;
+
+}
+
+.era-right__update{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.era-update__title{
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.era-update__item{
+    width: 120px;
+}
+
+.era-update__item img{
+    width: 100%;
+    height: 100%;
+}
+
+.actions button{
+    background: #12B124;
+    border-radius: 10px;
+    padding: 10px 30px;
+    color: #fff;
+    border: 0;
+    font-size: 24px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}

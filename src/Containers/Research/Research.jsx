@@ -14,6 +14,7 @@ import infoIcon from '../../images/info_btn.png'
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import ResearchCard from '../../Modal/ResearchCard'
+import NewEra from '../../Modal/EraModal'
 
 export default function Research() {
     return (
@@ -42,7 +43,7 @@ export default function Research() {
                                     </ul>
                                 </div>
                                 <div className="research-left__btn">
-                                    <button>Research 123 RTP</button>
+                                    <ResearchCard />
                                 </div>
                                 
                            </div>
@@ -58,7 +59,7 @@ export default function Research() {
                                     5 000/10 000 SP
                                 </div>
                                 <div className="research-right__btn">
-                                    <button disabled>Advance to New Era</button>
+                                    <NewEra />
                                 </div>
                            </div>
                         </div>

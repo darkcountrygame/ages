@@ -1,8 +1,9 @@
 .modal {
     font-size: 12px;
     background: url('../images/modal.png');
+    background-repeat: no-repeat;
     height: 100%;
-    width: 100%;
+    width: 75%;
     color:#815F50;
     padding: 30px;
   }
@@ -85,8 +86,9 @@
 .modal > .close{
     cursor: pointer;
     position: absolute;
-    right: -5%;
+    right: -8%;
     top: 6%;
+
 }
 
  
