@@ -25,9 +25,9 @@ export default function Market() {
                         <h2>Market</h2>
                     </div>
                     <div className="container">
-                        <div className="close">
-                            <img src={close} alt="close" />
-                        </div>
+                        {/*<div className="close">*/}
+                        {/*    <img src={close} alt="close" />*/}
+                        {/*</div>*/}
                         <div className="main-main-wrapper">
                             <div className="header-market">
                                 <div className="header-market__wrapper">

@@ -27,9 +27,9 @@ export default function Research() {
                         <h2>Research</h2>
                     </div>
                     <div className="container">
-                        <div className="close">
-                            <img src={close} alt="close" />
-                        </div>
+                        {/*<div className="close">*/}
+                        {/*    <img src={close} alt="close" />*/}
+                        {/*</div>*/}
                         <div className="research-wrapper">
                            <div className="research-left">
                                 <div className="research-left_img">
