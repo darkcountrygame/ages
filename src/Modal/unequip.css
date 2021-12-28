@@ -1,43 +1,43 @@
-.modal {
+.modal.unequip {
     font-size: 12px;
-    background: url('../images/modal.png');
+    background: url('../images/popup1_bg.png');
     background-repeat: no-repeat;
     height: 100%;
-    width: 75%;
+    width: 100%;
     color:#815F50;
     padding: 30px;
 }
-.modal > .header-modal {
+
+.modal.unequip > .header-modal {
     width: 100%;
     font-size: 35px;
     font-weight: 700;
     text-align: center;
     padding: 5px 0 25px 0;
 }
-.modal > .content {
+
+.modal.unequip > .content {
     width: 100%;
     padding: 10px 5px;
     text-align: center;
 }
 
-.modal > .content img{
+.modal.unequip > .content img{
     padding: 5px 0 25px 0;
 }
 
-.modal > .content p{
+.modal.unequip > .content p{
     font-size: 18px;
     padding-bottom: 60px;
 }
 
-.modal > .actions {
+.modal.unequip > .actions {
     width: 100%;
-
     margin: auto;
     text-align: center;
-
-
 }
-.modal > .actions a{
+
+.modal.unequip > .actions a{
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
@@ -47,14 +47,12 @@
     color: #fff;
 }
 
-
-.modal > .close{
+.modal.unequip > .close{
     position: absolute;
-    right: -4%;
-    top: 8%;
+    right: -8%;
+    top: 5%;
+    cursor: pointer;
 }
-
-
 
 .popup-overlay {
     background: rgba(0, 0, 0, 0.822);

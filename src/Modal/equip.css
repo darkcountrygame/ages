@@ -1,26 +1,26 @@
-.modal {
+.modal.equip {
     font-size: 12px;
-    background: url('../images/modal.png');
+    background: url('../images/popup1_bg.png');
     background-repeat: no-repeat;
     height: 100%;
-    width: 75%;
+    width: 100%;
     color:#815F50;
     padding: 30px;
   }
-  .modal > .header-modal {
+  .modal.equip  > .header-modal {
     width: 100%;
     font-size: 35px;
     font-weight: 700;
     text-align: center;
     padding: 5px 0 25px 0;
   }
-  .modal > .content {
+  .modal.equip  > .content {
     width: 100%;
     padding: 10px 5px;
     text-align: center;
   }
 
-  .modal > .content .content-wrapper{
+  .modal.equip  > .content .content-wrapper{
       background: #B29476;
   }
 
@@ -30,7 +30,7 @@
      
   }
 
-  .modal > .content .card-item{
+  .modal.equip  > .content .card-item{
     width: 140px;
     height: 200px;
     text-align: center;
@@ -40,40 +40,40 @@
     border-radius: 10px;
 }
 
-.modal > .content .card-item:hover{
+.modal.equip  > .content .card-item:hover{
     border: 3px solid #3BD946;
 }
 
-.modal > .content .card-item__wrapper{
+.modal.equip  > .content .card-item__wrapper{
     padding: 10px;
 }
 
-.modal > .content .card-item__img{
+.modal.equip  > .content .card-item__img{
     width: 90px;
     height: 90px;
     margin: 10px auto; 
 }
 
-.modal > .content .card-item__img img{
+.modal.equip  > .content .card-item__img img{
     width: 100%;
 }
 
-  .modal > .content img{
+  .modal.equip  > .content img{
     padding: 0px 0 25px 0;
   }
 
-  .modal > .content .card-item .card-item__content{
+  .modal.equip  > .content .card-item .card-item__content{
     font-size: 18px;
 }
 
-  .modal > .actions {
+  .modal.equip  > .actions {
     width: 100%;
     margin: auto;
     text-align: center;
     margin: 40px auto 0 0;
   }
 
-  .modal > .actions button{
+  .modal.equip  > .actions button{
     font-size: 24px;
     font-weight: bold;
     background: #12B124;
@@ -82,10 +82,11 @@
   }
 
   
-.modal > .close{
+.modal.equip  > .close{
     position: absolute;
-    right: -8%;
+    right: -5%;
     top: 6%;
+    cursor: pointer;
 
 }
 

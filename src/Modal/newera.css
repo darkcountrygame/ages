@@ -1,8 +1,18 @@
-.modal > .close{
+.newera {
+    font-size: 12px;
+    background: url('../images/long_popup.png');
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    color: #815F50;
+    padding: 30px 95px;
+}
+
+.newera > .close{
     cursor: pointer;
     position: absolute;
-    right: 2%;
-    top: 5%;
+    right: -17%;
+    top: 6%;
 }
 .era-wrapper{
     display: flex;

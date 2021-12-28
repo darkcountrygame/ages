@@ -15,7 +15,7 @@ export default () => (
     nested
   >
     {close => (
-      <div className="modal">
+      <div className="modal research">
           <img className="close" src={closeImg} alt="close" onClick={close} />
         <div className="header-modal"> Research +10 SP </div>
         <div className="content">

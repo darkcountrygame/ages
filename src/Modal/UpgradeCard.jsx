@@ -1,7 +1,7 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 
-import cardIcon from '../images/spear.png'
+import cardIcon from '../images/hunters_lodge.png'
 import closeImg from '../images/close.png'
 import meatIcon from '../images/market-items/meat.png'
 
@@ -15,7 +15,7 @@ export default () => (
     nested
   >
     {close => (
-      <div className="modal upgrade">
+      <div className="upgrade">
           <img className="close" src={closeImg} alt="close" onClick={close} />
         <div className="header-modal"> Upgrade to 2 LV </div>
         <div className="content">
@@ -25,10 +25,6 @@ export default () => (
                       <div className="info-card__photo">
                          <img src={cardIcon} alt="cardIcon" />
                       </div>
-                        <div className="info-card__text">
-                            <h4>Spear</h4>
-                            <p>CardName</p>
-                        </div>
                   </div>
               </div>
               <div className="info-card__asset">

@@ -5,7 +5,7 @@ import cardIcon from '../images/unlock.png'
 import closeImg from '../images/close.png'
 
 
-import './modalCard.css'
+import './unlock.css'
 
 export default () => (
   <Popup
@@ -14,7 +14,7 @@ export default () => (
     nested
   >
     {close => (
-      <div className="modal">
+      <div className="modal unlock">
           <img className="close" src={closeImg} alt="close" onClick={close} />
         <div className="header-modal"> Unlock </div>
         <div className="content">

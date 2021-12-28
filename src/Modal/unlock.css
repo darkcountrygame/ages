@@ -1,6 +1,6 @@
-.modal {
+.modal.unlock {
     font-size: 12px;
-    background: url('../images/popup1_bg.png');
+    background: url('../images/popup2_bg.png');
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
@@ -8,7 +8,7 @@
     padding: 20px 50px;
 }
 
-.modal > .header-modal {
+.modal.unlock > .header-modal {
     width: 100%;
     font-size: 35px;
     font-weight: 700;
@@ -17,28 +17,28 @@
     color: #fff;
 }
 
-.modal > .content {
+.modal.unlock > .content {
     width: 100%;
     padding: 10px 5px;
     text-align: center;
 }
 
-.upgrade > .content img{
+.upgrade.unlock > .content img{
     padding: 5px;
 }
 
-.upgrade > .content p{
+.upgrade.unlock > .content p{
     padding-bottom: 10px;
 }
 
-.modal > .actions {
+.modal.unlock > .actions {
     width: 100%;
     margin: auto;
     text-align: center;
 
 }
 
-.modal > .actions button{
+.modal.unlock > .actions button{
     font-size: 24px;
     font-weight: bold;
     background: #12B124;
@@ -46,10 +46,11 @@
     padding: 5px 40px;
 }
 
-.modal > .close{
+.modal.unlock > .close{
     position: absolute;
-    right: -6%;
+    right: -20%;
     top: 5%;
+    cursor: pointer;
 }
 
 .popup-overlay {
