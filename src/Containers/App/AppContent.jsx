@@ -35,8 +35,10 @@ const AppContent = () => {
     const [waxBalanceLoading, setWaxBalanceLoading] = useState(false);
     const [rtpBalanceLoading, setRtpBalanceLoading] = useState(false);
 
-    const [ItemsLoading, setItemsLoading] = useState(false);
+    const [itemsLoading, setItemsLoading] = useState(false);
 
+    
+ 
     useEffect(() => {
         if (activeUser && activeUser.accountName && setUserDataHandler && userLoginHandler && !isAuthenticated) {
             setUserDataHandler(activeUser);
@@ -81,7 +83,7 @@ const AppContent = () => {
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !itemListFetched && setItems
-            && !ItemsLoading
+            && !itemsLoading
         ) {
             setItemsLoading(true);
 
@@ -96,10 +98,11 @@ const AppContent = () => {
                 })
                 .finally(() => setItemsLoading(false));
         }
-    }, [activeUser, itemListFetched, ItemsLoading]);
+    }, [activeUser, setItemsLoading, itemListFetched, setItems]);
 
 
 
+    console.log(setItems)
 
     return (
             <div>

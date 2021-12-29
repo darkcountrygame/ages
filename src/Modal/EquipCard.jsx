@@ -1,13 +1,13 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
+import { useApp } from '../Data/AppContext';
 
 import closeImg from '../images/close.png'
 
+
 import UserItems from '../components/UserItems/UserItems'
 
-
 import './equip.css'
-
 
 const EquipCard = ({ itemList }) => (
 
