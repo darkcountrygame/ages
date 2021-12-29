@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
 import { useApp } from "../../Data/AppContext";
 
+
 import './workplaces.css'
 
 import Header from '../../components/HeaderGame/HeaderGame'
 
 import sidebarItem from '../../images/hunters_lodge.png'
 import meat from '../../images/market-items/meat.png'
-import spear from '../../images/wooden_spear.png'
 import equip from '../../images/equip.png'
 import lock from '../../images/lock.png'
 
@@ -19,12 +19,14 @@ import EquipCard from '../../Modal/EquipCard'
 
 const Workplaces = () => {
     const {
-        itemList
+        itemList,
+        isAuthenticated,
     } = useApp();
 
 
     useEffect(() => {
         console.log(itemList)
+        console.log(isAuthenticated)
     },[itemList])
 
 
@@ -57,8 +59,6 @@ const Workplaces = () => {
                                 <div className="sidebar__item__container">
 
                                     <img src={sidebarItem} alt="img" />
-
-
 
                                 </div>
                             </div>
@@ -174,7 +174,7 @@ const Workplaces = () => {
                                             <img src={equip} alt="spear" />
                                         </div>
                                         <div className="btn-unequip ">
-                                            <EquipCard itemList={itemList} />
+                                            { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} />}
                                         </div>
                                     </div>
 
