@@ -29,7 +29,7 @@ const AppReducer = (state, action) => {
                 rtpBalance: 0.0000,
                 rtpBalanceFetched: false,
                 itemList: [],
-                itemdListFetched: false,
+                itemListFetched: false,
 
             };
         }

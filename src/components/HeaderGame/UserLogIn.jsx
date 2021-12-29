@@ -8,7 +8,7 @@ import wax from "../../images/wax.png";
 
 const WaxLogo = ({waxBalance, rtpBalance}) => {
     // const history = useNavigate();
-    console.log(rtpBalance)
+    // console.log(rtpBalance)
     const { showModal, logout } = useContext(UALContext);
     const { userData, isAuthenticated, userLogoutHandler } = useApp();
 

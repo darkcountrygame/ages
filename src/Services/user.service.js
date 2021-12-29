@@ -47,6 +47,7 @@ export const fetchItems = async ({ account }) => {
     } = await axios.get(`${ATOMIC_ASSETS_API}/assets?collection_name=${RTP_GAME_COLLECTION}&owner=${account}&page=1&limit=1000`);
 
     console.log(data)
+    return data
 };
 
 

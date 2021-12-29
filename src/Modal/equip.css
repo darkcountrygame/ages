@@ -27,7 +27,9 @@
   .content-card-list{
       display: flex;
       padding: 30px;
-     
+      width: 600px;
+      overflow: hidden;
+      overflow-x: scroll;
   }
 
   .modal.equip  > .content .card-item{
@@ -38,10 +40,15 @@
     background: #6b4c3ec4;
     color: #000;
     border-radius: 10px;
+      cursor: pointer;
 }
 
 .modal.equip  > .content .card-item:hover{
     border: 3px solid #3BD946;
+}
+
+.modal.equip  > .content .card-item h4{
+    font-size: 13px;
 }
 
 .modal.equip  > .content .card-item__wrapper{
@@ -49,13 +56,14 @@
 }
 
 .modal.equip  > .content .card-item__img{
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 130px;
     margin: 10px auto; 
 }
 
 .modal.equip  > .content .card-item__img img{
     width: 100%;
+    height: 100%;
 }
 
   .modal.equip  > .content img{

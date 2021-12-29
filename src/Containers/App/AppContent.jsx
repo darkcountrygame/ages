@@ -96,7 +96,7 @@ const AppContent = () => {
                 })
                 .finally(() => setItemsLoading(false));
         }
-    }, [activeUser]);
+    }, [activeUser, itemListFetched, ItemsLoading]);
 
 
 

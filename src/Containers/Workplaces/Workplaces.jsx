@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useApp } from "../../Data/AppContext";
 
 import './workplaces.css'
@@ -6,7 +6,6 @@ import './workplaces.css'
 import Header from '../../components/HeaderGame/HeaderGame'
 
 import sidebarItem from '../../images/hunters_lodge.png'
-import close from '../../images/close.png'
 import meat from '../../images/market-items/meat.png'
 import spear from '../../images/wooden_spear.png'
 import equip from '../../images/equip.png'
@@ -19,26 +18,28 @@ import UnlockCard from '../../Modal/UnlockCard'
 import EquipCard from '../../Modal/EquipCard'
 
 const Workplaces = () => {
-    // const {
-    //     userData,
-    //     isAuthenticated,
-    // } = useApp();
+    const {
+        itemList
+    } = useApp();
+
+
+    useEffect(() => {
+        console.log(itemList)
+    },[itemList])
+
+
 
 
     return (
         <section className="workplace">
             <Header />
             <div className="main-workplace">
-                {/* <div className="main-wrapper"> */}
                 <div className="main-workplace-sidebar">
                     <div className="main-workplace-sidebar__wrapper">
                         <div className="main-workplace-sidebar__list">
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
                                 </div>
                             </div>
 
@@ -151,9 +152,6 @@ const Workplaces = () => {
                         <h2>Workplaces</h2>
                     </div>
                     <div className="container">
-                        {/*<div className="close">*/}
-                        {/*    <img src={close} alt="close" />*/}
-                        {/*</div>*/}
                         <div className="main-main-wrapper">
                             <div className="main-workplace-header">
                                 <button>Start Work</button>
@@ -177,7 +175,7 @@ const Workplaces = () => {
                                             <img src={equip} alt="spear" />
                                         </div>
                                         <div className="btn-unequip ">
-                                            <EquipCard />
+                                            <EquipCard itemList={itemList} />
                                         </div>
                                     </div>
 
@@ -203,12 +201,8 @@ const Workplaces = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* </div> */}
-
             </div>
             <Footer />
-            {/* <SimpleBottomNavigation />  */}
         </section>
     )
 }
