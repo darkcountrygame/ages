@@ -10,7 +10,7 @@ import './unequip.css'
 
 export default () => (
   <Popup
-    trigger={<button>Unequip</button>}
+    trigger={<button>Equip</button>}
     modal
     nested
   >
