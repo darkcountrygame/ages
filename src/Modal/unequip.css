@@ -20,6 +20,8 @@
     width: 100%;
     padding: 10px 5px;
     text-align: center;
+    border: 2px solid #9c7650;
+    background: #b98d61;
 }
 
 .modal.unequip > .content img{
@@ -28,13 +30,15 @@
 
 .modal.unequip > .content p{
     font-size: 18px;
-    padding-bottom: 60px;
+    padding-bottom: 5px;
+    color: #fff;
 }
 
 .modal.unequip > .actions {
     width: 100%;
     margin: auto;
     text-align: center;
+    margin-top: 25px;
 }
 
 .modal.unequip > .actions a{

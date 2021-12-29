@@ -3,14 +3,14 @@ import Popup from 'reactjs-popup';
 import { NavLink } from 'react-router-dom'
 
 
-import cardIcon from '../images/card.png'
+import cardIcon from '../images/market_art.png'
 import closeImg from '../images/close.png'
 
 import './unequip.css'
 
 export default () => (
   <Popup
-    trigger={<button>Unequip</button>}F
+    trigger={<button>Unequip</button>}
     modal
     nested
   >
