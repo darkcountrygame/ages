@@ -19,6 +19,7 @@ import EquipCard from '../../Modal/EquipCard'
 const Workplaces = () => {
     const {
         itemList,
+
     } = useApp();
 
     const [selectItem, setSelectItem] = useState([])
@@ -122,7 +123,6 @@ const Workplaces = () => {
                                 <button>Start Work</button>
                                 <p>Total Prodused: <span>0</span><img src={meat} alt="meat" /></p>
                             </div>
-
 
                             <div className="main-main-contant">
                                 <div className="main-main-list">

@@ -30,6 +30,9 @@ const initialState = {
     itemList: [],
     itemListFetched: false,
 
+    selectedItem: [],
+    selectedItemFetched: false,
+
 }
 
 export const AppProvider = ({ children }) => {
@@ -45,7 +48,6 @@ export const AppProvider = ({ children }) => {
     const setItems = value => dispatch({ type: USER_ITEMS, value });
 
 
- 
     return (
         <AppContext.Provider value={{
             userData: state.userData,
@@ -58,6 +60,9 @@ export const AppProvider = ({ children }) => {
 
             itemList: state.itemList,
             itemListFetched: state.itemListFetched,
+
+            selectedItem: state.itemList,
+            selectedItemFetched: state.itemListFetched,
 
             userLoginHandler,
             userLogoutHandler,

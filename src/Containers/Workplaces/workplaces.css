@@ -112,7 +112,7 @@
 
 .main-main-list{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -155,7 +155,9 @@
 }
 
 /*-----*/
-
+.main-main-contant{
+    overflow-x: scroll;
+}
 
 .main-main-contant .main-main-info{
     font-size: 18px;

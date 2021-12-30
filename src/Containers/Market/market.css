@@ -28,18 +28,19 @@
 
 .header-market__wrapper button{
     color: #E8D9BF;
-    background: #815F50;
+    background: #3b1d36;
     padding: 10px 30px;
     border: 0;
+    cursor: pointer;
 }
 
 .market-list{
-    overflow-y: hidden;
-    overflow-x: auto;
+    width: 120%;
     flex-wrap: nowrap;
 }
 
 .markwet-list_item{
+    width: 150px;
     margin: 10px;
 }
 
