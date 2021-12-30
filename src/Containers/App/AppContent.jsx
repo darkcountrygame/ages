@@ -101,9 +101,6 @@ const AppContent = () => {
     }, [activeUser, setItemsLoading, itemListFetched, setItems]);
 
 
-
-    console.log(setItems)
-
     return (
             <div>
                 <main>

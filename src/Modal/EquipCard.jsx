@@ -1,6 +1,6 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
-import { useApp } from '../Data/AppContext';
+
 
 import closeImg from '../images/close.png'
 
@@ -9,7 +9,9 @@ import UserItems from '../components/UserItems/UserItems'
 
 import './equip.css'
 
-const EquipCard = ({ itemList }) => (
+const EquipCard = ({ itemList, setSelectItem }) => (
+
+
 
   <Popup
     trigger={<button> Equip </button>}
@@ -22,7 +24,7 @@ const EquipCard = ({ itemList }) => (
         <div className="header-modal"> Equip Card </div>
         <div className="content">
                 <div className="content-card-list">
-                  {itemList.map( item =>  <UserItems itemList={itemList} item={item} /> )}
+                  {itemList.map( item =>  <UserItems itemList={itemList} item={item} setSelectItem={setSelectItem}/> )}
                 </div>
         </div>
         <div className="actions" onClick={close}>

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { useApp } from "../../Data/AppContext";
 
 
@@ -11,7 +11,6 @@ import meat from '../../images/market-items/meat.png'
 import equip from '../../images/equip.png'
 import lock from '../../images/lock.png'
 
-
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UnEquipCard from '../../Modal/UnEquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
@@ -20,15 +19,15 @@ import EquipCard from '../../Modal/EquipCard'
 const Workplaces = () => {
     const {
         itemList,
-        isAuthenticated,
     } = useApp();
+
+    const [selectItem, setSelectItem] = useState([])
 
 
     useEffect(() => {
         console.log(itemList)
-        console.log(isAuthenticated)
-    },[itemList])
-
+        console.log(selectItem)
+    },[itemList, selectItem])
 
 
 
@@ -47,101 +46,67 @@ const Workplaces = () => {
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
                                 </div>
                             </div>
 
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-
                                     <img src={sidebarItem} alt="img" />
-
-
                                 </div>
                             </div>
                         </div>
@@ -161,20 +126,13 @@ const Workplaces = () => {
 
                             <div className="main-main-contant">
                                 <div className="main-main-list">
-                                    {/*<div className="workplaces-item">*/}
-                                    {/*    <div className="workplaces-img">*/}
-                                    {/*        <img src={spear} alt="spear" />*/}
-                                    {/*    </div>*/}
-                                    {/*    <div className="btn-equip">*/}
-                                    {/*        <UnEquipCard />*/}
-                                    {/*    </div>*/}
-                                    {/*</div>*/}
+
                                     <div className="workplaces-item equip">
                                         <div className="workplaces-img">
                                             <img src={equip} alt="spear" />
                                         </div>
                                         <div className="btn-unequip ">
-                                            { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} />}
+                                            { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} setSelectItem={setSelectItem}/>}
                                         </div>
                                     </div>
 

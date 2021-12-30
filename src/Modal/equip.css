@@ -26,7 +26,7 @@
 
   .content-card-list{
       display: flex;
-      padding: 30px;
+      padding: 25px;
       width: 600px;
       overflow: hidden;
       overflow-x: scroll;
@@ -44,7 +44,10 @@
 }
 
 .modal.equip  > .content .card-item:hover{
-    border: 3px solid #3BD946;
+    border: 3px solid #ecd900;
+    /*background: url('../images/select_workplace.png');*/
+    /*width: 100%;*/
+    /*height: 100%;*/
 }
 
 .modal.equip  > .content .card-item h4{
@@ -56,7 +59,7 @@
 }
 
 .modal.equip  > .content .card-item__img{
-    width: 100px;
+    width: 120px;
     height: 130px;
     margin: 10px auto; 
 }
