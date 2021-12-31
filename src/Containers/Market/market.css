@@ -1,3 +1,7 @@
+.market{
+    background: url('../../images/ingame_background.png');
+    background-position: center;
+}
 .main-main-contant.market{
     justify-content: center;
 }
@@ -42,6 +46,15 @@
 .markwet-list_item{
     width: 150px;
     margin: 10px;
+    cursor: pointer;
+}
+
+.markwet-list_item:hover{
+    border: 2px solid yellow;
+}
+
+.list-item-wrapper{
+    height: 100%;
 }
 
 .markwet-list_item img{

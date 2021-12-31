@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useApp } from "../../Data/AppContext";
+
 import '../Workplaces/workplaces.css'
 import './market.css'
 
@@ -11,11 +13,18 @@ import spearImg from '../../images/wooden_spear.png'
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UpgradeCard from '../../Modal/UpgradeCard'
+import UserTool from '../../components/UserTool/UserTool'
 
 
 export default function Market() {
+
+    const {
+        itemList,
+
+    } = useApp();
+
     return (
-        <section className='workplace'>
+        <section className='market'>
             <Header />
             <div className="main-workplace market">
 
@@ -25,9 +34,6 @@ export default function Market() {
                         <h2>Market</h2>
                     </div>
                     <div className="container">
-                        {/*<div className="close">*/}
-                        {/*    <img src={close} alt="close" />*/}
-                        {/*</div>*/}
                         <div className="main-main-wrapper">
                             <div className="header-market">
                                 <div className="header-market__wrapper">
@@ -49,44 +55,10 @@ export default function Market() {
 
                             <div className="main-main-contant">
                                 <div className="main-main-list market-list">
-
-                                    <div className="markwet-list_item">
-                                        <div className="list-item-wrapper">
-                                            <img src={spearImg} alt="spear" />
-                                        </div>
-                                    </div>
-
-                                    <div className="markwet-list_item">
-                                        <div className="list-item-wrapper">
-                                            <img src={spearImg} alt="spear" />
-                                        </div>
-                                    </div>
-
-                                    <div className="markwet-list_item">
-                                        <div className="list-item-wrapper">
-                                            <img src={spearImg} alt="spear" />
-                                        </div>
-                                    </div>
-
-                                    <div className="markwet-list_item">
-                                        <div className="list-item-wrapper">
-                                            <img src={spearImg} alt="spear" />
-                                        </div>
-                                    </div>
-
-                                    <div className="markwet-list_item">
-                                        <div className="list-item-wrapper">
-                                            <img src={spearImg} alt="spear" />
-                                        </div>
-                                    </div>
-
-                                    <div className="markwet-list_item">
-                                        <div className="list-item-wrapper">
-                                            <img src={spearImg} alt="spear" />
-                                        </div>
-                                    </div>
-
-
+                                    {itemList.map( item => (item.schema.schema_name === 'tool' ? <UserTool itemList={itemList} item={item} />
+                                            :
+                                            false
+                                    ))}
                                 </div>
 
                             </div>
