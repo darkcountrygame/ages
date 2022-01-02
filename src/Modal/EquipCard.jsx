@@ -5,7 +5,7 @@ import Popup from 'reactjs-popup';
 import closeImg from '../images/close.png'
 
 
-import UserItems from '../components/UserItems/UserItems'
+import UserItems from '../components/UserWorkplace/UserItems'
 
 import './equip.css'
 
