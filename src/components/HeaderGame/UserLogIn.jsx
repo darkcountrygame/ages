@@ -21,13 +21,14 @@ const WaxLogo = ({waxBalance, rtpBalance}) => {
         // history.push('/');
         showModal();
     };
-
+    console.log(String(waxBalance))
+    console.log(String(rtpBalance))
 
     if (!isAuthenticated) {
         return (
             <div className="header-user">
                 <div className="money">
-                    <p><img src={wax} alt="wax" /><span className="wax" onClick={handleLogin}>Log In</span></p>
+                    <p><img src={wax} alt="wax" /><span className="wax" onClick={ handleLogin }>Log In</span></p>
                 </div>
             </div>
         )

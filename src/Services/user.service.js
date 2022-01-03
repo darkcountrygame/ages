@@ -28,16 +28,15 @@ export const fetchRtpBalance = async ({ account }) => {
     const { rows } = await fetchRows({
         contract: RTP_GAME,
         scope: account,
-        table: "collected",
-        lowerBound: account,
-        upperBound: account,
-        limit: 1
+        table: "accounts"
     });
 
     if (!rows[0])
         return `0 RTP`;
 
-    return `${Number(rows[0].quantity).toFixed(4)} RTP`;
+    const [value, currency] = rows[0].balance.split(' ');
+
+    return `${Number(value).toFixed(1)} ${currency}`;
 };
 
 
@@ -48,6 +47,8 @@ export const fetchItems = async ({ account }) => {
     console.log(data)
     return data
 };
+
+
 
 
 
