@@ -14,7 +14,7 @@ import plus from '../../images/plus.png'
 
 export default function Header() {
 
-    const { waxBalance, rtpBalance, isAuthenticated } = useApp();
+    const { waxBalance, rtpBalance, isAuthenticated, resourcesList } = useApp();
 
     if(!isAuthenticated) {
         return (
@@ -60,10 +60,10 @@ export default function Header() {
                 </div>
                 <div className="header-items">
                     <ul className="header-items_list">
-                        <li><img src={meat} alt="meat" /> <span>0</span></li>
-                        <li><img src={rock} alt="rock" /> <span>0</span></li>
-                        <li><img src={wheel} alt="wheel" /> <span>0</span></li>
-                        <li><img src={wood} alt="wood" /> <span>0</span></li>
+                        <li><img src={meat} alt="meat" /> <span>{ resourcesList.food }</span></li>
+                        <li><img src={rock} alt="rock" /> <span>{ resourcesList.stone }</span></li>
+                        <li><img src={wood} alt="wood" /> <span>{ resourcesList.wood }</span></li>
+                        <li><img src={wheel} alt="miles" /> <span>{ resourcesList.miles }</span></li>
                     </ul>
                 </div>
                 <UserLogIn waxBalance={waxBalance} rtpBalance={rtpBalance} />

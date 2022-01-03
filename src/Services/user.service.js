@@ -49,6 +49,21 @@ export const fetchItems = async ({ account }) => {
 };
 
 
+export const fetchResources = async ({ account }) => {
+    const { rows } = await fetchRows({
+        contract: RTP_GAME,
+        scope: account,
+        table: "resources"
+    });
+
+    if (!rows[0])
+        return `0`;
+
+    return rows[0];
+
+};
+
+
 
 
 

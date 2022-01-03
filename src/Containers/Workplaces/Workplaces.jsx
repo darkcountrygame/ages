@@ -19,7 +19,7 @@ import EquipCard from '../../Modal/EquipCard'
 const Workplaces = () => {
     const {
         itemList,
-
+        resourcesList
     } = useApp();
 
     const [selectItem, setSelectItem] = useState([])
@@ -27,8 +27,8 @@ const Workplaces = () => {
 
     useEffect(() => {
         console.log(itemList)
-        console.log(selectItem)
-    },[itemList, selectItem])
+        console.log(resourcesList)
+    },[itemList, resourcesList])
 
 
 

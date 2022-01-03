@@ -1,6 +1,6 @@
 import React from 'react'
 import './inventory.css'
-
+import { useApp } from "../../Data/AppContext";
 
 
 import close from '../../images/close.png'
@@ -19,6 +19,9 @@ import Footer from '../../components/FooterGameNav/FooterGameNav'
 
 
 export default function Inventory() {
+
+    const { resourcesList } = useApp();
+
     return (
         <section className='workplace'>
         <Header />
@@ -45,7 +48,7 @@ export default function Inventory() {
                                 </div>
                                 <div className="inventory-item__info">
                                     <img src={meat} alt="food" />
-                                    <span>0</span>
+                                    <span>{ resourcesList.food }</span>
                                 </div>
                                 <div className="inventory-item__btn">
                                     <button>Sell</button>
@@ -61,7 +64,7 @@ export default function Inventory() {
                                 </div>
                                 <div className="inventory-item__info">
                                     <img src={wood} alt="food" />
-                                    <span>0</span>
+                                    <span>{ resourcesList.wood }</span>
                                 </div>
                                 <div className="inventory-item__btn">
                                     <button>Sell</button>
@@ -77,7 +80,7 @@ export default function Inventory() {
                                 </div>
                                 <div className="inventory-item__info">
                                     <img src={rock} alt="food" />
-                                    <span>0</span>
+                                    <span>{ resourcesList.stone }</span>
                                 </div>
                                 <div className="inventory-item__btn">
                                     <button>Sell</button>
@@ -93,7 +96,7 @@ export default function Inventory() {
                                 </div>
                                 <div className="inventory-item__info">
                                     <img src={wheel} alt="food" />
-                                    <span>0</span>
+                                    <span>{ resourcesList.miles }</span>
                                 </div>
                                 <div className="inventory-item__btn">
                                     <button>Sell</button>

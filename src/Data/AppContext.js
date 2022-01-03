@@ -7,7 +7,8 @@ import {
     USER_LOGOUT,
     USER_WAX_BALANCE,
     USER_RTP_BALANCE,
-    USER_ITEMS
+    USER_ITEMS,
+    USER_RESOURCES
 
 } from './AppActionTypes';
 
@@ -33,6 +34,9 @@ const initialState = {
     selectedItem: [],
     selectedItemFetched: false,
 
+    resourcesList: [],
+    resourcesFetched: false,
+
 }
 
 export const AppProvider = ({ children }) => {
@@ -46,6 +50,8 @@ export const AppProvider = ({ children }) => {
     const setRtpBalance = value => dispatch({ type: USER_RTP_BALANCE, value });
 
     const setItems = value => dispatch({ type: USER_ITEMS, value });
+
+    const setResources = value => dispatch({ type: USER_RESOURCES, value });
 
 
     return (
@@ -64,12 +70,17 @@ export const AppProvider = ({ children }) => {
             selectedItem: state.itemList,
             selectedItemFetched: state.itemListFetched,
 
+            resourcesList: state.resourcesList,
+            resourcesFetched: state.resourcesFetched,
+
             userLoginHandler,
             userLogoutHandler,
             setUserDataHandler,
             setWaxBalance,
             setRtpBalance,
             setItems,
+            setResources,
+
 
         }}>
             { children }

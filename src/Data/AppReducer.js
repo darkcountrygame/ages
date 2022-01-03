@@ -6,6 +6,7 @@ import {
     USER_WAX_BALANCE,
     USER_RTP_BALANCE,
     USER_ITEMS,
+    USER_RESOURCES,
 
 } from './AppActionTypes';
 
@@ -44,6 +45,10 @@ const AppReducer = (state, action) => {
 
         case USER_ITEMS: {
             return { ...state, itemList: action.value, itemListFetched: true }
+        }
+        
+        case USER_RESOURCES: {
+            return { ...state, resourcesList: action.value, resourcesFetched: true }
         }
 
         default:

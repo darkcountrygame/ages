@@ -11,6 +11,7 @@ import {
     fetchWaxBalance,
     fetchRtpBalance,
     fetchItems,
+    fetchResources,
 } from "../../Services";
 
 const AppContent = () => {
@@ -27,7 +28,10 @@ const AppContent = () => {
         rtpBalanceFetched,
         itemListFetched,
         itemList,
-        setItems
+        setItems,
+        resourcesList,
+        resourcesFetched,
+        setResources,
     } = useApp();
 
     const { activeUser } = useContext(UALContext);
@@ -36,6 +40,8 @@ const AppContent = () => {
     const [rtpBalanceLoading, setRtpBalanceLoading] = useState(false);
 
     const [itemsLoading, setItemsLoading] = useState(false);
+
+    const [resourcesLoading, setResourcesLoading] = useState(false);
 
     
  
@@ -99,6 +105,27 @@ const AppContent = () => {
                 .finally(() => setItemsLoading(false));
         }
     }, [activeUser, setItemsLoading, itemListFetched, setItems]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !resourcesFetched && setResources
+            && !resourcesLoading
+        ) {
+            setResourcesLoading(true);
+
+            fetchResources({
+                account: activeUser.accountName
+            })
+                .then((resurce) => setResources(resurce))
+                .catch(e => {
+                    console.log(e)
+
+                    setResources([]);
+                })
+                .finally(() => setResourcesLoading(false));
+        }
+    }, [activeUser, setResourcesLoading, resourcesFetched, setResources]);
+
+
 
 
     return (
