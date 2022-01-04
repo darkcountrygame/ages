@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import Popup from 'reactjs-popup';
+import { useApp } from "../Data/AppContext";
+import { UALContext } from "ual-reactjs-renderer";
 
 
 import closeImg from '../images/close.png'
@@ -7,29 +9,56 @@ import closeImg from '../images/close.png'
 
 import './inventory.css'
 
-export default ({ img }) => (
+import {exchangeResources, fetchResources} from "../Services";
 
-    <Popup
-        trigger={<button>Sell</button>}
-        modal
-        nested
-    >
 
-        {close => (
+export default ({ img }) => {
+    const {
+        setResources
+    } = useApp();
 
-            <div className="modal exchange">
-                <img className="close" src={closeImg} alt="close" onClick={close} />
-                <div className="header-modal"> Sell </div>
-                <div className="content">
-                    <img src={img} alt=""/>
-                    <p>You can exchange resources for tokens</p>
-                    <input type="number" placeholder="Number of resources" />
+    const { activeUser } = useContext(UALContext);
+
+    const [countResources, setCountResources] = useState('')
+
+    const exchangeHandler = () => {
+        exchangeResources( {activeUser} )
+            .then(() => {
+                fetchResources({ account: activeUser.accountName })
+                    .then(resurce => setResources(resurce))
+                    .catch(e => console.log(e));
+
+
+                // toast.success('Claimed');
+            })
+            // .catch(e => toast.error(e.message))
+            .catch(e => console.error(e))
+    }
+
+    console.log(countResources)
+
+    return (
+        <Popup
+            trigger={<button>Sell</button>}
+            modal
+            nested
+        >
+
+            {close => (
+
+                <div className="modal exchange">
+                    <img className="close" src={closeImg} alt="close" onClick={close}/>
+                    <div className="header-modal"> Sell </div>
+                    <div className="content">
+                        <img src={img} alt="img" />
+                        <p>You can exchange resources for tokens</p>
+                        <input type="number" placeholder="Number of resources" value={countResources} onChange={(event) => setCountResources(event.target.value)} />
+                    </div>
+                    <div className="actions" onClick={close}>
+                        <button onClick={exchangeHandler}>Sell</button>
+                    </div>
                 </div>
-                <div className="actions" onClick={close}>
-                    <button>Sell</button>
-                </div>
-            </div>
-        )}
-    </Popup>
-
-);
+            )}
+        </Popup>
+    );
+}
