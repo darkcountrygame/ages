@@ -57,7 +57,7 @@ export const fetchResources = async ({ account }) => {
     });
 
     if (!rows[0])
-        return `0`;
+        return rows[0] = {wood: 0, stone: 0, food: 0, miles: 0};
 
     return rows[0];
 
