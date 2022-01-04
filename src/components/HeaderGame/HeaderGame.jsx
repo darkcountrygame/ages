@@ -14,7 +14,7 @@ import plus from '../../images/plus.png'
 
 export default function Header() {
 
-    const { waxBalance, rtpBalance, isAuthenticated, resourcesList } = useApp();
+    const { waxBalance, rtpBalance, isAuthenticated, resourcesList, probabilityGetPoints } = useApp();
 
     if(!isAuthenticated) {
         return (
@@ -27,7 +27,7 @@ export default function Header() {
                         <div className="header-stats__under">
                             <div className="header-stats__sp">
                                 <span></span>
-                                5 000 / 10 000
+                                { probabilityGetPoints } / 10 000
                             </div>
                             <div className="add">
                                 <img src={plus} alt="plus" />
@@ -51,7 +51,7 @@ export default function Header() {
                     <div className="header-stats__under">
                         <div className="header-stats__sp">
                             <span></span>
-                            5 000 / 10 000
+                            { probabilityGetPoints } / 10 000
                         </div>
                         <div className="add">
                             <img src={plus} alt="plus" />
