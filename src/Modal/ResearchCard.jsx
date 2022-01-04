@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Popup from 'reactjs-popup';
 import { useApp } from "../Data/AppContext";
+import { UALContext } from "ual-reactjs-renderer";
 
 import closeImg from '../images/close.png'
 import leftImg from '../images/prehistoric_illustration_.png'
@@ -8,8 +9,16 @@ import leftImg from '../images/prehistoric_illustration_.png'
 
 import './research.css'
 
+import { claimSciencePoints } from "../Services";
+
 export default () => {
   const { resourcesList } = useApp();
+  const { activeUser } = useContext(UALContext);
+
+  const pointsHandler = () => {
+      claimSciencePoints( {activeUser} )
+  }
+
 
   return(
       <Popup
@@ -35,7 +44,7 @@ export default () => {
                 </div>
               </div>
               <div className="actions" onClick={close}>
-                <button>OK</button>
+                <button onClick={pointsHandler}>OK</button>
               </div>
             </div>
         )}
