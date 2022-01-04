@@ -6,7 +6,6 @@ import './research.css'
 
 
 
-import close from '../../images/close.png'
 import researchLeft from '../../images/prehistoric_illustration_.png'
 import researchRight from '../../images/neolithic_illustration.png'
 import infoIcon from '../../images/info_btn.png'
@@ -16,6 +15,7 @@ import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import ResearchCard from '../../Modal/ResearchCard'
 import NewEra from '../../Modal/EraModal'
+import TostifyMessage from '../../components/Messages/Tostify'
 
 export default function Research() {
     const {
@@ -74,6 +74,7 @@ export default function Research() {
 
             </div>
             <Footer />
+            <TostifyMessage />
         </section>
     )
 }

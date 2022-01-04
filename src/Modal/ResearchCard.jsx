@@ -2,6 +2,9 @@ import React, {useContext} from 'react';
 import Popup from 'reactjs-popup';
 import { useApp } from "../Data/AppContext";
 import { UALContext } from "ual-reactjs-renderer";
+import { toast } from 'react-toastify';
+
+
 
 import closeImg from '../images/close.png'
 import leftImg from '../images/prehistoric_illustration_.png'
@@ -11,13 +14,44 @@ import './research.css'
 
 import { claimSciencePoints } from "../Services";
 
+
 export default () => {
   const { resourcesList } = useApp();
   const { activeUser } = useContext(UALContext);
 
   const pointsHandler = () => {
-      claimSciencePoints( {activeUser} )
+      try {
+          claimSciencePoints( {activeUser} )
+          toastSuccess()
+      }catch(e){
+          console.log(e)
+          toastError(e)
+      }
   }
+
+  const toastSuccess = () => {
+      toast.success('✅ Success!', {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+      });
+  }
+
+    const toastError = (e) => {
+        toast.error(e, {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
 
 
   return(
@@ -43,10 +77,11 @@ export default () => {
                   </div>
                 </div>
               </div>
-              <div className="actions" onClick={close}>
+              <div className="actions">
                 <button onClick={pointsHandler}>OK</button>
               </div>
             </div>
+
         )}
       </Popup>
 
