@@ -37,7 +37,7 @@ const Workplaces = () => {
         claimMiningResources( { activeUser })
             .then(() => {
                 fetchResources({ account: activeUser.accountName })
-                    .then(resurce => setResources(resurce))
+                    .then(resource => setResources(resource))
                     .catch(e => console.log(e));
 
 

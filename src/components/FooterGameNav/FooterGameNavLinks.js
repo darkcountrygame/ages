@@ -13,12 +13,12 @@ export const navMenu = [
     },
     {
         title: 'Inventory',
-        icon: inventoryIcon,
+        icon: marketIcon,
         url: '/inventory'
     },
     {
         title: 'Market',
-        icon: marketIcon,
+        icon: inventoryIcon,
         url: '/market'
     },
     {

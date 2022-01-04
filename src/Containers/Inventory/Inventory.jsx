@@ -30,7 +30,7 @@ export default function Inventory() {
 
              <div className="main-main">
                  <div className="main-title">
-                     <h2>Inventory</h2>
+                     <h2>Market</h2>
                  </div>
                  <div className="container">
                      {/*<div className="close">*/}
@@ -52,7 +52,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.food }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <InventoryModal img={meat} />
+                                    <InventoryModal img={meat} resource={'food'} />
                                 </div>
                             </div>
 
@@ -68,7 +68,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.wood }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <InventoryModal img={wood} />
+                                    <InventoryModal img={wood} resource={'food'} />
                                 </div>
                             </div>
 
@@ -84,7 +84,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.stone }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <InventoryModal img={rock} />
+                                    <InventoryModal img={rock} resource={'stone'} />
                                 </div>
                             </div>
 
@@ -100,7 +100,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.miles }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <InventoryModal img={wheel} />
+                                    <InventoryModal img={wheel} resource={'miles'} />
                                 </div>
                             </div>
 

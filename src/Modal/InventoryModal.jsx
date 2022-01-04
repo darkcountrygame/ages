@@ -12,20 +12,20 @@ import './inventory.css'
 import {exchangeResources, fetchResources} from "../Services";
 
 
-export default ({ img }) => {
+export default ({ img, resource }) => {
     const {
         setResources
     } = useApp();
 
     const { activeUser } = useContext(UALContext);
 
-    const [countResources, setCountResources] = useState('')
+    const [numberResources, setNumberResources] = useState('')
 
     const exchangeHandler = () => {
-        exchangeResources( {activeUser} )
+        exchangeResources( {activeUser, resource , count: +numberResources} )
             .then(() => {
                 fetchResources({ account: activeUser.accountName })
-                    .then(resurce => setResources(resurce))
+                    .then(resource => setResources(resource))
                     .catch(e => console.log(e));
 
 
@@ -35,7 +35,7 @@ export default ({ img }) => {
             .catch(e => console.error(e))
     }
 
-    console.log(countResources)
+    console.log(numberResources)
 
     return (
         <Popup
@@ -52,7 +52,7 @@ export default ({ img }) => {
                     <div className="content">
                         <img src={img} alt="img" />
                         <p>You can exchange resources for tokens</p>
-                        <input type="number" placeholder="Number of resources" value={countResources} onChange={(event) => setCountResources(event.target.value)} />
+                        <input type="number" placeholder="Number of resources" value={numberResources} onChange={(event) => setNumberResources(event.target.value)} />
                     </div>
                     <div className="actions" onClick={close}>
                         <button onClick={exchangeHandler}>Sell</button>
