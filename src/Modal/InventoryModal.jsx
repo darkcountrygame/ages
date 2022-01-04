@@ -8,12 +8,15 @@ import closeImg from '../images/close.png'
 import './inventory.css'
 
 export default () => (
+
     <Popup
         trigger={<button>Sell</button>}
         modal
         nested
     >
+
         {close => (
+
             <div className="modal exchange">
                 <img className="close" src={closeImg} alt="close" onClick={close} />
                 <div className="header-modal"> Sell </div>

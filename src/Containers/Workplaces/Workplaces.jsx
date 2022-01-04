@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import { useApp } from "../../Data/AppContext";
-
+import { UALContext } from "ual-reactjs-renderer";
+import { toast } from "react-toastify";
 
 import './workplaces.css'
 
 import Header from '../../components/HeaderGame/HeaderGame'
+
 
 import sidebarItem from '../../images/hunters_lodge.png'
 import meat from '../../images/market-items/meat.png'
@@ -16,13 +18,36 @@ import UnEquipCard from '../../Modal/UnEquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
 import EquipCard from '../../Modal/EquipCard'
 
+import { fetchResources ,claimMiningResources } from "../../Services";
+
 const Workplaces = () => {
+
+    const { activeUser } = useContext(UALContext);
+
     const {
         itemList,
-        resourcesList
+        resourcesList,
+        setResources
     } = useApp();
 
     const [selectItem, setSelectItem] = useState([])
+
+
+    const handleClaim = () => {
+        claimMiningResources( { activeUser })
+            .then(() => {
+                fetchResources({ account: activeUser.accountName })
+                    .then(resurce => setResources(resurce))
+                    .catch(e => console.log(e));
+
+
+                // toast.success('Claimed');
+            })
+            // .catch(e => toast.error(e.message))
+            .catch(e => console.error(e))
+    }
+
+    console.log(activeUser)
 
 
     useEffect(() => {
@@ -120,7 +145,7 @@ const Workplaces = () => {
                     <div className="container">
                         <div className="main-main-wrapper">
                             <div className="main-workplace-header">
-                                <button>Start Work</button>
+                                <button onClick={handleClaim}>Start Work</button>
                                 <p>Total Prodused: <span>0</span><img src={meat} alt="meat" /></p>
                             </div>
 
