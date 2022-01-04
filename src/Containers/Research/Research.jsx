@@ -44,7 +44,7 @@ export default function Research() {
                                     <ul>
                                         <li>Research duration: <span>24H</span></li>
                                         <li>Chance for success: <span>10%</span></li>
-                                        <li>Total science points: <span>10</span></li>
+                                        <li>Total science points: <span>{ resourcesList.science_points }</span></li>
                                     </ul>
                                 </div>
                                 <div className="research-left__btn">
