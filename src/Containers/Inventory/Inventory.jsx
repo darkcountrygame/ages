@@ -3,7 +3,7 @@ import './inventory.css'
 import { useApp } from "../../Data/AppContext";
 
 
-import close from '../../images/close.png'
+
 import meat from '../../images/market-items/meat.png'
 import wood from '../../images/market-items/wood.png'
 import rock from '../../images/market-items/rock.png'
@@ -16,6 +16,7 @@ import wheelBig from '../../images/miles_art.png'
 
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
+import InventoryModal from '../../Modal/InventoryModal'
 
 
 export default function Inventory() {
@@ -51,7 +52,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.food }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <button>Sell</button>
+                                    <InventoryModal />
                                 </div>
                             </div>
 
@@ -67,7 +68,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.wood }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <button>Sell</button>
+                                    <InventoryModal />
                                 </div>
                             </div>
 
@@ -83,7 +84,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.stone }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <button>Sell</button>
+                                    <InventoryModal />
                                 </div>
                             </div>
 
@@ -99,7 +100,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.miles }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <button>Sell</button>
+                                    <InventoryModal />
                                 </div>
                             </div>
 
