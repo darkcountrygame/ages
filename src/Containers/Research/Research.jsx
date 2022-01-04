@@ -1,11 +1,11 @@
 import React from 'react'
+import { useApp } from "../../Data/AppContext";
 
 import '../Workplaces/workplaces.css'
 import './research.css'
 
 
 
-import close from '../../images/close.png'
 import researchLeft from '../../images/prehistoric_illustration_.png'
 import researchRight from '../../images/neolithic_illustration.png'
 import infoIcon from '../../images/info_btn.png'
@@ -15,8 +15,13 @@ import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import ResearchCard from '../../Modal/ResearchCard'
 import NewEra from '../../Modal/EraModal'
+import TostifyMessage from '../../components/Messages/Tostify'
 
 export default function Research() {
+    const {
+        resourcesList,
+        probabilityGetPoints,
+    } = useApp();
     return (
         <section className='workplace'>
             <Header />
@@ -38,8 +43,8 @@ export default function Research() {
                                 <div className="research-left__info">
                                     <ul>
                                         <li>Research duration: <span>24H</span></li>
-                                        <li>Chance for success: <span>10%</span></li>
-                                        <li>Total science points: <span>10</span></li>
+                                        <li>Chance for success: <span>{ probabilityGetPoints }%</span></li>
+                                        <li>Total science points: <span>{ resourcesList.science_points }</span></li>
                                     </ul>
                                 </div>
                                 <div className="research-left__btn">
@@ -56,7 +61,7 @@ export default function Research() {
                                     <img src={researchRight} alt="img" />
                                 </div>
                                 <div className="research-right__info">
-                                    5 000/10 000 SP
+                                    {resourcesList.science_points} / 10 000 SP
                                 </div>
                                 <div className="research-right__btn">
                                     <NewEra />
@@ -69,6 +74,7 @@ export default function Research() {
 
             </div>
             <Footer />
+            <TostifyMessage />
         </section>
     )
 }

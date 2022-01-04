@@ -7,9 +7,6 @@ import './market.css'
 
 
 
-import close from '../../images/close.png'
-import spearImg from '../../images/wooden_spear.png'
-
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UpgradeCard from '../../Modal/UpgradeCard'
@@ -20,7 +17,6 @@ export default function Market() {
 
     const {
         itemList,
-
     } = useApp();
 
     return (
@@ -31,7 +27,7 @@ export default function Market() {
 
                 <div className="main-main">
                     <div className="main-title">
-                        <h2>Market</h2>
+                        <h2>Inventory</h2>
                     </div>
                     <div className="container">
                         <div className="main-main-wrapper">

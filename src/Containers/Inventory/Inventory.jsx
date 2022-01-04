@@ -3,7 +3,7 @@ import './inventory.css'
 import { useApp } from "../../Data/AppContext";
 
 
-import close from '../../images/close.png'
+
 import meat from '../../images/market-items/meat.png'
 import wood from '../../images/market-items/wood.png'
 import rock from '../../images/market-items/rock.png'
@@ -16,6 +16,7 @@ import wheelBig from '../../images/miles_art.png'
 
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
+import InventoryModal from '../../Modal/InventoryModal'
 
 
 export default function Inventory() {
@@ -29,12 +30,9 @@ export default function Inventory() {
 
              <div className="main-main">
                  <div className="main-title">
-                     <h2>Inventory</h2>
+                     <h2>Market</h2>
                  </div>
                  <div className="container">
-                     {/*<div className="close">*/}
-                     {/*    <img src={close} alt="close" />*/}
-                     {/*</div>*/}
                      <div className="main-main-wrapper">
                      <div className="main-main-contant">
                          <div className="main-main-list">
@@ -51,7 +49,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.food }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <button>Sell</button>
+                                    <InventoryModal img={meat} resource={'food'} />
                                 </div>
                             </div>
 
@@ -67,7 +65,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.wood }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <button>Sell</button>
+                                    <InventoryModal img={wood} resource={'wood'} />
                                 </div>
                             </div>
 
@@ -83,7 +81,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.stone }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <button>Sell</button>
+                                    <InventoryModal img={rock} resource={'stone'} />
                                 </div>
                             </div>
 
@@ -99,11 +97,9 @@ export default function Inventory() {
                                     <span>{ resourcesList.miles }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <button>Sell</button>
+                                    <InventoryModal img={wheel} resource={'miles'} />
                                 </div>
                             </div>
-
-
                          </div>
                      </div>
                  </div>
