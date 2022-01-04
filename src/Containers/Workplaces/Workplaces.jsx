@@ -25,10 +25,10 @@ const Workplaces = () => {
     const [selectItem, setSelectItem] = useState([])
 
 
-    useEffect(() => {
-        console.log(itemList)
-        console.log(resourcesList)
-    },[itemList, resourcesList])
+    // useEffect(() => {
+    //     console.log(itemList)
+    //     console.log(resourcesList)
+    // },[itemList, resourcesList])
 
 
 

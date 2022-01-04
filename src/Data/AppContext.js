@@ -8,7 +8,8 @@ import {
     USER_WAX_BALANCE,
     USER_RTP_BALANCE,
     USER_ITEMS,
-    USER_RESOURCES
+    USER_STAKED_ITEMS,
+    USER_RESOURCES,
 
 } from './AppActionTypes';
 
@@ -31,6 +32,9 @@ const initialState = {
     itemList: [],
     itemListFetched: false,
 
+    stakedItemList: [],
+    stakedItemListFetched: false,
+
     selectedItem: [],
     selectedItemFetched: false,
 
@@ -50,6 +54,7 @@ export const AppProvider = ({ children }) => {
     const setRtpBalance = value => dispatch({ type: USER_RTP_BALANCE, value });
 
     const setItems = value => dispatch({ type: USER_ITEMS, value });
+    const setStakedItems = value => dispatch({ type: USER_STAKED_ITEMS, value });
 
     const setResources = value => dispatch({ type: USER_RESOURCES, value });
 
@@ -67,6 +72,9 @@ export const AppProvider = ({ children }) => {
             itemList: state.itemList,
             itemListFetched: state.itemListFetched,
 
+            stakedItemList: state.stakedItemList,
+            stakedItemListFetched: state.stakedItemListFetched,
+
             selectedItem: state.itemList,
             selectedItemFetched: state.itemListFetched,
 
@@ -79,6 +87,7 @@ export const AppProvider = ({ children }) => {
             setWaxBalance,
             setRtpBalance,
             setItems,
+            setStakedItems,
             setResources,
 
 

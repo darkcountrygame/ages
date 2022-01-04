@@ -12,6 +12,7 @@ import {
     fetchRtpBalance,
     fetchItems,
     fetchResources,
+    fetchStakedItems,
 } from "../../Services";
 
 const AppContent = () => {
@@ -28,6 +29,9 @@ const AppContent = () => {
         rtpBalanceFetched,
         itemListFetched,
         itemList,
+        stakedItemListFetched,
+        stakedItemList,
+        setStakedItems,
         setItems,
         resourcesList,
         resourcesFetched,
@@ -40,6 +44,7 @@ const AppContent = () => {
     const [rtpBalanceLoading, setRtpBalanceLoading] = useState(false);
 
     const [itemsLoading, setItemsLoading] = useState(false);
+    const [stakedItemsLoading, setStakedItemsLoading] = useState(false);
 
     const [resourcesLoading, setResourcesLoading] = useState(false);
 
@@ -105,6 +110,23 @@ const AppContent = () => {
                 .finally(() => setItemsLoading(false));
         }
     }, [activeUser, setItemsLoading, itemListFetched, setItems]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !stakedItemListFetched && setStakedItems
+            && !stakedItemsLoading
+        ) {
+            setStakedItemsLoading(true);
+
+            fetchStakedItems()
+                .then((items) => setStakedItems(items))
+                .catch(e => {
+                    console.log(e)
+
+                    setStakedItems([]);
+                })
+                .finally(() => setStakedItemsLoading(false));
+        }
+    }, [activeUser, setStakedItemsLoading, stakedItemListFetched, setStakedItems]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !resourcesFetched && setResources

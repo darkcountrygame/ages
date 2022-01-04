@@ -48,6 +48,14 @@ export const fetchItems = async ({ account }) => {
     return data
 };
 
+export const fetchStakedItems = async () => {
+    const {
+        data: { data }
+    } = await axios.get(`${ATOMIC_ASSETS_API}/assets?collection_name=${RTP_GAME_COLLECTION}&owner=rush2prosper&page=1&limit=1000`);
+    console.log(data)
+    return data
+};
+
 
 export const fetchResources = async ({ account }) => {
     const { rows } = await fetchRows({

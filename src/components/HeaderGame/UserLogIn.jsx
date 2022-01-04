@@ -21,8 +21,8 @@ const WaxLogo = ({waxBalance, rtpBalance}) => {
         // history.push('/');
         showModal();
     };
-    console.log(String(waxBalance))
-    console.log(String(rtpBalance))
+    // console.log(String(waxBalance))
+    // console.log(String(rtpBalance))
 
     if (!isAuthenticated) {
         return (

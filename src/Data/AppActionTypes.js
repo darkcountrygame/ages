@@ -4,5 +4,6 @@ export const SET_USER_DATA = 'SET_USER_DATA';
 export const USER_WAX_BALANCE = 'USER_WAX_BALANCE';
 export const USER_RTP_BALANCE = 'USER_RTP_BALANCE';
 export const USER_ITEMS = 'USER_ITEMS'
+export const USER_STAKED_ITEMS = 'USER_STAKED_ITEMS'
 export const USER_RESOURCES = 'USER_RESOURCES'
 
