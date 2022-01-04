@@ -33,9 +33,6 @@ export default function Inventory() {
                      <h2>Market</h2>
                  </div>
                  <div className="container">
-                     {/*<div className="close">*/}
-                     {/*    <img src={close} alt="close" />*/}
-                     {/*</div>*/}
                      <div className="main-main-wrapper">
                      <div className="main-main-contant">
                          <div className="main-main-list">
@@ -103,8 +100,6 @@ export default function Inventory() {
                                     <InventoryModal img={wheel} resource={'miles'} />
                                 </div>
                             </div>
-
-
                          </div>
                      </div>
                  </div>

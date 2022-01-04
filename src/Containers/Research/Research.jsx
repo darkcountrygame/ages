@@ -1,4 +1,5 @@
 import React from 'react'
+import { useApp } from "../../Data/AppContext";
 
 import '../Workplaces/workplaces.css'
 import './research.css'
@@ -17,6 +18,10 @@ import ResearchCard from '../../Modal/ResearchCard'
 import NewEra from '../../Modal/EraModal'
 
 export default function Research() {
+    const {
+        resourcesList,
+    } = useApp();
+
     return (
         <section className='workplace'>
             <Header />
@@ -56,7 +61,7 @@ export default function Research() {
                                     <img src={researchRight} alt="img" />
                                 </div>
                                 <div className="research-right__info">
-                                    5 000/10 000 SP
+                                    {resourcesList.science_points} / 10 000 SP
                                 </div>
                                 <div className="research-right__btn">
                                     <NewEra />
