@@ -68,7 +68,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.wood }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <InventoryModal img={wood} resource={'food'} />
+                                    <InventoryModal img={wood} resource={'wood'} />
                                 </div>
                             </div>
 
