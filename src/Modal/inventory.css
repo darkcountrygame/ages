@@ -19,9 +19,13 @@
 
 .modal.exchange > .content {
     width: 100%;
-    padding: 45px 5px;
+    padding: 15px 5px;
     text-align: center;
     color: #fff;
+}
+
+.modal.exchange > .content img{
+    width: 20%;
 }
 
 .modal.exchange > .content input{

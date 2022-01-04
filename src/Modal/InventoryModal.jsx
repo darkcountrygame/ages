@@ -7,7 +7,7 @@ import closeImg from '../images/close.png'
 
 import './inventory.css'
 
-export default () => (
+export default ({ img }) => (
 
     <Popup
         trigger={<button>Sell</button>}
@@ -21,8 +21,9 @@ export default () => (
                 <img className="close" src={closeImg} alt="close" onClick={close} />
                 <div className="header-modal"> Sell </div>
                 <div className="content">
+                    <img src={img} alt=""/>
                     <p>You can exchange resources for tokens</p>
-                    <input type="text" placeholder="Enter a number of resources" />
+                    <input type="number" placeholder="Number of resources" />
                 </div>
                 <div className="actions" onClick={close}>
                     <button>Sell</button>

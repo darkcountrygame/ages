@@ -52,7 +52,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.food }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <InventoryModal />
+                                    <InventoryModal img={meat} />
                                 </div>
                             </div>
 
@@ -68,7 +68,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.wood }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <InventoryModal />
+                                    <InventoryModal img={wood} />
                                 </div>
                             </div>
 
@@ -84,7 +84,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.stone }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <InventoryModal />
+                                    <InventoryModal img={rock} />
                                 </div>
                             </div>
 
@@ -100,7 +100,7 @@ export default function Inventory() {
                                     <span>{ resourcesList.miles }</span>
                                 </div>
                                 <div className="inventory-item__btn">
-                                    <InventoryModal />
+                                    <InventoryModal img={wheel} />
                                 </div>
                             </div>
 
