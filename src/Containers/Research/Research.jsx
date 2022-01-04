@@ -20,8 +20,8 @@ import TostifyMessage from '../../components/Messages/Tostify'
 export default function Research() {
     const {
         resourcesList,
+        probabilityGetPoints,
     } = useApp();
-
     return (
         <section className='workplace'>
             <Header />
@@ -43,7 +43,7 @@ export default function Research() {
                                 <div className="research-left__info">
                                     <ul>
                                         <li>Research duration: <span>24H</span></li>
-                                        <li>Chance for success: <span>10%</span></li>
+                                        <li>Chance for success: <span>{ probabilityGetPoints }%</span></li>
                                         <li>Total science points: <span>{ resourcesList.science_points }</span></li>
                                     </ul>
                                 </div>

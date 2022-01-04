@@ -8,7 +8,8 @@ import {
     USER_WAX_BALANCE,
     USER_RTP_BALANCE,
     USER_ITEMS,
-    USER_RESOURCES
+    USER_RESOURCES,
+    USER_PROBABILITY_GET_POINTS,
 
 } from './AppActionTypes';
 
@@ -37,6 +38,9 @@ const initialState = {
     resourcesList: [],
     resourcesFetched: false,
 
+    probabilityGetPoints: 0,
+    probabilityFetched: false
+
 }
 
 export const AppProvider = ({ children }) => {
@@ -52,6 +56,8 @@ export const AppProvider = ({ children }) => {
     const setItems = value => dispatch({ type: USER_ITEMS, value });
 
     const setResources = value => dispatch({ type: USER_RESOURCES, value });
+
+    const setProbability = value => dispatch({ type: USER_PROBABILITY_GET_POINTS, value });
 
 
     return (
@@ -73,6 +79,9 @@ export const AppProvider = ({ children }) => {
             resourcesList: state.resourcesList,
             resourcesFetched: state.resourcesFetched,
 
+            probabilityGetPoints: state.probabilityGetPoints,
+            probabilityFetched: state.probabilityFetched,
+
             userLoginHandler,
             userLogoutHandler,
             setUserDataHandler,
@@ -80,6 +89,7 @@ export const AppProvider = ({ children }) => {
             setRtpBalance,
             setItems,
             setResources,
+            setProbability,
 
 
         }}>

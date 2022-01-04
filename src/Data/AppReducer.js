@@ -7,6 +7,7 @@ import {
     USER_RTP_BALANCE,
     USER_ITEMS,
     USER_RESOURCES,
+    USER_PROBABILITY_GET_POINTS,
 
 } from './AppActionTypes';
 
@@ -49,6 +50,10 @@ const AppReducer = (state, action) => {
         
         case USER_RESOURCES: {
             return { ...state, resourcesList: action.value, resourcesFetched: true }
+        }
+
+        case USER_PROBABILITY_GET_POINTS: {
+            return { ...state, probabilityGetPoints: action.value, probabilityFetched: true }
         }
 
         default:

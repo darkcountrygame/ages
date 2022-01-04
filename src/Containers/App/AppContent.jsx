@@ -11,7 +11,7 @@ import {
     fetchWaxBalance,
     fetchRtpBalance,
     fetchItems,
-    fetchResources,
+    fetchResources, probabilityGetPoints,
 } from "../../Services";
 
 const AppContent = () => {
@@ -32,6 +32,8 @@ const AppContent = () => {
         resourcesList,
         resourcesFetched,
         setResources,
+        setProbability,
+        probabilityFetched,
     } = useApp();
 
     const { activeUser } = useContext(UALContext);
@@ -42,6 +44,7 @@ const AppContent = () => {
     const [itemsLoading, setItemsLoading] = useState(false);
 
     const [resourcesLoading, setResourcesLoading] = useState(false);
+    const [probabilityLoading, setProbabilityLoading] = useState(false);
 
     
  
@@ -124,6 +127,25 @@ const AppContent = () => {
                 .finally(() => setResourcesLoading(false));
         }
     }, [activeUser, setResourcesLoading, resourcesFetched, setResources]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !probabilityFetched && setProbability
+            && !probabilityLoading
+        ) {
+            setProbabilityLoading(true);
+
+            probabilityGetPoints({
+                account: activeUser.accountName
+            })
+                .then((value) => setProbability(value))
+                .catch(e => {
+                    console.log(e)
+
+                    setProbability(0);
+                })
+                .finally(() => setProbabilityLoading(false));
+        }
+    }, [activeUser, setProbabilityLoading, probabilityFetched, setProbability]);
 
 
 
