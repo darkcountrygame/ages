@@ -7,7 +7,7 @@
 8) Staking WP and TOOL
 9) Tostify
 
-_______________________
+_______________________ DONE ____________________________
 1) Research time (count-down)
 7) Select Tool for upgrade
 10) Update WelcomeScreen (log in)

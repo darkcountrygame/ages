@@ -1,11 +1,21 @@
-import React from 'react'
+import React, {useContext} from 'react'
+
 import { Link } from 'react-router-dom'
+import { UALContext } from "ual-reactjs-renderer";
 
 import './Navbar.css'
 
 import {MenuItems} from './MenuItems'
 
 export default function Navbar() {
+
+    const { showModal } = useContext(UALContext);
+
+
+    const handleLogin = () => {
+        showModal();
+    };
+
     return (
         <nav className="NavbarItem">
             <div className="navbar-left">
@@ -19,7 +29,7 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-right">
-                <Link to="/workplaces" className="btn-play">Play and Earn</Link>
+                <button className="btn-play" onClick={handleLogin}>Play and Earn</button>
             </div>
         </nav>
     )

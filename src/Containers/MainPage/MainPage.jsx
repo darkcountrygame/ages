@@ -25,14 +25,9 @@ const MainPage = () => {
 
        <main className="main">
            <Navbar />
-           <div className="main-img"></div>
-           <div className="main-up">
-               <img src={StartLogo} alt="start-logo" />
-
-               <div className="main-btn">
-                   <button onClick={handleLogin} className="btn">Start Play</button>
-               </div>
-           </div>
+              <div className="main-btn">
+                  <button onClick={handleLogin} className="btn">Start Play</button>
+              </div>
        </main>
    )
 }
