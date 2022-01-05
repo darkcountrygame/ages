@@ -1,0 +1,13 @@
+
+2) Fix chance for success
+3) Inventory ( show lvl )
+4) Show staked card
+5) Show current era
+6) Change progress-line SP
+8) Staking WP and TOOL
+9) Tostify
+
+_______________________
+1) Research time (count-down)
+7) Select Tool for upgrade
+10) Update WelcomeScreen (log in)
