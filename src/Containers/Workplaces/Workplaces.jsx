@@ -47,7 +47,7 @@ const Workplaces = () => {
             .catch(e => console.error(e))
     }
 
-    console.log(activeUser)
+    // console.log(activeUser)
 
 
     useEffect(() => {

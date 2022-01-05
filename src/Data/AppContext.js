@@ -10,8 +10,8 @@ import {
     USER_ITEMS,
     USER_STAKED_ITEMS,
     USER_RESOURCES,
-    USER_PROBABILITY_GET_POINTS,
-
+    // USER_PROBABILITY_GET_POINTS,
+    USER_ERA,
 
 } from './AppActionTypes';
 
@@ -46,6 +46,9 @@ const initialState = {
     // probabilityGetPoints: 0,
     // probabilityFetched: false
 
+    eraConf: [],
+    eraConfFeatched: false,
+
 }
 
 export const AppProvider = ({ children }) => {
@@ -64,6 +67,8 @@ export const AppProvider = ({ children }) => {
     const setResources = value => dispatch({ type: USER_RESOURCES, value });
 
     // const setProbability = value => dispatch({type: USER_PROBABILITY_GET_POINTS, value });
+
+    const setEraConf = value => dispatch({ type: USER_ERA, value });
 
 
     return (
@@ -91,6 +96,9 @@ export const AppProvider = ({ children }) => {
             // probabilityGetPoints: state.probabilityGetPoints,
             // probabilityFetched: state.probabilityFetched,
 
+            eraConf: state.eraConf,
+            eraConfFeatched: state.eraConfFeatched,
+
             userLoginHandler,
             userLogoutHandler,
             setUserDataHandler,
@@ -100,6 +108,7 @@ export const AppProvider = ({ children }) => {
             setStakedItems,
             setResources,
             // setProbability,
+            setEraConf,
 
 
         }}>

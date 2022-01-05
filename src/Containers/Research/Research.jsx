@@ -39,12 +39,10 @@ export default function Research() {
         }
     }, [timeLeftForResearch]);
 
-    function countdownRenderer({ days, hours, minutes, seconds, completed }) {
+    function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed)
             return <>0d 0h 0m</>;
 
-        if (days)
-            return <>{ days }d { hours }h { minutes }m</>;
 
         return <>{ hours }h { minutes }m {seconds}s</>;
     }

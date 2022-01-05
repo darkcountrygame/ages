@@ -52,7 +52,7 @@ export const fetchStakedItems = async () => {
     const {
         data: { data }
     } = await axios.get(`${ATOMIC_ASSETS_API}/assets?collection_name=${RTP_GAME_COLLECTION}&owner=rush2prosper&page=1&limit=1000`);
-    console.log(data)
+    // console.log(data)
     return data
 };
 
@@ -71,6 +71,19 @@ export const fetchResources = async ({ account }) => {
 
 };
 
+export const fetchCurrentEra = async ({ account }) => {
+    const { rows } = await fetchRows({
+        contract: RTP_GAME,
+        scope: RTP_GAME,
+        table: "eraconfig"
+    });
+
+    if (!rows[0])
+        return rows[0] = {title: 'Prehistoric age'};
+
+    return rows;
+
+};
 
 
 

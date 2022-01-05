@@ -13,7 +13,7 @@ import {
     fetchItems,
     fetchResources,
     fetchStakedItems,
-    probabilityGetPoints,
+    probabilityGetPoints, fetchCurrentEra,
 
 } from "../../Services";
 
@@ -40,6 +40,10 @@ const AppContent = () => {
         setResources,
         // setProbability,
         // probabilityFetched,
+
+        setEraConf,
+        eraConfFetched,
+
     } = useApp();
 
     const { activeUser } = useContext(UALContext);
@@ -52,6 +56,8 @@ const AppContent = () => {
 
     const [resourcesLoading, setResourcesLoading] = useState(false);
     // const [probabilityLoading, setProbabilityLoading] = useState(false);
+
+    const [eraConfLoading, setEraConfLoading] = useState(false);
 
     
  
@@ -151,6 +157,24 @@ const AppContent = () => {
                 .finally(() => setResourcesLoading(false));
         }
     }, [activeUser, setResourcesLoading, resourcesFetched, setResources]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !eraConfFetched && setEraConf
+            && !eraConfLoading
+        ) {
+            setEraConfLoading(true);
+
+            fetchCurrentEra({
+                account: activeUser.accountName
+            })
+                .then((value) => setEraConf(value))
+                .catch(e => {
+                    console.log(e)
+                    setEraConf([]);
+                })
+                .finally(() => setEraConfLoading(false));
+        }
+    }, [activeUser, setEraConfLoading, eraConfFetched, setEraConf]);
 
 
 

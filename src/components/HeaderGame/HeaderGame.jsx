@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './header.css'
 
 import UserLogIn from './UserLogIn'
@@ -14,7 +14,11 @@ import plus from '../../images/plus.png'
 
 export default function Header() {
 
-    const { waxBalance, rtpBalance, isAuthenticated, resourcesList } = useApp();
+    const { waxBalance, rtpBalance, isAuthenticated, resourcesList, eraConf } = useApp();
+
+   useEffect(() => {
+       console.log(eraConf)
+   }, [eraConf])
 
     if(!isAuthenticated) {
         return (
@@ -46,7 +50,7 @@ export default function Header() {
             <div className="header-wrapper">
                 <div className="header-stats">
                     <div className="header-stats__title">
-                        <h2>Prehistoric age</h2>
+                        <h2>Prehistoric age</h2>  {/*{ eraConf.map( era => era.title) }*/}
                     </div>
                     <div className="header-stats__under">
                         <div className="header-stats__sp">
