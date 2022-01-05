@@ -1,5 +1,6 @@
-import React from 'react'
+import React , { useState, useEffect } from 'react'
 import { useApp } from "../../Data/AppContext";
+import Countdown from "react-countdown";
 
 import '../Workplaces/workplaces.css'
 import './research.css'
@@ -18,10 +19,37 @@ import NewEra from '../../Modal/EraModal'
 import TostifyMessage from '../../components/Messages/Tostify'
 
 export default function Research() {
-    const {
-        resourcesList,
-        probabilityGetPoints,
-    } = useApp();
+    const { resourcesList, probabilityGetPoints } = useApp();
+
+    const [timeLeftForResearch, setTimeLeftForResearch] = useState(resourcesList
+        ? resourcesList.last_time_research * 1000 + (60 * 60 * 24 * 1000)
+        : 0
+    );
+
+    useEffect(() => {
+        if (new Date().getTime() > timeLeftForResearch) {
+            const todaySeconds = new Date().getTime() / 1000;
+            const lastClaimTimeSeconds = timeLeftForResearch / 1000;
+
+            const daysDifference = (todaySeconds / 86400) - (lastClaimTimeSeconds / 86400);
+            const nextDay = Math.ceil(daysDifference);
+
+            const daysLeftToReward = nextDay - daysDifference;
+
+            setTimeLeftForResearch(new Date().getTime() + (daysLeftToReward * 24 * 60 * 60 * 1000));
+        }
+    }, [timeLeftForResearch]);
+
+    function countdownRenderer({ days, hours, minutes, seconds, completed }) {
+        if (completed)
+            return <>0d 0h 0m</>;
+
+        if (days)
+            return <>{ days }d { hours }h { minutes }m</>;
+
+        return <>{ hours }h { minutes }m {seconds}s</>;
+    }
+
     return (
         <section className='workplace'>
             <Header />
@@ -42,7 +70,14 @@ export default function Research() {
                                 </div>
                                 <div className="research-left__info">
                                     <ul>
-                                        <li>Research duration: <span>24H</span></li>
+                                        <li>Research duration:
+                                            <span>
+                                                <Countdown
+                                                date={ new Date(resourcesList.last_time_research * 1000 + (60 * 60 * 24 * 1000)) }
+                                                renderer={countdownRenderer}
+                                                />
+                                            </span>
+                                        </li>
                                         <li>Chance for success: <span>{ probabilityGetPoints }%</span></li>
                                         <li>Total science points: <span>{ resourcesList.science_points }</span></li>
                                     </ul>
