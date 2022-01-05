@@ -13,7 +13,7 @@ import './upgrade.css'
 import { upgradeTool } from "../Services";
 import {UALContext} from "ual-reactjs-renderer";
 
-export default () => {
+export default ({disabled}) => {
   const { activeUser } = useContext(UALContext);
 
   const upgradeHandler = () => {
@@ -22,7 +22,7 @@ export default () => {
 
   return (
       <Popup
-          trigger={<button>Upgrade -12 RTP</button>}
+          trigger={<button disabled={disabled}>Upgrade -12 RTP</button>}
           modal
           nested
       >

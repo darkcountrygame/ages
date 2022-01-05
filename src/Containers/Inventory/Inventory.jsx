@@ -23,6 +23,8 @@ export default function Inventory() {
 
     const { resourcesList } = useApp();
 
+
+
     return (
         <section className='workplace'>
         <Header />

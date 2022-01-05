@@ -38,6 +38,12 @@
     cursor: pointer;
 }
 
+.no-inventory{
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .market-list{
     width: 120%;
     flex-wrap: nowrap;
