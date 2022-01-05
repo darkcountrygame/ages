@@ -20,7 +20,6 @@ import TostifyMessage from '../../components/Messages/Tostify'
 
 export default function Research() {
     const { resourcesList, probabilityGetPoints } = useApp();
-
     const [timeLeftForResearch, setTimeLeftForResearch] = useState(resourcesList
         ? resourcesList.last_time_research * 1000 + (60 * 60 * 24 * 1000)
         : 0
@@ -78,7 +77,7 @@ export default function Research() {
                                                 />
                                             </span>
                                         </li>
-                                        <li>Chance for success: <span>{ probabilityGetPoints }%</span></li>
+                                        <li>Chance for success: <span>10%</span></li>
                                         <li>Total science points: <span>{ resourcesList.science_points }</span></li>
                                     </ul>
                                 </div>

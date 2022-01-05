@@ -43,8 +43,8 @@ const initialState = {
     resourcesList: [],
     resourcesFetched: false,
 
-    probabilityGetPoints: 0,
-    probabilityFetched: false
+    // probabilityGetPoints: 0,
+    // probabilityFetched: false
 
 }
 
@@ -63,7 +63,7 @@ export const AppProvider = ({ children }) => {
 
     const setResources = value => dispatch({ type: USER_RESOURCES, value });
 
-    const setProbability = value => dispatch({type: USER_PROBABILITY_GET_POINTS, value });
+    // const setProbability = value => dispatch({type: USER_PROBABILITY_GET_POINTS, value });
 
 
     return (
@@ -88,8 +88,8 @@ export const AppProvider = ({ children }) => {
             resourcesList: state.resourcesList,
             resourcesFetched: state.resourcesFetched,
 
-            probabilityGetPoints: state.probabilityGetPoints,
-            probabilityFetched: state.probabilityFetched,
+            // probabilityGetPoints: state.probabilityGetPoints,
+            // probabilityFetched: state.probabilityFetched,
 
             userLoginHandler,
             userLogoutHandler,
@@ -99,7 +99,7 @@ export const AppProvider = ({ children }) => {
             setItems,
             setStakedItems,
             setResources,
-            setProbability,
+            // setProbability,
 
 
         }}>
