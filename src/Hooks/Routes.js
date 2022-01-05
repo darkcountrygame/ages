@@ -25,11 +25,11 @@ export const useRoutes = () => {
             </Route>
 
             <Route exact path="/inventory">
-                <Inventory />
+                <Market />
             </Route>
 
             <Route exact path="/market">
-                <Market />
+                <Inventory />
             </Route>
 
             <Route exact path="/research">
