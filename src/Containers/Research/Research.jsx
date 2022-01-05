@@ -19,7 +19,7 @@ import NewEra from '../../Modal/EraModal'
 import TostifyMessage from '../../components/Messages/Tostify'
 
 export default function Research() {
-    const { resourcesList, probabilityGetPoints } = useApp();
+    const { resourcesList } = useApp();
     const [timeLeftForResearch, setTimeLeftForResearch] = useState(resourcesList
         ? resourcesList.last_time_research * 1000 + (60 * 60 * 24 * 1000)
         : 0

@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { NavLink } from 'react-router-dom'
-// import { UALContext } from "ual-reactjs-renderer";
-// import { useApp } from "../../Data/AppContext";
+import { UALContext } from "ual-reactjs-renderer";
 
 import StartLogo from '../../images/start_logo.png'
+
 
 import Navbar from '../../components/Navbar/Navbar'
 
@@ -14,12 +13,13 @@ import './main.css'
 
 
 const MainPage = () => {
-    // const { showModal } = useContext(UALContext);
-    //
-    // const {
-    //     userData,
-    //     isAuthenticated,
-    // } = useApp();
+
+    const { showModal } = useContext(UALContext);
+
+
+    const handleLogin = () => {
+        showModal();
+    };
 
    return(
 
@@ -30,7 +30,7 @@ const MainPage = () => {
                <img src={StartLogo} alt="start-logo" />
 
                <div className="main-btn">
-                   <NavLink to="/workpalces" className="btn">Start Play</NavLink>
+                   <button onClick={handleLogin} className="btn">Start Play</button>
                </div>
            </div>
        </main>

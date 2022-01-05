@@ -20,30 +20,30 @@ export default function Header() {
        console.log(eraConf)
    }, [eraConf])
 
-    if(!isAuthenticated) {
-        return (
-            <header className="header">
-                <div className="header-wrapper">
-                    <div className="header-stats">
-                        <div className="header-stats__title">
-                            <h2>Prehistoric age</h2>
-                        </div>
-                        <div className="header-stats__under">
-                            <div className="header-stats__sp">
-                                <span></span>
-                                { resourcesList.science_points } / 10 000
-                            </div>
-                            <div className="add">
-                                <img src={plus} alt="plus" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <UserLogIn waxBalance={waxBalance} rtpBalance={rtpBalance} />
-                </div>
-            </header>
-        )
-    }
+    // if(!isAuthenticated) {
+    //     return (
+    //         <header className="header">
+    //             <div className="header-wrapper">
+    //                 <div className="header-stats">
+    //                     <div className="header-stats__title">
+    //                         <h2>Prehistoric age</h2>
+    //                     </div>
+    //                     <div className="header-stats__under">
+    //                         <div className="header-stats__sp">
+    //                             <span></span>
+    //                             { resourcesList.science_points } / 10 000
+    //                         </div>
+    //                         <div className="add">
+    //                             <img src={plus} alt="plus" />
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //
+    //                 <UserLogIn waxBalance={waxBalance} rtpBalance={rtpBalance} />
+    //             </div>
+    //         </header>
+    //     )
+    // }
 
     return(
         <header className="header">
