@@ -47,7 +47,7 @@
   
 .upgrade > .close{
     position: absolute;
-    right: -4%;
+    right: 0;
     top: 5%;
     cursor: pointer;
 }

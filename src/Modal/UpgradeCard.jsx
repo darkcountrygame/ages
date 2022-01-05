@@ -13,11 +13,11 @@ import './upgrade.css'
 import { upgradeTool } from "../Services";
 import {UALContext} from "ual-reactjs-renderer";
 
-export default ({disabled}) => {
+export default ({disabled, selectedTool}) => {
   const { activeUser } = useContext(UALContext);
 
   const upgradeHandler = () => {
-    upgradeTool({activeUser})
+    upgradeTool({activeUser, selectedTool})
   }
 
   return (
@@ -44,7 +44,7 @@ export default ({disabled}) => {
                       <li>Asset Name</li>
                       <span>CardName</span>
                       <li>Asset ID</li>
-                      <span>#1234567890</span>
+                      <span>#{selectedTool}</span>
                       <li>Rarity</li>
                       <span>Common</span>
                       <li>Mint Number</li>

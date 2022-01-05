@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 import { useApp } from "../../Data/AppContext";
 
@@ -19,6 +19,12 @@ export default function Market() {
     const {
         itemList,
     } = useApp();
+
+   const [selectedTool, setSelectTool] = useState([])
+
+    useEffect(() => {
+        console.log(selectedTool)
+    }, [selectedTool])
 
     if (!itemList.length){
         return (
@@ -55,9 +61,7 @@ export default function Market() {
                                     <div className="main-main-list no-inventory">
                                         You do not have inventory tool
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -95,13 +99,12 @@ export default function Market() {
                                         <button>Go to Market</button>
                                     </div>
                                 </div>
-
                             </div>
 
 
                             <div className="main-main-contant">
                                 <div className="main-main-list market-list">
-                                    {itemList.map( item => (item.schema.schema_name === 'tool' ? <UserTool itemList={itemList} item={item} />
+                                    {itemList.map( item => (item.schema.schema_name === 'tool' ? <UserTool itemList={itemList} item={item} setSelectTool={setSelectTool} />
                                             :
                                             false
                                     ))}
@@ -109,7 +112,7 @@ export default function Market() {
 
                             </div>
                             <div className="market-btn">
-                                <UpgradeCard />
+                                <UpgradeCard selectedTool={selectedTool} />
                             </div>
                         </div>
                     </div>
