@@ -15,6 +15,7 @@ export const ATOMIC_ASSETS_API = 'https://test.wax.api.atomicassets.io/atomicass
 export const RTP_GAME = 'rush2prosper';
 export const RTP_GAME_COLLECTION = 'rush2prosper';
 export const EOSIO_TOKEN ='eosio.token';
+export const DELPHI_ORACLE = 'delphioracle';
 
 
 export const ATOMIC_ASSETS='atomicassets';

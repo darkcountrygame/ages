@@ -16,9 +16,9 @@ export default function Header() {
 
     const { waxBalance, rtpBalance, isAuthenticated, resourcesList, eraConf } = useApp();
 
-   useEffect(() => {
-       console.log(eraConf)
-   }, [eraConf])
+   // useEffect(() => {
+   //     console.log(eraConf)
+   // }, [eraConf])
 
     // if(!isAuthenticated) {
     //     return (

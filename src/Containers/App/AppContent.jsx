@@ -16,6 +16,7 @@ import {
     probabilityGetPoints, fetchCurrentEra,
 
 } from "../../Services";
+import {fetchWaxCourse} from "../../Services/course.service";
 
 const AppContent = () => {
     const routes = useRoutes();
@@ -44,6 +45,9 @@ const AppContent = () => {
         setEraConf,
         eraConfFetched,
 
+        setWaxCourse,
+        waxCourseFetched,
+
     } = useApp();
 
     const { activeUser } = useContext(UALContext);
@@ -58,6 +62,8 @@ const AppContent = () => {
     // const [probabilityLoading, setProbabilityLoading] = useState(false);
 
     const [eraConfLoading, setEraConfLoading] = useState(false);
+
+    const [waxCourseLoading, setWaxCoursefLoading] = useState(false);
 
     
  
@@ -175,6 +181,24 @@ const AppContent = () => {
                 .finally(() => setEraConfLoading(false));
         }
     }, [activeUser, setEraConfLoading, eraConfFetched, setEraConf]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !waxCourseFetched && setWaxCourse
+            && !waxCourseLoading
+        ) {
+            setWaxCoursefLoading(true);
+
+            fetchWaxCourse({
+                account: activeUser.accountName
+            })
+                .then((value) => setWaxCourse(value))
+                .catch(e => {
+                    console.log(e)
+                    setWaxCourse([]);
+                })
+                .finally(() => setWaxCoursefLoading(false));
+        }
+    }, [activeUser, setWaxCoursefLoading, waxCourseFetched, setWaxCourse]);
 
 
 

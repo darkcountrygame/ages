@@ -9,6 +9,7 @@ import {
     USER_RESOURCES,
     USER_PROBABILITY_GET_POINTS,
     USER_ERA,
+    DELPHI_ORACLE_COURSE,
 
 } from './AppActionTypes';
 
@@ -58,7 +59,11 @@ const AppReducer = (state, action) => {
         // }
 
         case USER_ERA: {
-            return { ...state, eraConf: action.value, eraConfFeatched: true }
+            return { ...state, eraConf: action.value, eraConfFetched: true }
+        }
+
+        case DELPHI_ORACLE_COURSE: {
+            return { ...state, waxCourse: action.value, waxCourseFetched: true }
         }
 
         default:

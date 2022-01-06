@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useContext, useEffect} from 'react';
 // import { useNavigate } from "react-router-dom";
 
 import { UALContext } from "ual-reactjs-renderer";
@@ -10,7 +10,7 @@ const WaxLogo = ({waxBalance, rtpBalance}) => {
     // const history = useNavigate();
     // console.log(rtpBalance)
     const { showModal, logout } = useContext(UALContext);
-    const { userData, isAuthenticated, userLogoutHandler } = useApp();
+    const { userData, isAuthenticated, userLogoutHandler, waxCourse } = useApp();
 
     const userLogout = () => {
         logout();
@@ -21,6 +21,11 @@ const WaxLogo = ({waxBalance, rtpBalance}) => {
         // history.push('/');
         showModal();
     };
+
+    useEffect(() => {
+        console.log(waxCourse)
+    }, [waxCourse])
+
     // console.log(String(waxBalance))
     // console.log(String(rtpBalance))
 
@@ -42,7 +47,7 @@ const WaxLogo = ({waxBalance, rtpBalance}) => {
                         ($0)
                     </p>
                     <p><span className="rtp">{ Number(waxBalance.toString().replace(' WAX', '')).toFixed(4) } WAX</span>
-                        ($0)
+                        ({ Math.floor(Number(waxBalance.toString().replace(' WAX', '')) * `0.${waxCourse.median}`) } $)
                     </p>
                 </div>
                 <p><img src={wax} alt="wax" /><span className="wax login">{ userData?.accountName } </span><span className="logout" onClick={userLogout}> / Log Out</span></p>

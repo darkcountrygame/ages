@@ -12,6 +12,7 @@ import {
     USER_RESOURCES,
     // USER_PROBABILITY_GET_POINTS,
     USER_ERA,
+    DELPHI_ORACLE_COURSE,
 
 } from './AppActionTypes';
 
@@ -49,6 +50,9 @@ const initialState = {
     eraConf: [],
     eraConfFeatched: false,
 
+    waxCourse: [],
+    waxCourseFetched: false,
+
 }
 
 export const AppProvider = ({ children }) => {
@@ -69,6 +73,8 @@ export const AppProvider = ({ children }) => {
     // const setProbability = value => dispatch({type: USER_PROBABILITY_GET_POINTS, value });
 
     const setEraConf = value => dispatch({ type: USER_ERA, value });
+
+    const setWaxCourse = value => dispatch({ type: DELPHI_ORACLE_COURSE, value });
 
 
     return (
@@ -97,7 +103,10 @@ export const AppProvider = ({ children }) => {
             // probabilityFetched: state.probabilityFetched,
 
             eraConf: state.eraConf,
-            eraConfFeatched: state.eraConfFeatched,
+            eraConfFetched: state.eraConfFetched,
+
+            waxCourse: state.waxCourse,
+            waxCourseFetched: state.waxCourseFetched,
 
             userLoginHandler,
             userLogoutHandler,
@@ -109,6 +118,7 @@ export const AppProvider = ({ children }) => {
             setResources,
             // setProbability,
             setEraConf,
+            setWaxCourse,
 
 
         }}>
