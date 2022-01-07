@@ -5,6 +5,7 @@ import {
     RTP_GAME,
     RTP_GAME_COLLECTION,
     EOSIO_TOKEN,
+    RTP_TOKEN,
 
 } from "../Constants";
 import { fetchRows, rpc } from '../Helpers';
@@ -26,7 +27,7 @@ export const fetchWaxBalance = async ({ account }) => {
 
 export const fetchRtpBalance = async ({ account }) => {
     const { rows } = await fetchRows({
-        contract: RTP_GAME,
+        contract: RTP_TOKEN,
         scope: account,
         table: "accounts"
     });

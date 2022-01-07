@@ -11,3 +11,4 @@ _______________________ DONE ____________________________
 1) Research time (count-down)
 7) Select Tool for upgrade
 10) Update WelcomeScreen (log in)
+11) Update Wellcome screen

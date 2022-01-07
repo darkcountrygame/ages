@@ -47,7 +47,7 @@ const WaxLogo = ({waxBalance, rtpBalance}) => {
                         ($0)
                     </p>
                     <p><span className="rtp">{ Number(waxBalance.toString().replace(' WAX', '')).toFixed(4) } WAX</span>
-                        ({ Math.floor(Number(waxBalance.toString().replace(' WAX', '')) * `0.${waxCourse.median}`) } $)
+                        (${ Math.floor(Number(waxBalance.toString().replace(' WAX', '')) * `0.${waxCourse.median}`) })
                     </p>
                 </div>
                 <p><img src={wax} alt="wax" /><span className="wax login">{ userData?.accountName } </span><span className="logout" onClick={userLogout}> / Log Out</span></p>
