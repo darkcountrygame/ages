@@ -13,7 +13,7 @@ import './upgrade.css'
 import { upgradeTool } from "../Services";
 import {UALContext} from "ual-reactjs-renderer";
 
-export default ({disabled, selectedTool}) => {
+export default ({disabled, selectedTool, selectedToolImg}) => {
   const { activeUser } = useContext(UALContext);
 
   const upgradeHandler = () => {
@@ -35,7 +35,7 @@ export default ({disabled, selectedTool}) => {
                   <div className="info-card__img">
                     <div className="info-card__img-wrapper">
                       <div className="info-card__photo">
-                        <img src={cardIcon} alt="cardIcon"/>
+                        <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon"/>
                       </div>
                     </div>
                   </div>

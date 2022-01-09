@@ -21,6 +21,7 @@ export default function Market() {
     } = useApp();
 
    const [selectedTool, setSelectTool] = useState([])
+    const [selectedToolImg, setSelectToolImg] = useState([])
 
     useEffect(() => {
         console.log(selectedTool)
@@ -104,7 +105,7 @@ export default function Market() {
 
                             <div className="main-main-contant">
                                 <div className="main-main-list market-list">
-                                    {itemList.map( item => (item.schema.schema_name === 'tool' ? <UserTool itemList={itemList} item={item} setSelectTool={setSelectTool} />
+                                    {itemList.map( item => (item.schema.schema_name === 'tool' ? <UserTool itemList={itemList} item={item} setSelectTool={setSelectTool} setSelectToolImg={setSelectToolImg} />
                                             :
                                             false
                                     ))}
@@ -112,7 +113,7 @@ export default function Market() {
 
                             </div>
                             <div className="market-btn">
-                                <UpgradeCard selectedTool={selectedTool} />
+                                <UpgradeCard selectedTool={selectedTool} selectedToolImg={selectedToolImg} />
                             </div>
                         </div>
                     </div>
