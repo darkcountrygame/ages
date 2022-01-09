@@ -9,8 +9,9 @@ export const WAX_RPC_ENDPOINTS_HOST = "testnet.waxsweden.org";
 export const WAX_RPC_ENDPOINTS_PROTOCOL = "https";
 
 
-//export const ATOMIC_ASSETS_API = 'https://wax.api.atomicassets.io/atomicassets/v1'; //MAINNET
-export const ATOMIC_ASSETS_API = 'https://test.wax.api.atomicassets.io/atomicassets/v1'; //TESTNET
+// TODO
+// export const ATOMIC_ASSETS_API = 'https://wax.api.atomicassets.io/atomicassets/v1'; //MAINNET
+ export const ATOMIC_ASSETS_API = 'https://test.wax.api.atomicassets.io/atomicassets/v1'; //TESTNET
 
 export const RTP_GAME = 'rush2prosper';
 export const RTP_TOKEN = 'rtpgametoken'

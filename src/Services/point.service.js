@@ -1,14 +1,17 @@
-import { RTP_GAME } from "../Constants";
+import { RTP_GAME, RTP_TOKEN } from "../Constants";
 import {signTransaction, fetchRows} from "../Helpers";
 
 export const claimSciencePoints = async ({ activeUser }) => {
     console.log(activeUser)
     return await signTransaction({
         activeUser,
-        account: RTP_GAME,
-        action: 'research',
+        account: RTP_TOKEN,
+        action: 'transfer',
         data: {
-            player: activeUser.accountName,
+            from: activeUser.accountName,
+            to: RTP_GAME,
+            quantity: '10.0000 RTP',
+            memo: 'Research transfer'
         }
     });
 };
