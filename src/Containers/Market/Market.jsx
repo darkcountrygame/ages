@@ -113,7 +113,12 @@ export default function Market() {
 
                             </div>
                             <div className="market-btn">
-                                <UpgradeCard selectedTool={selectedTool} selectedToolImg={selectedToolImg} />
+                                {!selectedTool.length ?
+                                    <UpgradeCard disabled={'true'} selectedTool={selectedTool} selectedToolImg={selectedToolImg} />
+                                :
+                                    <UpgradeCard  selectedTool={selectedTool} selectedToolImg={selectedToolImg} />
+                                }
+
                             </div>
                         </div>
                     </div>

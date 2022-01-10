@@ -134,7 +134,9 @@ const AppContent = () => {
         ) {
             setStakedItemsLoading(true);
 
-            fetchStakedItems()
+            fetchStakedItems({
+                account: activeUser.accountName
+            })
                 .then((items) => setStakedItems(items))
                 .catch(e => {
                     console.log(e)

@@ -8,7 +8,7 @@ import {
     RTP_TOKEN,
 
 } from "../Constants";
-import { fetchRows, rpc } from '../Helpers';
+import { fetchRows, rpc, getDataFromAtomicApi } from '../Helpers';
 
 export const fetchWaxBalance = async ({ account }) => {
     const { rows } = await fetchRows({
@@ -49,14 +49,45 @@ export const fetchItems = async ({ account }) => {
     return data
 };
 
-export const fetchStakedItems = async () => {
-    const {
-        data: { data }
-    } = await axios.get(`${ATOMIC_ASSETS_API}/assets?collection_name=${RTP_GAME_COLLECTION}&owner=rush2prosper&page=1&limit=1000`);
-    // console.log(data)
-    return data
+const sliceArrayIntoChunks = (array) => {
+    const perChunk = 500; // items per chunk + limit for assets per one request on atomic api
+
+    return array.reduce((resultArray, item, index) => {
+        const chunkIndex = Math.floor(index/perChunk);
+
+        if(!resultArray[chunkIndex])
+            resultArray[chunkIndex] = [];
+
+        resultArray[chunkIndex].push(item);
+
+        return resultArray;
+    }, []);
 };
 
+export const fetchStakedItems = async ({account}) => {
+    const { rows } = await fetchRows({
+        contract: RTP_GAME,
+        scope: account,
+        table: "workplaces",
+        limit: 1,
+    });
+
+    if (!rows[0])
+        return [];
+
+    const stakedItems = [rows[0].workplace_asset_id];
+    const stakedItemsChunks = sliceArrayIntoChunks(stakedItems);
+
+    const assets = [];
+
+    for (const items of stakedItemsChunks) {
+        const data = await getDataFromAtomicApi(`assets?ids=${stakedItems}&page=1&limit=100`);
+
+        assets.push(...data);
+    }
+
+    return assets
+};
 
 export const fetchResources = async ({ account }) => {
     const { rows } = await fetchRows({

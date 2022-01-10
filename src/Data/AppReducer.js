@@ -10,6 +10,7 @@ import {
     USER_PROBABILITY_GET_POINTS,
     USER_ERA,
     DELPHI_ORACLE_COURSE,
+    USER_STAKED_ITEMS,
 
 } from './AppActionTypes';
 
@@ -48,6 +49,10 @@ const AppReducer = (state, action) => {
 
         case USER_ITEMS: {
             return { ...state, itemList: action.value, itemListFetched: true }
+        }
+
+        case USER_STAKED_ITEMS: {
+            return { ...state, stakedItemList: action.value, stakedItemListFetched: true }
         }
         
         case USER_RESOURCES: {

@@ -141,6 +141,10 @@
     margin-top: 90px;
 }
 
+.equip .workplaces-img {
+    margin-top: 25px;
+}
+
 .equip .btn-unequip{
     margin-top: 80px;
 }
@@ -198,6 +202,16 @@
     color: #fff;
     text-decoration: none;
     background: #12B124;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.btn-unequip.unequip button{
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    text-decoration: none;
+    background: #ff0000;
     padding: 10px 40px;
     cursor: pointer;
 }

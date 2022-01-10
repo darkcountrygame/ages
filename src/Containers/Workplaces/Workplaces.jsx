@@ -18,7 +18,7 @@ import UnEquipCard from '../../Modal/UnEquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
 import EquipCard from '../../Modal/EquipCard'
 
-import { fetchResources ,claimMiningResources } from "../../Services";
+import { fetchResources , claimMiningResources, unstakeWp, fetchItems } from "../../Services";
 
 const Workplaces = () => {
 
@@ -27,11 +27,13 @@ const Workplaces = () => {
     const {
         itemList,
         resourcesList,
-        setResources
+        setResources,
+        stakedItemList,
+        setStakedItems
     } = useApp();
 
     const [selectItem, setSelectItem] = useState([])
-
+    console.log(stakedItemList)
 
     const handleClaim = () => {
         claimMiningResources( { activeUser })
@@ -42,6 +44,20 @@ const Workplaces = () => {
 
 
                 // toast.success('Claimed');
+            })
+            // .catch(e => toast.error(e.message))
+            .catch(e => console.error(e))
+    }
+
+    const unstakeHandler = (assetId) => {
+        unstakeWp({ activeUser, assetId })
+            .then(() => {
+                fetchItems({ account: activeUser.accountName })
+                    .then(items => setStakedItems(items))
+                    .catch(e => console.log(e));
+
+
+                // toast.success('Unstaked');
             })
             // .catch(e => toast.error(e.message))
             .catch(e => console.error(e))
@@ -155,11 +171,24 @@ const Workplaces = () => {
 
                                     <div className="workplaces-item equip">
                                         <div className="workplaces-img">
-                                            <img src={equip} alt="spear" />
+                                            { !stakedItemList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" />}
+
                                         </div>
-                                        <div className="btn-unequip ">
-                                            { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} setSelectItem={setSelectItem}/>}
-                                        </div>
+                                        {
+                                            !stakedItemList.length ?
+
+                                            <div className="btn-unequip">
+                                                { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} setSelectItem={setSelectItem}/>}
+                                            </div>
+
+                                            :
+
+                                            <div className="btn-unequip unequip">
+                                                <button onClick={() => unstakeHandler(stakedItemList[0].asset_id)}>Unequip</button>
+                                            </div>
+
+                                        }
+
                                     </div>
 
                                     <div className="workplaces-item lock">
