@@ -61,7 +61,7 @@ export default function Header() {
                         ?
                             <h2>Prehistoric age</h2>
                         :
-                            <h2>{userEra[0].title}</h2>
+                            <h2>{userEra[userEra.length - 1].title}</h2>
                         }
                         <h2></h2>  {/*{ eraConf.map( era => era.title) }*/}
                     </div>

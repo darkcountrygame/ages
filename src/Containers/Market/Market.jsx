@@ -31,6 +31,9 @@ export default function Market() {
     const toastyErr = () => {
         toast.error('First select tool');
     }
+    const redirectMarket = () => {
+       window.open('https://wax-test.atomichub.io/market?collection_name=rush2prosper&order=desc&sort=created&symbol=WAX', '_blank')
+    }
 
     if (!itemList.length){
         return (
@@ -56,7 +59,7 @@ export default function Market() {
                                             </select>
                                         </div>
                                         <div className="btn">
-                                            <button>Go to Market</button>
+                                            <button onClick={redirectMarket}>Go to Market</button>
                                         </div>
                                     </div>
 
@@ -102,7 +105,7 @@ export default function Market() {
                                         </select>
                                     </div>
                                     <div className="btn">
-                                        <button>Go to Market</button>
+                                        <button onClick={redirectMarket}>Go to Market</button>
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +126,12 @@ export default function Market() {
                                 :
                                     <UpgradeCard  selectedTool={selectedTool} selectedToolImg={selectedToolImg} />
                                 }
-
+                            </div>
+                            <div className="market-lvl">
+                                <div className="market-lvl_wrapper">
+                                    <p className="lv">1 lv - 25/hr</p>
+                                    <p>2 lv - 50/hr</p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -88,6 +88,19 @@
     cursor: pointer;
 }
 
+.market-lvl{
+    color: #fff;
+    font-weight: bold;
+}
+
+.market-lvl p {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+
+
 @media screen and (max-width: 1450px) {
     .market .main-main{
         height: 575px;

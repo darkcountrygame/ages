@@ -59,9 +59,9 @@ const AppReducer = (state, action) => {
             return { ...state, resourcesList: action.value, resourcesFetched: true }
         }
 
-        // case USER_PROBABILITY_GET_POINTS: {
-        //     return { ...state, probabilityGetPoints: action.value, probabilityFetched: true }
-        // }
+         case USER_PROBABILITY_GET_POINTS: {
+             return { ...state, probabilityPoints: action.value, probabilityFetched: true }
+         }
 
         case USER_ERA: {
             return { ...state, eraConf: action.value, eraConfFetched: true }

@@ -4,7 +4,7 @@ import { UALContext } from "ual-reactjs-renderer";
 
 import { useApp } from '../../Data/AppContext';
 import { useRoutes } from '../../Hooks/Routes';
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -14,7 +14,8 @@ import {
     fetchItems,
     fetchResources,
     fetchStakedItems,
-    probabilityGetPoints, fetchCurrentEra,
+    probabilityGetPoints,
+    fetchCurrentEra,
 
 } from "../../Services";
 import {fetchWaxCourse} from "../../Services/course.service";
@@ -24,7 +25,6 @@ const AppContent = () => {
 
     const {
         isAuthenticated,
-        userData,
         userLoginHandler,
         setUserDataHandler,
         setWaxBalance,
@@ -40,8 +40,8 @@ const AppContent = () => {
         resourcesList,
         resourcesFetched,
         setResources,
-        // setProbability,
-        // probabilityFetched,
+         setProbability,
+         probabilityFetched,
 
         setEraConf,
         eraConfFetched,
@@ -60,7 +60,7 @@ const AppContent = () => {
     const [stakedItemsLoading, setStakedItemsLoading] = useState(false);
 
     const [resourcesLoading, setResourcesLoading] = useState(false);
-    // const [probabilityLoading, setProbabilityLoading] = useState(false);
+     const [probabilityLoading, setProbabilityLoading] = useState(false);
 
     const [eraConfLoading, setEraConfLoading] = useState(false);
 
@@ -202,6 +202,24 @@ const AppContent = () => {
                 .finally(() => setWaxCoursefLoading(false));
         }
     }, [activeUser, setWaxCoursefLoading, waxCourseFetched, setWaxCourse]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !probabilityFetched && setProbability
+            && !probabilityLoading
+        ) {
+            setProbabilityLoading(true);
+
+            probabilityGetPoints({
+                account: activeUser.accountName
+            })
+                .then((value) => setProbability(value))
+                .catch(e => {
+                    console.log(e)
+                    setProbability([]);
+                })
+                .finally(() => setProbabilityLoading(false));
+        }
+    }, [activeUser, setProbabilityLoading, probabilityFetched, setProbability]);
 
 
 

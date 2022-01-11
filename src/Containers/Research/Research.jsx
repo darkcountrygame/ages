@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react'
+import React  from 'react'
 import { useApp } from "../../Data/AppContext";
 import Countdown from "react-countdown";
 
@@ -19,35 +19,19 @@ import NewEra from '../../Modal/EraModal'
 import TostifyMessage from '../../components/Messages/Tostify'
 
 export default function Research() {
-    const { resourcesList } = useApp();
-    // const [timeLeftForResearch, setTimeLeftForResearch] = useState(resourcesList
-    //     ? resourcesList.last_time_research * 1000 + (60 * 60 * 24 * 1000)
-    //     : 0
-    // );
 
-    // useEffect(() => {
-    //     if (new Date().getTime() > timeLeftForResearch) {
-    //         const todaySeconds = new Date().getTime() / 1000;
-    //         const lastClaimTimeSeconds = timeLeftForResearch / 1000;
-    //
-    //         const daysDifference = (todaySeconds / 86400) - (lastClaimTimeSeconds / 86400);
-    //         const nextDay = Math.ceil(daysDifference);
-    //
-    //         const daysLeftToReward = nextDay - daysDifference;
-    //
-    //         setTimeLeftForResearch(new Date().getTime() + (daysLeftToReward * 24 * 60 * 60 * 1000));
-    //     }
-    // }, [timeLeftForResearch]);
 
+    const { resourcesList, probabilityPoints } = useApp();
+    console.log([probabilityPoints])
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed)
             return <>0h 0m 0s</>;
 
-        if ( minutes && seconds  === 0)
+        if ( minutes && seconds  == 0)
             return <>0h 0m 0s</>;
 
 
-        return <>{ hours }h { minutes }m {seconds}s</>;
+        return <>{ hours }h { minutes }m { seconds }s</>;
     }
 
     return (
@@ -60,9 +44,6 @@ export default function Research() {
                         <h2>Research</h2>
                     </div>
                     <div className="container">
-                        {/*<div className="close">*/}
-                        {/*    <img src={close} alt="close" />*/}
-                        {/*</div>*/}
                         <div className="research-wrapper">
                            <div className="research-left">
                                 <div className="research-left_img">
@@ -73,12 +54,18 @@ export default function Research() {
                                         <li>Research duration:
                                             <span>
                                                 <Countdown
-                                                date={ new Date(resourcesList.last_time_research * 1000 + (60 * 60 * 24 * 1000)) }
+                                                date={ new Date(resourcesList.last_time_research * 1000 + ( 2 / 60 * 60 * 1000)) }
                                                 renderer={countdownRenderer}
                                                 />
                                             </span>
                                         </li>
-                                        <li>Chance for success: <span>10%</span></li>
+                                        {
+                                            probabilityPoints.length ?
+                                                <li>Chance for success: <span>{ probabilityPoints[0] }%</span></li>
+                                                :
+                                                <li>Chance for success: <span>0%</span></li>
+                                        }
+
                                         <li>Total science points: <span>{ resourcesList.science_points }</span></li>
                                     </ul>
                                 </div>

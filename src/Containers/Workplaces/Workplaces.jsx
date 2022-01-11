@@ -18,7 +18,7 @@ import UnEquipCard from '../../Modal/UnEquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
 import EquipCard from '../../Modal/EquipCard'
 
-import { fetchResources , claimMiningResources, unstakeWp, fetchItems, stakeWp } from "../../Services";
+import {fetchResources, claimMiningResources, unStakeTool, fetchItems, stakeTool} from "../../Services";
 
 const Workplaces = () => {
 
@@ -29,11 +29,11 @@ const Workplaces = () => {
         resourcesList,
         setResources,
         stakedItemList,
-        setStakedItems
+        setStakedItems,
     } = useApp();
 
     const [selectItem, setSelectItem] = useState([])
-     // console.log(selectItem)
+    console.log(stakedItemList[0])
 
     const handleClaim = () => {
         claimMiningResources( { activeUser })
@@ -50,7 +50,7 @@ const Workplaces = () => {
     }
 
     const stakeHandler = () => {
-        stakeWp({ activeUser, selectItem })
+        stakeTool({ activeUser, selectItem })
             .then(() => {
                 toast.success('Staked successed');
             })
@@ -59,7 +59,7 @@ const Workplaces = () => {
     }
 
     const unstakeHandler = ( assetId ) => {
-        unstakeWp({ activeUser, assetId })
+        unStakeTool({ activeUser, assetId })
             .then(() => {
                 fetchItems({ account: activeUser.accountName })
                     .then(items => setStakedItems(items))
@@ -169,8 +169,8 @@ const Workplaces = () => {
 
                                     <div className="workplaces-item equip">
                                         <div className="workplaces-img">
-                                            { !stakedItemList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" />}
-
+                                            { !stakedItemList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" /> }
+                                            {/*<img src={equip} alt="spear" />*/}
                                         </div>
                                         {
                                             !stakedItemList.length ?

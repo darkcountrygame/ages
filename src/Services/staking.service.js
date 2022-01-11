@@ -2,20 +2,22 @@ import { RTP_GAME, ATOMIC_ASSETS } from "../Constants";
 import { signTransaction } from "../Helpers";
 
 
-export const unstakeWp = async ({ activeUser, assetId }) => {
+export const unStakeTool = async ({ activeUser, assetId }) => {
 
     return await signTransaction({
         activeUser,
         account: RTP_GAME,
-        action: 'unstakewp',
+        action: 'unstaketools',
         data: {
             player: activeUser.accountName,
-            workplace_asset_id: assetId,
+            workplace_asset_id: 1099524450043,
+            tools_asset_ids: [assetId] // fix
         }
     });
+
 };
 
-export const stakeWp = async ({ activeUser, selectItem }) => {
+export const stakeTool = async ({ activeUser, selectItem }) => {
 
     return await signTransaction({
         activeUser,
@@ -25,8 +27,9 @@ export const stakeWp = async ({ activeUser, selectItem }) => {
             from: activeUser.accountName,
             to: RTP_GAME,
             asset_ids: [selectItem],
-            memo: 'stake:workplace'
+            memo: `stake:tool:1099524450043`
         }
     });
+
 };
 

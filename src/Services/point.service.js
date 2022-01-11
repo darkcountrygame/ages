@@ -11,7 +11,7 @@ export const claimSciencePoints = async ({ activeUser }) => {
             from: activeUser.accountName,
             to: RTP_GAME,
             quantity: '10.0000 RTP',
-            memo: 'Research transfer'
+            memo: 'research'
         }
     });
 };
@@ -19,8 +19,10 @@ export const claimSciencePoints = async ({ activeUser }) => {
 export const probabilityGetPoints = async ({ account }) => {
     const { rows } = await fetchRows({
         contract: RTP_GAME,
+        table: "researches",
         scope: RTP_GAME,
-        table: "researches"
+        lowerBound: account,
+        upperBound: account,
     });
 
     if (!rows[0])

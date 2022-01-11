@@ -10,7 +10,7 @@ import {
     USER_ITEMS,
     USER_STAKED_ITEMS,
     USER_RESOURCES,
-    // USER_PROBABILITY_GET_POINTS,
+    USER_PROBABILITY_GET_POINTS,
     USER_ERA,
     DELPHI_ORACLE_COURSE,
 
@@ -44,8 +44,8 @@ const initialState = {
     resourcesList: [],
     resourcesFetched: false,
 
-    // probabilityGetPoints: 0,
-    // probabilityFetched: false
+     probabilityPoints: [],
+     probabilityFetched: false,
 
     eraConf: [],
     eraConfFeatched: false,
@@ -70,7 +70,7 @@ export const AppProvider = ({ children }) => {
 
     const setResources = value => dispatch({ type: USER_RESOURCES, value });
 
-    // const setProbability = value => dispatch({type: USER_PROBABILITY_GET_POINTS, value });
+     const setProbability = value => dispatch({type: USER_PROBABILITY_GET_POINTS, value });
 
     const setEraConf = value => dispatch({ type: USER_ERA, value });
 
@@ -99,8 +99,8 @@ export const AppProvider = ({ children }) => {
             resourcesList: state.resourcesList,
             resourcesFetched: state.resourcesFetched,
 
-            // probabilityGetPoints: state.probabilityGetPoints,
-            // probabilityFetched: state.probabilityFetched,
+            probabilityPoints: state.probabilityPoints,
+             probabilityFetched: state.probabilityFetched,
 
             eraConf: state.eraConf,
             eraConfFetched: state.eraConfFetched,
@@ -116,7 +116,7 @@ export const AppProvider = ({ children }) => {
             setItems,
             setStakedItems,
             setResources,
-            // setProbability,
+             setProbability,
             setEraConf,
             setWaxCourse,
 
