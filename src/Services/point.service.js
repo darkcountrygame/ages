@@ -26,7 +26,7 @@ export const probabilityGetPoints = async ({ account }) => {
     });
 
     if (!rows[0])
-        return rows[0] = { probability: 0 };
+        return rows[0] = [];
 
 
     // console.log(rows[0])

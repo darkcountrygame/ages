@@ -22,7 +22,7 @@ export default function Research() {
 
 
     const { resourcesList, probabilityPoints } = useApp();
-    console.log([probabilityPoints])
+    console.log(probabilityPoints)
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed)
             return <>0h 0m 0s</>;
@@ -60,10 +60,10 @@ export default function Research() {
                                             </span>
                                         </li>
                                         {
-                                            probabilityPoints.length ?
-                                                <li>Chance for success: <span>{ probabilityPoints[0] }%</span></li>
-                                                :
+                                            !probabilityPoints ?
                                                 <li>Chance for success: <span>0%</span></li>
+                                                :
+                                                <li>Chance for success: <span>{probabilityPoints}%</span></li>
                                         }
 
                                         <li>Total science points: <span>{ resourcesList.science_points }</span></li>

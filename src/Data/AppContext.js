@@ -44,7 +44,7 @@ const initialState = {
     resourcesList: [],
     resourcesFetched: false,
 
-     probabilityPoints: [],
+     probabilityPoints: 0,
      probabilityFetched: false,
 
     eraConf: [],

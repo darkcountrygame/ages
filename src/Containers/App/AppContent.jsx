@@ -215,7 +215,7 @@ const AppContent = () => {
                 .then((value) => setProbability(value))
                 .catch(e => {
                     console.log(e)
-                    setProbability([]);
+                    setProbability(0);
                 })
                 .finally(() => setProbabilityLoading(false));
         }
