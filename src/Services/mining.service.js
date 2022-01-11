@@ -10,7 +10,7 @@ export const claimMiningResources = async ({ activeUser }) => {
         action: 'claim',
         data: {
             player: activeUser.accountName,
-            workplace_asset_id: 1099524450042
+            workplace_asset_id: 1099524450045
         }
     });
 };

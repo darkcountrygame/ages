@@ -1,4 +1,4 @@
-import { RTP_GAME } from "../Constants";
+import { RTP_GAME, ATOMIC_ASSETS } from "../Constants";
 import { signTransaction } from "../Helpers";
 
 
@@ -14,3 +14,19 @@ export const unstakeWp = async ({ activeUser, assetId }) => {
         }
     });
 };
+
+export const stakeWp = async ({ activeUser, selectItem }) => {
+
+    return await signTransaction({
+        activeUser,
+        account: ATOMIC_ASSETS,
+        action: 'transfer',
+        data: {
+            from: activeUser.accountName,
+            to: RTP_GAME,
+            asset_ids: [selectItem],
+            memo: 'stake:workplace'
+        }
+    });
+};
+

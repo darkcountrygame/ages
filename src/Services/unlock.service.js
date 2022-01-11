@@ -2,7 +2,7 @@ import { RTP_GAME } from "../Constants";
 import { signTransaction } from "../Helpers";
 
 
-export const upgradeTool = async ({ activeUser, selectedTool }) => {
+export const unlockSlot = async ({ activeUser, selectedTool }) => {
     return await signTransaction({
         activeUser,
         account: RTP_GAME,

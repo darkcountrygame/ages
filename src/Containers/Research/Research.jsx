@@ -20,30 +20,30 @@ import TostifyMessage from '../../components/Messages/Tostify'
 
 export default function Research() {
     const { resourcesList } = useApp();
-    const [timeLeftForResearch, setTimeLeftForResearch] = useState(resourcesList
-        ? resourcesList.last_time_research * 1000 + (60 * 60 * 24 * 1000)
-        : 0
-    );
+    // const [timeLeftForResearch, setTimeLeftForResearch] = useState(resourcesList
+    //     ? resourcesList.last_time_research * 1000 + (60 * 60 * 24 * 1000)
+    //     : 0
+    // );
 
-    useEffect(() => {
-        if (new Date().getTime() > timeLeftForResearch) {
-            const todaySeconds = new Date().getTime() / 1000;
-            const lastClaimTimeSeconds = timeLeftForResearch / 1000;
-
-            const daysDifference = (todaySeconds / 86400) - (lastClaimTimeSeconds / 86400);
-            const nextDay = Math.ceil(daysDifference);
-
-            const daysLeftToReward = nextDay - daysDifference;
-
-            setTimeLeftForResearch(new Date().getTime() + (daysLeftToReward * 24 * 60 * 60 * 1000));
-        }
-    }, [timeLeftForResearch]);
+    // useEffect(() => {
+    //     if (new Date().getTime() > timeLeftForResearch) {
+    //         const todaySeconds = new Date().getTime() / 1000;
+    //         const lastClaimTimeSeconds = timeLeftForResearch / 1000;
+    //
+    //         const daysDifference = (todaySeconds / 86400) - (lastClaimTimeSeconds / 86400);
+    //         const nextDay = Math.ceil(daysDifference);
+    //
+    //         const daysLeftToReward = nextDay - daysDifference;
+    //
+    //         setTimeLeftForResearch(new Date().getTime() + (daysLeftToReward * 24 * 60 * 60 * 1000));
+    //     }
+    // }, [timeLeftForResearch]);
 
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed)
             return <>0h 0m 0s</>;
 
-        if (hours || minutes || seconds === 0)
+        if ( minutes && seconds  === 0)
             return <>0h 0m 0s</>;
 
 

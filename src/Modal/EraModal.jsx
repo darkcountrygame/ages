@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import Popup from 'reactjs-popup';
 import { UALContext } from "ual-reactjs-renderer";
-
+import { toast } from "react-toastify";
 
 import closeImg from '../images/close.png'
 import leftImg from '../images/neolithic_illustration.png'
@@ -18,7 +18,13 @@ export default () => {
 
     const newEraHandler = () => {
         newEra({ activeUser })
-        console.log('newEra')
+            .then(() => {
+                toast.success('Success')
+            })
+            .catch((e) => {
+                toast.error(e.message)
+            })
+
     }
 
     return (

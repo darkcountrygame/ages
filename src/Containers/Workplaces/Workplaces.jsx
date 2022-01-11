@@ -18,7 +18,7 @@ import UnEquipCard from '../../Modal/UnEquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
 import EquipCard from '../../Modal/EquipCard'
 
-import { fetchResources , claimMiningResources, unstakeWp, fetchItems } from "../../Services";
+import { fetchResources , claimMiningResources, unstakeWp, fetchItems, stakeWp } from "../../Services";
 
 const Workplaces = () => {
 
@@ -33,7 +33,7 @@ const Workplaces = () => {
     } = useApp();
 
     const [selectItem, setSelectItem] = useState([])
-    // console.log(stakedItemList)
+     // console.log(selectItem)
 
     const handleClaim = () => {
         claimMiningResources( { activeUser })
@@ -49,7 +49,16 @@ const Workplaces = () => {
             .catch(e => console.error(e))
     }
 
-    const unstakeHandler = (assetId) => {
+    const stakeHandler = () => {
+        stakeWp({ activeUser, selectItem })
+            .then(() => {
+                toast.success('Staked successed');
+            })
+            .catch(e => toast.error(e.message))
+            .catch(e => console.error(e))
+    }
+
+    const unstakeHandler = ( assetId ) => {
         unstakeWp({ activeUser, assetId })
             .then(() => {
                 fetchItems({ account: activeUser.accountName })
@@ -62,17 +71,6 @@ const Workplaces = () => {
              .catch(e => toast.error(e.message))
             .catch(e => console.error(e))
     }
-
-    // console.log(activeUser)
-
-
-    // useEffect(() => {
-    //     console.log(itemList)
-    //     console.log(resourcesList)
-    // },[itemList, resourcesList])
-
-
-
 
     return (
         <section className="workplace">
@@ -178,7 +176,7 @@ const Workplaces = () => {
                                             !stakedItemList.length ?
 
                                             <div className="btn-unequip">
-                                                { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} setSelectItem={setSelectItem}/>}
+                                                { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
                                             </div>
 
                                             :
