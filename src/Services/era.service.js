@@ -2,18 +2,14 @@ import { RTP_GAME } from "../Constants";
 import { signTransaction } from "../Helpers";
 
 
-export const exchangeResources = async ({ activeUser, resource, count }) => {
-    // console.log(activeUser)
-    // console.log(resource)
-    // console.log(count)
+export const newEra = async ({ activeUser }) => {
+
     return await signTransaction({
         activeUser,
         account: RTP_GAME,
-        action: 'exchange',
+        action: 'newera',
         data: {
             player: activeUser.accountName,
-            resource: resource,
-            number: count
         }
     });
 };

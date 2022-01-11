@@ -2,6 +2,8 @@ import React, {useContext, useState} from 'react';
 import Popup from 'reactjs-popup';
 import { useApp } from "../Data/AppContext";
 import { UALContext } from "ual-reactjs-renderer";
+import { toast } from "react-toastify";
+
 
 
 import closeImg from '../images/close.png'
@@ -29,13 +31,13 @@ export default ({ img, resource }) => {
                     .catch(e => console.log(e));
 
 
-                // toast.success('Claimed');
+                 toast.success('Exchanged');
             })
-            // .catch(e => toast.error(e.message))
+             .catch(e => toast.error(e.message))
             .catch(e => console.error(e))
     }
 
-    console.log(numberResources)
+    // console.log(numberResources)
 
     return (
         <Popup

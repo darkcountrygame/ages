@@ -4,6 +4,7 @@ import { UALContext } from "ual-reactjs-renderer";
 
 import { useApp } from '../../Data/AppContext';
 import { useRoutes } from '../../Hooks/Routes';
+import { toast, ToastContainer } from "react-toastify";
 
 
 
@@ -209,6 +210,16 @@ const AppContent = () => {
                 <main>
                     { routes }
                 </main>
+
+                <ToastContainer
+                    position="bottom-left"
+                    autoClose={4000}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                />
             </div>
     )
 }

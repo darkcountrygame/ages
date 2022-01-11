@@ -20,38 +20,15 @@ export default () => {
   const { activeUser } = useContext(UALContext);
 
   const pointsHandler = () => {
-      try {
+
           claimSciencePoints( {activeUser} )
-          toastSuccess()
-      }catch(e){
-          console.log(e)
-          toastError(e)
-      }
+              .then(() => {
+                  toast.success('Success');
+              })
+              .catch((e) => toast.error(e.message))
+
   }
 
-  const toastSuccess = () => {
-      toast.success('✅ Success!', {
-          position: "bottom-left",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-      });
-  }
-
-    const toastError = (e) => {
-        toast.error(e, {
-            position: "bottom-left",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
 
 
   return(

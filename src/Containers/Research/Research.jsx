@@ -41,7 +41,10 @@ export default function Research() {
 
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed)
-            return <>0d 0h 0m</>;
+            return <>0h 0m 0s</>;
+
+        if (hours || minutes || seconds === 0)
+            return <>0h 0m 0s</>;
 
 
         return <>{ hours }h { minutes }m {seconds}s</>;

@@ -2,7 +2,7 @@ import { RTP_GAME, RTP_TOKEN } from "../Constants";
 import {signTransaction, fetchRows} from "../Helpers";
 
 export const claimSciencePoints = async ({ activeUser }) => {
-    console.log(activeUser)
+    // console.log(activeUser)
     return await signTransaction({
         activeUser,
         account: RTP_TOKEN,
@@ -27,6 +27,6 @@ export const probabilityGetPoints = async ({ account }) => {
         return rows[0] = { probability: 0 };
 
 
-    console.log(rows[0])
+    // console.log(rows[0])
     return rows[0].probability;
 };

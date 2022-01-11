@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import './header.css'
 
 import UserLogIn from './UserLogIn'
@@ -14,11 +14,18 @@ import plus from '../../images/plus.png'
 
 export default function Header() {
 
+    const { activeUser } = useContext(UALContext);
+
     const { waxBalance, rtpBalance, isAuthenticated, resourcesList, eraConf } = useApp();
 
-   // useEffect(() => {
-   //     console.log(eraConf)
-   // }, [eraConf])
+    const [userEra, setUserEra] = useState([])
+
+   useEffect(() => {
+       const userEraArr = eraConf.filter( user  => user.player === activeUser.accountName)
+       setUserEra(userEraArr)
+   }, [eraConf])
+
+     // console.log(userEra)
 
     // if(!isAuthenticated) {
     //     return (
@@ -50,7 +57,13 @@ export default function Header() {
             <div className="header-wrapper">
                 <div className="header-stats">
                     <div className="header-stats__title">
-                        <h2>Prehistoric age</h2>  {/*{ eraConf.map( era => era.title) }*/}
+                        {!userEra.length
+                        ?
+                            <h2>Prehistoric age</h2>
+                        :
+                            <h2>{userEra[0].title}</h2>
+                        }
+                        <h2></h2>  {/*{ eraConf.map( era => era.title) }*/}
                     </div>
                     <div className="header-stats__under">
                         <div className="header-stats__sp">

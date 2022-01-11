@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 
 import { useApp } from "../../Data/AppContext";
+import { toast } from "react-toastify";
+
 
 import '../Workplaces/workplaces.css'
 import './market.css'
@@ -11,7 +13,6 @@ import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UpgradeCard from '../../Modal/UpgradeCard'
 import UserTool from '../../components/UserTool/UserTool'
-import {buttonDisabled} from "ual-reactjs-renderer/dist/styles/input";
 
 
 export default function Market() {
@@ -26,6 +27,10 @@ export default function Market() {
     useEffect(() => {
         console.log(selectedTool)
     }, [selectedTool])
+
+    const toastyErr = () => {
+        toast.error('First select tool');
+    }
 
     if (!itemList.length){
         return (
@@ -114,7 +119,7 @@ export default function Market() {
                             </div>
                             <div className="market-btn">
                                 {!selectedTool.length ?
-                                    <UpgradeCard disabled={'true'} selectedTool={selectedTool} selectedToolImg={selectedToolImg} />
+                                    <button onClick={toastyErr}>Upgrade -12 RTP</button>
                                 :
                                     <UpgradeCard  selectedTool={selectedTool} selectedToolImg={selectedToolImg} />
                                 }

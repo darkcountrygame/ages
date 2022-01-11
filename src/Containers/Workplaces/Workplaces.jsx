@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from "react";
 import { useApp } from "../../Data/AppContext";
 import { UALContext } from "ual-reactjs-renderer";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import './workplaces.css'
 
@@ -33,7 +33,7 @@ const Workplaces = () => {
     } = useApp();
 
     const [selectItem, setSelectItem] = useState([])
-    console.log(stakedItemList)
+    // console.log(stakedItemList)
 
     const handleClaim = () => {
         claimMiningResources( { activeUser })
@@ -43,9 +43,9 @@ const Workplaces = () => {
                     .catch(e => console.log(e));
 
 
-                // toast.success('Claimed');
+                 toast.success('Claimed');
             })
-            // .catch(e => toast.error(e.message))
+            .catch(e => toast.error(e.message))
             .catch(e => console.error(e))
     }
 
@@ -57,19 +57,19 @@ const Workplaces = () => {
                     .catch(e => console.log(e));
 
 
-                // toast.success('Unstaked');
+                 toast.success('Unstaked');
             })
-            // .catch(e => toast.error(e.message))
+             .catch(e => toast.error(e.message))
             .catch(e => console.error(e))
     }
 
     // console.log(activeUser)
 
 
-    useEffect(() => {
-        console.log(itemList)
-        console.log(resourcesList)
-    },[itemList, resourcesList])
+    // useEffect(() => {
+    //     console.log(itemList)
+    //     console.log(resourcesList)
+    // },[itemList, resourcesList])
 
 
 

@@ -3,7 +3,7 @@ import { signTransaction } from "../Helpers";
 
 
 export const claimMiningResources = async ({ activeUser }) => {
-    console.log(activeUser)
+    // console.log(activeUser)
     return await signTransaction({
         activeUser,
         account: RTP_GAME,

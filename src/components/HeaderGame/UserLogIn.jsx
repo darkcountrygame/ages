@@ -22,9 +22,9 @@ const WaxLogo = ({waxBalance, rtpBalance}) => {
         showModal();
     };
 
-    useEffect(() => {
-        console.log(waxCourse)
-    }, [waxCourse])
+    // useEffect(() => {
+    //     console.log(waxCourse)
+    // }, [waxCourse])
 
     // console.log(String(waxBalance))
     // console.log(String(rtpBalance))
