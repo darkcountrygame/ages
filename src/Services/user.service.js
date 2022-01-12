@@ -75,7 +75,7 @@ export const fetchStakedItems = async ({account}) => {
     if (!rows[0])
         return [];
 
-     const stakedItems = [rows[0].tools[0].key];
+     const stakedItems = [rows[0].workplace_asset_id];
     const stakedItemsChunks = sliceArrayIntoChunks(stakedItems);
 
     const assets = [];

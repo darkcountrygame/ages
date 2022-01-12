@@ -83,7 +83,7 @@ const Workplaces = () => {
                         <div className="main-workplace-sidebar__list">
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-                                    <img src={sidebarItem} alt="img" />
+                                    { !stakedItemList.length ?  <img src={sidebarItem} alt="img" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" /> }
                                 </div>
                             </div>
 
