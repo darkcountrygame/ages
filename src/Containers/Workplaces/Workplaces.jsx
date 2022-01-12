@@ -88,6 +88,7 @@ const Workplaces = () => {
                             </div>
 
                         </div>
+                        <button className="add-workplace">Add workplace</button>
                     </div>
                 </div>
                 <div className="main-main">
