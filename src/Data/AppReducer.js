@@ -11,6 +11,8 @@ import {
     USER_ERA,
     DELPHI_ORACLE_COURSE,
     USER_STAKED_ITEMS,
+    TOOL_CONFIG,
+    WP_CONFIG,
 
 } from './AppActionTypes';
 
@@ -69,6 +71,14 @@ const AppReducer = (state, action) => {
 
         case DELPHI_ORACLE_COURSE: {
             return { ...state, waxCourse: action.value, waxCourseFetched: true }
+        }
+
+        case TOOL_CONFIG: {
+            return { ...state, toolConfig: action.value, toolConfigFetched: true }
+        }
+
+        case WP_CONFIG: {
+            return { ...state, wpConfig: action.value, wpConfigFetched: true }
         }
 
         default:

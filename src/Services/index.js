@@ -4,5 +4,6 @@ export * from "./exchange.service";
 export * from "./point.service";
 export * from "./upgrade.service";
 export * from "./staking.service";
+export * from "./course.service";
 export * from "./unlock.service";
 export * from "./era.service";

@@ -26,14 +26,16 @@ const Workplaces = () => {
 
     const {
         itemList,
-        resourcesList,
         setResources,
         stakedItemList,
         setStakedItems,
+        toolConfig,
+        wpConfig,
     } = useApp();
 
     const [selectItem, setSelectItem] = useState([])
-    console.log(stakedItemList[0])
+    console.log(toolConfig)
+    console.log(wpConfig)
 
     const handleClaim = () => {
         claimMiningResources( { activeUser })
@@ -170,20 +172,19 @@ const Workplaces = () => {
                                     <div className="workplaces-item equip">
                                         <div className="workplaces-img">
                                             { !stakedItemList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" /> }
-                                            {/*<img src={equip} alt="spear" />*/}
                                         </div>
                                         {
                                             !stakedItemList.length ?
 
-                                            <div className="btn-unequip">
-                                                { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
-                                            </div>
+                                                <div className="btn-unequip">
+                                                    { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
+                                                </div>
 
-                                            :
+                                                :
 
-                                            <div className="btn-unequip unequip">
-                                                <button onClick={() => unstakeHandler(stakedItemList[0].asset_id)}>Unequip</button>
-                                            </div>
+                                                <div className="btn-unequip unequip">
+                                                    <button onClick={() => unstakeHandler(stakedItemList[0].asset_id)}>Unequip</button>
+                                                </div>
 
                                         }
 

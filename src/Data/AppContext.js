@@ -13,6 +13,8 @@ import {
     USER_PROBABILITY_GET_POINTS,
     USER_ERA,
     DELPHI_ORACLE_COURSE,
+    TOOL_CONFIG,
+    WP_CONFIG,
 
 } from './AppActionTypes';
 
@@ -53,6 +55,12 @@ const initialState = {
     waxCourse: [],
     waxCourseFetched: false,
 
+    toolConfig: [],
+    toolConfigFetched: false,
+
+    wpConfig: [],
+    wpConfigFetched: false,
+
 }
 
 export const AppProvider = ({ children }) => {
@@ -75,6 +83,9 @@ export const AppProvider = ({ children }) => {
     const setEraConf = value => dispatch({ type: USER_ERA, value });
 
     const setWaxCourse = value => dispatch({ type: DELPHI_ORACLE_COURSE, value });
+
+    const setToolConfig = value => dispatch({ type: TOOL_CONFIG, value });
+    const setWpConfig = value => dispatch({ type: WP_CONFIG, value });
 
 
     return (
@@ -108,6 +119,12 @@ export const AppProvider = ({ children }) => {
             waxCourse: state.waxCourse,
             waxCourseFetched: state.waxCourseFetched,
 
+            toolConfig: state.toolConfig,
+            toolConfigFetched: state.toolConfigFetched,
+
+            wpConfig: state.wpConfig,
+            wpConfigFetched: state.wpConfigFetched,
+
             userLoginHandler,
             userLogoutHandler,
             setUserDataHandler,
@@ -119,6 +136,8 @@ export const AppProvider = ({ children }) => {
              setProbability,
             setEraConf,
             setWaxCourse,
+            setToolConfig,
+            setWpConfig,
 
 
         }}>

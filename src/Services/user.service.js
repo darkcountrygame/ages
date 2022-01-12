@@ -75,17 +75,17 @@ export const fetchStakedItems = async ({account}) => {
     if (!rows[0])
         return [];
 
-    const stakedItems = [rows[0].tools[0].key];
+     const stakedItems = [rows[0].tools[0].key];
     const stakedItemsChunks = sliceArrayIntoChunks(stakedItems);
 
     const assets = [];
 
     for (const items of stakedItemsChunks) {
         const data = await getDataFromAtomicApi(`assets?ids=${stakedItems}&page=1&limit=100`);
-
+        console.log(items)
         assets.push(...data);
     }
-
+     console.log(stakedItemsChunks)
     return assets
 };
 
@@ -112,6 +112,34 @@ export const fetchCurrentEra = async ({ account }) => {
 
     if (!rows[0])
         return rows[0] = {title: 'Prehistoric age'};
+
+    return rows;
+
+};
+
+export const fetchToolConfig = async ({ account }) => {
+    const { rows } = await fetchRows({
+        contract: RTP_GAME,
+        scope: RTP_GAME,
+        table: "toolconfig"
+    });
+
+    if (!rows[0])
+        return rows[0] = [];
+
+    return rows;
+
+};
+
+export const fetchWpConfig = async ({ account }) => {
+    const { rows } = await fetchRows({
+        contract: RTP_GAME,
+        scope: RTP_GAME,
+        table: "wpconfig"
+    });
+
+    if (!rows[0])
+        return rows[0] = [];
 
     return rows;
 

@@ -16,9 +16,13 @@ import {
     fetchStakedItems,
     probabilityGetPoints,
     fetchCurrentEra,
+    fetchWaxCourse,
+    fetchToolConfig,
+    fetchWpConfig,
+
 
 } from "../../Services";
-import {fetchWaxCourse} from "../../Services/course.service";
+
 
 const AppContent = () => {
     const routes = useRoutes();
@@ -49,6 +53,12 @@ const AppContent = () => {
         setWaxCourse,
         waxCourseFetched,
 
+        setToolConfig,
+        toolConfigFetched,
+
+        setWpConfig,
+        wpConfigFetched,
+
     } = useApp();
 
     const { activeUser } = useContext(UALContext);
@@ -64,7 +74,10 @@ const AppContent = () => {
 
     const [eraConfLoading, setEraConfLoading] = useState(false);
 
-    const [waxCourseLoading, setWaxCoursefLoading] = useState(false);
+    const [waxCourseLoading, setWaxCourseLoading] = useState(false);
+
+    const [toolConfigLoading, setToolConfgLoading] = useState(false);
+    const [wpConfigLoading, setWpConfgLoading] = useState(false);
 
     
  
@@ -189,7 +202,7 @@ const AppContent = () => {
         if (activeUser && activeUser.accountName && !waxCourseFetched && setWaxCourse
             && !waxCourseLoading
         ) {
-            setWaxCoursefLoading(true);
+            setWaxCourseLoading(true);
 
             fetchWaxCourse({
                 account: activeUser.accountName
@@ -199,9 +212,9 @@ const AppContent = () => {
                     console.log(e)
                     setWaxCourse([]);
                 })
-                .finally(() => setWaxCoursefLoading(false));
-        }
-    }, [activeUser, setWaxCoursefLoading, waxCourseFetched, setWaxCourse]);
+                .finally(() => setWaxCourseLoading(false));
+}
+}, [activeUser, setWaxCourseLoading, waxCourseFetched, setWaxCourse]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !probabilityFetched && setProbability
@@ -220,6 +233,42 @@ const AppContent = () => {
                 .finally(() => setProbabilityLoading(false));
         }
     }, [activeUser, setProbabilityLoading, probabilityFetched, setProbability]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !toolConfigFetched && setToolConfig
+            && !toolConfigLoading
+        ) {
+            setToolConfgLoading(true);
+
+            fetchToolConfig({
+                account: activeUser.accountName
+            })
+                .then((value) => setToolConfig(value))
+                .catch(e => {
+                    console.log(e)
+                    setToolConfig([]);
+                })
+                .finally(() => setToolConfgLoading(false));
+        }
+    }, [activeUser, setToolConfgLoading, toolConfigFetched, setToolConfig]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !wpConfigFetched && setWpConfig
+            && !wpConfigLoading
+        ) {
+            setWpConfgLoading(true);
+
+            fetchWpConfig({
+                account: activeUser.accountName
+            })
+                .then((value) => setWpConfig(value))
+                .catch(e => {
+                    console.log(e)
+                    setWpConfig([]);
+                })
+                .finally(() => setWpConfgLoading(false));
+        }
+    }, [activeUser, setWpConfgLoading, wpConfigFetched, setWpConfig]);
 
 
 
