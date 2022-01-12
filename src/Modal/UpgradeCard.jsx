@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Popup from 'reactjs-popup';
-
+import { toast } from "react-toastify";
 
 
 import cardIcon from '../images/hunters_lodge.png'
@@ -18,6 +18,12 @@ export default ({disabled, selectedTool, selectedToolImg}) => {
 
   const upgradeHandler = () => {
     upgradeTool({activeUser, selectedTool})
+        .then(() => {
+            toast.success('Upgrade success')
+        })
+        .catch((e) => {
+            toast.error(e.message)
+        })
   }
 
   return (
