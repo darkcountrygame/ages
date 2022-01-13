@@ -6,6 +6,7 @@ import {
     USER_WAX_BALANCE,
     USER_RTP_BALANCE,
     USER_ITEMS,
+    USER_STAKED_TOOLS,
     USER_RESOURCES,
     USER_PROBABILITY_GET_POINTS,
     USER_ERA,
@@ -55,6 +56,10 @@ const AppReducer = (state, action) => {
 
         case USER_STAKED_ITEMS: {
             return { ...state, stakedItemList: action.value, stakedItemListFetched: true }
+        }
+
+        case USER_STAKED_TOOLS: {
+            return { ...state, stakedToolsList: action.value, stakedToolsListFetched: true }
         }
         
         case USER_RESOURCES: {

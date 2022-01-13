@@ -64,7 +64,7 @@ const sliceArrayIntoChunks = (array) => {
     }, []);
 };
 
-export const fetchStakedItems = async ({account}) => {
+export const fetchStakedWp = async ({account}) => {
     const { rows } = await fetchRows({
         contract: RTP_GAME,
         scope: account,
@@ -76,17 +76,28 @@ export const fetchStakedItems = async ({account}) => {
         return [];
 
      const stakedItems = [rows[0].workplace_asset_id];
-    const stakedItemsChunks = sliceArrayIntoChunks(stakedItems);
+     const data = await getDataFromAtomicApi(`assets?ids=${stakedItems}&page=1&limit=100`);
 
-    const assets = [];
+     console.log(data)
+    return data
+};
 
-    for (const items of stakedItemsChunks) {
-        const data = await getDataFromAtomicApi(`assets?ids=${stakedItems}&page=1&limit=100`);
-        console.log(items)
-        assets.push(...data);
-    }
-     console.log(stakedItemsChunks)
-    return assets
+export const fetchStakedTools = async ({account}) => {
+    const { rows } = await fetchRows({
+        contract: RTP_GAME,
+        scope: account,
+        table: "workplaces",
+        limit: 1,
+    });
+
+    if (!rows[0])
+        return [];
+
+    const stakedTools = [rows[0].tools[0].key];
+    const data = await getDataFromAtomicApi(`assets?ids=${stakedTools}&page=1&limit=100`);
+
+    console.log(stakedTools)
+     return data
 };
 
 export const fetchResources = async ({ account }) => {

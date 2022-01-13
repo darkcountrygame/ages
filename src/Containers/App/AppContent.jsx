@@ -13,13 +13,13 @@ import {
     fetchRtpBalance,
     fetchItems,
     fetchResources,
-    fetchStakedItems,
+    fetchStakedWp,
     probabilityGetPoints,
     fetchCurrentEra,
     fetchWaxCourse,
     fetchToolConfig,
     fetchWpConfig,
-
+    fetchStakedTools,
 
 } from "../../Services";
 
@@ -41,6 +41,8 @@ const AppContent = () => {
         stakedItemList,
         setStakedItems,
         setItems,
+        setStakedTools,
+        stakedToolsListFetched,
         resourcesList,
         resourcesFetched,
         setResources,
@@ -68,6 +70,7 @@ const AppContent = () => {
 
     const [itemsLoading, setItemsLoading] = useState(false);
     const [stakedItemsLoading, setStakedItemsLoading] = useState(false);
+    const [stakedToolsLoading, setStakedToolsLoading] = useState(false);
 
     const [resourcesLoading, setResourcesLoading] = useState(false);
      const [probabilityLoading, setProbabilityLoading] = useState(false);
@@ -148,7 +151,7 @@ const AppContent = () => {
         ) {
             setStakedItemsLoading(true);
 
-            fetchStakedItems({
+            fetchStakedWp({
                 account: activeUser.accountName
             })
                 .then((items) => setStakedItems(items))
@@ -160,6 +163,25 @@ const AppContent = () => {
                 .finally(() => setStakedItemsLoading(false));
         }
     }, [activeUser, setStakedItemsLoading, stakedItemListFetched, setStakedItems]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !stakedToolsListFetched && setStakedTools
+            && !stakedToolsLoading
+        ) {
+            setStakedToolsLoading(true);
+
+            fetchStakedTools({
+                account: activeUser.accountName
+            })
+                .then((items) => setStakedTools(items))
+                .catch(e => {
+                    console.log(e)
+
+                    setStakedTools([]);
+                })
+                .finally(() => setStakedToolsLoading(false));
+        }
+    }, [activeUser, setStakedToolsLoading, stakedToolsListFetched, setStakedTools]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !resourcesFetched && setResources

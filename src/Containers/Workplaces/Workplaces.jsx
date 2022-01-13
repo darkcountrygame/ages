@@ -31,14 +31,17 @@ const Workplaces = () => {
         setStakedItems,
         toolConfig,
         wpConfig,
+        stakedToolsList,
     } = useApp();
 
     const [selectItem, setSelectItem] = useState([])
-    console.log(toolConfig)
-    console.log(wpConfig)
+    // console.log(toolConfig)
+    // console.log(wpConfig)
 
-    const handleClaim = () => {
-        claimMiningResources( { activeUser })
+    console.log(stakedToolsList)
+
+    const handleClaim = (workplace_id) => {
+        claimMiningResources( { activeUser, workplace_id })
             .then(() => {
                 fetchResources({ account: activeUser.accountName })
                     .then(resource => setResources(resource))
@@ -98,7 +101,7 @@ const Workplaces = () => {
                     <div className="container">
                         <div className="main-main-wrapper">
                             <div className="main-workplace-header">
-                                <button onClick={handleClaim}>Start Work</button>
+                                <button onClick={() => handleClaim(stakedItemList[0].asset_id)}>Start Work</button>
                                 <p>Total Prodused: <span>0</span><img src={meat} alt="meat" /></p>
                             </div>
 
@@ -107,10 +110,10 @@ const Workplaces = () => {
 
                                     <div className="workplaces-item equip">
                                         <div className="workplaces-img">
-                                            { !stakedItemList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" /> }
+                                            { !stakedToolsList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedToolsList[0].data.img}`} alt="spear" /> }
                                         </div>
                                         {
-                                            !stakedItemList.length ?
+                                            !stakedToolsList.length ?
 
                                                 <div className="btn-unequip">
                                                     { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
@@ -119,7 +122,7 @@ const Workplaces = () => {
                                                 :
 
                                                 <div className="btn-unequip unequip">
-                                                    <button onClick={() => unstakeHandler(stakedItemList[0].asset_id)}>Unequip</button>
+                                                    <button onClick={() => unstakeHandler(stakedToolsList[0].asset_id)}>Unequip</button>
                                                 </div>
 
                                         }

@@ -9,6 +9,7 @@ import {
     USER_RTP_BALANCE,
     USER_ITEMS,
     USER_STAKED_ITEMS,
+    USER_STAKED_TOOLS,
     USER_RESOURCES,
     USER_PROBABILITY_GET_POINTS,
     USER_ERA,
@@ -39,6 +40,8 @@ const initialState = {
 
     stakedItemList: [],
     stakedItemListFetched: false,
+    stakedToolsList: [],
+    stakedToolsListFetched: false,
 
     selectedItem: [],
     selectedItemFetched: false,
@@ -75,6 +78,7 @@ export const AppProvider = ({ children }) => {
 
     const setItems = value => dispatch({ type: USER_ITEMS, value });
     const setStakedItems = value => dispatch({ type: USER_STAKED_ITEMS, value });
+    const setStakedTools = value => dispatch({ type: USER_STAKED_TOOLS, value });
 
     const setResources = value => dispatch({ type: USER_RESOURCES, value });
 
@@ -107,6 +111,9 @@ export const AppProvider = ({ children }) => {
             selectedItem: state.itemList,
             selectedItemFetched: state.itemListFetched,
 
+            stakedToolsList: state.stakedToolsList,
+            stakedToolsListFetched: state.stakedToolsListFetched,
+
             resourcesList: state.resourcesList,
             resourcesFetched: state.resourcesFetched,
 
@@ -132,6 +139,7 @@ export const AppProvider = ({ children }) => {
             setRtpBalance,
             setItems,
             setStakedItems,
+            setStakedTools,
             setResources,
              setProbability,
             setEraConf,

@@ -2,7 +2,7 @@ import { RTP_GAME } from "../Constants";
 import { signTransaction } from "../Helpers";
 
 
-export const claimMiningResources = async ({ activeUser }) => {
+export const claimMiningResources = async ({ activeUser, workplace_id }) => {
     // console.log(activeUser)
     return await signTransaction({
         activeUser,
@@ -10,7 +10,7 @@ export const claimMiningResources = async ({ activeUser }) => {
         action: 'claim',
         data: {
             player: activeUser.accountName,
-            workplace_asset_id: 1099524450045
+            workplace_asset_id: workplace_id
         }
     });
 };
