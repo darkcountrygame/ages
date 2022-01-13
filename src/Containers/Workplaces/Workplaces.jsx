@@ -15,6 +15,7 @@ import lock from '../../images/lock.png'
 
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UnEquipCard from '../../Modal/UnEquipCard'
+import EquipCardWp from '../../Modal/EquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
 import EquipCard from '../../Modal/EquipCard'
 
@@ -86,12 +87,13 @@ const Workplaces = () => {
                         <div className="main-workplace-sidebar__list">
                             <div className="main-workplace-sidebar__item">
                                 <div className="sidebar__item__container">
-                                    { !stakedItemList.length ?  <img src={sidebarItem} alt="img" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" /> }
+                                    { !stakedItemList.length  ?  <img src={sidebarItem} alt="img" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" /> }
                                 </div>
                             </div>
 
                         </div>
-                        <button className="add-workplace">Add workplace</button>
+                        {/*<button className="add-workplace" onClick={stakeHandler}>Add workplace</button>*/}
+                        <EquipCardWp class="add-workplace" itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} title='Add workplace'/>}
                     </div>
                 </div>
                 <div className="main-main">
@@ -116,7 +118,7 @@ const Workplaces = () => {
                                             !stakedToolsList.length ?
 
                                                 <div className="btn-unequip">
-                                                    { !itemList.length ? <UnEquipCard /> : <EquipCard itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
+                                                    { !itemList.length ? <UnEquipCard /> : <EquipCard title='Equip' itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
                                                 </div>
 
                                                 :

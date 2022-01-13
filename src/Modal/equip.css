@@ -111,3 +111,14 @@
     max-width: 900px;
     height: 507px;
 }
+
+.add-workplace{
+    border: 1px solid #cda378;
+    background: #fff0;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
