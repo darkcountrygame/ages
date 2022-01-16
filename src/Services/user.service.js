@@ -69,16 +69,16 @@ export const fetchStakedWp = async ({account}) => {
         contract: RTP_GAME,
         scope: account,
         table: "workplaces",
-        limit: 1,
+        limit: 1000,
     });
 
     if (!rows[0])
         return [];
 
-     const stakedItems = [rows[0].workplace_asset_id];
-     const data = await getDataFromAtomicApi(`assets?ids=${stakedItems}&page=1&limit=100`);
+      const stakedItems = rows.map( item => item.workplace_asset_id )
+      const data = await getDataFromAtomicApi(`assets?ids=${stakedItems}&page=1&limit=100`);
 
-     console.log(data)
+
     return data
 };
 

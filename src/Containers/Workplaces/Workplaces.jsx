@@ -18,6 +18,7 @@ import UnEquipCard from '../../Modal/UnEquipCard'
 import EquipCardWp from '../../Modal/EquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
 import EquipCard from '../../Modal/EquipCard'
+import Sidebar from '../../components/Sidebar/Sidebar'
 
 import {fetchResources, claimMiningResources, unStakeTool, fetchItems, stakeTool} from "../../Services";
 
@@ -35,11 +36,12 @@ const Workplaces = () => {
         stakedToolsList,
     } = useApp();
 
-    const [selectItem, setSelectItem] = useState([])
-    // console.log(toolConfig)
-    // console.log(wpConfig)
+    // console.log(stakedItemList)
+    // console.log(stakedToolsList)
 
-    console.log(stakedToolsList)
+    const [selectItem, setSelectItem] = useState([])
+
+
 
     const handleClaim = (workplace_id) => {
         claimMiningResources( { activeUser, workplace_id })
@@ -82,20 +84,7 @@ const Workplaces = () => {
         <section className="workplace">
             <Header />
             <div className="main-workplace">
-                <div className="main-workplace-sidebar">
-                    <div className="main-workplace-sidebar__wrapper">
-                        <div className="main-workplace-sidebar__list">
-                            <div className="main-workplace-sidebar__item">
-                                <div className="sidebar__item__container">
-                                    { !stakedItemList.length  ?  <img src={sidebarItem} alt="img" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" /> }
-                                </div>
-                            </div>
-
-                        </div>
-                        {/*<button className="add-workplace" onClick={stakeHandler}>Add workplace</button>*/}
-                        <EquipCardWp class="add-workplace" itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} title='Add workplace'/>}
-                    </div>
-                </div>
+                <Sidebar selectItem={selectItem} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />
                 <div className="main-main">
                     <div className="main-title">
                         <h2>Workplaces</h2>
