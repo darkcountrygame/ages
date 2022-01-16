@@ -10,30 +10,24 @@ import UserItems from '../components/UserWorkplace/UserItems'
 import './equip.css'
 
 
-const EquipCard = ({ itemList, setSelectItem, stakeHandler, title }) => {
-
-  // const stakeHandler = () => {
-  //   stakeWp({ activeUser })
-  // }
-
+const EquipCard = ({ itemList, setSelectItem, stakeHandler }) => {
 
 
   return (
 
-
       <Popup
-          trigger={<button className="add-workplace" onClick={stakeHandler}> { title } </button>}
+          trigger={<button className="add-workplace" onClick={stakeHandler}> Equip </button>}
           modal
           nested
       >
         {close => (
             <div className="modal equip">
               <img className="close" src={closeImg} alt="close" onClick={close}/>
-              <div className="header-modal"> Equip Card </div>
+              <div className="header-modal"> Equip Workplace </div>
               <div className="content">
                 <div className="content-card-list">
 
-                    {itemList.map( item => (item.schema.schema_name === 'workplace' ? <UserItems itemList={itemList} item={item} setSelectItem={setSelectItem}/>
+                    {itemList.map( item => (item.schema.schema_name === 'workplace' ? <UserItems itemList={itemList} item={item} setSelectItem={setSelectItem} />
                             :
                             false
                     ))}
@@ -41,7 +35,7 @@ const EquipCard = ({ itemList, setSelectItem, stakeHandler, title }) => {
                 </div>
               </div>
               <div className="actions" onClick={close}>
-                <button onClick={stakeHandler}>Equip</button>
+                <button onClick={stakeHandler}> Equip </button>
               </div>
             </div>
         )}

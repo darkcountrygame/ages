@@ -18,6 +18,7 @@ import UnEquipCard from '../../Modal/UnEquipCard'
 import EquipCardWp from '../../Modal/EquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
 import EquipCard from '../../Modal/EquipCard'
+import EquipTool from '../../Modal/EquipTool'
 import Sidebar from '../../components/Sidebar/Sidebar'
 
 import {fetchResources, claimMiningResources, unStakeTool, fetchItems, stakeTool} from "../../Services";
@@ -107,7 +108,7 @@ const Workplaces = () => {
                                             !stakedToolsList.length ?
 
                                                 <div className="btn-unequip">
-                                                    { !itemList.length ? <UnEquipCard /> : <EquipCard title='Equip' itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
+                                                    { !itemList.length ? <UnEquipCard /> : <EquipTool itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
                                                 </div>
 
                                                 :
