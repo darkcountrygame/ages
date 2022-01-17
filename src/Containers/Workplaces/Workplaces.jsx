@@ -93,7 +93,7 @@ const Workplaces = () => {
 
                         </div>
                         {/*<button className="add-workplace" onClick={stakeHandler}>Add workplace</button>*/}
-                        <EquipCardWp class="add-workplace" itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} title='Add workplace'/>}
+                        <EquipCard class="add-workplace" itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} title='Add workplace'/>}
                     </div>
                 </div>
                 <div className="main-main">
@@ -118,7 +118,7 @@ const Workplaces = () => {
                                             !stakedToolsList.length ?
 
                                                 <div className="btn-unequip">
-                                                    { !itemList.length ? <UnEquipCard /> : <EquipCard title='Equip' itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
+                                                    { !itemList.length ? <UnEquipCard /> : <EquipCardWp title='Equip' itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
                                                 </div>
 
                                                 :

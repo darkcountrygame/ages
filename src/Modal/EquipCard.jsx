@@ -17,7 +17,6 @@ const EquipCard = ({ itemList, setSelectItem, stakeHandler, title }) => {
   // }
 
 
-
   return (
 
 
@@ -35,9 +34,9 @@ const EquipCard = ({ itemList, setSelectItem, stakeHandler, title }) => {
 
                     {itemList.map( item => (item.schema.schema_name === 'workplace' ? <UserItems itemList={itemList} item={item} setSelectItem={setSelectItem}/>
                             :
-                            false
+                            console.log(item.schema.schema_name)
                     ))}
-
+                
                 </div>
               </div>
               <div className="actions" onClick={close}>

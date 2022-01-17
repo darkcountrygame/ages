@@ -30,7 +30,7 @@ const EquipCard = ({ itemList, setSelectItem, stakeHandler, title }) => {
               <div className="header-modal"> Equip Card </div>
               <div className="content">
                 <div className="content-card-list">
-                    {itemList.map( item => (item.schema.schema_name === 'tool' ? <UserItems itemList={itemList} item={item} setSelectItem={setSelectItem}/>
+                    {itemList.map( item => (item.schema.schema_name === 'workplace' ? <UserItems itemList={itemList} item={item} setSelectItem={setSelectItem}/>
                             :
                             false
                     ))}
