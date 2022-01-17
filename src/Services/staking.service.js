@@ -33,3 +33,19 @@ export const stakeTool = async ({ activeUser, selectItem }) => {
 
 };
 
+export const stakeWp = async ({ activeUser, selectItem }) => {
+
+    return await signTransaction({
+        activeUser,
+        account: ATOMIC_ASSETS,
+        action: 'transfer',
+        data: {
+            from: activeUser.accountName,
+            to: RTP_GAME,
+            asset_ids: [selectItem],
+            memo: `stake:workplace`
+        }
+    });
+
+};
+

@@ -21,7 +21,7 @@ const EquipCard = ({ itemList, setSelectItem, stakeHandler }) => {
     return (
 
         <Popup
-            trigger={<button className="add-workplace" onClick={stakeHandler}> Equip </button>}
+            trigger={<button onClick={stakeHandler}> Equip </button>}
             modal
             nested
         >

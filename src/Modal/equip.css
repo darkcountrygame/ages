@@ -113,7 +113,7 @@
 }
 
 .add-workplace{
-    border: 1px solid #cda378;
+    border: 0;
     background: #fff0;
     padding: 10px 20px;
     color: #fff;
@@ -121,4 +121,17 @@
     display: block;
     margin: 0 auto;
     cursor: pointer;
+    position: absolute;
+    bottom: -10%;
+    left: 4%;
+    width: 5%;
+}
+
+.add-workplace img{
+    width: 100%;
+    transition: 0.5ms;
+}
+
+.add-workplace img:hover{
+    transform: scale(1.2);
 }

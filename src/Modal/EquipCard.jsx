@@ -3,6 +3,7 @@ import Popup from 'reactjs-popup';
 
 
 import closeImg from '../images/close.png'
+import add from '../images/add.png'
 
 
 import UserItems from '../components/UserWorkplace/UserItems'
@@ -16,7 +17,7 @@ const EquipCard = ({ itemList, setSelectItem, stakeHandler }) => {
   return (
 
       <Popup
-          trigger={<button className="add-workplace" onClick={stakeHandler}> Equip </button>}
+          trigger={<button className="add-workplace" onClick={stakeHandler}> <img src={add} alt="add"/> </button>}
           modal
           nested
       >
