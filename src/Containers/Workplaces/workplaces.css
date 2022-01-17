@@ -20,6 +20,7 @@
 }
 
 .main-workplace{
+    position: relative;
     display: flex;
     margin: 0 auto;
     height: 65vh;

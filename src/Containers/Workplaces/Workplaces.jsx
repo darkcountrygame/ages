@@ -15,11 +15,11 @@ import lock from '../../images/lock.png'
 
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UnEquipCard from '../../Modal/UnEquipCard'
-import EquipCardWp from '../../Modal/EquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
-import EquipCard from '../../Modal/EquipCard'
+import EquipTool from '../../Modal/EquipTool'
+import Sidebar from '../../components/Sidebar/Sidebar'
 
-import {fetchResources, claimMiningResources, unStakeTool, fetchItems, stakeTool} from "../../Services";
+import {fetchResources, claimMiningResources, unStakeTool, fetchItems, stakeTool, stakeWp} from "../../Services";
 
 const Workplaces = () => {
 
@@ -30,16 +30,15 @@ const Workplaces = () => {
         setResources,
         stakedItemList,
         setStakedItems,
-        toolConfig,
-        wpConfig,
         stakedToolsList,
     } = useApp();
 
-    const [selectItem, setSelectItem] = useState([])
-    // console.log(toolConfig)
-    // console.log(wpConfig)
+     console.log(stakedItemList)
+     console.log(stakedToolsList)
 
-    console.log(stakedToolsList)
+    const [selectItem, setSelectItem] = useState([])
+
+
 
     const handleClaim = (workplace_id) => {
         claimMiningResources( { activeUser, workplace_id })
@@ -50,6 +49,15 @@ const Workplaces = () => {
 
 
                  toast.success('Claimed');
+            })
+            .catch(e => toast.error(e.message))
+            .catch(e => console.error(e))
+    }
+
+    const stakeHandlerWp = () => {
+        stakeWp({ activeUser, selectItem })
+            .then(() => {
+                toast.success('Staked successed');
             })
             .catch(e => toast.error(e.message))
             .catch(e => console.error(e))
@@ -82,20 +90,7 @@ const Workplaces = () => {
         <section className="workplace">
             <Header />
             <div className="main-workplace">
-                <div className="main-workplace-sidebar">
-                    <div className="main-workplace-sidebar__wrapper">
-                        <div className="main-workplace-sidebar__list">
-                            <div className="main-workplace-sidebar__item">
-                                <div className="sidebar__item__container">
-                                    { !stakedItemList.length  ?  <img src={sidebarItem} alt="img" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedItemList[0].data.img}`} alt="spear" /> }
-                                </div>
-                            </div>
-
-                        </div>
-                        {/*<button className="add-workplace" onClick={stakeHandler}>Add workplace</button>*/}
-                        <EquipCard class="add-workplace" itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} title='Add workplace'/>}
-                    </div>
-                </div>
+                <Sidebar selectItem={selectItem} setSelectItem={setSelectItem} stakeHandler={stakeHandlerWp} />
                 <div className="main-main">
                     <div className="main-title">
                         <h2>Workplaces</h2>
@@ -118,7 +113,9 @@ const Workplaces = () => {
                                             !stakedToolsList.length ?
 
                                                 <div className="btn-unequip">
-                                                    { !itemList.length ? <UnEquipCard /> : <EquipCardWp title='Equip' itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
+
+                                                    { !itemList.length ? <UnEquipCard /> : <EquipTool itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
+
                                                 </div>
 
                                                 :
