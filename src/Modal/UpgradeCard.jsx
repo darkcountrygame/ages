@@ -3,7 +3,6 @@ import Popup from 'reactjs-popup';
 import { toast } from "react-toastify";
 
 
-import cardIcon from '../images/hunters_lodge.png'
 import closeImg from '../images/close.png'
 import meatIcon from '../images/market-items/meat.png'
 
@@ -13,7 +12,7 @@ import './upgrade.css'
 import { upgradeTool } from "../Services";
 import {UALContext} from "ual-reactjs-renderer";
 
-export default ({disabled, selectedTool, selectedToolImg}) => {
+export default ({ disabled, selectedTool, selectedToolImg, toolName}) => {
   const { activeUser } = useContext(UALContext);
 
   const upgradeHandler = () => {
@@ -34,21 +33,21 @@ export default ({disabled, selectedTool, selectedToolImg}) => {
       >
         {close => (
             <div className="upgrade">
-              <img className="close" src={closeImg} alt="close" onClick={close}/>
-              <div className="header-modal"> Upgrade to 2 LV</div>
+              <img className="close" src={closeImg} alt="close" onClick={close} />
+              <div className="header-modal"> Upgrade to 2 LV </div>
               <div className="content">
                 <div className="info-card">
                   <div className="info-card__img">
                     <div className="info-card__img-wrapper">
                       <div className="info-card__photo">
-                        <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon"/>
+                        <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon" />
                       </div>
                     </div>
                   </div>
                   <div className="info-card__asset">
                     <ul>
                       <li>Asset Name</li>
-                      <span>CardName</span>
+                      <span>{ toolName }</span>
                       <li>Asset ID</li>
                       <span>#{selectedTool}</span>
                       <li>Rarity</li>
