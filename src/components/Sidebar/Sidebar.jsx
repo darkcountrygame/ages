@@ -6,9 +6,6 @@ import './sidebar.css'
 
 
 import EquipCardWp from '../../Modal/EquipCard'
-import UnlockCard from '../../Modal/UnlockCard'
-import EquipCard from '../../Modal/EquipCard'
-
 import SidebarItem from './SidebarItem'
 
 

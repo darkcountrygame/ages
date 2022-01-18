@@ -19,6 +19,7 @@ export default function Market() {
 
     const {
         itemList,
+        wpConfig,
     } = useApp();
 
    const [selectedTool, setSelectTool] = useState([])
@@ -129,9 +130,13 @@ export default function Market() {
                             </div>
                             <div className="market-btn">
                                 {!selectedTool.length ?
-                                    <button onClick={toastyErr}>Upgrade -12 RTP</button>
+                                    <button onClick={toastyErr}>Upgrade -{wpConfig[1].price_upgrade}</button>
                                 :
-                                    <UpgradeCard  selectedTool={selectedTool} selectedToolImg={selectedToolImg} toolName={toolName} />
+                                    <UpgradeCard
+                                        selectedTool={selectedTool}
+                                        selectedToolImg={selectedToolImg}
+                                        toolName={toolName}
+                                    />
                                 }
                             </div>
                             <div className="market-lvl">

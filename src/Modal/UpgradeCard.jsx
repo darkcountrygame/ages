@@ -27,7 +27,9 @@ export default ({ disabled, selectedTool, selectedToolImg, toolName}) => {
 
   return (
       <Popup
-          trigger={<button disabled={disabled}>Upgrade -12 RTP</button>}
+          trigger={
+              <button disabled={disabled}>Upgrade - 12 RTP</button>
+          }
           modal
           nested
       >

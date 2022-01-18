@@ -33,7 +33,7 @@ export default () => {
 
   return(
       <Popup
-          trigger={<button>Research 10 RTP</button>}
+          trigger={<button>Research 10.0000 RTP</button>}
           modal
           nested
       >

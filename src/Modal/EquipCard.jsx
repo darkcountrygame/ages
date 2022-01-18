@@ -29,7 +29,7 @@ const EquipCard = ({ itemList, setSelectItem, stakeHandler }) => {
 
                     {itemList.map( item => (item.schema.schema_name === 'workplace' ? <UserItems itemList={itemList} item={item} setSelectItem={setSelectItem} />
                             :
-                            console.log(item)
+                            false
                     ))}
                 
                 </div>

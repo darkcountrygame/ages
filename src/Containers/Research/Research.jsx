@@ -21,7 +21,7 @@ import TostifyMessage from '../../components/Messages/Tostify'
 export default function Research() {
 
 
-    const { resourcesList, probabilityPoints } = useApp();
+    const { resourcesList, probabilityPoints, spConfig } = useApp();
     console.log(probabilityPoints)
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed)
