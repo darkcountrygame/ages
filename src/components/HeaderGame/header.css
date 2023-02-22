@@ -6,7 +6,7 @@
 }
 
 .header-wrapper{
-    padding: 20px 75px;
+    padding: 20px 36px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -63,7 +63,11 @@
 
 
 .header-items{
-    margin-left: 100px;
+
+}
+
+.header-items .header-items_list{
+    padding: 0;
 }
 
 .header-items .header-items_list li{
@@ -71,7 +75,7 @@
     align-items: center;
     /*background: url('../../images/vector23.png') no-repeat center center;*/
     background-size: contain;
-    margin-right: 30px;
+    margin-right: 60px;
     position: relative;
     z-index: 1;
 }

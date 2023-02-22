@@ -16,8 +16,6 @@ const EquipCard = ({ itemList, setSelectItem, stakeHandler }) => {
     //   stakeWp({ activeUser })
     // }
 
-
-
     return (
 
         <Popup

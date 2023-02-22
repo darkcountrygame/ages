@@ -14,11 +14,17 @@ export default function Sidebar({ item }) {
         stakedItemList,
     } = useApp();
 
+    // return (
+    //     <div className="main-workplace-sidebar__item">
+    //         <div className="sidebar__item__container">
+    //             { !stakedItemList.length  ?  <img src={sidebarItem} alt="img" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${item.data.img}`} alt="spear" /> }
+    //         </div>
+    //     </div>
+    // )
+
     return (
         <div className="main-workplace-sidebar__item">
-            <div className="sidebar__item__container">
-                { !stakedItemList.length  ?  <img src={sidebarItem} alt="img" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${item.data.img}`} alt="spear" /> }
-            </div>
+               <img src={item} alt="img" />
         </div>
-            )
+    )
 }

@@ -7,10 +7,9 @@ import './workplaces.css'
 
 import Header from '../../components/HeaderGame/HeaderGame'
 
-
-import sidebarItem from '../../images/hunters_lodge.png'
+import WoodenSpear from '../../images/wooden_spear.png'
 import meat from '../../images/market-items/meat.png'
-import equip from '../../images/equip.png'
+import equip from '../../images/plus_icon_section.png'
 import lock from '../../images/lock.png'
 
 import Footer from '../../components/FooterGameNav/FooterGameNav'
@@ -105,8 +104,21 @@ const Workplaces = () => {
                             <div className="main-main-contant">
                                 <div className="main-main-list">
 
+                                    <div className="workplaces-item available">
+                                        <div className="workplaces-img available-img">
+                                            <img src={WoodenSpear} alt="spear" />
+                                        </div>
+                                        <div className="produces">
+                                            <p>Produces:</p>
+                                            <p>100/Hour</p>
+                                        </div>
+                                        <div className="btn-lock">
+                                            <UnEquipCard />
+                                        </div>
+                                    </div>
+
                                     <div className="workplaces-item equip">
-                                        <div className="workplaces-img">
+                                        <div className="workplaces-img unequip-img">
                                             { !stakedToolsList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedToolsList[0].data.img}`} alt="spear" /> }
                                         </div>
                                         {
@@ -129,7 +141,7 @@ const Workplaces = () => {
                                     </div>
 
                                     <div className="workplaces-item lock">
-                                        <div className="workplaces-img">
+                                        <div className="workplaces-img locked-img">
                                             <img src={lock} alt="spear" />
                                         </div>
                                         <div className="btn-lock">
@@ -138,7 +150,7 @@ const Workplaces = () => {
                                     </div>
 
                                     <div className="workplaces-item lock">
-                                        <div className="workplaces-img">
+                                        <div className="workplaces-img locked-img">
                                             <img src={lock} alt="spear" />
                                         </div>
                                         <div className="btn-lock">
@@ -146,14 +158,6 @@ const Workplaces = () => {
                                         </div>
                                     </div>
 
-                                    <div className="workplaces-item lock">
-                                        <div className="workplaces-img">
-                                            <img src={lock} alt="spear" />
-                                        </div>
-                                        <div className="btn-lock">
-                                            <UnlockCard />
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
