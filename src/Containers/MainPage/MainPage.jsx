@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { UALContext } from "ual-reactjs-renderer";
 
-import StartLogo from '../../images/start_logo.png'
-
-
-import Navbar from '../../components/Navbar/Navbar'
+// import StartLogo from '../../images/start_logo.png'
+//
+//
+// import Navbar from '../../components/Navbar/Navbar'
 
 import './main.css'
 
@@ -24,9 +24,9 @@ const MainPage = () => {
    return(
 
        <main className="main">
-           <Navbar />
+           {/*<Navbar />*/}
               <div className="main-btn">
-                  <button onClick={handleLogin} className="btn">Start Play</button>
+                  <button onClick={handleLogin} className="btn">START PLAY</button>
               </div>
        </main>
    )

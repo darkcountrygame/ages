@@ -33,19 +33,18 @@
 .main-btn{
     display: flex;
     height: 100vh;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .main-btn button{
-    font-size: 2rem;
-    display: inline-block;
-    background: linear-gradient(180deg, #0EC823 0%, #0E824A 100%);
-    padding: 10px 35px;
-    border-radius: 10px;
+    font-size: 45px;
+    display: block;
+    background: url("../../images/start_btn.png");
+    width: 388px;
+    height: 119px;
     text-align: center;
-    margin: 0% auto;
+    margin: 0 auto 135px auto;
     transition: all 1s;
-    transform: translate(10%, 100%);
     text-decoration: none;
     color: #fff;
     font-weight: bold;

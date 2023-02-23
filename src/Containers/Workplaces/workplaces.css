@@ -273,6 +273,8 @@
     text-align: center;
 }
 
+
+
 .no-workplaces{
     margin: 0;
     font-size: 22px;
@@ -289,7 +291,7 @@
 .main-workplace-sidebar__item{
     width: 158px;
     height: 216px;
-    margin: 0 auto 10px auto;
+    padding: 13px 9px;
     /* background: #6b4c3e8a; */
     border-radius: 8px;
 }
@@ -299,8 +301,16 @@
     height: 100%;
 }
 
+.main-workplace-sidebar__item.wp-active{
+    background-image: url("../../images/select_workplace.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .main-workplace-sidebar__item:hover{
-    border: 3px solid #B7997E;
+    background-image: url("../../images/select_workplace.png");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .main-workplace-sidebar__item .sidebar__item__container{

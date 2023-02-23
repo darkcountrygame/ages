@@ -32,11 +32,86 @@ const Workplaces = () => {
         stakedToolsList,
     } = useApp();
 
-     console.log(itemList)
+     console.log(stakedItemList)
 
     const [selectItem, setSelectItem] = useState([])
+    const [selectedWorkPlace, setSelectedWorkPlace] = useState(0)
 
+    
+    
+    const renderWorkPlaceTools = () => {
+      return(
+          <div className="container">
+              <div className="main-main-wrapper">
+                  <div className="main-workplace-header">
+                      <button onClick={() => handleClaim(stakedItemList[0].asset_id)}>Start Work</button>
+                      <p>Total Prodused: <span>0</span><img src={meat} alt="meat" /></p>
+                  </div>
 
+                  <div className="main-main-contant">
+                      <div className="main-main-list">
+
+                          <div className="workplaces-item available">
+                              <div className="workplaces-img available-img">
+                                  <img src={WoodenSpear} alt="spear" />
+                                  <p className={'workplaces-img_name'}>Wooden Spear</p>
+                              </div>
+                              <div className="produces">
+                                  <p>Produces:</p>
+                                  <p>100/Hour</p>
+                              </div>
+                              <div className="btn-lock">
+                                  <UnEquipCard />
+                              </div>
+                          </div>
+
+                          <div className="workplaces-item equip">
+                              <div className="workplaces-img unequip-img">
+                                  { !stakedToolsList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedToolsList[0].data.img}`} alt="spear" /> }
+                              </div>
+                              {
+                                  !stakedToolsList.length ?
+
+                                      <div className="btn-unequip">
+
+                                          { !itemList.length ? <UnEquipCard /> : <EquipTool itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
+
+                                      </div>
+
+                                      :
+
+                                      <div className="btn-unequip unequip">
+                                          <button onClick={() => unstakeHandler(stakedToolsList[0].asset_id)}>Unequip</button>
+                                      </div>
+
+                              }
+
+                          </div>
+
+                          <div className="workplaces-item lock">
+                              <div className="workplaces-img locked-img">
+                                  <img src={lock} alt="spear" />
+                              </div>
+                              <div className="btn-lock">
+                                  <UnlockCard />
+                              </div>
+                          </div>
+
+                          <div className="workplaces-item lock">
+                              <div className="workplaces-img locked-img">
+                                  <img src={lock} alt="spear" />
+                              </div>
+                              <div className="btn-lock">
+                                  <UnlockCard />
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      )
+    }
 
     const handleClaim = (workplace_id) => {
         claimMiningResources( { activeUser, workplace_id })
@@ -84,84 +159,20 @@ const Workplaces = () => {
             .catch(e => console.error(e))
     }
 
+    // useEffect(() => {
+    //     setSelectedWorkPlace(stakedItemList[0]?.asset_id)
+    // }, [])
+
     return (
         <section className="workplace">
             <Header />
             <div className="main-workplace">
-                <Sidebar selectItem={selectItem} setSelectItem={setSelectItem} stakeHandler={stakeHandlerWp} />
+                <Sidebar selectItem={selectItem} setSelectItem={setSelectItem} stakeHandler={stakeHandlerWp} setSelectedWorkPlace={setSelectedWorkPlace} selectedWorkPlace={selectedWorkPlace} />
                 <div className="main-main">
                     <div className="main-title">
                         <h2>Workplaces</h2>
                     </div>
-                    <div className="container">
-                        <div className="main-main-wrapper">
-                            <div className="main-workplace-header">
-                                <button onClick={() => handleClaim(stakedItemList[0].asset_id)}>Start Work</button>
-                                <p>Total Prodused: <span>0</span><img src={meat} alt="meat" /></p>
-                            </div>
-
-                            <div className="main-main-contant">
-                                <div className="main-main-list">
-
-                                    <div className="workplaces-item available">
-                                        <div className="workplaces-img available-img">
-                                            <img src={WoodenSpear} alt="spear" />
-                                            <p className={'workplaces-img_name'}>Wooden Spear</p>
-                                        </div>
-                                        <div className="produces">
-                                            <p>Produces:</p>
-                                            <p>100/Hour</p>
-                                        </div>
-                                        <div className="btn-lock">
-                                            <UnEquipCard />
-                                        </div>
-                                    </div>
-
-                                    <div className="workplaces-item equip">
-                                        <div className="workplaces-img unequip-img">
-                                            { !stakedToolsList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedToolsList[0].data.img}`} alt="spear" /> }
-                                        </div>
-                                        {
-                                            !stakedToolsList.length ?
-
-                                                <div className="btn-unequip">
-
-                                                    { !itemList.length ? <UnEquipCard /> : <EquipTool itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
-
-                                                </div>
-
-                                                :
-
-                                                <div className="btn-unequip unequip">
-                                                    <button onClick={() => unstakeHandler(stakedToolsList[0].asset_id)}>Unequip</button>
-                                                </div>
-
-                                        }
-
-                                    </div>
-
-                                    <div className="workplaces-item lock">
-                                        <div className="workplaces-img locked-img">
-                                            <img src={lock} alt="spear" />
-                                        </div>
-                                        <div className="btn-lock">
-                                            <UnlockCard />
-                                        </div>
-                                    </div>
-
-                                    <div className="workplaces-item lock">
-                                        <div className="workplaces-img locked-img">
-                                            <img src={lock} alt="spear" />
-                                        </div>
-                                        <div className="btn-lock">
-                                            <UnlockCard />
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {renderWorkPlaceTools()}
                 </div>
             </div>
             <Footer />

@@ -5,23 +5,26 @@ import { useApp } from "../../Data/AppContext";
 import './sidebar.css'
 
 
-import WoodenCutter from '../../images/woodcutter.png'
 import SidebarItem from './SidebarItem'
 
 
-export default function Sidebr({  selectItem, setSelectItem, stakeHandler }) {
-
+export default function Sidebr({  selectItem, setSelectItem, stakeHandler, setSelectedWorkPlace, selectedWorkPlace }) {
     const {
-        itemList,
         stakedItemList,
     } = useApp();
+
 
     return (
         <div className="main-workplace-sidebar">
             <div className="main-workplace-sidebar__wrapper">
-                {itemList.length ?
+                {stakedItemList.length ?
                         <div className="main-workplace-sidebar__list">
-                            {itemList.map((item, index) => <SidebarItem  item={item} index={index} />)}
+                            {stakedItemList.map((item, index) => <SidebarItem
+                                item={item}
+                                index={index}
+                                setSelectedWorkPlace={setSelectedWorkPlace}
+                                selectedWorkPlace={selectedWorkPlace}
+                            />)}
                         </div>
                         :
                         <p className={'no-workplaces'}>No workplaces</p>
