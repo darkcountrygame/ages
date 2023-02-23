@@ -104,27 +104,13 @@ export default function Market() {
 
 
                             <div className="main-main-contant">
-                                <div className="market-list">
-                                    {/*{itemList.map( item => (item.schema.schema_name === 'tool' ? <UserTool*/}
-                                    {/*            itemList={itemList}*/}
-                                    {/*            item={item}*/}
-                                    {/*            setSelectTool={setSelectTool}*/}
-                                    {/*            setSelectToolImg={setSelectToolImg}*/}
-                                    {/*            setToolName={setToolName}*/}
-                                    {/*            />*/}
-                                    {/*        :*/}
-                                    {/*        false*/}
-                                    {/*))}*/}
-                                    <UserTool />
-                                    <UserTool />
-                                    <UserTool />
-                                    <UserTool />
-                                    <UserTool />
-                                    <UserTool />
-                                    <UserTool />
-                                    <UserTool />
-                                    <UserTool />
-                                </div>
+                                    <div className="market-list">
+                                        {itemList.length ?
+                                            itemList.map( item => <UserTool item={item} />)
+                                            :
+                                            <p className={'no-workplaces'}>No tools</p>
+                                        }
+                                    </div>
 
                             </div>
                             <div className="market-btn">
