@@ -67,6 +67,7 @@
 }
 
 .header-items .header-items_list{
+    display: flex;
     padding: 0;
 }
 
