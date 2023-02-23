@@ -35,7 +35,6 @@ export default function Inventory() {
                      <h2>Market</h2>
                  </div>
                  <div className="container">
-                     <div className="main-main-wrapper">
                      <div className="main-main-contant">
                          <div className="main-main-list">
                             
@@ -104,7 +103,6 @@ export default function Inventory() {
                             </div>
                          </div>
                      </div>
-                 </div>
                  </div>
              </div>
         

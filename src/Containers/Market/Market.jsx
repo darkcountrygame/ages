@@ -8,7 +8,6 @@ import '../Workplaces/workplaces.css'
 import './market.css'
 
 
-
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UpgradeCard from '../../Modal/UpgradeCard'
@@ -22,7 +21,7 @@ export default function Market() {
         wpConfig,
     } = useApp();
 
-   const [selectedTool, setSelectTool] = useState([])
+    const [selectedTool, setSelectTool] = useState([])
     const [selectedToolImg, setSelectToolImg] = useState([])
     const [toolName, setToolName] = useState([])
 
@@ -40,62 +39,53 @@ export default function Market() {
     if (!itemList.length){
         return (
             <section className='market'>
-                <Header />
-                <div className="main-workplace market">
+                {/*<Header />*/}
+                {/*<div className="main-workplace market">*/}
+                {/*    <div className="main-main">*/}
+                {/*        <div className="main-title">*/}
+                {/*            <h2>Inventory</h2>*/}
+                {/*        </div>*/}
+                {/*        <div className="container">*/}
+                {/*                <div className="header-market">*/}
+                {/*                    <div className="header-market__wrapper">*/}
+                {/*                        <div className="filter">*/}
+                {/*                            <select name="">*/}
+                {/*                                <option>Hunters Lodge</option>*/}
+                {/*                            </select>*/}
+                {/*                            <select name="">*/}
+                {/*                                <option>Rarity Filter</option>*/}
+                {/*                            </select>*/}
+                {/*                        </div>*/}
+                {/*                        <div className="btn">*/}
+                {/*                            <button onClick={redirectMarket}>Go to Market</button>*/}
+                {/*                        </div>*/}
+                {/*                    </div>*/}
+
+                {/*                </div>*/}
 
 
-                    <div className="main-main">
-                        <div className="main-title">
-                            <h2>Inventory</h2>
-                        </div>
-                        <div className="container">
-                            <div className="main-main-wrapper">
-                                <div className="header-market">
-                                    <div className="header-market__wrapper">
-                                        <div className="filter">
-                                            <select name="">
-                                                <option>Hunters Lodge</option>
-                                            </select>
-                                            <select name="">
-                                                <option>Rarity Filter</option>
-                                            </select>
-                                        </div>
-                                        <div className="btn">
-                                            <button onClick={redirectMarket}>Go to Market</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                                <div className="main-main-contant">
-                                    <div className="main-main-list no-inventory">
-                                        You do not have inventory tool
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <Footer />
+                {/*                <div className="main-main-contant">*/}
+                {/*                    <div className="main-main-list no-inventory">*/}
+                {/*                        You do not have inventory tool*/}
+                {/*                    </div>*/}
+                {/*                </div>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                {/*<Footer />*/}
             </section>
         )
     }
 
     return (
-        <section className='market'>
+        <section className='workplace'>
             <Header />
             <div className="main-workplace market">
-
-
                 <div className="main-main">
                     <div className="main-title">
                         <h2>Inventory</h2>
                     </div>
                     <div className="container">
-                        <div className="main-main-wrapper">
                             <div className="header-market">
                                 <div className="header-market__wrapper">
                                     <div className="filter">
@@ -114,23 +104,32 @@ export default function Market() {
 
 
                             <div className="main-main-contant">
-                                <div className="main-main-list market-list">
-                                    {itemList.map( item => (item.schema.schema_name === 'tool' ? <UserTool
-                                                itemList={itemList}
-                                                item={item}
-                                                setSelectTool={setSelectTool}
-                                                setSelectToolImg={setSelectToolImg}
-                                                setToolName={setToolName}
-                                                />
-                                            :
-                                            false
-                                    ))}
+                                <div className="market-list">
+                                    {/*{itemList.map( item => (item.schema.schema_name === 'tool' ? <UserTool*/}
+                                    {/*            itemList={itemList}*/}
+                                    {/*            item={item}*/}
+                                    {/*            setSelectTool={setSelectTool}*/}
+                                    {/*            setSelectToolImg={setSelectToolImg}*/}
+                                    {/*            setToolName={setToolName}*/}
+                                    {/*            />*/}
+                                    {/*        :*/}
+                                    {/*        false*/}
+                                    {/*))}*/}
+                                    <UserTool />
+                                    <UserTool />
+                                    <UserTool />
+                                    <UserTool />
+                                    <UserTool />
+                                    <UserTool />
+                                    <UserTool />
+                                    <UserTool />
+                                    <UserTool />
                                 </div>
 
                             </div>
                             <div className="market-btn">
                                 {!selectedTool.length ?
-                                    <button onClick={toastyErr}>Upgrade -{wpConfig[1].price_upgrade}</button>
+                                    <button onClick={toastyErr}>Upgrade -{wpConfig[1]?.price_upgrade}</button>
                                 :
                                     <UpgradeCard
                                         selectedTool={selectedTool}
@@ -140,16 +139,13 @@ export default function Market() {
                                 }
                             </div>
                             <div className="market-lvl">
-                                <div className="market-lvl_wrapper">
-                                    <p className="lv">1 lv - 25/hr</p>
-                                    <p>2 lv - 50/hr</p>
-                                </div>
+                                {/*<div className="market-lvl_wrapper">*/}
+                                {/*    <p className="lv">1 lv - 25/hr</p>*/}
+                                {/*    <p>2 lv - 50/hr</p>*/}
+                                {/*</div>*/}
                             </div>
-                        </div>
                     </div>
                 </div>
-
-
             </div>
             <Footer />
         </section>

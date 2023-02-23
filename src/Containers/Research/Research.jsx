@@ -44,7 +44,6 @@ export default function Research() {
                         <h2>Research</h2>
                     </div>
                     <div className="container">
-                        <div className="research-wrapper">
                            <div className="research-left">
                                 <div className="research-left_img">
                                     <img src={researchLeft} alt="img" />
@@ -89,7 +88,6 @@ export default function Research() {
                                     <NewEra />
                                 </div>
                            </div>
-                        </div>
                     </div>
                 </div>
 

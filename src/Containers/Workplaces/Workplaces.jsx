@@ -107,6 +107,7 @@ const Workplaces = () => {
                                     <div className="workplaces-item available">
                                         <div className="workplaces-img available-img">
                                             <img src={WoodenSpear} alt="spear" />
+                                            <p className={'workplaces-img_name'}>Wooden Spear</p>
                                         </div>
                                         <div className="produces">
                                             <p>Produces:</p>

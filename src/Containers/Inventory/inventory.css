@@ -4,25 +4,35 @@ h4{
 
 .main-workplace.inventory{
     justify-content: center;
+
 }
 
-.inventory .main-main-list{
-    padding-top: 60px;
-} 
+.inventory .main-main{
+    margin-right: 0;
+}
+
+
+.inventory .container{
+    height: 63%;
+    padding: 126px 120px;
+}
 
 
 /* ITEMS */
 
 .inventory-item{
-    width: 200px;
-    height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 234px;
+    height: 429px;
     background-color: rgba(0, 0, 0, 0.103);
     border-radius: 10px;
     text-align: center;
 }
 
 .inventory-item__title{
-    padding: 10px 0;
+    padding: 22px 0;
     color: #fff;
 }
 
@@ -63,6 +73,7 @@ h4{
 
 .inventory-item__btn{
     margin-top: 20px;
+    margin-bottom: 26px;
 }
 
 .inventory-item__btn button{

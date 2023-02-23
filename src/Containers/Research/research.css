@@ -1,15 +1,19 @@
 h3{
     margin: 0;
 }
+
 .main-workplace.research{
     justify-content: center;
 }
 
-.research .container{
-    height: 100%;
+.main-workplace.research .main-main{
+    margin-right: 0;
 }
 
-.research-wrapper{
+
+
+.research .container{
+    height: 100%;
     display: flex;
     padding: 40px 30px;
 }
@@ -17,6 +21,7 @@ h3{
 .research-left{
     margin-top: 40px;
     flex: 0 0 50%;
+    height: 80%;
     max-width: 50%;
     border-right: 5px solid #ae8963;
     border-radius: 5px;
@@ -24,7 +29,8 @@ h3{
 
 .research-left .research-left_img{
   
-    width: 60%;
+    width: 325px;
+    height: 211px;
     margin: 0 auto;
 }
 
@@ -66,6 +72,7 @@ h3{
 }
 
 .research-right{
+    height: 80%;
     flex: 0 0 50%;
     max-width: 50%;
 }

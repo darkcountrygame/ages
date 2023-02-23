@@ -1,17 +1,42 @@
-.market{
-    background: url('../../images/ingame_background.png');
-    background-position: center;
-}
+/*.market{*/
+/*    background-image: url('../../images/ingame_background.png');*/
+/*    background-position: center;*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    height: 100vh;*/
+/*    overflow: auto;*/
+/*}*/
+
+
 .main-main-contant.market{
     justify-content: center;
+}
+
+/*.main-workplace.market .main-main-contant{*/
+/*    padding: 0 0 20px 0;*/
+/*    overflow: auto;*/
+/*}*/
+
+.main-workplace.market .market-list{
+    padding: 0 0 30px 20px;
+    overflow-y: auto;
 }
 
 .main-workplace.market{
     justify-content: center;
 }
 
+.main-workplace.market .main-main{
+    margin: 0;
+}
+
+.main-workplace.market .container{
+    height: 580px;
+    padding: 85px 105px 0 111px;
+}
+
 .header-market{
-    margin-bottom: 55px;
+    margin-bottom: 30px;
 }
 
 .header-market__wrapper{
@@ -24,10 +49,10 @@
     margin: 10px;
     border-radius: 10px;
     border: 2px solid #815F50;
-    background: #EACC9B;
+    background: transparent;
     padding: 10px 30px;
     text-align: left;
-    color: #664D41;
+    color: #512B47;
 }
 
 .header-market__wrapper button{
@@ -45,13 +70,21 @@
 }
 
 .market-list{
-    width: 120%;
-    flex-wrap: nowrap;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+    width: 991px;
+    height: 304px;
+    /* UI Properties */
+    background: #B99068 0 0 no-repeat padding-box;
+    border: 2px solid #AE845B;
+    border-radius: 10px;
+    opacity: 1;
 }
 
 .market-list_item{
-    width: 150px;
-    margin: 10px;
+    margin: 10px 10px;
     cursor: pointer;
 }
 
@@ -64,7 +97,8 @@
 }
 
 .list-item-wrapper{
-    height: 100%;
+    width: 186px;
+    height: 282px;
 }
 
 .market-list_item img{

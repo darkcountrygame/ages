@@ -1,6 +1,4 @@
-.footer{
-    margin-top: 20px;
-}
+
 
 .nav-list{
 
@@ -13,12 +11,14 @@
 }
 
 .nav-list ul{
+    margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .nav-list li{
-
+    display: flex;
+    align-items: center;
     padding: 12px;
     margin: 15px;
     position: relative;
