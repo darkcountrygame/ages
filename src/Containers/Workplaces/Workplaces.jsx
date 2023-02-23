@@ -32,8 +32,7 @@ const Workplaces = () => {
         stakedToolsList,
     } = useApp();
 
-     console.log(stakedItemList)
-     console.log(stakedToolsList)
+     console.log(itemList)
 
     const [selectItem, setSelectItem] = useState([])
 

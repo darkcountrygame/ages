@@ -14,7 +14,6 @@ export default () => {
         wpConfig,
     } = useApp();
 
-    console.log(wpConfig)
 
   return (
       <Popup

@@ -9,7 +9,7 @@ import WoodenCutter from '../../images/woodcutter.png'
 import SidebarItem from './SidebarItem'
 
 
-export default function Sidebr({ selectItem, setSelectItem, stakeHandler }) {
+export default function Sidebr({  selectItem, setSelectItem, stakeHandler }) {
 
     const {
         itemList,
@@ -19,14 +19,14 @@ export default function Sidebr({ selectItem, setSelectItem, stakeHandler }) {
     return (
         <div className="main-workplace-sidebar">
             <div className="main-workplace-sidebar__wrapper">
-                <div className="main-workplace-sidebar__list">
-                    {/*{stakedItemList.map(item => <SidebarItem  item={item} />)}*/}
-                    <SidebarItem  item={WoodenCutter} />
-                    <SidebarItem  item={WoodenCutter} />
-                    <SidebarItem  item={WoodenCutter} />
-                    <SidebarItem  item={WoodenCutter} />
-                    <SidebarItem  item={WoodenCutter} />
-                </div>
+                {itemList.length ?
+                        <div className="main-workplace-sidebar__list">
+                            {itemList.map((item, index) => <SidebarItem  item={item} index={index} />)}
+                        </div>
+                        :
+                        <p className={'no-workplaces'}>No workplaces</p>
+                }
+
                 {/*<EquipCardWp class="add-workplace" itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} title='Add workplace'/>}*/}
             </div>
         </div>

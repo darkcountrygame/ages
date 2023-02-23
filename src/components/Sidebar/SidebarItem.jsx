@@ -8,23 +8,19 @@ import sidebarItem from '../../images/hunters_lodge.png'
 
 
 
-export default function Sidebar({ item }) {
+export default function Sidebar({ item, index }) {
 
     const {
         stakedItemList,
     } = useApp();
 
-    // return (
-    //     <div className="main-workplace-sidebar__item">
-    //         <div className="sidebar__item__container">
-    //             { !stakedItemList.length  ?  <img src={sidebarItem} alt="img" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${item.data.img}`} alt="spear" /> }
-    //         </div>
-    //     </div>
-    // )
-
     return (
-        <div className="main-workplace-sidebar__item">
-               <img src={item} alt="img" />
-        </div>
+        <>
+            {item.schema.schema_name === 'workplace' &&
+                <div key={index} className="main-workplace-sidebar__item">
+                    <img src={`https://cloudflare-ipfs.com/ipfs/${item.data.img}`} alt="img" />
+                </div>
+            }
+        </>
     )
 }
