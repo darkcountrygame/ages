@@ -71,14 +71,15 @@
 
 
 
-.actions button{
-    background: #12B124;
-    cursor: pointer;
-    padding: 10px 30px;
-    color: #fff;
-    border: 0;
-    font-size: 24px;
-    display: block;
-    margin: 0 auto;
+/*.actions button{*/
+/*    background-image: url("../images/green_btn.png");*/
+/*    background-repeat: no-repeat;*/
+/*    cursor: pointer;*/
+/*    padding: 10px 30px;*/
+/*    color: #fff;*/
+/*    border: 0;*/
+/*    font-size: 24px;*/
+/*    display: block;*/
+/*    margin: 0 auto;*/
 
-}
+/*}*/

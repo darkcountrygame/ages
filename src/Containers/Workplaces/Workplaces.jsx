@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useState, useContext} from "react";
 import { useApp } from "../../Data/AppContext";
 import { UALContext } from "ual-reactjs-renderer";
 import { toast } from "react-toastify";
@@ -13,7 +13,6 @@ import equip from '../../images/plus_icon_section.png'
 import lock from '../../images/lock.png'
 
 import Footer from '../../components/FooterGameNav/FooterGameNav'
-import UnEquipCard from '../../Modal/UnEquipCard'
 import UnlockCard from '../../Modal/UnlockCard'
 import EquipTool from '../../Modal/EquipTool'
 import Sidebar from '../../components/Sidebar/Sidebar'
@@ -35,16 +34,16 @@ const Workplaces = () => {
      console.log(stakedItemList)
 
     const [selectItem, setSelectItem] = useState([])
-    const [selectedWorkPlace, setSelectedWorkPlace] = useState(0)
+    const [selectedWorkPlace, setSelectedWorkPlace] = useState(stakedItemList.length > 0 ? String(stakedItemList[0].asset_id) : null)
 
-    
-    
     const renderWorkPlaceTools = () => {
       return(
           <div className="container">
               <div className="main-main-wrapper">
                   <div className="main-workplace-header">
-                      <button onClick={() => handleClaim(stakedItemList[0].asset_id)}>Start Work</button>
+                      <div className="start-work_btn" onClick={() => handleClaim(selectedWorkPlace)}>
+                          <p>Start Work</p>
+                      </div>
                       <p>Total Prodused: <span>0</span><img src={meat} alt="meat" /></p>
                   </div>
 
@@ -60,8 +59,8 @@ const Workplaces = () => {
                                   <p>Produces:</p>
                                   <p>100/Hour</p>
                               </div>
-                              <div className="btn-lock">
-                                  <UnEquipCard />
+                              <div className="btn-equip">
+                                  <EquipTool itemList={itemList} />
                               </div>
                           </div>
 
@@ -69,23 +68,9 @@ const Workplaces = () => {
                               <div className="workplaces-img unequip-img">
                                   { !stakedToolsList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedToolsList[0].data.img}`} alt="spear" /> }
                               </div>
-                              {
-                                  !stakedToolsList.length ?
-
-                                      <div className="btn-unequip">
-
-                                          { !itemList.length ? <UnEquipCard /> : <EquipTool itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} />}
-
-                                      </div>
-
-                                      :
-
-                                      <div className="btn-unequip unequip">
-                                          <button onClick={() => unstakeHandler(stakedToolsList[0].asset_id)}>Unequip</button>
-                                      </div>
-
-                              }
-
+                              <div className="btn-equip">
+                                  <EquipTool itemList={[]} />
+                              </div>
                           </div>
 
                           <div className="workplaces-item lock">
@@ -173,9 +158,9 @@ const Workplaces = () => {
                         <h2>Workplaces</h2>
                     </div>
                     {renderWorkPlaceTools()}
+                    <Footer />
                 </div>
             </div>
-            <Footer />
         </section>
     )
 }

@@ -41,10 +41,9 @@ h4{
 }
 
 .inventory-item__img{
-    margin-top: 20px;
     width: 70%;
     height: 40%;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 .inventory-item__img img{
@@ -78,14 +77,15 @@ h4{
 
 .inventory-item__btn button{
     padding: 10px 50px;
-    background-color: rgb(3, 236, 3);
+    background-color: #0000006e;
+    background-image: url("../../images/green_btn.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #fff;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
     cursor: pointer;
 }
-
-
 
 /*-------*/
 

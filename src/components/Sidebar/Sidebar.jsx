@@ -8,11 +8,12 @@ import './sidebar.css'
 import SidebarItem from './SidebarItem'
 
 
-export default function Sidebr({  selectItem, setSelectItem, stakeHandler, setSelectedWorkPlace, selectedWorkPlace }) {
+export default function Sidebar({  selectItem, setSelectItem, stakeHandler, setSelectedWorkPlace, selectedWorkPlace }) {
     const {
         stakedItemList,
     } = useApp();
 
+    console.log(stakedItemList)
 
     return (
         <div className="main-workplace-sidebar">

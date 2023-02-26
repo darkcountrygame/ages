@@ -115,7 +115,7 @@ export default function Market() {
                             </div>
                             <div className="market-btn">
                                 {!selectedTool.length ?
-                                    <button onClick={toastyErr}>Upgrade -{wpConfig[1]?.price_upgrade}</button>
+                                    <button onClick={toastyErr}>Upgrade -{Math.floor(wpConfig[1]?.price_upgrade.split(' ')[0]) + ' RTP'}</button>
                                 :
                                     <UpgradeCard
                                         selectedTool={selectedTool}

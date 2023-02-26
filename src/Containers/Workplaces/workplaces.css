@@ -1,7 +1,9 @@
 .workplace{
     background-color: rgb(0, 0, 0);
     background-size: 100%;
-    background: url('../../images/ingame_background.png');
+    background-image: url('../../images/ingame_background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -23,11 +25,13 @@
     position: relative;
     display: flex;
     margin: 0 auto;
-    height: 65%;
-    justify-content: space-between;
+    height: 676px;
+    justify-content: center;
 }
 
 .main-workplace-sidebar{
+    position: absolute;
+    left: 0;
     width: 245px;
     height: 676px;
     background-image: url('../../images/workplaces_bg.png');
@@ -43,7 +47,6 @@
     background-size: 100% 100%;
     border-radius: 10px;
     position: relative;
-    margin-right: 354px;
 }
 
 .main-main .main-title{
@@ -64,6 +67,7 @@
     font-weight: bold;
     padding: 15px;
     color: #fff;
+    text-shadow: 0 0 7px #FF9600CC;
     margin: 0;
 }
 
@@ -81,7 +85,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+
+}
+
+.start-work_btn{
+    background-color: #0000006e;
+    background-image: url("../../images/green_btn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.start-work_btn p{
+    padding: 9px 28px;
+    color: #ffffff;
+    font-size: 22px;
+    margin: 0;
 }
 
 .main-workplace-header button{
@@ -92,9 +112,6 @@
     cursor: pointer;
 }
 
-.main-workplace-header p{
-    font-size: 18px;
-}
 
 .main-workplace-header span{
     margin-left: 15px;
@@ -208,7 +225,7 @@
     margin-bottom: 20px;
 }
 
-.btn-equip button{
+.btn-unequip button{
     display: block;
     margin: 0 auto;
     color: #fff;
@@ -218,17 +235,22 @@
     cursor: pointer;
 }
 
-.btn-unequip button{
+.btn-equip button{
+    border: 0;
+    font-size: 22px;
     display: block;
     margin: 0 auto;
     color: #fff;
     text-decoration: none;
-    background: #12B124;
-    padding: 10px 40px;
+    background-color: #0000006e;
+    background-image: url("../../images/green_btn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 11px 50px;
     cursor: pointer;
 }
 
-.btn-unequip.unequip button{
+.btn-equip.unequip button{
     display: block;
     margin: 0 auto;
     color: #fff;
@@ -239,13 +261,19 @@
 }
 
 .btn-lock button{
+    border: 0;
+    font-size: 22px;
     display: block;
     margin: 0 auto;
-    background: #815F50;
-    padding: 10px 40px;
     color: #fff;
     text-decoration: none;
+    background-color: #0000006e;
+    background-image: url("../../images/dark_btn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 11px 50px;
     cursor: pointer;
+
 }
 
 
@@ -294,6 +322,7 @@
     padding: 13px 9px;
     /* background: #6b4c3e8a; */
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .main-workplace-sidebar__item img{
@@ -321,85 +350,208 @@
     height: 100%;
 }
 
-    @media screen and (max-width: 1680px) {
-        .workplaces-item{
-            width: 200px;
-            height: 360px;
-            background-color: rgba(0, 0, 0, 0.103);
-            border-radius: 10px;
-        }
+@media screen and (max-width: 1815px) {
+
+    .main-workplace{
+        height: 630px;
     }
 
-@media screen and (max-width: 1400px) {
+    .workplace .main-main{
+        width: 1075px;
+        height: 630px;
+    }
+
     .workplaces-item{
         width: 200px;
-        height: 350px;
-        background-color: rgba(0, 0, 0, 0.103);
-        border-radius: 10px;
-    }
-}
-
-@media screen and (max-width: 1366px) {
-    .main-workplace{
-        height: 80vh;
-    }
-    .workplaces-item{
-        width: 170px;
-        height: 320px;
-    }
-    .main-workplace-sidebar__item{
-        width: 100px;
-    }
-}
-
-
-
-@media screen and (max-width: 1450px) {
-
-    .workplace{
-        height: 100vh;
+        height: 450px;
     }
 
-
-    .main-main{
-        max-width: 70%;
-        height: 550px;
-        margin: 0 auto;
-    }
-
-    .main-main .container{
-        height: 85%;
-    }
-
-    .main-workplace{
-        display: block;
-    }
     .main-workplace-sidebar{
-        display: none;
-        width: 95%;
-        margin: 0 20px 70px 20px;
+        width: 220px;
+        height: 630px;
     }
-    .main-workplace-sidebar__wrapper{
-        padding: 0;
-    }
-    .main-workplace-sidebar__list{
-        display: flex;
-        width: auto;
-        justify-content: center;
-    }
+
     .main-workplace-sidebar__item{
-        margin: 20px;
+        width: 145px;
+        height: 200px;
     }
 
-    .main-workplace-sidebar::-webkit-scrollbar{
-        width: 10%
+    .start-work_btn{
+        width: 120px;
+        height: 35px;
+    }
+
+    .start-work_btn p{
+        padding: 5px 15px;
+        font-size: 18px;
+    }
+
+    .btn-equip button{
+        font-size: 18px;
+    }
+
+    .btn-lock button{
+        font-size: 18px;
+    }
+
+    .produces{
+        font-size: 16px;
+    }
+
+    .nav-list{
+        font-size: 23px;
+    }
+
+}
+
+@media screen and (max-width: 1690px) {
+    .header{
+        height: 140px;
+        margin-bottom: 10px;
+    }
+    .header-stats__title{
+        font-size: 16px;
+    }
+    .header-wrapper::before{
+        top: 5%;
+    }
+
+    .main-main .main-title{
+        background-size: 40%;
+    }
+
+    .header-wrapper{
+        padding: 5px 36px;
+    }
+
+    .main-workplace{
+        height: 580px;
+    }
+
+    .workplace .main-main{
+        width: 1000px;
+        height: 580px;
+    }
+
+    .main-main-wrapper{
+        padding: 50px 105px;
+    }
+
+    .workplaces-item{
+        width: 180px;
+        height: 410px;
+    }
+
+    .main-workplace-sidebar{
+        width: 220px;
+        height: 575px;
+    }
+
+    .workplaces-img_name{
+        font-size: 14px;
+    }
+
+    .main-workplace-sidebar__item{
+        width: 145px;
+        height: 200px;
+    }
+
+    .start-work_btn{
+        width: 120px;
+        height: 35px;
+    }
+
+    .start-work_btn p{
+        padding: 5px 15px;
+        font-size: 18px;
+    }
+
+    .btn-equip button{
+        font-size: 16px;
+    }
+
+    .btn-lock button{
+        font-size: 16px;
+    }
+
+    .produces{
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (max-width: 1599px) {
+    .main-workplace{
+        height: 515px;
+    }
+
+    .workplace .main-main{
+        width: 950px;
+        height: 510px;
+    }
+
+    .main-main .main-title{
+        background-size: 30%;
+    }
+
+    .main-main .main-title h2{
+        font-size: 21px;
+    }
+
+    .workplaces-item{
+        width: 165px;
+        height: 345px;
+    }
+
+    .btn-equip button{
+        font-size: 14px;
+        padding: 5px 30px;
+    }
+
+    .btn-lock button{
+        font-size: 14px;
+        padding: 5px 30px;
+    }
+
+    .main-workplace-sidebar{
+        width: 180px;
+        height: 500px;
+    }
+
+    .main-workplace-sidebar__item{
+        width: 115px;
+        height: 160px;
+    }
+
+    .nav-list{
+        font-size: 16px;
+    }
+
+    .nav-list li{
+        padding: 10px;
+    }
+
+    .nav-list li img{
+        width: 33px;
+        padding: 10px;
     }
 }
 
-@media screen and (max-width: 890px) {
-    .main-main .container {
-        height: 95%;
-    }
-}
+/*@media screen and (max-width: 1540px) {*/
+/*    .workplace .main-main{*/
+/*        margin-right: 215px;*/
+/*    }*/
+/*}*/
+
+
+/*@media screen and (max-width: 1680px) {*/
+/*    .workplaces-item{*/
+/*        width: 200px;*/
+/*        height: 360px;*/
+/*        background-color: rgba(0, 0, 0, 0.103);*/
+/*        border-radius: 10px;*/
+/*    }*/
+/*}*/
+
 
 

@@ -1,0 +1,122 @@
+.equip-tool {
+    font-size: 12px;
+    background-image: url('../images/popup1_bg.png');
+    background-repeat: no-repeat;
+    height: 502px;
+    width: 786px;
+    color:#815F50;
+    /*padding: 30px 95px;*/
+}
+
+.equip-tool > .header-modal {
+    width: 100%;
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    padding: 21px 0 18px 0;
+}
+
+.equip-tool > .content {
+    max-width: 700px;
+    height: 281px;
+    padding: 10px 5px;
+    text-align: center;
+    border: 2px solid #9c7650;
+    background: #b98d61;
+    margin: 0 auto;
+}
+
+.equip-tool > .content img{
+    padding: 30px 0 25px 0;
+}
+
+.equip-tool > .content p{
+    font-size: 18px;
+    padding-bottom: 5px;
+    color: #fff;
+}
+
+.equip-tool > .actions {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.equip-tool > .actions .green-btn{
+    margin-top: 45px;
+}
+
+.equip-tool > .actions a{
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #000;: #0000006e;
+    background-image: url("../images/green_btn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 5px 40px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.equip-tool > .close{
+    position: absolute;
+    right: 3%;
+    top: 4%;
+    cursor: pointer;
+}
+
+
+.equip-tool .card-list{
+    display: flex;
+    justify-content: start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    padding-bottom: 18px;
+}
+
+.equip-tool .card-item{
+    margin: 0 10px;
+}
+
+.equip-tool .card-item__img{
+    width: 185px;
+    height: 280px;
+}
+
+.equip-tool .card-item__img img{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.equip-tool > .equip_btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.equip-tool > .equip_btn p{
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #0000006e;
+    background-image: url("../images/green_btn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 5px 40px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.822);
+}
+
+.popup-content {
+    max-width: 900px;
+    height: 507px;
+}

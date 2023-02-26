@@ -20,7 +20,7 @@
 .nav-list li{
     display: flex;
     align-items: center;
-    padding: 12px;
+    padding: 20px;
     margin: 15px;
     position: relative;
 
@@ -38,7 +38,7 @@
     background-image: url('../../images/select_tab.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .nav-list li.active{

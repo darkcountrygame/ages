@@ -1,12 +1,12 @@
 .modal {
     font-size: 12px;
-    background: url('../images/popup1_bg.png');
+    background-image: url('../images/popup1_bg.png');
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
     color: #815F50;
-    padding: 20px 50px;
-    transform: translateX(-10%);
+    /*padding: 20px 50px;*/
+    /*transform: translateX(-10%);*/
 }
 
 .modal > .header-modal {

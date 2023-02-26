@@ -30,7 +30,7 @@ export default () => {
                 <p>Open a cell to speed up progress</p>
               </div>
               <div className="actions" onClick={close}>
-                <button>-{ !wpConfig.length ? '50' : wpConfig[0].price_unlock_slot }</button>
+                <button>{ !wpConfig.length ? '100 RTP' : Math.floor(+wpConfig[0].price_unlock_slot.split(' ')[0]) + ' RTP' }</button>
               </div>
             </div>
         )}

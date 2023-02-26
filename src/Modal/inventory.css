@@ -49,14 +49,19 @@
 .modal.exchange > .actions button{
     font-size: 24px;
     font-weight: bold;
-    background: #12B124;
+    background-color: #0000006e;
+    background-image: url("../images/green_btn.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 0;
     cursor: pointer;
     padding: 5px 40px;
+    color: #ffffff;
 }
 
 .modal.exchange > .close{
     position: absolute;
-    right: 4%;
+    right: -20%;
     top: 4%;
     cursor: pointer;
 }

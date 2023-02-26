@@ -18,8 +18,9 @@
 /*}*/
 
 .main-workplace.market .market-list{
-    padding: 0 0 30px 20px;
-    overflow-y: auto;
+    padding: 0 0 15px 20px;
+    overflow-y: hidden;
+    overflow-x: auto;
 }
 
 .main-workplace.market{
@@ -112,11 +113,14 @@
 }
 
 .market-btn button{
-    background: #12B124;
-    padding: 10px 30px;
+    background-color: #0000006e;
+    background-image: url("../../images/green_btn.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10px 20px;
     color: #fff;
     border: 0;
-    font-size: 24px;
+    font-size: 22px;
     display: block;
     margin: 0 auto;
     cursor: pointer;
@@ -134,15 +138,48 @@
 }
 
 
-
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1690px) {
     .market .main-main{
-        height: 575px;
+        height: 515px;
     }
-}
 
-@media screen and (max-width: 1400px) {
-    .market-btn{
-        margin-top: 3%;
+    .main-workplace.market .container{
+        height: 430px;
+    }
+
+    .header-market__wrapper .filter select{
+        padding: 5px 15px;
+    }
+
+    .header-market__wrapper button{
+        padding: 5px 15px;
+    }
+
+    .main-workplace.market .container{
+        padding: 45px 85px 0 111px;
+    }
+
+    .market-list{
+        width: 100%;
+        height: 230px;
+    }
+
+    .list-item-wrapper{
+        width: 132px;
+        height: 204px;
+    }
+
+    .inventory .container{
+        padding: 90px 55px;
+    }
+
+    .inventory-item{
+        width: 200px;
+        height: 355px;
+    }
+
+    .inventory-item__btn button{
+        font-size: 18px;
+        padding: 5px 35px;
     }
 }
