@@ -20,7 +20,7 @@ export const useRoutes = () => {
                      <Workpalces />
                  </Route>
 
-                 <Route exact path="/inventory">
+                 <Route exact path="/upgrade">
                      <Market />
                  </Route>
 
