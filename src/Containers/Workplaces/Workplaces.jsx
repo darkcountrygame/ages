@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import { useApp } from "../../Data/AppContext";
 import { UALContext } from "ual-reactjs-renderer";
 import { toast } from "react-toastify";
@@ -7,8 +7,10 @@ import './workplaces.css'
 
 import Header from '../../components/HeaderGame/HeaderGame'
 
-import WoodenSpear from '../../images/wooden_spear.png'
 import meat from '../../images/market-items/meat.png'
+import stone from '../../images/market-items/rock.png'
+import wood from '../../images/market-items/wood.png'
+import wheel from '../../images/market-items/wheel.png'
 import equip from '../../images/plus_icon_section.png'
 import lock from '../../images/lock.png'
 
@@ -18,6 +20,8 @@ import EquipTool from '../../Modal/EquipTool'
 import Sidebar from '../../components/Sidebar/Sidebar'
 
 import {fetchResources, claimMiningResources, unStakeTool, fetchItems, stakeTool, stakeWp} from "../../Services";
+import {getDataFromAtomicApi} from "../../Helpers";
+import Timer from "../../components/Countdown/Timer";
 
 const Workplaces = () => {
 
@@ -29,73 +33,270 @@ const Workplaces = () => {
         stakedItemList,
         setStakedItems,
         stakedToolsList,
+        eraConf
     } = useApp();
 
-     console.log(stakedItemList)
+
 
     const [selectItem, setSelectItem] = useState([])
-    const [selectedWorkPlace, setSelectedWorkPlace] = useState(stakedItemList.length > 0 ? String(stakedItemList[0].asset_id) : null)
+    const [selectedWorkPlace, setSelectedWorkPlace] = useState([])
+    const [tools, setTools] = useState([])
+    const [wp, setWP] = useState([])
+
+
+    const getResourceIcon = (name) => {
+      switch (name) {
+          case "food":
+              return meat
+
+          case "stone":
+              return stone
+
+          case "miles":
+              return wheel
+
+          case "wood":
+              return wood
+
+          default:
+              return wood
+      }
+    }
+
+    // useEffect(() => {
+    //     setSelectedWorkPlace(stakedItemList[0]?.workplace_asset_id)
+    // }, [stakedItemList])
+
+
+    useEffect(() => {
+        const toolsIdtoObj = () => {
+            if (selectedWorkPlace && selectedWorkPlace.tools && selectedWorkPlace.tools.length){
+                selectedWorkPlace.tools.map(async item => {
+                    const data = await getDataFromAtomicApi(`assets?ids=${item.key}&page=1&limit=100`)
+                    setTools(data)
+                })
+            } else {
+                setTools([])
+            }
+        }
+
+        const WPIdtoObj = async () => {
+            if (selectedWorkPlace && selectedWorkPlace.workplace_asset_id && selectedWorkPlace.workplace_asset_id.length){
+                    const data = await getDataFromAtomicApi(`assets?ids=${selectedWorkPlace.workplace_asset_id}&page=1&limit=100`)
+                    setWP(data[0])
+            } else if(stakedItemList && stakedItemList[0]?.workplace_asset_id && stakedItemList.length){
+                    const data = await getDataFromAtomicApi(`assets?ids=${stakedItemList[0]?.workplace_asset_id}&page=1&limit=100`)
+
+                    setSelectedWorkPlace(stakedItemList[0]?.workplace_asset_id)
+                    setWP(data[0])
+            } else {
+                setWP([])
+            }
+        }
+
+        WPIdtoObj()
+        toolsIdtoObj()
+    }, [selectedWorkPlace, stakedItemList])
+
+
+    // const renderWorkPlaceTools = () => {
+    //   return(
+    //       <div className="container">
+    //           <div className="main-main-wrapper">
+    //               {tools.length ?
+    //                   <>
+    //                       <div className="main-workplace-header">
+    //                           <div className="start-work_btn" onClick={() => handleClaim(selectedWorkPlace && String(selectedWorkPlace.workplace_asset_id))}>
+    //                               <p>Start Work</p>
+    //                           </div>
+    //                           <p>Total Prodused <span>0</span><img src={getResourceIcon(selectedWorkPlace?.generate_resource)} alt='' /></p>
+    //                       </div>
+    //                       <div className="main-main-contant">
+    //                           <div className="main-main-list">
+    //                               {tools.map(item =>
+    //                                   <>
+    //                                       <div key={Number(item.asset_id)} className="workplaces-item">
+    //                                           <div className="workplaces-img available-img">
+    //                                               <img src={`https://atomichub-ipfs.com/ipfs/${item.data.img}`} alt="" />
+    //                                               {/*<p className={'workplaces-img_name'}>{item.name}</p>*/}
+    //                                           </div>
+    //                                           <div className="produces">
+    //                                               <p>Produces:</p>
+    //                                               <p>{item.data.power}/Hour</p>
+    //                                           </div>
+    //                                           <div className="btn-unequip">
+    //                                               <button onClick={() => unstakeHandler(selectedWorkPlace.workplace_asset_id, item.asset_id)}>Unequip</button>
+    //                                           </div>
+    //                                       </div>
+    //                                       <div className="workplaces-item lock">
+    //                                           <div className="workplaces-img locked-img">
+    //                                               <img src={lock} alt="spear" />
+    //                                           </div>
+    //                                           <div className="btn-lock">
+    //                                               <UnlockCard />
+    //                                           </div>
+    //                                       </div>
+    //                                       <div className="workplaces-item lock">
+    //                                           <div className="workplaces-img locked-img">
+    //                                               <img src={lock} alt="spear" />
+    //                                           </div>
+    //                                           <div className="btn-lock">
+    //                                               <UnlockCard />
+    //                                           </div>
+    //                                       </div>
+    //                                       <div className="workplaces-item lock">
+    //                                           <div className="workplaces-img locked-img">
+    //                                               <img src={lock} alt="spear" />
+    //                                           </div>
+    //                                           <div className="btn-lock">
+    //                                               <UnlockCard />
+    //                                           </div>
+    //                                       </div>
+    //                                   </>
+    //                               )}
+    //
+    //                               {/*to unlock workplace slots - unlock:slot:workplace:[is staked 0 or 1]:[WORKPLACE_ID]*/}
+    //
+    //                               {/*<div className="workplaces-item">*/}
+    //                               {/*    <div className="workplaces-img available-img">*/}
+    //                               {/*        <img src={WoodenSpear} alt="spear" />*/}
+    //                               {/*        <p className={'workplaces-img_name'}>Wooden Spear</p>*/}
+    //                               {/*    </div>*/}
+    //                               {/*    <div className="produces">*/}
+    //                               {/*        <p>Produces:</p>*/}
+    //                               {/*        <p>100/Hour</p>*/}
+    //                               {/*    </div>*/}
+    //                               {/*    <div className="btn-equip">*/}
+    //                               {/*        <EquipTool itemList={itemList} />*/}
+    //                               {/*    </div>*/}
+    //                               {/*</div>*/}
+    //
+    //                               {/*<div className="workplaces-item equip">*/}
+    //                               {/*    <div className="workplaces-img unequip-img">*/}
+    //                               {/*        { !stakedToolsList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedToolsList[0].data.img}`} alt="spear" /> }*/}
+    //                               {/*    </div>*/}
+    //                               {/*    <div className="btn-equip">*/}
+    //                               {/*        <EquipTool itemList={[]} />*/}
+    //                               {/*    </div>*/}
+    //                               {/*</div>*/}
+    //
+    //                               {/*<div className="workplaces-item lock">*/}
+    //                               {/*    <div className="workplaces-img locked-img">*/}
+    //                               {/*        <img src={lock} alt="spear" />*/}
+    //                               {/*    </div>*/}
+    //                               {/*    <div className="btn-lock">*/}
+    //                               {/*        <UnlockCard />*/}
+    //                               {/*    </div>*/}
+    //                               {/*</div>*/}
+    //
+    //                               {/*<div className="workplaces-item lock">*/}
+    //                               {/*    <div className="workplaces-img locked-img">*/}
+    //                               {/*        <img src={lock} alt="spear" />*/}
+    //                               {/*    </div>*/}
+    //                               {/*    <div className="btn-lock">*/}
+    //                               {/*        <UnlockCard />*/}
+    //                               {/*    </div>*/}
+    //                               {/*</div>*/}
+    //
+    //                           </div>
+    //                       </div>
+    //                   </>
+    //
+    //                   :
+    //                   <div className={'no-tools'}>No tools</div>
+    //
+    //               }
+    //
+    //           </div>
+    //       </div>
+    //   )
+    // }
 
     const renderWorkPlaceTools = () => {
-      return(
-          <div className="container">
-              <div className="main-main-wrapper">
-                  <div className="main-workplace-header">
-                      <div className="start-work_btn" onClick={() => handleClaim(selectedWorkPlace)}>
-                          <p>Start Work</p>
-                      </div>
-                      <p>Total Prodused: <span>0</span><img src={meat} alt="meat" /></p>
-                  </div>
+        const equipItems = tools.length < wp.data?.slots ? (
+            Array.from({ length: wp.data?.slots - tools.length }, (_, i) => (
+                <div className="workplaces-item equip">
+                    <div className="workplaces-img unequip-img">
+                        <img src={equip} alt="spear" />
+                    </div>
+                    <div className="btn-equip">
+                        <EquipTool stakeHandler={stakeHandler} itemList={itemList} />
+                    </div>
+                </div>
+            ))
+        ) : null;
 
-                  <div className="main-main-contant">
-                      <div className="main-main-list">
+        const lockItems = tools.length < wp.data?.slots ? (
+            Array.from({ length: 4 - wp.data?.slots }, (_, i) => (
+                <div key={i} className="workplaces-item lock">
+                    <div className="workplaces-img locked-img">
+                        <img src={lock} alt="spear" />
+                    </div>
+                    <div className="btn-lock">
+                        <UnlockCard wpID={wp.asset_id}/>
+                    </div>
+                </div>
+            ))
+        ) : null;
 
-                          <div className="workplaces-item available">
-                              <div className="workplaces-img available-img">
-                                  <img src={WoodenSpear} alt="spear" />
-                                  <p className={'workplaces-img_name'}>Wooden Spear</p>
-                              </div>
-                              <div className="produces">
-                                  <p>Produces:</p>
-                                  <p>100/Hour</p>
-                              </div>
-                              <div className="btn-equip">
-                                  <EquipTool itemList={itemList} />
+        return (
+            <div className="container">
+                <div className="main-main-wrapper">
+                    <>
+                        <div className="main-workplace-header">
+                            <p className={'time'}>Left to the next production:
+                                <div className={'timer'}>
+                                    <Timer wp={wp} stakedWP={stakedItemList}/>
+                                </div>
+                            </p>
+
+
+                          <div className={'workplace-header-right'}>
+                              <p>
+                                  <span>0</span>
+                                  <img src={getResourceIcon(selectedWorkPlace?.generate_resource)} alt="" />
+                              </p>
+                              <div
+                                  className="start-work_btn"
+                                  onClick={() => handleClaim(selectedWorkPlace && String(wp.asset_id))}
+                              >
+                                  <p>Claim</p>
                               </div>
                           </div>
 
-                          <div className="workplaces-item equip">
-                              <div className="workplaces-img unequip-img">
-                                  { !stakedToolsList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedToolsList[0].data.img}`} alt="spear" /> }
-                              </div>
-                              <div className="btn-equip">
-                                  <EquipTool itemList={[]} />
-                              </div>
-                          </div>
+                        </div>
+                        <div className="main-main-contant">
+                            <div className="main-main-list">
+                                {tools.map((item) => (
+                                    <div key={Number(item.asset_id)} className="workplaces-item">
+                                        <div className="workplaces-img available-img">
+                                            <img src={`https://atomichub-ipfs.com/ipfs/${item.data.img}`} alt="" />
+                                        </div>
+                                        <div className="produces">
+                                            <p>Produces:</p>
+                                            <p>{item.data.power}/Hour</p>
+                                        </div>
+                                        <div className="btn-unequip">
+                                            <button onClick={() => unstakeHandler(selectedWorkPlace.workplace_asset_id, item.asset_id)}>
+                                                Unequip
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                                {equipItems}
+                                {lockItems}
+                            </div>
+                        </div>
+                    </>
+                </div>
+            </div>
+        );
+    };
 
-                          <div className="workplaces-item lock">
-                              <div className="workplaces-img locked-img">
-                                  <img src={lock} alt="spear" />
-                              </div>
-                              <div className="btn-lock">
-                                  <UnlockCard />
-                              </div>
-                          </div>
 
-                          <div className="workplaces-item lock">
-                              <div className="workplaces-img locked-img">
-                                  <img src={lock} alt="spear" />
-                              </div>
-                              <div className="btn-lock">
-                                  <UnlockCard />
-                              </div>
-                          </div>
 
-                      </div>
-                  </div>
-              </div>
-          </div>
-      )
+    const handleWorkplaceTool = (item) => {
+        setSelectedWorkPlace(item)
     }
 
     const handleClaim = (workplace_id) => {
@@ -121,8 +322,8 @@ const Workplaces = () => {
             .catch(e => console.error(e))
     }
 
-    const stakeHandler = () => {
-        stakeTool({ activeUser, selectItem })
+    const stakeHandler = (selectItem) => {
+        stakeTool({ activeUser, selectItem, wp })
             .then(() => {
                 toast.success('Staked successed');
             })
@@ -130,12 +331,12 @@ const Workplaces = () => {
             .catch(e => console.error(e))
     }
 
-    const unstakeHandler = ( assetId ) => {
-        unStakeTool({ activeUser, assetId })
+    const unstakeHandler = ( wpId, assetId ) => {
+        unStakeTool({ activeUser, assetId, wpId })
             .then(() => {
-                fetchItems({ account: activeUser.accountName })
-                    .then(items => setStakedItems(items))
-                    .catch(e => console.log(e));
+                // fetchItems({ account: activeUser.accountName })
+                //     .then(items => setStakedItems(items))
+                //     .catch(e => console.log(e));
 
 
                  toast.success('Unstaked');
@@ -144,15 +345,18 @@ const Workplaces = () => {
             .catch(e => console.error(e))
     }
 
-    // useEffect(() => {
-    //     setSelectedWorkPlace(stakedItemList[0]?.asset_id)
-    // }, [])
-
     return (
         <section className="workplace">
             <Header />
             <div className="main-workplace">
-                <Sidebar selectItem={selectItem} setSelectItem={setSelectItem} stakeHandler={stakeHandlerWp} setSelectedWorkPlace={setSelectedWorkPlace} selectedWorkPlace={selectedWorkPlace} />
+                <Sidebar
+                    handleWorkplaceTool={handleWorkplaceTool}
+                    selectItem={selectItem}
+                    setSelectItem={setSelectItem}
+                    stakeHandler={stakeHandlerWp}
+                    setSelectedWorkPlace={setSelectedWorkPlace}
+                    selectedWorkPlace={selectedWorkPlace}
+                />
                 <div className="main-main">
                     <div className="main-title">
                         <h2>Workplaces</h2>

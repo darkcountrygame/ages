@@ -19,7 +19,7 @@ import {
     fetchWaxCourse,
     fetchToolConfig,
     fetchWpConfig,
-    fetchStakedTools,
+    // fetchStakedTools,
 
 } from "../../Services";
 
@@ -164,24 +164,24 @@ const AppContent = () => {
         }
     }, [activeUser, setStakedItemsLoading, stakedItemListFetched, setStakedItems]);
 
-    useEffect(() => {
-        if (activeUser && activeUser.accountName && !stakedToolsListFetched && setStakedTools
-            && !stakedToolsLoading
-        ) {
-            setStakedToolsLoading(true);
-
-            fetchStakedTools({
-                account: activeUser.accountName
-            })
-                .then((items) => setStakedTools(items))
-                .catch(e => {
-                    console.log(e)
-
-                    setStakedTools([]);
-                })
-                .finally(() => setStakedToolsLoading(false));
-        }
-    }, [activeUser, setStakedToolsLoading, stakedToolsListFetched, setStakedTools]);
+    // useEffect(() => {
+    //     if (activeUser && activeUser.accountName && !stakedToolsListFetched && setStakedTools
+    //         && !stakedToolsLoading
+    //     ) {
+    //         setStakedToolsLoading(true);
+    //
+    //         fetchStakedTools({
+    //             account: activeUser.accountName
+    //         })
+    //             .then((items) => setStakedTools(items))
+    //             .catch(e => {
+    //                 console.log(e)
+    //
+    //                 setStakedTools([]);
+    //             })
+    //             .finally(() => setStakedToolsLoading(false));
+    //     }
+    // }, [activeUser, setStakedToolsLoading, stakedToolsListFetched, setStakedTools]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !resourcesFetched && setResources

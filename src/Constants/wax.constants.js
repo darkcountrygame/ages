@@ -14,7 +14,7 @@ export const WAX_RPC_ENDPOINTS_PROTOCOL = "https";
  export const ATOMIC_ASSETS_API = 'https://test.wax.api.atomicassets.io/atomicassets/v1'; //TESTNET
 
 export const RTP_GAME = 'rtpgameeeeee';
-export const RTP_TOKEN = 'rtpgametoken'
+export const RTP_TOKEN = 'rtptokennnnn'
 export const RTP_GAME_COLLECTION = 'rtpassetssss';
 export const EOSIO_TOKEN ='eosio.token';
 export const DELPHI_ORACLE = 'delphioracle';

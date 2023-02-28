@@ -22,7 +22,7 @@ export default function Research() {
 
 
     const { resourcesList, probabilityPoints, spConfig } = useApp();
-    console.log(probabilityPoints)
+
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed)
             return <>0h 0m 0s</>;

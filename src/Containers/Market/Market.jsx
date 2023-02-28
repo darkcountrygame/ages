@@ -25,9 +25,6 @@ export default function Market() {
     const [selectedToolImg, setSelectToolImg] = useState([])
     const [toolName, setToolName] = useState([])
 
-    useEffect(() => {
-        console.log(selectedTool)
-    }, [selectedTool])
 
     const toastyErr = () => {
         toast.error('First select tool');
@@ -38,41 +35,41 @@ export default function Market() {
 
     if (!itemList.length){
         return (
-            <section className='market'>
-                {/*<Header />*/}
-                {/*<div className="main-workplace market">*/}
-                {/*    <div className="main-main">*/}
-                {/*        <div className="main-title">*/}
-                {/*            <h2>Inventory</h2>*/}
-                {/*        </div>*/}
-                {/*        <div className="container">*/}
-                {/*                <div className="header-market">*/}
-                {/*                    <div className="header-market__wrapper">*/}
-                {/*                        <div className="filter">*/}
-                {/*                            <select name="">*/}
-                {/*                                <option>Hunters Lodge</option>*/}
-                {/*                            </select>*/}
-                {/*                            <select name="">*/}
-                {/*                                <option>Rarity Filter</option>*/}
-                {/*                            </select>*/}
-                {/*                        </div>*/}
-                {/*                        <div className="btn">*/}
-                {/*                            <button onClick={redirectMarket}>Go to Market</button>*/}
-                {/*                        </div>*/}
-                {/*                    </div>*/}
+            <section className='workplace'>
+                <Header />
+                <div className="main-workplace market">
+                    <div className="main-main">
+                        <div className="main-title">
+                            <h2>Inventory</h2>
+                        </div>
+                        <div className="container">
+                                <div className="header-market">
+                                    <div className="header-market__wrapper">
+                                        <div className="filter">
+                                            <select name="">
+                                                <option>Hunters Lodge</option>
+                                            </select>
+                                            <select name="">
+                                                <option>Rarity Filter</option>
+                                            </select>
+                                        </div>
+                                        <div className="btn">
+                                            <button onClick={redirectMarket}>Go to Market</button>
+                                        </div>
+                                    </div>
 
-                {/*                </div>*/}
+                                </div>
 
 
-                {/*                <div className="main-main-contant">*/}
-                {/*                    <div className="main-main-list no-inventory">*/}
-                {/*                        You do not have inventory tool*/}
-                {/*                    </div>*/}
-                {/*                </div>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-                {/*<Footer />*/}
+                                <div className="main-main-contant">
+                                    <div className="main-main-list no-inventory">
+                                        You do not have inventory tool
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <Footer />
             </section>
         )
     }
@@ -106,7 +103,11 @@ export default function Market() {
                             <div className="main-main-contant">
                                     <div className="market-list">
                                         {itemList.length ?
-                                            itemList.map( item => <UserTool item={item} />)
+                                            itemList.map( item => <UserTool
+                                                item={item}
+                                                setSelectTool={setSelectTool}
+                                                selectedTool={selectedTool}
+                                            />)
                                             :
                                             <p className={'no-workplaces'}>No tools</p>
                                         }

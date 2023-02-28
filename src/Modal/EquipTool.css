@@ -80,6 +80,18 @@
 
 .equip-tool .card-item{
     margin: 0 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.equip-tool .card-item:hover{
+    background-image: url('../images/select_workplace.png');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
 }
 
 .equip-tool .card-item__img{
@@ -89,8 +101,18 @@
 
 .equip-tool .card-item__img img{
     width: 100%;
+    transform: scale(0.94);
+    padding-top: 5px;
+}
+
+.card-item.selected {
+    background-image: url('../images/select_workplace.png');
+    background-repeat: no-repeat;
+    width: 100%;
     height: 100%;
-    padding: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
 }
 
 .equip-tool > .equip_btn{

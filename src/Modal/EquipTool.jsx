@@ -1,15 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Popup from 'reactjs-popup';
 import { NavLink } from 'react-router-dom'
 
 import cardIcon from '../images/market_art.png'
 import closeImg from '../images/close.png'
 
-import './EquipTool.css'
 import UserItems from "../components/UserWorkplace/UserItems";
 
+import './EquipTool.css'
 
-const EquipTool = ({itemList}) => {
+
+
+const EquipTool = ({stakeHandler ,itemList}) => {
+
+    const [toolSelected, setToolSelected] = useState(null)
+
+
 
     return(
         <Popup
@@ -39,7 +45,13 @@ const EquipTool = ({itemList}) => {
                       <div className="content">
                           <div className="card-list">
                                   {itemList.map( (item, index) => (item.schema.schema_name === 'tool' ?
-                                          <UserItems itemList={itemList} item={item} index={index} />
+                                          <UserItems
+                                              itemList={itemList}
+                                              item={item}
+                                              index={index}
+                                              setToolSelected={setToolSelected}
+                                              toolSelected={toolSelected}
+                                          />
                                           :
                                           false
                                   ))}
@@ -52,7 +64,7 @@ const EquipTool = ({itemList}) => {
                           {/*    ))}*/}
                           {/*</div>*/}
                       </div>
-                      <div className="equip_btn" onClick={close}>
+                      <div className="equip_btn" onClick={() => stakeHandler(toolSelected)}>
                           <p> Equip </p>
                       </div>
                   </div>

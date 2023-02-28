@@ -2,7 +2,6 @@ import { RTP_GAME, RTP_TOKEN } from "../Constants";
 import {signTransaction, fetchRows} from "../Helpers";
 
 export const claimSciencePoints = async ({ activeUser }) => {
-    // console.log(activeUser)
     return await signTransaction({
         activeUser,
         account: RTP_TOKEN,
@@ -10,7 +9,7 @@ export const claimSciencePoints = async ({ activeUser }) => {
         data: {
             from: activeUser.accountName,
             to: RTP_GAME,
-            quantity: '10.0000 RTP',
+            quantity: '100.0000 RTP',
             memo: 'research'
         }
     });

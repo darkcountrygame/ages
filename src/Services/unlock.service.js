@@ -1,16 +1,17 @@
-import { RTP_GAME } from "../Constants";
+import {RTP_GAME, RTP_TOKEN} from "../Constants";
 import { signTransaction } from "../Helpers";
 
 
-export const unlockSlot = async ({ activeUser, selectedTool }) => {
+export const unlockSlot = async ({ activeUser, selectedWP }) => {
     return await signTransaction({
         activeUser,
-        account: RTP_GAME,
-        action: 'unlockslotwp',
+        account: RTP_TOKEN,
+        action: 'transfer',
         data: {
-            player: activeUser.accountName,
-            workplace_asset_id: 1099524450042,
-            is_staked: true
+            from: activeUser.accountName,
+            to: RTP_GAME,
+            quantity: '100.0000 RTP',
+            memo: `unlock:slot:workplace:1:${selectedWP}`
         }
     });
 };

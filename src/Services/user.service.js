@@ -74,30 +74,61 @@ export const fetchStakedWp = async ({account}) => {
     if (!rows[0])
         return [];
 
-      const stakedItems = rows.map( item => item.workplace_asset_id )
-      const data = await getDataFromAtomicApi(`assets?ids=${stakedItems}&page=1&limit=100`);
-
-
-    return data
+    return rows
 };
 
-export const fetchStakedTools = async ({account}) => {
-    const { rows } = await fetchRows({
-        contract: RTP_GAME,
-        scope: account,
-        table: "workplaces",
-        limit: 1,
-    });
+// export const fetchStakedWp = async ({account}) => {
+//     const { rows } = await fetchRows({
+//         contract: RTP_GAME,
+//         scope: account,
+//         table: "workplaces",
+//         limit: 1000,
+//     });
+//
+//     if (!rows[0]) {
+//         return [];
+//     }
+//
+//     const updatedRows = await Promise.all(rows.map(async (row) => {
+//         const { workplace_asset_id, ...rest } = row;
+//         const dataWP = await getDataFromAtomicApi(`assets?ids=${workplace_asset_id}&page=1&limit=100`);
+//         const updatedAssetId = dataWP;
+//         const updatedTools = rest.tools ? await Promise.all(rest.tools.map(async (tool) => {
+//             const { key, ...toolRest } = tool;
+//             const dataTool = await getDataFromAtomicApi(`assets?ids=${key}&page=1&limit=100`);
+//             const updatedKey = dataTool;
+//             return { ...toolRest, key: updatedKey };
+//         })) : [];
+//         return { ...rest, workplace_asset_id: updatedAssetId, tools: updatedTools };
+//     }));
+//
+//
+//
+//
+//     return updatedRows;
+// };
 
-    if (!rows[0])
-        return [];
 
-    const stakedTools = [rows[0].tools[0].key];
-    const data = await getDataFromAtomicApi(`assets?ids=${stakedTools}&page=1&limit=100`);
 
-    console.log(rows)
-     return data
-};
+
+
+
+// export const fetchStakedTools = async ({account}) => {
+//     const { rows } = await fetchRows({
+//         contract: RTP_GAME,
+//         scope: account,
+//         table: "workplaces",
+//         limit: 1,
+//     });
+//
+//     if (!rows[0])
+//         return [];
+//
+//     const stakedTools = [rows[0].tools[0].key];
+//     const data = await getDataFromAtomicApi(`assets?ids=${stakedTools}&page=1&limit=100`);
+//
+//      return data
+// };
 
 export const fetchResources = async ({ account }) => {
     const { rows } = await fetchRows({
@@ -109,7 +140,7 @@ export const fetchResources = async ({ account }) => {
     if (!rows[0])
         return rows[0] = {wood: 0, stone: 0, food: 0, miles: 0, science_points: 0};
 
-    return rows[0];
+    return rows;
 
 };
 
