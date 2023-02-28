@@ -47,7 +47,11 @@ export default ({wpID}) => {
                 <p>Open a cell to speed up progress</p>
               </div>
               <div className="actions" onClick={handleUnLock}>
-                <button>{ !wpConfig.length ? '100 RTP' : Math.floor(+wpConfig[0].price_unlock_slot.split(' ')[0]) + ' RTP' }</button>
+                  <button>
+                      {!wpConfig || !wpConfig.length || !wpConfig[0].price_unlock_slot
+                          ? '100 RTP'
+                          : Math.floor(+wpConfig[0].price_unlock_slot.split(' ')[0]) + ' RTP'}
+                  </button>
               </div>
             </div>
         )}

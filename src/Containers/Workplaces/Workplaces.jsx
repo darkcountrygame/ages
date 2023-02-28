@@ -342,7 +342,6 @@ const Workplaces = () => {
                  toast.success('Unstaked');
             })
              .catch(e => toast.error(e.message))
-            .catch(e => console.error(e))
     }
 
     return (

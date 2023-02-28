@@ -87,7 +87,7 @@
 .equip-tool .card-item:hover{
     background-image: url('../images/select_workplace.png');
     background-repeat: no-repeat;
-    width: 100%;
+    /*width: 100%;*/
     height: 100%;
     background-size: cover;
     background-position: center;
@@ -108,7 +108,7 @@
 .card-item.selected {
     background-image: url('../images/select_workplace.png');
     background-repeat: no-repeat;
-    width: 100%;
+    /*width: 100%;*/
     height: 100%;
     background-size: cover;
     background-position: center;

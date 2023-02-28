@@ -33,6 +33,7 @@ export default function Market() {
        window.open('https://wax-test.atomichub.io/market?collection_name=rush2prosper&order=desc&sort=created&symbol=WAX', '_blank')
     }
 
+
     if (!itemList.length){
         return (
             <section className='workplace'>
@@ -116,7 +117,12 @@ export default function Market() {
                             </div>
                             <div className="market-btn">
                                 {!selectedTool.length ?
-                                    <button onClick={toastyErr}>Upgrade -{Math.floor(wpConfig[1]?.price_upgrade.split(' ')[0]) + ' RTP'}</button>
+                                    <button onClick={toastyErr}>
+                                        Upgrade -
+                                        {wpConfig && wpConfig.length > 1 && wpConfig[1].price_upgrade
+                                            ? Math.floor(wpConfig[1].price_upgrade.split(' ')[0]) + ' RTP'
+                                            : '100 RTP'}
+                                    </button>
                                 :
                                     <UpgradeCard
                                         selectedTool={selectedTool}
