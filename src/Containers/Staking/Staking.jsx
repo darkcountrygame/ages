@@ -112,7 +112,9 @@ export default function Staking() {
                             {selectedTab === ADD_ASSET &&
                                 <div className="stake-list">
                                     {itemList.length ?
-                                        itemList.map( item => <UserTool
+                                        itemList
+                                            .filter(item => item.schema.schema_name === 'workplace')
+                                            .map( item => <UserTool
                                             item={item}
                                             setSelectTool={setSelectTool}
                                             selectedTool={selectedTool}
@@ -126,7 +128,9 @@ export default function Staking() {
                             {selectedTab === REMOVE_ASSET &&
                                 <div className="stake-list">
                                     {stakedAsset.length ?
-                                        stakedAsset.map( item => <UserTool
+                                        stakedAsset
+                                            .filter(item => item.schema.schema_name === 'workplace')
+                                            .map( item => <UserTool
                                             item={item}
                                             setSelectTool={setSelectTool}
                                             selectedTool={selectedTool}

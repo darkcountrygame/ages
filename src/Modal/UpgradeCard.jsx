@@ -42,7 +42,7 @@ export default ({ disabled, selectedTool, selectedToolImg, toolName}) => {
                   <div className="info-card__img">
                     <div className="info-card__img-wrapper">
                       <div className="info-card__photo">
-                        <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon" />
+                          {selectedToolImg ? <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon" /> : null}
                       </div>
                     </div>
                   </div>
