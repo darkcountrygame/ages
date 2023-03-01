@@ -17,10 +17,12 @@ export default function Footer() {
                         <ul>
                             {
                                 navMenu.map( link => (
-                                    <li>
-                                        <img src={link.icon} alt={link.title} />
-                                        <Link to={link.url}>{link.title}</Link>
-                                    </li>
+                                    <Link to={link.url}>
+                                        <li>
+                                            <img src={link.icon} alt={link.title} />
+                                           {link.title}
+                                        </li>
+                                    </Link>
                                 ))
                             }
                         </ul>

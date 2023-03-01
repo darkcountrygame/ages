@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
 .main-main{
   background: #725c5385;
   width: 1209px;
