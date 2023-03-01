@@ -26,12 +26,11 @@
 
 }
 
-.nav-list li a{
+.nav-list li img{
     text-decoration: none;
     color: #fff;
     z-index: 2;
-    margin-left: 20px;
-
+    margin-right: 20px;
 }
 
 .nav-list li:hover{
