@@ -34,64 +34,29 @@ export default function Staking() {
     }
 
 
-    if (!itemList.length){
-        return (
-            <section className='workplace'>
-                <Header />
-                <div className="main-workplace market">
-                    <div className="main-main">
-                        <div className="main-title">
-                            <h2>Inventory</h2>
-                        </div>
-                        <div className="container">
-                            <div className="header-market">
-                                <div className="header-market__wrapper">
-                                    <div className="filter">
-                                        <select name="">
-                                            <option>Hunters Lodge</option>
-                                        </select>
-                                        <select name="">
-                                            <option>Rarity Filter</option>
-                                        </select>
-                                    </div>
-                                    <div className="btn">
-                                        <button onClick={redirectMarket}>Go to Market</button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                            <div className="main-main-contant">
-                                <div className="main-main-list no-inventory">
-                                    You do not have inventory tool
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <Footer />
-            </section>
-        )
-    }
-
     return (
         <section className='workplace'>
             <Header />
-            <div className="main-workplace market">
+            <div className="main-workplace stake">
                 <div className="main-main">
                     <div className="main-title">
                         <h2>Inventory</h2>
                     </div>
                     <div className="container">
-                        <div className="header-market">
-                            <div className="header-market__wrapper">
+                        <div className="header-stake">
+                            <div className="header-stake__wrapper">
                                 <div className="filter">
                                     <select name="">
                                         <option>Hunters Lodge</option>
                                     </select>
                                     <select name="">
                                         <option>Rarity Filter</option>
+                                    </select>
+                                    <select name="">
+                                        <option>Level</option>
+                                    </select>
+                                    <select name="">
+                                        <option>Sort by</option>
                                     </select>
                                 </div>
                                 <div className="btn">
@@ -102,7 +67,7 @@ export default function Staking() {
 
 
                         <div className="main-main-contant">
-                            <div className="market-list">
+                            <div className="stake-list">
                                 {itemList.length ?
                                     itemList.map( item => <UserTool
                                         item={item}
@@ -115,27 +80,16 @@ export default function Staking() {
                             </div>
 
                         </div>
-                        <div className="market-btn">
+                        <div className="stake-btn">
                             {!selectedTool.length ?
-                                <button onClick={toastyErr}>
-                                    Upgrade -
-                                    {wpConfig && wpConfig.length > 1 && wpConfig[1].price_upgrade
-                                        ? Math.floor(wpConfig[1].price_upgrade.split(' ')[0]) + ' RTP'
-                                        : '100 RTP'}
+                                <button>
+                                    Stake
                                 </button>
                                 :
-                                <UpgradeCard
-                                    selectedTool={selectedTool}
-                                    selectedToolImg={selectedToolImg}
-                                    toolName={toolName}
-                                />
+                                <button>
+                                    Stake
+                                </button>
                             }
-                        </div>
-                        <div className="market-lvl">
-                            {/*<div className="market-lvl_wrapper">*/}
-                            {/*    <p className="lv">1 lv - 25/hr</p>*/}
-                            {/*    <p>2 lv - 50/hr</p>*/}
-                            {/*</div>*/}
                         </div>
                     </div>
                 </div>

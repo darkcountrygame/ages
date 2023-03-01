@@ -1,15 +1,20 @@
 import React, {useEffect, useState} from 'react'
+import {useApp} from "../../Data/AppContext";
 
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 
 import './Swap.css'
 
+
 export default function Swap() {
+
+    const { rtpBalance } = useApp();
 
     const [amount, setAmount] = useState('')
     const [result, setResult] = useState(0)
     const [isInitialInputChange, setIsInitialInputChange] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(null)
 
     const handleInputChange = (e) => {
         setAmount(e.target.value);
@@ -50,15 +55,22 @@ export default function Swap() {
                         <div className="swiper">
                             <div className="swiper-field">
                                 <input placeholder={0} type="text" onChange={handleInputChange} />
-                                <div className="resource-block">
-                                    <p>Select resource</p>
+                                <div className={'options'}>
+                                    <select className={'resource-block'} name="Select token">
+                                        <option disabled selected value="">Select token</option>
+                                        <option value="value1">food</option>
+                                        <option value="value2" selected>stone</option>
+                                        <option value="value3">wood</option>
+                                        <option value="value3">wheel</option>
+                                    </select>
+                                    <p className={'balance'}>{selectedOption}</p>
                                 </div>
                             </div>
                             <div className="swiper-field">
                                 <p className={'result'}>{result}</p>
                                 <div className="token-block">
                                      <p>RTP</p>
-                                    <p className={'balance'}>Balance: 10 000</p>
+                                    <p className={'balance'}>Balance: {rtpBalance}</p>
                                 </div>
                             </div>
                             <div className="swap-btn"><p>Swap</p></div>
