@@ -18,9 +18,11 @@
 /*}*/
 
 .main-workplace.market .market-list{
-    padding: 0 0 15px 20px;
-    overflow-y: hidden;
-    overflow-x: auto;
+    width: 100%;
+    height: 385px;
+    padding: 0 0 15px 0;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .main-workplace.market{
@@ -37,7 +39,7 @@
 }
 
 .header-market{
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 }
 
 .header-market__wrapper{
@@ -74,7 +76,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    /*flex-wrap: wrap;*/
+    flex-wrap: wrap;
     width: 991px;
     height: 304px;
     /* UI Properties */
@@ -85,6 +87,7 @@
 }
 
 .market-list_item{
+    height: 161px;
     margin: 10px 10px;
     cursor: pointer;
     position: relative;
@@ -108,8 +111,8 @@
 }
 
 .list-item-wrapper{
-    width: 186px;
-    height: 282px;
+    width: 108px;
+    height: 164px;
 }
 
 .market-list_item img{
@@ -170,14 +173,23 @@
         padding: 45px 85px 0 111px;
     }
 
+    /*.market-list_item.selected, .market-list_item:hover{*/
+    /*    width: 105px;*/
+    /*    height: 161px;*/
+    /*}*/
+
     .market-list{
         width: 100%;
         height: 230px;
     }
 
+    .main-workplace.market .market-list{
+        height: 305px;
+    }
+
     .list-item-wrapper{
-        width: 137px;
-        height: 204px;
+        width: 105px;
+        height: 150px;
     }
 
     .inventory .container{
