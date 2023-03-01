@@ -38,6 +38,7 @@
     height: 48px;
     text-align: center;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .main-workplace.swap .swap-container .swap-block .swap-btn p{
@@ -53,6 +54,17 @@
     width: 570px;
     height: 110px;
     margin-bottom: 18px;
+}
+
+.main-workplace.swap .swap-container .swap-block .swiper-field .result{
+    width: 40%;
+    padding: 10px 11px 10px 48px;
+    margin: 25px 0 28px 0;
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: transparent;
+    border: 0;
 }
 
 .main-workplace.swap .swap-container .swap-block .swiper-field .resource-block{
@@ -90,7 +102,10 @@
     margin: 0;
     font-size: 12px;
     padding-top: 8px;
+    cursor: pointer;
+    padding-bottom: 5px;
 }
+
 
 .main-workplace.swap .swap-container .swap-block .swiper-field .token-block p{
     margin: 12px;
@@ -170,6 +185,11 @@
         font-size: 10px;
     }
 
+    .main-workplace.swap .swap-container .swap-block .swiper-field .result{
+        margin: 15px 0 17px 0;
+        font-size: 27px;
+    }
+
     .main-workplace.swap .swap-container .statistic{
         width: 400px;
     }
@@ -215,6 +235,10 @@
         font-size: 28px;
     }
 
+    .main-workplace.swap .swap-container .swap-block .swiper-field .result{
+        margin: 10px 0 10px 0;
+    }
+
     .main-workplace.swap .swap-container .swap-block .swiper-field .token-block, .main-workplace.swap .swap-container .swap-block .swiper-field .resource-block{
         width: 125px;
         height: 30px;
@@ -234,6 +258,7 @@
 @media screen and (max-width: 1599px){
     .main-workplace.swap .swap-container {
         padding: 65px 85px 35px 85px;
+        height: 400px;
     }
 }
 
