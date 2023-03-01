@@ -3,9 +3,9 @@ import { signTransaction } from "../Helpers";
 
 
 export const unStakeTool = async ({ activeUser, assetId, wpId }) => {
-    console.log(activeUser.accountName)
-    console.log(assetId)
-    console.log(wpId)
+    // console.log(activeUser.accountName)
+    // console.log(assetId)
+    // console.log(wpId)
 
     return await signTransaction({
         activeUser,
@@ -21,7 +21,7 @@ export const unStakeTool = async ({ activeUser, assetId, wpId }) => {
 };
 
 export const stakeTool = async ({ activeUser, selectItem, wp }) => {
-    console.log(selectItem)
+    // console.log(selectItem)
 
     return await signTransaction({
         activeUser,

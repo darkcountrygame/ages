@@ -22,7 +22,7 @@ export default function Header() {
 
 
     const findResourceAmount = (resource) => {
-        console.log(resourcesList)
+        // console.log(resourcesList)
 
         if (resourcesList.length){
             const foundResource = resourcesList.find(

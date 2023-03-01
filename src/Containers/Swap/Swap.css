@@ -29,6 +29,7 @@
 }
 
 .main-workplace.swap .swap-container .swap-block .swap-btn{
+    display: block;
     color: #ffffff;
     font-size: 22px;
     background-image: url('../../images/green_btn.png');
@@ -39,9 +40,16 @@
     text-align: center;
     margin: 0 auto;
     cursor: pointer;
+
+}
+
+.main-workplace.swap .swap-container .swap-block .swap-btn.disabled{
+    background-image: url('../../images/unactive_green_btn.png');
+    cursor: default;
 }
 
 .main-workplace.swap .swap-container .swap-block .swap-btn p{
+    margin: 0;
     padding: 8px;
 }
 

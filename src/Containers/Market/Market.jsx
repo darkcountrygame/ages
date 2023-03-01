@@ -26,7 +26,7 @@ export default function Market() {
     const [selectedToolImg, setSelectToolImg] = useState([])
     const [toolName, setToolName] = useState([])
 
-    console.log(poolConfig)
+    // console.log(poolConfig)
     const toastyErr = () => {
         toast.error('First select tool');
     }

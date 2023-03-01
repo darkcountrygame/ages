@@ -8,17 +8,18 @@ import './Swap.css'
 
 
 export default function Swap() {
-
-    const { rtpBalance } = useApp();
-
-    const [amount, setAmount] = useState('')
-    const [result, setResult] = useState(0)
+    const { rtpBalance, resourcesList } = useApp();
+    const [amount, setAmount] = useState('');
+    const [result, setResult] = useState(0);
     const [isInitialInputChange, setIsInitialInputChange] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null)
+    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedResourceAmount, setSelectedResourceAmount] = useState(0);
 
     const handleInputChange = (e) => {
-        setAmount(e.target.value);
-    }
+        if (selectedOption) {
+            setAmount(e.target.value);
+        }
+    };
 
     const calculateResult = () => {
         const res_multiplier = 1;
@@ -28,10 +29,11 @@ export default function Swap() {
         if (amount === 0 || amount === '') {
             setResult(0);
         } else {
-            const result = (amount * res_multiplier / total_resources) * mined_tokens;
+            const result =
+                (amount * res_multiplier / total_resources) * mined_tokens;
             setResult(result);
         }
-    }
+    };
 
     useEffect(() => {
         if (isInitialInputChange) {
@@ -41,6 +43,26 @@ export default function Swap() {
         }
     }, [amount]);
 
+    const handleOptionChange = (e) => {
+        setSelectedOption(e.target.value);
+        const selectedResource = resourcesList.find(
+            (resource) => resource.resource === e.target.value
+        );
+        setSelectedResourceAmount(selectedResource?.amount || 0);
+        setAmount('');
+    };
+
+    const handleInputBlur = () => {
+        if (amount > selectedResourceAmount) {
+            setAmount(selectedResourceAmount);
+        }
+    };
+
+    const handleSwapClick = () => {
+        alert('d')
+    }
+
+    const isSwapButtonDisabled = !amount.length || !selectedOption.length;
 
     return (
         <section className='workplace'>
@@ -50,55 +72,61 @@ export default function Swap() {
                     <div className="main-title">
                         <h2>Swap</h2>
                     </div>
-                <div className="swap-container">
-                    <div className="swap-block">
-                        <div className="swiper">
-                            <div className="swiper-field">
-                                <input placeholder={0} type="text" onChange={handleInputChange} />
-                                <div className={'options'}>
-                                    <select className={'resource-block'} name="Select token">
-                                        <option disabled selected value="">Select token</option>
-                                        <option value="value1">food</option>
-                                        <option value="value2" selected>stone</option>
-                                        <option value="value3">wood</option>
-                                        <option value="value3">wheel</option>
-                                    </select>
-                                    <p className={'balance'}>{selectedOption}</p>
+                    <div className="swap-container">
+                        <div className="swap-block">
+                            <div className="swiper">
+                                <div className="swiper-field">
+                                    <input
+                                        placeholder={0}
+                                        type="text"
+                                        onChange={handleInputChange}
+                                        onBlur={handleInputBlur}
+                                        value={amount}
+                                        disabled={!selectedOption}
+                                    />
+                                    <div className={'options'}>
+                                        <select className={'resource-block'} name="Select token" onChange={handleOptionChange} value={selectedOption}>
+                                            <option disabled selected value="">Select token</option>
+                                            {resourcesList.map(({resource}) => (
+                                                <option key={resource} value={resource}>{resource}</option>
+                                            ))}
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="swiper-field">
-                                <p className={'result'}>{result}</p>
-                                <div className="token-block">
-                                     <p>RTP</p>
-                                    <p className={'balance'}>Balance: {rtpBalance}</p>
+                                <div className="swiper-field">
+                                    <p className={'result'}>{result ? result.toFixed(4) : 0}</p>
+                                    <div className="token-block">
+                                        <p>RTP</p>
+                                        <p className={'balance'}>Balance: {rtpBalance}</p>
+                                    </div>
                                 </div>
+                                <button className={`swap-btn ${isSwapButtonDisabled ? 'disabled' : ''}`} onClick={handleSwapClick} disabled={isSwapButtonDisabled}><p>Swap</p></button>
                             </div>
-                            <div className="swap-btn"><p>Swap</p></div>
-                        </div>
-                        <div className="statistic">
-                            <div className="statistic-title">
-                                <h4>Statistic:</h4>
-                            </div>
-                            <div className="statistic-field">
-                                <h5>Total amount of mined resources:</h5>
-                                <div className={'resource'}>
-                                    <p>870,753,890</p>
+                            <div className="statistic">
+                                <div className="statistic-title">
+                                    <h4>Statistic:</h4>
                                 </div>
-                            </div>
-                            <div className="statistic-field">
-                                <h5>Total mined tokens:</h5>
+                                <div className="statistic-field">
+                                    <h5>Total amount of mined resources:</h5>
+                                    <div className={'resource'}>
+                                        <p>870,753,890</p>
+                                    </div>
+                                </div>
+                                <div className="statistic-field">
+                                    <h5>Total mined tokens:</h5>
                                     <p>9,753,890 RTP</p>
-                            </div>
-                            <div className="statistic-field">
-                                <h5>Mining rate per second:</h5>
+                                </div>
+                                <div className="statistic-field">
+                                    <h5>Mining rate per second:</h5>
                                     <p>1,890 RTP</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
             <Footer />
         </section>
-    )
+    );
+
 }
