@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 
 import { useApp } from "../../Data/AppContext";
 import { toast } from "react-toastify";
@@ -11,19 +11,22 @@ import './staking.css'
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UserTool from '../../components/UserTool/UserTool'
+import {stakedToCollectionAssets} from "../../Services";
+import {UALContext} from "ual-reactjs-renderer";
 
 
 export default function Staking() {
 
     const {
         itemList,
-        wpConfig,
     } = useApp();
+    const { activeUser } = useContext(UALContext);
 
     const ADD_ASSET = 'Add Asset'
     const REMOVE_ASSET = 'Remove Asset'
 
     const [selectedTool, setSelectTool] = useState([])
+    const [stakedAsset, setStakedAsset] = useState([])
     const [selectedToolImg, setSelectToolImg] = useState([])
     const [toolName, setToolName] = useState([])
     const [selectedTab, setSelectedTab] = useState(ADD_ASSET)
@@ -42,13 +45,30 @@ export default function Staking() {
 
     };
 
+
+
     const toastyErr = () => {
         toast.error('First select tool');
     }
-    const redirectMarket = () => {
-        window.open('https://wax-test.atomichub.io/market?collection_name=rush2prosper&order=desc&sort=created&symbol=WAX', '_blank')
-    }
 
+    useEffect(() => {
+        stakedToCollectionAssets({activeUser})
+            .then(response => {
+                const uniqueAssets = response.data.data.reduce((acc, curr) => {
+                    curr.assets.forEach(asset => {
+                        if (!acc[asset.asset_id]) {
+                            acc[asset.asset_id] = asset;
+                        }
+                    });
+                    return acc;
+                }, {});
+                setStakedAsset(Object.values(uniqueAssets));
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+    }, [activeUser])
 
     return (
         <section className='workplace'>
@@ -105,7 +125,15 @@ export default function Staking() {
 
                             {selectedTab === REMOVE_ASSET &&
                                 <div className="stake-list">
+                                    {stakedAsset.length ?
+                                        stakedAsset.map( item => <UserTool
+                                            item={item}
+                                            setSelectTool={setSelectTool}
+                                            selectedTool={selectedTool}
+                                        />)
+                                        :
                                         <p className={'no-workplaces'}>No tools</p>
+                                    }
                                 </div>
                             }
 

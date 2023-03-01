@@ -1,5 +1,6 @@
 import { RTP_GAME, ATOMIC_ASSETS } from "../Constants";
 import { signTransaction } from "../Helpers";
+import axios from "axios";
 
 
 export const unStakeTool = async ({ activeUser, assetId, wpId }) => {
@@ -50,6 +51,18 @@ export const stakeWp = async ({ activeUser, selectItem }) => {
             memo: `stake:workplace`
         }
     });
+
+};
+
+export const stakedToCollectionAssets = async ({ activeUser}) => {
+
+    return axios.get('https://test.wax.api.atomicassets.io/atomicassets/v1/transfers', {
+        params: {
+            account: activeUser.accountName,
+            match_memo: 'stake',
+            collection_name: 'rtpassetssss'
+        }
+    })
 
 };
 

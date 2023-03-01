@@ -27,3 +27,10 @@ a{
   border-radius: 10px;
   position: relative;
 }
+
+.item-level{
+  text-align: center;
+  margin: -8px;
+  color: #FFFFFF;
+  font-size: 12px;
+}
