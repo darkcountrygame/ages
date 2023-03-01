@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
@@ -7,8 +7,34 @@ import './Swap.css'
 
 export default function Swap() {
 
-    const [amount, setAmount] = useState(0)
+    const [amount, setAmount] = useState('')
     const [result, setResult] = useState(0)
+    const [isInitialInputChange, setIsInitialInputChange] = useState(false);
+
+    const handleInputChange = (e) => {
+        setAmount(e.target.value);
+    }
+
+    const calculateResult = () => {
+        const res_multiplier = 1;
+        const total_resources = 1000;
+        const mined_tokens = 10;
+
+        if (amount === 0 || amount === '') {
+            setResult(0);
+        } else {
+            const result = (amount * res_multiplier / total_resources) * mined_tokens;
+            setResult(result);
+        }
+    }
+
+    useEffect(() => {
+        if (isInitialInputChange) {
+            calculateResult();
+        } else {
+            setIsInitialInputChange(true);
+        }
+    }, [amount]);
 
 
     return (
@@ -23,7 +49,7 @@ export default function Swap() {
                     <div className="swap-block">
                         <div className="swiper">
                             <div className="swiper-field">
-                                <input placeholder={amount} type="text" onChange={(e) => setAmount(e.target.value)}/>
+                                <input placeholder={0} type="text" onChange={handleInputChange} />
                                 <div className="resource-block">
                                     <p>Select resource</p>
                                 </div>
