@@ -12,18 +12,23 @@ export const navMenu = [
         url: '/workplaces'
     },
     {
+        title: 'Inventory',
+        icon: inventoryIcon,
+        url: '/inventory'
+    },
+    {
         title: 'Upgrade',
         icon: upgradeIcon,
         url: '/upgrade'
     },
     {
-        title: 'Market',
-        icon: inventoryIcon,
-        url: '/market'
+        title: 'Swap',
+        icon: upgradeIcon,
+        url: '/swap'
     },
     {
         title: 'Research',
         icon: researchIcon,
         url: '/research'
-    }
+    },
 ]

@@ -5,13 +5,14 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import {
     MainPage,
     Workpalces,
-    Inventory,
+    Staking,
+    Swap,
     Market,
     Research,
 } from "../Containers";
 
 export const useRoutes = () => {
-     const { isAuthenticated} = useApp();
+     const {isAuthenticated} = useApp();
 
      if (isAuthenticated){
          return (
@@ -20,12 +21,16 @@ export const useRoutes = () => {
                      <Workpalces />
                  </Route>
 
+                 <Route exact path="/inventory">
+                     <Staking />
+                 </Route>
+
                  <Route exact path="/upgrade">
                      <Market />
                  </Route>
 
-                 <Route exact path="/market">
-                     <Inventory />
+                 <Route exact path="/swap">
+                     <Swap />
                  </Route>
 
                  <Route exact path="/research">

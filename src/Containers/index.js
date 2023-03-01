@@ -4,4 +4,6 @@ export { default as Workpalces } from './Workplaces/Workplaces';
 export { default as Inventory } from './Inventory/Inventory.jsx';
 export { default as Market } from './Market/Market.jsx';
 export { default as Research } from './Research/Research.jsx';
+export { default as Swap } from './Swap/Swap';
+export { default as Staking } from './Staking/Staking';
 // export { default as RewardsPage} from './RewardsPage/RewardsPage.jsx';

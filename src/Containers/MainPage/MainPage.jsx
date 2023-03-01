@@ -1,15 +1,7 @@
 import React, { useContext } from "react";
 import { UALContext } from "ual-reactjs-renderer";
 
-// import StartLogo from '../../images/start_logo.png'
-//
-//
-// import Navbar from '../../components/Navbar/Navbar'
-
 import './main.css'
-
-
-
 
 
 const MainPage = () => {

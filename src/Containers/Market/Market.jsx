@@ -41,7 +41,7 @@ export default function Market() {
                 <div className="main-workplace market">
                     <div className="main-main">
                         <div className="main-title">
-                            <h2>Inventory</h2>
+                            <h2>Upgrade</h2>
                         </div>
                         <div className="container">
                                 <div className="header-market">
