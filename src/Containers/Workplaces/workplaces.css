@@ -50,7 +50,7 @@
 }
 
 .main-main .main-title{
-    background: url('../../images/main_window_title_bg.png');
+    background-image: url('../../images/main_window_title_bg.png');
     background-position: center top;
     background-repeat: no-repeat;
     position: absolute;
@@ -498,6 +498,14 @@
     .main-workplace-sidebar__item{
         width: 145px;
         height: 200px;
+    }
+
+    .main-main .main-title{
+        background-size: 32%;
+    }
+
+    .main-main .main-title h2{
+        font-size: 27px;
     }
 
     .start-work_btn{

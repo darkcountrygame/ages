@@ -1,5 +1,3 @@
-import {DELPHI_ORACLE} from "../Constants";
-
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const SET_USER_DATA = 'SET_USER_DATA';
@@ -16,4 +14,4 @@ export const DELPHI_ORACLE_COURSE = 'DELPHI_ORACLE_COURSE';
 
 export const TOOL_CONFIG = 'TOOL_CONFIG';
 export const WP_CONFIG = 'WP_CONFIG';
-
+export const POOL_CONFIG = 'POOL_CONFIG';

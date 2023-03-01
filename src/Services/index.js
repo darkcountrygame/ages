@@ -7,3 +7,4 @@ export * from "./staking.service";
 export * from "./course.service";
 export * from "./unlock.service";
 export * from "./era.service";
+export * from "./pool.service";

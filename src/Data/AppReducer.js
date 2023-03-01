@@ -14,6 +14,7 @@ import {
     USER_STAKED_ITEMS,
     TOOL_CONFIG,
     WP_CONFIG,
+    POOL_CONFIG
 
 } from './AppActionTypes';
 
@@ -84,6 +85,10 @@ const AppReducer = (state, action) => {
 
         case WP_CONFIG: {
             return { ...state, wpConfig: action.value, wpConfigFetched: true }
+        }
+
+        case POOL_CONFIG: {
+            return { ...state, poolConfig: action.value, poolConfigFetched: true }
         }
 
         default:

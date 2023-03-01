@@ -19,13 +19,14 @@ export default function Market() {
     const {
         itemList,
         wpConfig,
+        poolConfig
     } = useApp();
 
     const [selectedTool, setSelectTool] = useState([])
     const [selectedToolImg, setSelectToolImg] = useState([])
     const [toolName, setToolName] = useState([])
 
-
+    console.log(poolConfig)
     const toastyErr = () => {
         toast.error('First select tool');
     }
@@ -95,7 +96,7 @@ export default function Market() {
                                         </select>
                                     </div>
                                     <div className="btn">
-                                        <button onClick={redirectMarket}>Go to Market</button>
+                                        {/*<button onClick={redirectMarket}>Go to Market</button>*/}
                                     </div>
                                 </div>
                             </div>

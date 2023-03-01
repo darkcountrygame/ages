@@ -10,7 +10,6 @@ import './staking.css'
 
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
-import UpgradeCard from '../../Modal/UpgradeCard'
 import UserTool from '../../components/UserTool/UserTool'
 
 
@@ -21,10 +20,27 @@ export default function Staking() {
         wpConfig,
     } = useApp();
 
+    const ADD_ASSET = 'Add Asset'
+    const REMOVE_ASSET = 'Remove Asset'
+
     const [selectedTool, setSelectTool] = useState([])
     const [selectedToolImg, setSelectToolImg] = useState([])
     const [toolName, setToolName] = useState([])
+    const [selectedTab, setSelectedTab] = useState(ADD_ASSET)
 
+
+
+    const handleClick = (tabName) => {
+        setSelectedTab(tabName);
+    };
+
+    const handleStake = () => {
+
+    };
+
+    const handleUnStake = () => {
+
+    };
 
     const toastyErr = () => {
         toast.error('First select tool');
@@ -41,6 +57,12 @@ export default function Staking() {
                 <div className="main-main">
                     <div className="main-title">
                         <h2>Inventory</h2>
+                    </div>
+                    <div className={`add ${selectedTab === ADD_ASSET ? 'active' : ''}`} onClick={() => handleClick(ADD_ASSET)}>
+                        <p>{ADD_ASSET}</p>
+                    </div>
+                    <div className={`remove ${selectedTab === REMOVE_ASSET ? 'active' : ''}`} onClick={() => handleClick(REMOVE_ASSET)}>
+                        <p>{REMOVE_ASSET}</p>
                     </div>
                     <div className="container">
                         <div className="header-stake">
@@ -60,34 +82,45 @@ export default function Staking() {
                                     </select>
                                 </div>
                                 <div className="btn">
-                                    <button onClick={redirectMarket}>Go to Market</button>
+                                    {/*<button onClick={redirectMarket}>Go to Market</button>*/}
                                 </div>
                             </div>
                         </div>
 
 
                         <div className="main-main-contant">
-                            <div className="stake-list">
-                                {itemList.length ?
-                                    itemList.map( item => <UserTool
-                                        item={item}
-                                        setSelectTool={setSelectTool}
-                                        selectedTool={selectedTool}
-                                    />)
-                                    :
-                                    <p className={'no-workplaces'}>No tools</p>
-                                }
-                            </div>
+                            {selectedTab === ADD_ASSET &&
+                                <div className="stake-list">
+                                    {itemList.length ?
+                                        itemList.map( item => <UserTool
+                                            item={item}
+                                            setSelectTool={setSelectTool}
+                                            selectedTool={selectedTool}
+                                        />)
+                                        :
+                                        <p className={'no-workplaces'}>No tools</p>
+                                    }
+                                </div>
+                            }
+
+                            {selectedTab === REMOVE_ASSET &&
+                                <div className="stake-list">
+                                        <p className={'no-workplaces'}>No tools</p>
+                                </div>
+                            }
+
 
                         </div>
                         <div className="stake-btn">
-                            {!selectedTool.length ?
-                                <button>
-                                    Stake
+                            {selectedTab === ADD_ASSET &&
+                                <button onClick={handleStake}>
+                                Stake
                                 </button>
-                                :
-                                <button>
-                                    Stake
+                            }
+
+                            {selectedTab === REMOVE_ASSET &&
+                                <button onClick={handleUnStake}>
+                                Unstake
                                 </button>
                             }
                         </div>

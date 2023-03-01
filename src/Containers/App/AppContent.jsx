@@ -19,6 +19,7 @@ import {
     fetchWaxCourse,
     fetchToolConfig,
     fetchWpConfig,
+    fetchPoolConfig
     // fetchStakedTools,
 
 } from "../../Services";
@@ -61,6 +62,9 @@ const AppContent = () => {
         setWpConfig,
         wpConfigFetched,
 
+        setPoolConfig,
+        poolConfigFetched,
+
     } = useApp();
 
     const { activeUser } = useContext(UALContext);
@@ -81,6 +85,9 @@ const AppContent = () => {
 
     const [toolConfigLoading, setToolConfgLoading] = useState(false);
     const [wpConfigLoading, setWpConfgLoading] = useState(false);
+
+    const [poolConfigLoading, setPoolConfgLoading] = useState(false);
+
 
     
  
@@ -291,6 +298,24 @@ const AppContent = () => {
                 .finally(() => setWpConfgLoading(false));
         }
     }, [activeUser, setWpConfgLoading, wpConfigFetched, setWpConfig]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !poolConfigFetched && setPoolConfig
+            && !poolConfigLoading
+        ) {
+            setPoolConfgLoading(true);
+
+            fetchPoolConfig({
+                account: activeUser.accountName
+            })
+                .then((value) => setPoolConfig(value))
+                .catch(e => {
+                    console.log(e)
+                    setPoolConfig([]);
+                })
+                .finally(() => setPoolConfgLoading(false));
+        }
+    }, [activeUser, setPoolConfgLoading, poolConfigFetched, setPoolConfig]);
 
 
 

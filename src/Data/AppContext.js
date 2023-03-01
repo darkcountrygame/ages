@@ -16,6 +16,7 @@ import {
     DELPHI_ORACLE_COURSE,
     TOOL_CONFIG,
     WP_CONFIG,
+    POOL_CONFIG,
 
 } from './AppActionTypes';
 
@@ -64,6 +65,9 @@ const initialState = {
     wpConfig: [],
     wpConfigFetched: false,
 
+    poolConfig: [],
+    poolConfigFetched: false,
+
 }
 
 export const AppProvider = ({ children }) => {
@@ -90,6 +94,8 @@ export const AppProvider = ({ children }) => {
 
     const setToolConfig = value => dispatch({ type: TOOL_CONFIG, value });
     const setWpConfig = value => dispatch({ type: WP_CONFIG, value });
+
+    const setPoolConfig = value => dispatch({ type: POOL_CONFIG, value });
 
 
     return (
@@ -132,6 +138,9 @@ export const AppProvider = ({ children }) => {
             wpConfig: state.wpConfig,
             wpConfigFetched: state.wpConfigFetched,
 
+            poolConfig: state.poolConfig,
+            poolConfigFetched: state.poolConfigFetched,
+
             userLoginHandler,
             userLogoutHandler,
             setUserDataHandler,
@@ -146,8 +155,7 @@ export const AppProvider = ({ children }) => {
             setWaxCourse,
             setToolConfig,
             setWpConfig,
-
-
+            setPoolConfig,
         }}>
             { children }
         </AppContext.Provider>

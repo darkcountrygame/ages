@@ -22,8 +22,8 @@ export default function Swap() {
 
     const calculateResult = () => {
         const res_multiplier = 1;
-        const total_resources = 1000;
-        const mined_tokens = 10;
+        const total_resources = 2090;
+        const mined_tokens = 139.8852;
 
         if (amount === 0 || amount === '') {
             setResult(0);

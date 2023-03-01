@@ -126,6 +126,50 @@
     margin-top: 17px;
 }
 
+.main-main .add{
+    position: absolute;
+    top: 40px;
+    left: 220px;
+    color: #FFFFFF;
+    font-size: 18px;
+    border-bottom: 3px solid #512B47;
+    cursor: pointer;
+}
+
+.main-main .add p{
+    margin: 0;
+    padding: 7px 44px;
+}
+
+
+.main-main .remove{
+    position: absolute;
+    top: 40px;
+    left: 820px;
+    color: #FFFFFF;
+    font-size: 18px;
+    border-bottom: 3px solid #512B47;
+    cursor: pointer;
+}
+
+.main-main .remove p{
+    margin: 0;
+    padding: 7px 44px;
+}
+
+.main-main .add.active{
+    background: #512B47 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 0px #0000004D;
+    border-radius: 20px;
+}
+
+.main-main .remove.active{
+    background: #512B47 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 0px #0000004D;
+    border-radius: 20px;
+}
+
+
 .stake-btn button{
     background-color: #0000006e;
     background-image: url("../../images/green_btn.png");
@@ -149,6 +193,32 @@
     font-size: 20px;
     padding: 0;
     margin: 0;
+}
+
+@media screen and (max-width: 1815px){
+    .main-main .add{
+        position: absolute;
+        top: 40px;
+        left: 155px;
+        color: #FFFFFF;
+        font-size: 16px;
+        border-bottom: 3px solid #512B47;
+        cursor: pointer;
+    }
+
+    .main-main .remove{
+        position: absolute;
+        top: 40px;
+        left: 755px;
+        color: #FFFFFF;
+        font-size: 16px;
+        border-bottom: 3px solid #512B47;
+        cursor: pointer;
+    }
+
+    .main-workplace.stake .stake-list{
+        height: 360px;
+    }
 }
 
 
@@ -204,5 +274,42 @@
     .inventory-item__btn button{
         font-size: 18px;
         padding: 5px 35px;
+    }
+
+
+    .stake-btn button{
+        padding: 5px 40px;
+    }
+
+    .main-workplace.stake .stake-list{
+        height: 285px;
+    }
+
+    .main-workplace.stake .container{
+        padding: 70px 85px 0 111px;
+    }
+
+    .main-main .add{
+        font-size: 14px;
+    }
+
+    .main-main .add p{
+        padding: 2px 35px;
+    }
+
+    .main-main .remove{
+        font-size: 14px;
+        left: 690px;
+    }
+
+    .main-main .remove p{
+        padding: 2px 35px;
+    }
+
+}
+
+@media screen and (max-width: 1599px){
+    .main-main .remove{
+        left: 660px;
     }
 }
