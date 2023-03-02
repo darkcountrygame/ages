@@ -10,7 +10,7 @@ export const unlockSlot = async ({ activeUser, selectedWP }) => {
         data: {
             from: activeUser.accountName,
             to: RTP_GAME,
-            quantity: '100.0000 RTP',
+            quantity: '50.0000 RTP',
             memo: `unlock:slot:workplace:1:${selectedWP}`
         }
     });

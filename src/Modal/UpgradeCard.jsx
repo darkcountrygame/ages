@@ -28,7 +28,7 @@ export default ({ disabled, selectedTool, selectedToolImg, toolName}) => {
   return (
       <Popup
           trigger={
-              <button disabled={disabled}>Upgrade - 12 RTP</button>
+              <button disabled={disabled}>Upgrade</button>
           }
           modal
           nested
@@ -42,7 +42,7 @@ export default ({ disabled, selectedTool, selectedToolImg, toolName}) => {
                   <div className="info-card__img">
                     <div className="info-card__img-wrapper">
                       <div className="info-card__photo">
-                          {selectedToolImg ? <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon" /> : null}
+                          {selectedToolImg && <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon" />}
                       </div>
                     </div>
                   </div>
@@ -75,7 +75,7 @@ export default ({ disabled, selectedTool, selectedToolImg, toolName}) => {
                 </div>
               </div>
               <div className="actions" onClick={close}>
-                <button onClick={upgradeHandler}>Upgrade -12 RTP</button>
+                <button onClick={upgradeHandler}>Upgrade</button>
               </div>
             </div>
         )}

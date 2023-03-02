@@ -69,12 +69,15 @@ const Workplaces = () => {
 
 
     useEffect(() => {
-        const toolsIdtoObj = () => {
+        const toolsIdtoObj = async () => {
             if (selectedWorkPlace && selectedWorkPlace.tools && selectedWorkPlace.tools.length){
                 selectedWorkPlace.tools.map(async item => {
                     const data = await getDataFromAtomicApi(`assets?ids=${item.key}&page=1&limit=100`)
                     setTools(data)
                 })
+            } else if(stakedItemList && stakedItemList[0]?.tools && stakedItemList.length && stakedItemList[0]?.tools[0]?.key){
+                    const data = await getDataFromAtomicApi(`assets?ids=${stakedItemList[0]?.tools[0]?.key}&page=1&limit=100`)
+                    setTools(data)
             } else {
                 setTools([])
             }
@@ -86,7 +89,6 @@ const Workplaces = () => {
                     setWP(data[0])
             } else if(stakedItemList && stakedItemList[0]?.workplace_asset_id && stakedItemList.length){
                     const data = await getDataFromAtomicApi(`assets?ids=${stakedItemList[0]?.workplace_asset_id}&page=1&limit=100`)
-
                     setSelectedWorkPlace(stakedItemList[0]?.workplace_asset_id)
                     setWP(data[0])
             } else {
@@ -97,6 +99,7 @@ const Workplaces = () => {
         WPIdtoObj()
         toolsIdtoObj()
     }, [selectedWorkPlace, stakedItemList])
+
 
 
     // const renderWorkPlaceTools = () => {
@@ -215,7 +218,7 @@ const Workplaces = () => {
     const renderWorkPlaceTools = () => {
         const equipItems = tools.length < wp.data?.slots ? (
             Array.from({ length: wp.data?.slots - tools.length }, (_, i) => (
-                <div className="workplaces-item equip">
+                <div key={i} className="workplaces-item equip">
                     <div className="workplaces-img unequip-img">
                         <img src={equip} alt="spear" />
                     </div>
@@ -226,7 +229,7 @@ const Workplaces = () => {
             ))
         ) : null;
 
-        const lockItems = tools.length < wp.data?.slots ? (
+        const lockItems = tools.length <= wp.data?.slots ? (
             Array.from({ length: 4 - wp.data?.slots }, (_, i) => (
                 <div key={i} className="workplaces-item lock">
                     <div className="workplaces-img locked-img">
@@ -316,6 +319,10 @@ const Workplaces = () => {
     const stakeHandlerWp = () => {
         stakeWp({ activeUser, selectItem })
             .then(() => {
+                fetchItems({ account: activeUser.accountName })
+                    .then(items => setStakedItems(items))
+                    .catch(e => console.log(e));
+
                 toast.success('Staked successed');
             })
             .catch(e => toast.error(e.message))

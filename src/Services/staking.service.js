@@ -4,9 +4,9 @@ import axios from "axios";
 
 
 export const unStakeTool = async ({ activeUser, assetId, wpId }) => {
-    // console.log(activeUser.accountName)
-    // console.log(assetId)
-    // console.log(wpId)
+    console.log(activeUser.accountName)
+    console.log([assetId])
+    console.log(wpId)
 
     return await signTransaction({
         activeUser,
@@ -15,7 +15,7 @@ export const unStakeTool = async ({ activeUser, assetId, wpId }) => {
         data: {
             player: activeUser.accountName,
             workplace_asset_id: wpId,
-            tools_asset_ids: [assetId] // fix
+            tool_asset_ids: [assetId]
         }
     });
 
