@@ -271,12 +271,17 @@
 }
 
 .btn-unequip button{
+    border: 0;
+    font-size: 22px;
     display: block;
     margin: 0 auto;
     color: #fff;
     text-decoration: none;
-    background: #ff0000;
-    padding: 10px 40px;
+    background-color: #0000006e;
+    background-image: url("../../images/red_btn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 11px 50px;
     cursor: pointer;
 }
 
@@ -439,6 +444,10 @@
         font-size: 18px;
     }
 
+    .btn-unequip button{
+        font-size: 18px;
+    }
+
     .btn-lock button{
         font-size: 18px;
     }
@@ -535,6 +544,11 @@
         font-size: 16px;
     }
 
+    .btn-unequip button{
+        font-size: 16px;
+    }
+
+
     .btn-lock button{
         font-size: 16px;
     }
@@ -576,6 +590,12 @@
         font-size: 14px;
         padding: 5px 30px;
     }
+
+    .btn-unequip button{
+        font-size: 14px;
+        padding: 5px 30px;
+    }
+
 
     .btn-lock button{
         font-size: 14px;

@@ -32,7 +32,6 @@ const Workplaces = () => {
         setResources,
         stakedItemList,
         setStakedItems,
-        stakedToolsList,
         eraConf
     } = useApp();
 
@@ -76,7 +75,6 @@ const Workplaces = () => {
                     const data = await getDataFromAtomicApi(`assets?ids=${item.key}&page=1&limit=100`);
                     newTools.push(...data);
                 }));
-                console.log(newTools)
                 setTools(newTools);
             } else if(stakedItemList && stakedItemList[0]?.tools && stakedItemList.length && stakedItemList[0]?.tools[0]?.key){
                     const data = await getDataFromAtomicApi(`assets?ids=${stakedItemList[0]?.tools[0]?.key}&page=1&limit=100`)
@@ -232,7 +230,6 @@ const Workplaces = () => {
             ))
         ) : null;
 
-        console.log(tools)
         const lockItems = tools.length <= wp.data?.slots ? (
             Array.from({ length: 4 - wp.data?.slots }, (_, i) => (
                 <div key={i} className="workplaces-item lock">
