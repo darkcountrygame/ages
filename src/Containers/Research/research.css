@@ -19,7 +19,8 @@ h3{
 }
 
 .research-left{
-    margin-top: 76px;
+    margin-top: 46px;
+    padding-top: 30px;
     flex: 0 0 50%;
     height: 70%;
     max-width: 50%;
@@ -87,29 +88,34 @@ h3{
 }
 
 .research-right .research-right__title{
-    background: url('../../images/orange_title.png');
+    background-image: url('../../images/orange_title.png');
     background-repeat: no-repeat;
-    background-size: 75%;
     background-position: center;
-    padding: 45px 0;
+    width: 396px;
+    margin: 48px auto 34px auto;
+    height: 80px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .research-right .research-right__title img{
     position: absolute;
-    top: 10%;
-    right: 10%;
+    top: -4%;
+    right: -4%;
 }
 
 .research-right .research-right__title h3{
     color: #fff;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     text-align: center;
 }
 
 .research-right .research-right__img{
-    width: 60%;
+    width: 325px;
+    height: 211px;
     margin: 0 auto;
 }
 
@@ -123,43 +129,47 @@ h3{
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(121,9,100,1) 0%, rgba(139,4,111,0) 100%);
-    width: 53%;
-    margin: 0 20%;
-    padding: 20px;
+    background-image: url("../../images/desighn_bg.png");
+    width: 325px;
+    height: 88px;
+    margin: 0 auto;
 }
 
 .research-right .research-right__btn{
-    margin-top: 30px;
-    text-align: center;
+margin-top: 30px;
+text-align: center;
 }
 
 .research-right .research-right__btn button{
-    padding: 10px 40px;
-    background-color: rgba(7, 204, 7, 0.507);
+    background-color: transparent;
+    background-image: url("../../images/unactive_green_btn.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 13px 30px;
     color: #fff;
-    font-weight: bold;
-    font-size: 20px;
+    border: 0;
+    font-size: 24px;
+    display: block;
+    margin: 0 auto;
     cursor: pointer;
 }
 
 @media screen and (max-width: 1450px) {
-    .research{
-        height: 92%;
-    }
-   .research .main-main{
-       height: 715px;
-   }
+.research{
+    height: 92%;
+}
+.research .main-main{
+   height: 715px;
+}
 
-    .main-workplace.research .footer{
-        margin-top: 160px;
-    }
+.main-workplace.research .footer{
+    margin-top: 160px;
+}
 }
 
 @media screen and (max-width: 1370px) {
-    .research .main-main{
-        height: 615px;
-    }
+.research .main-main{
+    height: 615px;
+}
 
 }
