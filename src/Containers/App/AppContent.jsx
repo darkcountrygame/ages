@@ -15,6 +15,8 @@ import {
     fetchResources,
     fetchStakedWp,
     probabilityGetPoints,
+    spConfig,
+    totalSp,
     fetchCurrentEra,
     fetchWaxCourse,
     fetchToolConfig,
@@ -50,6 +52,12 @@ const AppContent = () => {
          setProbability,
          probabilityFetched,
 
+        setSpConfig,
+        spConfigFetched,
+
+        setTotalSp,
+        totalSpFetched,
+
         setEraConf,
         eraConfFetched,
 
@@ -78,6 +86,9 @@ const AppContent = () => {
 
     const [resourcesLoading, setResourcesLoading] = useState(false);
      const [probabilityLoading, setProbabilityLoading] = useState(false);
+    const [spConfigLoading, setSpConfigLoading] = useState(false);
+
+    const [totalSpLoading, setTotalSpLoading] = useState(false);
 
     const [eraConfLoading, setEraConfLoading] = useState(false);
 
@@ -262,6 +273,38 @@ const AppContent = () => {
                 .finally(() => setProbabilityLoading(false));
         }
     }, [activeUser, setProbabilityLoading, probabilityFetched, setProbability]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !spConfigFetched && setSpConfig
+            && !spConfigLoading
+        ) {
+            setSpConfigLoading(true);
+
+            spConfig()
+                .then((value) => setSpConfig(value))
+                .catch(e => {
+                    console.log(e)
+                    setSpConfig([]);
+                })
+                .finally(() => setSpConfigLoading(false));
+        }
+    }, [activeUser, setSpConfigLoading, spConfigFetched, setSpConfig]);
+
+    useEffect(() => {
+        if (activeUser && activeUser.accountName && !totalSpFetched && setTotalSp
+            && !totalSpLoading
+        ) {
+            setTotalSpLoading(true);
+
+            totalSp({account: activeUser.accountName})
+                .then((value) => setTotalSp(value))
+                .catch(e => {
+                    console.log(e)
+                    setTotalSp([]);
+                })
+                .finally(() => setTotalSpLoading(false));
+        }
+    }, [activeUser, setTotalSpLoading, totalSpFetched, setTotalSp, totalSpLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !toolConfigFetched && setToolConfig

@@ -17,6 +17,7 @@ import {
     TOOL_CONFIG,
     WP_CONFIG,
     POOL_CONFIG,
+    SP_CONFIG, TOTAL_SP,
 
 } from './AppActionTypes';
 
@@ -53,6 +54,12 @@ const initialState = {
      probabilityPoints: 0,
      probabilityFetched: false,
 
+    spConfig: [],
+    spConfigFetched: false,
+
+    totalSp: [],
+    totalSpFetched: false,
+
     eraConf: [],
     eraConfFeatched: false,
 
@@ -87,6 +94,9 @@ export const AppProvider = ({ children }) => {
     const setResources = value => dispatch({ type: USER_RESOURCES, value });
 
      const setProbability = value => dispatch({type: USER_PROBABILITY_GET_POINTS, value });
+
+    const setSpConfig = value => dispatch({type: SP_CONFIG, value });
+    const setTotalSp = value => dispatch({type: TOTAL_SP, value });
 
     const setEraConf = value => dispatch({ type: USER_ERA, value });
 
@@ -126,6 +136,12 @@ export const AppProvider = ({ children }) => {
             probabilityPoints: state.probabilityPoints,
              probabilityFetched: state.probabilityFetched,
 
+            spConfig: state.spConfig,
+            spConfigFetched: state.spConfigFetched,
+
+            totalSp: state.totalSp,
+            totalSpFetched: state.totalSpFetched,
+
             eraConf: state.eraConf,
             eraConfFetched: state.eraConfFetched,
 
@@ -151,6 +167,8 @@ export const AppProvider = ({ children }) => {
             setStakedTools,
             setResources,
              setProbability,
+            setSpConfig,
+            setTotalSp,
             setEraConf,
             setWaxCourse,
             setToolConfig,

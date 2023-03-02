@@ -16,24 +16,22 @@ import { claimSciencePoints } from "../Services";
 
 
 export default () => {
-  const { resourcesList } = useApp();
+  const { resourcesList, spConfig } = useApp();
   const { activeUser } = useContext(UALContext);
 
   const pointsHandler = () => {
-
-          claimSciencePoints( {activeUser} )
+          claimSciencePoints( {activeUser, price: spConfig[0]?.research_price} )
               .then(() => {
                   toast.success('Success');
               })
               .catch((e) => toast.error(e.message))
-
   }
 
 
 
   return(
       <Popup
-          trigger={<button>Research 10.0000 RTP</button>}
+          trigger={<button>Research {Number(spConfig?.research_price.split(' ')[0])/1} RTP</button>}
           modal
           nested
       >

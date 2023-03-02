@@ -21,7 +21,9 @@ import TostifyMessage from '../../components/Messages/Tostify'
 export default function Research() {
 
 
-    const { resourcesList, probabilityPoints, spConfig } = useApp();
+    const { resourcesList, probabilityPoints, totalSp, spConfig } = useApp();
+
+    console.log(totalSp.science_points)
 
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed)
@@ -53,7 +55,7 @@ export default function Research() {
                                         <li>Research duration:
                                             <span>
                                                 <Countdown
-                                                date={ new Date(resourcesList.last_time_research * 1000 + ( 2 / 60 * 60 * 1000)) }
+                                                date={new Date((totalSp.last_time_research + spConfig.research_lock_time) * 1000)}
                                                 renderer={countdownRenderer}
                                                 />
                                             </span>
@@ -65,7 +67,7 @@ export default function Research() {
                                                 <li>Chance for success: <span>{probabilityPoints}%</span></li>
                                         }
 
-                                        <li>Total science points: <span>{ resourcesList.science_points }</span></li>
+                                        <li>Total science points: <span>{ totalSp.science_points ?? 0 }</span></li>
                                     </ul>
                                 </div>
                                 <div className="research-left__btn">
@@ -82,7 +84,7 @@ export default function Research() {
                                     <img src={researchRight} alt="img" />
                                 </div>
                                 <div className="research-right__info">
-                                    {resourcesList.science_points} / 10 000 SP
+                                    { totalSp.science_points ?? 0 } / 10 000 SP
                                 </div>
                                 <div className="research-right__btn">
                                     <NewEra />

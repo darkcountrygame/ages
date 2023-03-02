@@ -1,7 +1,7 @@
 import { RTP_GAME, RTP_TOKEN } from "../Constants";
 import {signTransaction, fetchRows} from "../Helpers";
 
-export const claimSciencePoints = async ({ activeUser }) => {
+export const claimSciencePoints = async ({ activeUser, price }) => {
     return await signTransaction({
         activeUser,
         account: RTP_TOKEN,
@@ -9,7 +9,7 @@ export const claimSciencePoints = async ({ activeUser }) => {
         data: {
             from: activeUser.accountName,
             to: RTP_GAME,
-            quantity: '100.0000 RTP',
+            quantity: price,
             memo: 'research'
         }
     });
@@ -28,6 +28,35 @@ export const probabilityGetPoints = async ({ account }) => {
         return rows[0] = [];
 
 
-    // console.log(rows[0])
+
     return rows[0].probability;
+};
+
+
+export const spConfig = async () => {
+    const { rows } = await fetchRows({
+        contract: RTP_GAME,
+        table: "spconfig",
+        scope: RTP_GAME,
+    });
+
+    if (!rows[0])
+        return rows[0] = [];
+
+    return rows[0];
+};
+
+
+export const totalSp = async ({account}) => {
+    const { rows } = await fetchRows({
+        contract: RTP_GAME,
+        table: "sp",
+        scope: account,
+    });
+
+    if (!rows[0])
+        return rows[0] = [];
+
+    console.log(rows)
+    return rows[0];
 };

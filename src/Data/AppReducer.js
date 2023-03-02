@@ -14,7 +14,7 @@ import {
     USER_STAKED_ITEMS,
     TOOL_CONFIG,
     WP_CONFIG,
-    POOL_CONFIG
+    POOL_CONFIG, SP_CONFIG, TOTAL_SP
 
 } from './AppActionTypes';
 
@@ -70,6 +70,14 @@ const AppReducer = (state, action) => {
          case USER_PROBABILITY_GET_POINTS: {
              return { ...state, probabilityPoints: action.value, probabilityFetched: true }
          }
+
+        case SP_CONFIG: {
+            return { ...state, spConfig: action.value, spConfigFetched: true }
+        }
+
+        case TOTAL_SP: {
+            return { ...state, totalSp: action.value, totalSpFetched: true }
+        }
 
         case USER_ERA: {
             return { ...state, eraConf: action.value, eraConfFetched: true }
