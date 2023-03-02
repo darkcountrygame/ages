@@ -140,7 +140,7 @@ export default function Staking() {
                                     }
                                 </div>
                             }
-
+                            <span className={'alert'}>*Removed items will be available after 3 days</span>
 
                         </div>
                         <div className="stake-btn">

@@ -26,6 +26,7 @@ const Timer = ({ wp, stakedWP }) => {
     return (
         <p>
             <Countdown
+                key={timestamp}
                 date={(timestamp * 1000 - Date.now()) + Date.now()}
                 renderer={formatTime}
             />

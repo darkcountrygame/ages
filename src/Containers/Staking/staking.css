@@ -84,6 +84,15 @@
     border: 2px solid #AE845B;
     border-radius: 10px;
     opacity: 1;
+    position: relative;
+}
+
+.alert{
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+    color: #FFFFFF;
+    font-size: 12px;
 }
 
 .stake-list_item{
@@ -220,6 +229,11 @@
     .main-workplace.stake .stake-list{
         height: 360px;
     }
+
+    .alert{
+        bottom: 80px;
+        right: 100px;
+    }
 }
 
 
@@ -305,6 +319,11 @@
 
     .main-main .remove p{
         padding: 2px 35px;
+    }
+
+    .alert{
+        bottom: 65px;
+        right: 100px;
     }
 
 }
