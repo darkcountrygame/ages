@@ -1,12 +1,18 @@
 import React from 'react';
 import Countdown from 'react-countdown';
 
-const Timer = ({ wp, stakedWP }) => {
+const Timer = ({ wp, stakedWP, setCountdownCompleted }) => {
 
-    const formatTime = ({ hours, minutes, seconds }) => {
+    const formatTime = ({ hours, minutes, seconds, completed }) => {
+        if (completed) {
+            setCountdownCompleted(false);
+        }
+
+        setCountdownCompleted(true);
         return `${hours.toString().padStart(2, '0')}:${minutes
             .toString()
             .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
     };
 
     const getTimestampFromCurrentWP = () => {

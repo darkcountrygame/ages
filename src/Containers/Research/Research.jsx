@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { useApp } from "../../Data/AppContext";
 import Countdown from "react-countdown";
 
-// import '../Workplaces/workplaces.css'
 import './research.css'
 
 
@@ -23,6 +22,7 @@ export default function Research() {
 
     const { probabilityPoints, totalSp, spConfig } = useApp();
     const [countdownCompleted, setCountdownCompleted] = useState(false);
+    const [countdownKey, setCountdownKey] = useState(0);
 
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed) {
@@ -56,6 +56,7 @@ export default function Research() {
                                         <li>Research duration:
                                             <span>
                                                 <Countdown
+                                                    key={countdownKey}
                                                     date={(totalSp.last_time_research * 1000 - Date.now()) + Date.now()}
                                                 renderer={countdownRenderer}
                                                 />
@@ -70,7 +71,11 @@ export default function Research() {
                                     </ul>
                                 </div>
                                <div className={`research-left__btn ${countdownCompleted ? 'completed' : ''}`}>
-                                   <ResearchCard countdownCompleted={countdownCompleted} setCountdownCompleted={setCountdownCompleted}/>
+                                   <ResearchCard
+                                       countdownCompleted={countdownCompleted}
+                                       setCountdownCompleted={setCountdownCompleted}
+                                       setCountdownKey={setCountdownKey}
+                                   />
                                </div>
                                 
                            </div>

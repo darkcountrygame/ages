@@ -41,7 +41,7 @@ const Workplaces = () => {
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([])
     const [tools, setTools] = useState([])
     const [wp, setWP] = useState([])
-
+    const [countdownCompleted, setCountdownCompleted] = useState(false);
 
     const getResourceIcon = (name) => {
       switch (name) {
@@ -90,7 +90,7 @@ const Workplaces = () => {
                     setWP(data[0])
             } else if(stakedItemList && stakedItemList[0]?.workplace_asset_id && stakedItemList.length){
                     const data = await getDataFromAtomicApi(`assets?ids=${stakedItemList[0]?.workplace_asset_id}&page=1&limit=100`)
-                    setSelectedWorkPlace(stakedItemList[0]?.workplace_asset_id)
+                    setSelectedWorkPlace(stakedItemList[0])
                     setWP(data[0])
             } else {
                 setWP([])
@@ -250,7 +250,11 @@ const Workplaces = () => {
                         <div className="main-workplace-header">
                             <p className={'time'}>Left to the next production:
                                 <div className={'timer'}>
-                                    <Timer wp={wp} stakedWP={stakedItemList}/>
+                                    <Timer
+                                        wp={wp}
+                                        stakedWP={stakedItemList}
+                                        setCountdownCompleted={setCountdownCompleted}
+                                    />
                                 </div>
                             </p>
 
@@ -260,12 +264,13 @@ const Workplaces = () => {
                                   <span>0</span>
                                   <img src={getResourceIcon(selectedWorkPlace?.generate_resource)} alt="" />
                               </p>
-                              <div
-                                  className="start-work_btn"
+                              <button
+                                  className={countdownCompleted ? "start-work_btn disabled" : "start-work_btn"}
                                   onClick={() => handleClaim(selectedWorkPlace && String(wp.asset_id))}
+                                  disabled={countdownCompleted}
                               >
-                                  <p>Claim</p>
-                              </div>
+                                  Claim
+                              </button>
                           </div>
 
                         </div>

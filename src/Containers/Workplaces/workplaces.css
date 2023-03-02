@@ -121,24 +121,26 @@
 .start-work_btn{
     background-color: transparent;
     background-image: url("../../images/green_btn.png");
+    background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
     margin-left: 24px;
-}
-
-.start-work_btn p{
     text-align: center;
     padding: 9px 28px;
     color: #ffffff;
-    font-size: 20px;
-    margin: 0;
+    font-size: 22px;
+    border: 0;
 }
 
+.start-work_btn.disabled{
+    background-image: url("../../images/unactive_green_btn.png");
+    cursor: default;
+}
+
+
 .main-workplace-header button{
-    background: #12B124;
     color: #fff;
-    padding: 10px 20px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -435,7 +437,7 @@
         height: 35px;
     }
 
-    .start-work_btn p{
+    .start-work_btn {
         padding: 5px 15px;
         font-size: 18px;
     }
@@ -535,7 +537,7 @@
         height: 35px;
     }
 
-    .start-work_btn p{
+    .start-work_btn {
         padding: 5px 15px;
         font-size: 18px;
     }

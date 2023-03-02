@@ -15,15 +15,16 @@ import './research.css'
 import { claimSciencePoints } from "../Services";
 
 
-export default ({countdownCompleted, setCountdownCompleted}) => {
-  const { resourcesList, spConfig, totalSp } = useApp();
+export default ({countdownCompleted, setCountdownCompleted, setCountdownKey}) => {
+  const { spConfig, totalSp } = useApp();
   const { activeUser } = useContext(UALContext);
 
-  const pointsHandler = () => {
+  const pointsHandler = (close) => {
           claimSciencePoints( {activeUser, price: spConfig?.research_price} )
               .then(() => {
                   setCountdownCompleted(false)
-
+                  close()
+                  setCountdownKey(prevKey => prevKey + 1);
                   toast.success('Success');
               })
               .catch((e) => toast.error(e.message))
@@ -33,7 +34,7 @@ export default ({countdownCompleted, setCountdownCompleted}) => {
 
   return(
       <Popup
-          trigger={<button disabled={countdownCompleted}>Research {Number(spConfig?.research_price?.split(' ')[0])/1} RTP</button>}
+          trigger={<button disabled={countdownCompleted}>Research {Number(spConfig?.research_price?.split(' ')[0])} RTP</button>}
           modal
           nested
           className={'research-card'}
@@ -56,7 +57,7 @@ export default ({countdownCompleted, setCountdownCompleted}) => {
                 </div>
               </div>
               <div className="actions">
-                <button onClick={pointsHandler}>OK</button>
+                <button onClick={() => pointsHandler(close)}>OK</button>
               </div>
             </div>
 
