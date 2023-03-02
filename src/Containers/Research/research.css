@@ -81,6 +81,11 @@ h3{
     border: 0;
 }
 
+.research-left__btn.completed button{
+    background-image: url("../../images/unactive_green_btn.png");
+    cursor: default;
+}
+
 .research-right{
     height: 80%;
     flex: 0 0 50%;

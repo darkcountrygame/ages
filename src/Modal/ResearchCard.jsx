@@ -15,7 +15,7 @@ import './research.css'
 import { claimSciencePoints } from "../Services";
 
 
-export default () => {
+export default ({countdownCompleted}) => {
   const { resourcesList, spConfig } = useApp();
   const { activeUser } = useContext(UALContext);
 
@@ -31,7 +31,7 @@ export default () => {
 
   return(
       <Popup
-          trigger={<button>Research {Number(spConfig?.research_price?.split(' ')[0])/1} RTP</button>}
+          trigger={<button disabled={countdownCompleted}>Research {Number(spConfig?.research_price?.split(' ')[0])/1} RTP</button>}
           modal
           nested
       >

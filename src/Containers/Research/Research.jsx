@@ -1,4 +1,4 @@
-import React  from 'react'
+import React, {useState} from 'react'
 import { useApp } from "../../Data/AppContext";
 import Countdown from "react-countdown";
 
@@ -22,16 +22,18 @@ export default function Research() {
 
 
     const { probabilityPoints, totalSp, spConfig } = useApp();
-
+    const [countdownCompleted, setCountdownCompleted] = useState(false);
 
     function countdownRenderer({  hours, minutes, seconds, completed }) {
-        if (completed)
+        if (completed) {
+            setCountdownCompleted(false);
+            return <>0h 0m 0s</>;
+        }
+
+        if ( minutes && seconds  === 0)
             return <>0h 0m 0s</>;
 
-        if ( minutes && seconds  == 0)
-            return <>0h 0m 0s</>;
-
-
+        setCountdownCompleted(true);
         return <>{ hours }h { minutes }m { seconds }s</>;
     }
 
@@ -67,9 +69,9 @@ export default function Research() {
                                         <li>Total science points: <span>{ totalSp.science_points ?? 0 }</span></li>
                                     </ul>
                                 </div>
-                                <div className="research-left__btn">
-                                    <ResearchCard />
-                                </div>
+                               <div className={`research-left__btn ${countdownCompleted ? 'completed' : ''}`}>
+                                   <ResearchCard countdownCompleted={countdownCompleted} />
+                               </div>
                                 
                            </div>
                            <div className="research-right">
