@@ -415,6 +415,10 @@
         height: 630px;
     }
 
+    .main-main-wrapper{
+        padding: 62px 120px 4px 120px;
+    }
+
     .main-workplace-sidebar__item{
         width: 145px;
         height: 200px;
@@ -460,6 +464,14 @@
         top: 5%;
     }
 
+    .main-main-list{
+        height: 355px;
+    }
+
+    .main-workplace-header .time{
+        font-size: 14px;
+    }
+
     .main-main .main-title{
         background-size: 40%;
     }
@@ -469,21 +481,21 @@
     }
 
     .main-workplace{
-        height: 580px;
+        height: 515px;
     }
 
     .workplace .main-main{
         width: 1000px;
-        height: 580px;
+        height: 515px;
     }
 
     .main-main-wrapper{
-        padding: 50px 105px;
+        padding: 50px 105px 40px 105px;
     }
 
     .workplaces-item{
         width: 180px;
-        height: 410px;
+        height: 345px;
     }
 
     .main-workplace-sidebar{

@@ -152,6 +152,12 @@
     margin: 0;
 }
 
+@media screen and (max-width: 1815px){
+    .main-workplace.market .market-list{
+        height: 360px;
+    }
+}
+
 
 @media screen and (max-width: 1690px) {
     .market .main-main{
