@@ -25,8 +25,8 @@ export default function Swap() {
     const calculateResult = () => {
 
         const res_multiplier = 1;
-        const total_resources = poolConfig.length ? poolConfig.total_minted_resources : 0 ;
-        const mined_tokens = poolConfig.length ? Number(poolConfig.total_minted_tokens.split(' ')[0]) : 0;
+        const total_resources = poolConfig ? poolConfig.total_minted_resources : 1 ;
+        const mined_tokens = poolConfig ? Number(poolConfig.total_minted_tokens.split(' ')[0]) : 0;
 
         if (amount === 0 || amount === '') {
             setResult(0);
@@ -88,7 +88,7 @@ export default function Swap() {
                                     <div className={'options'}>
                                         <select className={'resource-block'} name="Select token" onChange={handleOptionChange} value={selectedOption}>
                                             <option disabled selected value="">Select token</option>
-                                            {resourcesList.length && resourcesList.map(({resource}) => (
+                                            {resourcesList && resourcesList.map(({resource}) => (
                                                 <option key={resource} value={resource}>{resource}</option>
                                             ))}
                                         </select>
