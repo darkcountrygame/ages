@@ -172,11 +172,11 @@
 
 
 .stake-btn button{
-    background-color: #0000006e;
+    background-color: transparent;
     background-image: url("../../images/green_btn.png");
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 10px 20px;
+    padding: 10px 40px;
     color: #fff;
     border: 0;
     font-size: 22px;

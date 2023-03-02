@@ -119,7 +119,7 @@
 }
 
 .start-work_btn{
-    background-color: #0000006e;
+    background-color: transparent;
     background-image: url("../../images/green_btn.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -277,7 +277,7 @@
     margin: 0 auto;
     color: #fff;
     text-decoration: none;
-    background-color: #0000006e;
+    background-color: transparent;
     background-image: url("../../images/red_btn.png");
     background-repeat: no-repeat;
     background-size: cover;
