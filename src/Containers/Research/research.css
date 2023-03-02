@@ -185,6 +185,10 @@ text-align: center;
         height: 70px;
     }
 
+    .research-right .research-right__info{
+        font-size: 18px;
+    }
+
     .research-right .research-right__btn button{
         font-size: 22px;
     }
@@ -226,7 +230,9 @@ text-align: center;
     .research-right .research-right__info{
         width: 295px;
         height: 70px;
+        font-size: 16px;
     }
+
     .research-right .research-right__title{
         margin: 25px auto 20px auto;
         height: 65px;

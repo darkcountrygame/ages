@@ -35,17 +35,19 @@
     background-image: url('../../images/green_btn.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: transparent;
     width: 158px;
     height: 48px;
     text-align: center;
     margin: 0 auto;
     cursor: pointer;
-
+    border: 0;
 }
 
 .main-workplace.swap .swap-container .swap-block .swap-btn.disabled{
     background-image: url('../../images/unactive_green_btn.png');
     cursor: default;
+    background-color: transparent;
 }
 
 .main-workplace.swap .swap-container .swap-block .swap-btn p{

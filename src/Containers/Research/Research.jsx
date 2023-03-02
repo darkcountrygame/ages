@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useApp } from "../../Data/AppContext";
 import Countdown from "react-countdown";
 
-import '../Workplaces/workplaces.css'
+// import '../Workplaces/workplaces.css'
 import './research.css'
 
 
@@ -70,7 +70,7 @@ export default function Research() {
                                     </ul>
                                 </div>
                                <div className={`research-left__btn ${countdownCompleted ? 'completed' : ''}`}>
-                                   <ResearchCard countdownCompleted={countdownCompleted} />
+                                   <ResearchCard countdownCompleted={countdownCompleted} setCountdownCompleted={setCountdownCompleted}/>
                                </div>
                                 
                            </div>

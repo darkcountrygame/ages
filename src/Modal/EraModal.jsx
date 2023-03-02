@@ -32,12 +32,13 @@ export default () => {
             trigger={<button>Advance to New Era</button>}
             modal
             nested
+            className={'new-era-popup'}
         >
             {close => (
                 <div className="modal newera">
                     <img className="close" src={closeImg} alt="close" onClick={close}/>
                     <div className="header-modal"> New Era </div>
-                    <div className="content">
+                    <div className="content-era">
                         <div className="era-wrapper">
                             <div className="era-left">
                                 <div className="era-left__title">

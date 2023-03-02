@@ -9,18 +9,23 @@
     /*transform: translateX(-10%);*/
 }
 
+.research-card-content{
+    width: 786px;
+    height: 502px;
+}
+
 .modal > .header-modal {
     width: 100%;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 700;
     text-align: center;
-    padding: 5px 0 25px 0;
+    padding: 47px 0 47px 0;
     color: #fff;
 }
 
 .modal > .content {
     width: 100%;
-    padding: 10px 5px;
+    /*padding: 10px 5px;*/
     text-align: center;
 }
 
@@ -40,11 +45,17 @@
 }
 
 .modal > .actions button{
-    font-size: 24px;
-    font-weight: bold;
-    background: #12B124;
+    background-image: url("../images/green_btn.png");
+    background-size: cover;
+    background-color: transparent;
+    border: 0;
+    background-repeat: no-repeat;
     cursor: pointer;
-    padding: 5px 40px;
+    padding: 7px 64px;
+    color: #fff;
+    font-size: 24px;
+    display: block;
+    margin: 0 auto;
 }
 
 .modal > .close{
@@ -131,11 +142,13 @@
 .research-wrapper{
     display: flex;
     justify-content: center;
+    height: 211px;
+    padding: 0 68px 69px 68px;
 }
 
 .research-left-img-modal{
-    flex: 0 0 50%;
-    max-width: 50%;
+    width: 325px;
+    height: 211px;
 }
 
 .research-left-img-modal img{
@@ -147,9 +160,8 @@
 .research-right-modal{
     text-align: center;
     padding: 10px;
-    flex: 0 0 50%;
-    max-width: 50%;
-    background: rebeccapurple;
+    width: 325px;
+    background-image: url("../images/violet_bg.png");
 }
 
 .research-right-modal h3{
@@ -160,12 +172,12 @@
 }
 
 .research-right-modal p{
-    font-size: 16px!important;
+    font-size: 14px!important;
     color: #fff;
 }
 
 .research-right-modal__header{
-    background: url('../images/orange_title.png');
+    background-image: url('../images/orange_title.png');
     background-repeat: no-repeat;
     background-size: 75%;
     background-position: center;

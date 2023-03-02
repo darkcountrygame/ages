@@ -15,13 +15,15 @@ import './research.css'
 import { claimSciencePoints } from "../Services";
 
 
-export default ({countdownCompleted}) => {
-  const { resourcesList, spConfig } = useApp();
+export default ({countdownCompleted, setCountdownCompleted}) => {
+  const { resourcesList, spConfig, totalSp } = useApp();
   const { activeUser } = useContext(UALContext);
 
   const pointsHandler = () => {
           claimSciencePoints( {activeUser, price: spConfig?.research_price} )
               .then(() => {
+                  setCountdownCompleted(false)
+
                   toast.success('Success');
               })
               .catch((e) => toast.error(e.message))
@@ -34,6 +36,7 @@ export default ({countdownCompleted}) => {
           trigger={<button disabled={countdownCompleted}>Research {Number(spConfig?.research_price?.split(' ')[0])/1} RTP</button>}
           modal
           nested
+          className={'research-card'}
       >
         {close => (
             <div className="modal research">
@@ -48,7 +51,7 @@ export default ({countdownCompleted}) => {
                     <div className="research-right-modal__header">
                       <h3>Prehistoric Age</h3>
                     </div>
-                    <p>{resourcesList.science_points} / 10 000 SP</p>
+                    <p>{ totalSp.science_points ?? 0 } / 10 000 SP</p>
                   </div>
                 </div>
               </div>

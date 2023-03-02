@@ -1,11 +1,12 @@
-.newera {
-    font-size: 12px;
-    background: url('../images/long_popup.png');
+.new-era-popup-content{
+    height: 543px;
+    max-width: 1208px;
+}
+.new-era-popup-content .newera {
+    background-image: url('../images/long_popup.png');
     background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
+    background-size: 100% 100%;
     color: #815F50;
-    padding: 30px 95px;
 }
 
 .newera > .close{
@@ -14,37 +15,51 @@
     right: 2%;
     top: 4%;
 }
+
+.modal.newera > .header-modal{
+    padding: 38px 0 25px 0;
+}
+
+.modal.newera .era-left__img{
+    width: 325px;
+    height: 230px;
+    margin: 0 auto;
+}
+
 .era-wrapper{
     display: flex;
     align-items: center;
-
+    padding: 0 95px 25px 80px;
+    justify-content: space-between;
 }
 
 .era-left{
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 0 0 40%;
+    max-width: 40%;
 }
 
 
 
 .era-left__title{
-    background: url('../images/orange_title.png');
+    background-image: url('../images/orange_title.png');
     background-repeat: no-repeat;
-    background-size: 75%;
+    background-size: 80%;
     background-position: center;
     padding: 15px 0;
     position: relative;
+    margin-bottom: 23px;
 }
 
 .era-left__title h3{
     color: #fff;
     font-size: 25px;
     font-weight: bold;
+    text-align: center;
 }
 
 .era-right{
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 0 0 60%;
+    max-width: 60%;
     background: #b190506b;
     padding: 10px;
     border-radius: 10px;
@@ -62,24 +77,29 @@
     color: #fff;
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
 }
 
 .era-update__item{
-    width: 30%;
+    height: 202px;
+    width: 145px;
     margin: 10px;
 }
 
 
 
-/*.actions button{*/
-/*    background-image: url("../images/green_btn.png");*/
-/*    background-repeat: no-repeat;*/
-/*    cursor: pointer;*/
-/*    padding: 10px 30px;*/
-/*    color: #fff;*/
-/*    border: 0;*/
-/*    font-size: 24px;*/
-/*    display: block;*/
-/*    margin: 0 auto;*/
+.modal.newera > .actions button{
+    background-image: url("../images/green_btn.png");
+    background-size: cover;
+    background-color: transparent;
+    border: 0;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    padding: 13px 30px;
+    color: #fff;
+    border: 0;
+    font-size: 24px;
+    display: block;
+    margin: 0 auto;
 
-/*}*/
+}
