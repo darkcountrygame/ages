@@ -21,9 +21,8 @@ import TostifyMessage from '../../components/Messages/Tostify'
 export default function Research() {
 
 
-    const { resourcesList, probabilityPoints, totalSp, spConfig } = useApp();
+    const { probabilityPoints, totalSp, spConfig } = useApp();
 
-    console.log(totalSp.science_points)
 
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed)
@@ -55,18 +54,17 @@ export default function Research() {
                                         <li>Research duration:
                                             <span>
                                                 <Countdown
-                                                date={new Date((totalSp.last_time_research + spConfig.research_lock_time) * 1000)}
+                                                    date={(totalSp.last_time_research * 1000 - Date.now()) + Date.now()}
                                                 renderer={countdownRenderer}
                                                 />
                                             </span>
                                         </li>
                                         {
-                                            !probabilityPoints ?
-                                                <li>Chance for success: <span>0%</span></li>
+                                            probabilityPoints.length ?
+                                                <li>Chance for success: <span>{spConfig.research_reward + probabilityPoints}%</span></li>
                                                 :
-                                                <li>Chance for success: <span>{probabilityPoints}%</span></li>
+                                                <li>Chance for success: <span>{spConfig.research_reward}%</span></li>
                                         }
-
                                         <li>Total science points: <span>{ totalSp.science_points ?? 0 }</span></li>
                                     </ul>
                                 </div>

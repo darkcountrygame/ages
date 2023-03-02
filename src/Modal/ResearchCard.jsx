@@ -20,7 +20,7 @@ export default () => {
   const { activeUser } = useContext(UALContext);
 
   const pointsHandler = () => {
-          claimSciencePoints( {activeUser, price: spConfig[0]?.research_price} )
+          claimSciencePoints( {activeUser, price: spConfig?.research_price} )
               .then(() => {
                   toast.success('Success');
               })
@@ -31,7 +31,7 @@ export default () => {
 
   return(
       <Popup
-          trigger={<button>Research {Number(spConfig?.research_price.split(' ')[0])/1} RTP</button>}
+          trigger={<button>Research {Number(spConfig?.research_price?.split(' ')[0])/1} RTP</button>}
           modal
           nested
       >

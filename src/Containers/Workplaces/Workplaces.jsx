@@ -71,13 +71,16 @@ const Workplaces = () => {
     useEffect(() => {
         const toolsIdtoObj = async () => {
             if (selectedWorkPlace && selectedWorkPlace.tools && selectedWorkPlace.tools.length){
-                selectedWorkPlace.tools.map(async item => {
-                    const data = await getDataFromAtomicApi(`assets?ids=${item.key}&page=1&limit=100`)
-                    setTools(data)
-                })
+                const newTools = [];
+                await Promise.all(selectedWorkPlace.tools.map(async item => {
+                    const data = await getDataFromAtomicApi(`assets?ids=${item.key}&page=1&limit=100`);
+                    newTools.push(...data);
+                }));
+                console.log(newTools)
+                setTools(newTools);
             } else if(stakedItemList && stakedItemList[0]?.tools && stakedItemList.length && stakedItemList[0]?.tools[0]?.key){
                     const data = await getDataFromAtomicApi(`assets?ids=${stakedItemList[0]?.tools[0]?.key}&page=1&limit=100`)
-                    setTools(data)
+                setTools(data)
             } else {
                 setTools([])
             }
@@ -229,6 +232,7 @@ const Workplaces = () => {
             ))
         ) : null;
 
+        console.log(tools)
         const lockItems = tools.length <= wp.data?.slots ? (
             Array.from({ length: 4 - wp.data?.slots }, (_, i) => (
                 <div key={i} className="workplaces-item lock">
