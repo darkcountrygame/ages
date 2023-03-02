@@ -57,6 +57,6 @@ export const totalSp = async ({account}) => {
     if (!rows[0])
         return rows[0] = [];
 
-    console.log(rows)
+
     return rows[0];
 };

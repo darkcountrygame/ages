@@ -348,9 +348,7 @@ const AppContent = () => {
         ) {
             setPoolConfgLoading(true);
 
-            fetchPoolConfig({
-                account: activeUser.accountName
-            })
+            fetchPoolConfig()
                 .then((value) => setPoolConfig(value))
                 .catch(e => {
                     console.log(e)

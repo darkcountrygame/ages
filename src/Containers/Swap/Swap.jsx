@@ -8,12 +8,13 @@ import './Swap.css'
 
 
 export default function Swap() {
-    const { rtpBalance, resourcesList } = useApp();
+    const { rtpBalance, resourcesList, poolConfig, eraConf } = useApp();
     const [amount, setAmount] = useState('');
     const [result, setResult] = useState(0);
     const [isInitialInputChange, setIsInitialInputChange] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedResourceAmount, setSelectedResourceAmount] = useState(0);
+
 
     const handleInputChange = (e) => {
         if (selectedOption) {
@@ -23,14 +24,13 @@ export default function Swap() {
 
     const calculateResult = () => {
         const res_multiplier = 1;
-        const total_resources = 2090;
-        const mined_tokens = 139.8852;
+        const total_resources = poolConfig.total_minted_resources;
+        const mined_tokens = Number(poolConfig.total_minted_tokens.split(' ')[0]);
 
         if (amount === 0 || amount === '') {
             setResult(0);
         } else {
-            const result =
-                (amount * res_multiplier / total_resources) * mined_tokens;
+            const result = (amount * res_multiplier / total_resources) * mined_tokens;
             setResult(result);
         }
     };
@@ -41,7 +41,7 @@ export default function Swap() {
         } else {
             setIsInitialInputChange(true);
         }
-    }, [amount]);
+    }, [amount, calculateResult, isInitialInputChange]);
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
@@ -109,16 +109,16 @@ export default function Swap() {
                                 <div className="statistic-field">
                                     <h5>Total amount of mined resources:</h5>
                                     <div className={'resource'}>
-                                        <p>870,753,890</p>
+                                        <p>{poolConfig.total_minted_resources}</p>
                                     </div>
                                 </div>
                                 <div className="statistic-field">
                                     <h5>Total mined tokens:</h5>
-                                    <p>9,753,890 RTP</p>
+                                    <p>{poolConfig.total_minted_tokens}</p>
                                 </div>
                                 <div className="statistic-field">
                                     <h5>Mining rate per second:</h5>
-                                    <p>1,890 RTP</p>
+                                    <p>{eraConf[0].token_mining_rate}</p>
                                 </div>
                             </div>
                         </div>
