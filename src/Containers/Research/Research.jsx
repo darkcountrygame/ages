@@ -59,11 +59,10 @@ export default function Research() {
                                                 />
                                             </span>
                                         </li>
-                                        {
-                                            probabilityPoints.length ?
-                                                <li>Chance for success: <span>{spConfig.research_reward + probabilityPoints}%</span></li>
+                                        {probabilityPoints ?
+                                                <li>Chance for success: <span>{spConfig.research_reward_rand + probabilityPoints}%</span></li>
                                                 :
-                                                <li>Chance for success: <span>{spConfig.research_reward}%</span></li>
+                                                <li>Chance for success: <span>{spConfig.research_reward_rand}%</span></li>
                                         }
                                         <li>Total science points: <span>{ totalSp.science_points ?? 0 }</span></li>
                                     </ul>

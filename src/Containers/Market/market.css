@@ -67,9 +67,12 @@
 }
 
 .no-inventory{
+    justify-content: center;
+    align-items: center;
     font-size: 25px;
     font-weight: bold;
     text-transform: uppercase;
+    height: 410px;
 }
 
 .market-list{

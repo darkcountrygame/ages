@@ -23,9 +23,10 @@ export default function Swap() {
     };
 
     const calculateResult = () => {
+
         const res_multiplier = 1;
-        const total_resources = poolConfig.total_minted_resources;
-        const mined_tokens = Number(poolConfig.total_minted_tokens.split(' ')[0]);
+        const total_resources = poolConfig.length ? poolConfig.total_minted_resources : 0 ;
+        const mined_tokens = poolConfig.length ? Number(poolConfig.total_minted_tokens.split(' ')[0]) : 0;
 
         if (amount === 0 || amount === '') {
             setResult(0);
@@ -87,7 +88,7 @@ export default function Swap() {
                                     <div className={'options'}>
                                         <select className={'resource-block'} name="Select token" onChange={handleOptionChange} value={selectedOption}>
                                             <option disabled selected value="">Select token</option>
-                                            {resourcesList.map(({resource}) => (
+                                            {resourcesList.length && resourcesList.map(({resource}) => (
                                                 <option key={resource} value={resource}>{resource}</option>
                                             ))}
                                         </select>
@@ -109,16 +110,16 @@ export default function Swap() {
                                 <div className="statistic-field">
                                     <h5>Total amount of mined resources:</h5>
                                     <div className={'resource'}>
-                                        <p>{poolConfig.total_minted_resources}</p>
+                                        <p>{poolConfig ? poolConfig.total_minted_resources : 0}</p>
                                     </div>
                                 </div>
                                 <div className="statistic-field">
                                     <h5>Total mined tokens:</h5>
-                                    <p>{poolConfig.total_minted_tokens}</p>
+                                    <p>{poolConfig ? poolConfig.total_minted_tokens : 0}</p>
                                 </div>
                                 <div className="statistic-field">
                                     <h5>Mining rate per second:</h5>
-                                    <p>{eraConf[0].token_mining_rate}</p>
+                                    <p>{eraConf.length && eraConf[0].token_mining_rate}</p>
                                 </div>
                             </div>
                         </div>

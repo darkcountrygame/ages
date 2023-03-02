@@ -49,11 +49,29 @@
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+    border: 0;
 }
 
 .main-btn a:hover{
     background: linear-gradient(180deg, #30f747 0%, #1ab369 100%);
 
+}
+
+@media screen and (max-width: 1699px){
+    .main-btn button {
+        font-size: 35px;
+        display: block;
+        background: url('../../images/start_btn.png');
+        width: 300px;
+        height: 90px;
+        text-align: center;
+        margin: 0 auto 135px auto;
+        transition: all 1s;
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+    }
 }
 
 @media screen and (max-width: 768px) {

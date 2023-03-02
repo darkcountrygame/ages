@@ -19,9 +19,9 @@ h3{
 }
 
 .research-left{
-    margin-top: 40px;
+    margin-top: 76px;
     flex: 0 0 50%;
-    height: 80%;
+    height: 70%;
     max-width: 50%;
     border-right: 5px solid #ae8963;
     border-radius: 5px;
@@ -43,7 +43,7 @@ h3{
     display: flex;
     flex-direction: column;
     list-style: none;
-    padding: 20px 65px;
+    padding: 50px 65px 40px 65px;
     margin: 0 auto;
 }
 
@@ -56,19 +56,28 @@ h3{
 
 .research-left .research-left__info ul li span{
     margin-left: 5px;
+    font-size: 22px;
 }
 
 .research-left .research-left__btn{
     text-align: center;
+    width: 282px;
+    height: 64px;
+    margin: 0 auto;
 }
 
 .research-left .research-left__btn button{
-    padding: 10px 40px;
-    background-color: rgb(7, 204, 7);
+    width: 100%;
+    background-image: url("../../images/green_btn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #fff;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
+    height: 100%;
+    background-color: transparent;
+    border: 0;
 }
 
 .research-right{
