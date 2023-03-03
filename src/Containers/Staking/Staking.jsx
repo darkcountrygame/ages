@@ -11,7 +11,7 @@ import './staking.css'
 import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UserTool from '../../components/UserTool/UserTool'
-import {stakedToCollectionAssets} from "../../Services";
+import {stakedToCollectionAssets, stakeWp, unStakeWp} from "../../Services";
 import {UALContext} from "ual-reactjs-renderer";
 
 
@@ -27,22 +27,30 @@ export default function Staking() {
 
     const [selectedTool, setSelectTool] = useState([])
     const [stakedAsset, setStakedAsset] = useState([])
-    const [selectedToolImg, setSelectToolImg] = useState([])
-    const [toolName, setToolName] = useState([])
+    // const [selectedToolImg, setSelectToolImg] = useState([])
+    // const [toolName, setToolName] = useState([])
     const [selectedTab, setSelectedTab] = useState(ADD_ASSET)
 
-
+    console.log(selectedTool)
 
     const handleClick = (tabName) => {
         setSelectedTab(tabName);
     };
 
     const handleStake = () => {
-
+        stakeWp({activeUser, selectItem: selectedTool})
+            .then(() => {
+                toast.success('Staked');
+            })
+            .catch(e => toast.error(e.message))
     };
 
     const handleUnStake = () => {
-
+        unStakeWp({activeUser, selectItem: selectedTool})
+            .then(() => {
+                toast.success('Unstaked');
+            })
+            .catch(e => toast.error(e.message))
     };
 
 

@@ -54,6 +54,20 @@ export const stakeWp = async ({ activeUser, selectItem }) => {
 
 };
 
+export const unStakeWp = async ({ activeUser, selectItem }) => {
+
+    return await signTransaction({
+        activeUser,
+        account: RTP_GAME,
+        action: 'unstakewp',
+        data: {
+            player: activeUser.accountName,
+            workplace_asset_id: selectItem
+        }
+    });
+
+};
+
 export const stakedToCollectionAssets = async ({ activeUser}) => {
 
     return axios.get('https://test.wax.api.atomicassets.io/atomicassets/v1/transfers', {

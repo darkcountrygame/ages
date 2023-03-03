@@ -6,24 +6,29 @@ import { toast } from "react-toastify";
 import closeImg from '../images/close.png'
 import meatIcon from '../images/market-items/meat.png'
 
-
-import './upgrade.css'
-
 import { upgradeTool } from "../Services";
 import {UALContext} from "ual-reactjs-renderer";
 
-export default ({ disabled, selectedTool, selectedToolImg, toolName}) => {
+
+import './upgrade.css'
+
+
+
+export default({ disabled, selectedTool}) => {
   const { activeUser } = useContext(UALContext);
 
-  const upgradeHandler = () => {
+  const upgradeHandler = (close) => {
     upgradeTool({activeUser, selectedTool})
         .then(() => {
+
+            close()
             toast.success('Upgrade success')
         })
         .catch((e) => {
             toast.error(e.message)
         })
   }
+
 
   return (
       <Popup
@@ -42,14 +47,14 @@ export default ({ disabled, selectedTool, selectedToolImg, toolName}) => {
                   <div className="info-card__img">
                     <div className="info-card__img-wrapper">
                       <div className="info-card__photo">
-                          {selectedToolImg && <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon" />}
+                          {/*{selectedToolImg && <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon" />}*/}
                       </div>
                     </div>
                   </div>
                   <div className="info-card__asset">
                     <ul>
                       <li>Asset Name</li>
-                      <span>{ toolName }</span>
+                      <span></span>
                       <li>Asset ID</li>
                       <span>#{selectedTool}</span>
                       <li>Rarity</li>
@@ -75,7 +80,7 @@ export default ({ disabled, selectedTool, selectedToolImg, toolName}) => {
                 </div>
               </div>
               <div className="actions" onClick={close}>
-                <button onClick={upgradeHandler}>Upgrade</button>
+                <button onClick={() => upgradeHandler(close)}>Upgrade</button>
               </div>
             </div>
         )}

@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import './market.css'
 
 
-import Header from '../../components/HeaderGame/HeaderGame'
+
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UpgradeCard from '../../Modal/UpgradeCard'
 import UserTool from '../../components/UserTool/UserTool'
@@ -119,10 +119,7 @@ export default function Market() {
                             <div className="market-btn">
                                 {!selectedTool.length ?
                                     <button onClick={toastyErr}>
-                                        Upgrade -
-                                        {wpConfig && wpConfig.length > 1 && wpConfig[1].price_upgrade
-                                            ? Math.floor(wpConfig[1].price_upgrade.split(' ')[0]) + ' RTP'
-                                            : '100 RTP'}
+                                        Upgrade
                                     </button>
                                 :
                                     <UpgradeCard

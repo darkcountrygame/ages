@@ -1,6 +1,12 @@
 import React from "react";
 
-const UserTool = ({item, index, setSelectTool, selectedTool}) => {
+const UserTool = ({
+                      item,
+                      index,
+                      setSelectTool,
+                      selectedTool,
+                      setSelectToolImg
+}) => {
 
     // const toolInfo = () => {
     //     setSelectToolImg(item.data.img)

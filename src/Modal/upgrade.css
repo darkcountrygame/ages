@@ -9,10 +9,11 @@
   }
 .upgrade > .header-modal {
     width: 100%;
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 700;
     text-align: center;
-    padding: 5px 0 25px 0;
+    padding: 20px 0 25px 0;
+    color: #FFFFFF;
   }
 .upgrade > .content {
     width: 100%;
@@ -28,19 +29,22 @@
       padding-bottom: 10px;
 }
 
-.modal > .actions {
+.upgrade > .actions {
     width: 100%;
    
     margin: auto;
     text-align: center;
-  
-
 }
-.modal > .actions button{
-      font-size: 24px;
+.upgrade > .actions button{
+      font-size: 22px;
+    color: #FFFFFF;
+    background-color: transparent;
+    border: 0;
       font-weight: bold;
-      background: #12B124;
-    cursor: pointer;
+      background-image: url("../images/green_btn.png");
+        background-size: cover;
+    background-repeat: no-repeat;
+        cursor: pointer;
       padding: 5px 40px;
 }
 
@@ -62,16 +66,17 @@
     height: 507px;
 }
 
-.info-card{
+.upgrade .info-card{
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 33px;
 }
 
 .info-card__img{
     background: #6b4c3e3f;
     border-radius: 8px;
     margin: 0 30px 0 10px;
-    width: 190px;
+    width: 186px;
+    height: 282px
 }
 
 .info-card__img-wrapper{
@@ -98,9 +103,17 @@
     margin-right: 60px;
 }
 
-.info-card ul li{
-    font-size: 16px;
-    
+.upgrade .info-card__progress p:first-child{
+    margin: 0;
+}
+
+.upgrade .info-card ul li{
+    font-size: 14px;
+    margin-top: 17px;
+}
+
+.upgrade .info-card ul span{
+    margin-bottom: 17px;
 }
 
 .info-card ul span{
