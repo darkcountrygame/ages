@@ -4,7 +4,7 @@ import { useApp } from "../../Data/AppContext";
 import { toast } from "react-toastify";
 
 
-import '../Workplaces/workplaces.css'
+// import '../Workplaces/workplaces.css'
 import './market.css'
 
 
@@ -38,7 +38,7 @@ export default function Market() {
     if (!itemList.length){
         return (
             <section className='workplace'>
-                <Header />
+                {/*<Header />*/}
                 <div className="main-workplace market">
                     <div className="main-main">
                         <div className="main-title">
@@ -78,7 +78,7 @@ export default function Market() {
 
     return (
         <section className='workplace'>
-            <Header />
+            {/*<Header />*/}
             <div className="main-workplace market">
                 <div className="main-main">
                     <div className="main-title">

@@ -19,15 +19,17 @@ export default function Sidebar({ handleWorkplaceTool,  selectItem, setSelectIte
         <div className="main-workplace-sidebar">
             <div className="main-workplace-sidebar__wrapper">
                 {stakedItemList.length ?
-                        <div className="main-workplace-sidebar__list">
-                            {stakedItemList.map((item, index) => <SidebarItem
-                                item={item}
+                    <div className="main-workplace-sidebar__list">
+                        {stakedItemList.map((item, index) => (
+                            <SidebarItem
                                 index={index}
+                                item={item}
                                 setSelectedWorkPlace={setSelectedWorkPlace}
                                 selectedWorkPlace={selectedWorkPlace}
                                 handleWorkplaceTool={handleWorkplaceTool}
-                            />)}
-                        </div>
+                            />
+                        ))}
+                    </div>
                         :
                         <p className={'no-workplaces'}>No workplaces</p>
                 }

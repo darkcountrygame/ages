@@ -4,7 +4,7 @@ import { useApp } from "../../Data/AppContext";
 import { toast } from "react-toastify";
 
 
-import '../Workplaces/workplaces.css'
+// import '../Workplaces/workplaces.css'
 import './staking.css'
 
 
@@ -72,7 +72,7 @@ export default function Staking() {
 
     return (
         <section className='workplace'>
-            <Header />
+            {/*<Header />*/}
             <div className="main-workplace stake">
                 <div className="main-main">
                     <div className="main-title">
@@ -114,10 +114,11 @@ export default function Staking() {
                                     {itemList.length ?
                                         itemList
                                             .filter(item => item.schema.schema_name === 'workplace')
-                                            .map( item => <UserTool
+                                            .map( (item, index) => <UserTool
                                             item={item}
                                             setSelectTool={setSelectTool}
                                             selectedTool={selectedTool}
+                                            index={index}
                                         />)
                                         :
                                         <p className={'no-workplaces'}>No tools</p>
@@ -130,10 +131,11 @@ export default function Staking() {
                                     {stakedAsset.length ?
                                         stakedAsset
                                             .filter(item => item.schema.schema_name === 'workplace')
-                                            .map( item => <UserTool
+                                            .map( (item, index) => <UserTool
                                             item={item}
                                             setSelectTool={setSelectTool}
                                             selectedTool={selectedTool}
+                                            index={index}
                                         />)
                                         :
                                         <p className={'no-workplaces'}>No tools</p>

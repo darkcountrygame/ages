@@ -13,21 +13,25 @@
     position: relative;
     z-index: 2;
 }
-
-.header-wrapper::before{
-    content: '';
-    position: absolute;
-    content: url('../../images/era_title_bg.png');
-    top: 20%;
-    left: 0;
-    z-index: -1;
+.header-stats{
+    position: relative;
 }
-
+.header-stats-bg{
+    position: absolute;
+    top: 31px;
+    left: 0;
+    width: 338px;
+    height: 71px;
+    background-image: url('../../images/era_title_bg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 .header-stats__title{
     font-size: 20px;
     font-weight: 700;
     color: #fff;
     margin-bottom: 25px;
+
 }
 
 
@@ -63,7 +67,7 @@
 
 
 .header-items{
-
+    margin-left: 160px;
 }
 
 .header-items .header-items_list{
@@ -178,23 +182,20 @@
         margin: 0;
     }
 
-    .header-wrapper::before{
-        content: '';
-        position: absolute;
-        background-image: url('../../images/era_title_bg.png');
-        background-size: contain;
-        width: 100%;
-        height: 57px;
-        background-repeat: no-repeat;
-        top: 18%;
-        left: 0;
-        z-index: -1;
-    }
 
     .header-items .header-items_list li img{
         width: 20px;
         height: 20px;
     }
+
+    .header-stats-bg{
+        position: absolute;
+        top: 7px;
+        left: 0;
+        width: 276px;
+        height: 56px;
+    }
+
 }
 
 

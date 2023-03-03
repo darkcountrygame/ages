@@ -26,7 +26,7 @@ export default function Swap() {
 
         const res_multiplier = 1;
         const total_resources = poolConfig ? poolConfig.total_minted_resources : 1 ;
-        const mined_tokens = poolConfig ? Number(poolConfig.total_minted_tokens.split(' ')[0]) : 0;
+        const mined_tokens = poolConfig ? Number(poolConfig.total_minted_tokens?.split(' ')[0]) : 0;
 
         if (amount === 0 || amount === '') {
             setResult(0);
@@ -67,7 +67,7 @@ export default function Swap() {
 
     return (
         <section className='workplace'>
-            <Header />
+            {/*<Header />*/}
             <div className="main-workplace swap">
                 <div className="main-main">
                     <div className="main-title">

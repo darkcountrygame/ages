@@ -22,10 +22,10 @@ export default function Sidebar({ item, index, setSelectedWorkPlace, selectedWor
     // console.log(selectedWorkPlace)
 
     return (
-        <>
-                <div key={index} className={(selectedWorkPlace === String(itemObj.asset_id) || (selectedWorkPlace.workplace_asset_id === String(itemObj.asset_id))) || (selectedWorkPlace === null && index === 0) ? "main-workplace-sidebar__item wp-active" : "main-workplace-sidebar__item"} onClick={() => setSelectedWorkPlace(() => handleWorkplaceTool(item))}>
+        <div key={index}>
+                <div className={(selectedWorkPlace === String(itemObj.asset_id) || (selectedWorkPlace.workplace_asset_id === String(itemObj.asset_id))) || (selectedWorkPlace === null && index === 0) ? "main-workplace-sidebar__item wp-active" : "main-workplace-sidebar__item"} onClick={() => setSelectedWorkPlace(() => handleWorkplaceTool(item))}>
                     {itemObj && <img src={`https://cloudflare-ipfs.com/ipfs/${itemObj.data?.img}`} alt="img" />}
                 </div>
-        </>
+        </div>
     )
 }

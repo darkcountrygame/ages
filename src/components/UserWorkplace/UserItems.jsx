@@ -4,7 +4,7 @@ const UserItems = ({ item, index, setToolSelected, toolSelected }) => {
 
     return (
         <div
-            key={Number(index)}
+            key={index}
             className={item.asset_id === toolSelected ? `card-item selected` : `card-item`}
             onClick={() => setToolSelected(item.asset_id)}
         >

@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Countdown from 'react-countdown';
 
-const Timer = ({ wp, stakedWP, setCountdownCompleted }) => {
+const Timer = ({ wp, stakedWP }) => {
+    const [countdownCompleted, setCountdownCompleted] = useState(false);
 
     const formatTime = ({ hours, minutes, seconds, completed }) => {
-        if (completed) {
-            setCountdownCompleted(false);
-        }
-
-        setCountdownCompleted(true);
         return `${hours.toString().padStart(2, '0')}:${minutes
             .toString()
             .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    };
 
+    const handleCountdownCompletion = (completed) => {
+        setCountdownCompleted(completed);
     };
 
     const getTimestampFromCurrentWP = () => {
-        const filteredStakedWP = stakedWP.filter(item => {
+        const filteredStakedWP = stakedWP.filter((item) => {
             return item.workplace_asset_id === wp.asset_id;
         });
         const lastTimeWork = filteredStakedWP[0]?.last_time_work;
@@ -30,13 +29,16 @@ const Timer = ({ wp, stakedWP, setCountdownCompleted }) => {
     }
 
     return (
-        <p>
-            <Countdown
-                key={timestamp}
-                date={(timestamp * 1000 - Date.now()) + Date.now()}
-                renderer={formatTime}
-            />
-        </p>
+        <>
+            <p>
+                <Countdown
+                    key={timestamp}
+                    date={timestamp * 1000}
+                    onComplete={() => handleCountdownCompletion(true)}
+                    renderer={formatTime}
+                />
+            </p>
+        </>
     );
 };
 

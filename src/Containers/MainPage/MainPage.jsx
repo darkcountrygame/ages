@@ -16,7 +16,6 @@ const MainPage = () => {
    return(
 
        <main className="main">
-           {/*<Navbar />*/}
               <div className="main-btn">
                   <button onClick={handleLogin} className="btn">START PLAY</button>
               </div>

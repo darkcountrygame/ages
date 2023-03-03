@@ -12,7 +12,7 @@ ReactDOM.render(
     <UALProvider
         chains={[waxChain]}
         authenticators={waxAuthenticators}
-        appName={'DeepMine'}
+        appName={'RTP'}
     >
         <App />
     </UALProvider>,

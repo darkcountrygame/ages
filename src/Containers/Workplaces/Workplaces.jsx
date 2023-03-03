@@ -265,7 +265,7 @@ const Workplaces = () => {
                                   <img src={getResourceIcon(selectedWorkPlace?.generate_resource)} alt="" />
                               </p>
                               <button
-                                  className={countdownCompleted ? "start-work_btn disabled" : "start-work_btn"}
+                                  className={"start-work_btn"}
                                   onClick={() => handleClaim(selectedWorkPlace && String(wp.asset_id))}
                                   disabled={countdownCompleted}
                               >
@@ -359,7 +359,7 @@ const Workplaces = () => {
 
     return (
         <section className="workplace">
-            <Header />
+            {/*<Header />*/}
             <div className="main-workplace">
                 <Sidebar
                     handleWorkplaceTool={handleWorkplaceTool}

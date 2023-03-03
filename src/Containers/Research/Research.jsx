@@ -39,7 +39,7 @@ export default function Research() {
 
     return (
         <section className='workplace'>
-            <Header />
+            {/*<Header />*/}
             <div className="main-workplace research">
 
                 <div className="main-main">

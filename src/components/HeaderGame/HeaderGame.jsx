@@ -14,11 +14,12 @@ import plus from '../../images/plus.png'
 
 export default function Header() {
 
-    const { activeUser } = useContext(UALContext);
+    // const { activeUser } = useContext(UALContext);
 
-    const { waxBalance, rtpBalance, isAuthenticated, resourcesList, eraConf } = useApp();
+    const { waxBalance, rtpBalance, resourcesList, eraConf } = useApp();
 
-    const [userEra, setUserEra] = useState([])
+    const [usersCurrentEra, setUsersCurrentEra] = useState(null)
+
 
 
     const findResourceAmount = (resource) => {
@@ -36,13 +37,13 @@ export default function Header() {
     };
 
 
-
     useEffect(() => {
-       const userEraArr = eraConf.filter( user  => user.player === activeUser.accountName)
-       setUserEra(userEraArr)
-   }, [eraConf])
+        const firstOwnerEra = eraConf.find((era) => era.owner !== 'null');
+        const selectedEra = firstOwnerEra || eraConf[0];
+        setUsersCurrentEra(selectedEra);
+    }, [eraConf]);
 
-     // console.log(userEra)
+
 
     // if(!isAuthenticated) {
     //     return (
@@ -72,15 +73,13 @@ export default function Header() {
     return(
         <header className="header">
             <div className="header-wrapper">
+                <div className="header-stats-bg"></div>
                 <div className="header-stats">
+
                     <div className="header-stats__title">
-                        {!userEra.length
-                        ?
-                            <h2>Prehistoric age</h2>
-                        :
-                            <h2>{userEra[userEra.length - 1].title}</h2>
-                        }
-                        <h2></h2>  {/*{ eraConf.map( era => era.title) }*/}
+                        {usersCurrentEra && (
+                            <h2>{usersCurrentEra?.title}</h2>
+                        )}
                     </div>
                     <div className="header-stats__under">
                         <div className="header-stats__sp">

@@ -1,5 +1,6 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Router ,Route, Switch, Redirect } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
  import { useApp } from "../Data/AppContext";
 import {
@@ -11,34 +12,40 @@ import {
     Research,
 } from "../Containers";
 
+const history = createBrowserHistory();
+
 export const useRoutes = () => {
      const {isAuthenticated} = useApp();
 
+
      if (isAuthenticated){
          return (
-             <Switch>
-                 <Route exact path="/workpalces">
-                     <Workpalces />
-                 </Route>
+             <Router history={history}>
+                 <Switch>
+                     <Route exact path="/workpalces">
+                         <Workpalces />
+                     </Route>
 
-                 <Route exact path="/inventory">
-                     <Staking />
-                 </Route>
+                     <Route exact path="/inventory">
+                         <Staking />
+                     </Route>
 
-                 <Route exact path="/upgrade">
-                     <Market />
-                 </Route>
+                     <Route exact path="/upgrade">
+                         <Market />
+                     </Route>
 
-                 <Route exact path="/swap">
-                     <Swap />
-                 </Route>
+                     <Route exact path="/swap">
+                         <Swap />
+                     </Route>
 
-                 <Route exact path="/research">
-                     <Research />
-                 </Route>
+                     <Route exact path="/research">
+                         <Research />
+                     </Route>
 
-                 <Redirect to="/workpalces" />
-             </Switch>
+                     <Redirect exact to="/workpalces" />
+                 </Switch>
+             </Router>
+
          )
      }
 

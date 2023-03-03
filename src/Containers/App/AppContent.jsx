@@ -25,7 +25,8 @@ import {
     // fetchStakedTools,
 
 } from "../../Services";
-
+import Header from "../../components/HeaderGame/HeaderGame";
+import '../../index.css'
 
 const AppContent = () => {
     const routes = useRoutes();
@@ -362,7 +363,8 @@ const AppContent = () => {
 
     return (
             <div>
-                <main>
+                <main className={'main-bg'}>
+                    {activeUser && <Header />}
                     { routes }
                 </main>
 
