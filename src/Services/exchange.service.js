@@ -6,11 +6,11 @@ export const exchangeResources = async ({ activeUser, resource, count }) => {
     return await signTransaction({
         activeUser,
         account: RTP_GAME,
-        action: 'exchange',
+        action: 'swap',
         data: {
             player: activeUser.accountName,
             resource: resource,
-            number: count
+            amount: count
         }
     });
 };
