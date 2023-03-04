@@ -106,7 +106,7 @@ export default function Swap() {
                                     <div className={'options'}>
                                         <select className={'resource-block'} name="Select token" onChange={handleOptionChange} value={selectedOption}>
                                             <option disabled selected value="">Select token</option>
-                                            {resourcesList && resourcesList.map(({resource}) => (
+                                            {Array.isArray(resourcesList) && resourcesList.map(({resource}) => (
                                                 <option key={resource} value={resource}>{resource}</option>
                                             ))}
                                         </select>
