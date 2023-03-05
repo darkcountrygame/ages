@@ -29,9 +29,6 @@ export default function Header() {
 
     };
 
-    console.log(eraConf)
-
-
 
     //
     // useEffect(() => {
@@ -43,8 +40,6 @@ export default function Header() {
     //
     //     setUsersCurrentEra(newArray);
     // }, [eraConf]);
-
-    console.log(eraConf)
 
 
 

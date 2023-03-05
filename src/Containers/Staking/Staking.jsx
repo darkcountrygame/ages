@@ -28,7 +28,6 @@ export default function Staking() {
     // const [toolName, setToolName] = useState([])
     const [selectedTab, setSelectedTab] = useState(ADD_ASSET)
 
-    console.log(selectedTool)
 
     const handleClick = (tabName) => {
         setSelectedTab(tabName);

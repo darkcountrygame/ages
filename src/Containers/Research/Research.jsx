@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useApp } from "../../Data/AppContext";
 import Countdown from "react-countdown";
 
@@ -22,6 +22,7 @@ export default function Research() {
     const { probabilityPoints, totalSp, spConfig, eraConf } = useApp();
     const [countdownCompleted, setCountdownCompleted] = useState(false);
     const [countdownKey, setCountdownKey] = useState(0);
+    const [isNewEraAvailable, setIsNewEraAvailable] = useState(true)
 
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed) {
@@ -35,6 +36,14 @@ export default function Research() {
         setCountdownCompleted(true);
         return <>{ hours }h { minutes }m { seconds }s</>;
     }
+
+    useEffect(() => {
+        if (totalSp.science_points <= eraConf[1]?.cost_of_opening_era) {
+            setIsNewEraAvailable(true)
+        } else {
+            setIsNewEraAvailable(false)
+        }
+    }, [totalSp, eraConf])
 
     return (
         <section className='workplace'>
@@ -90,7 +99,7 @@ export default function Research() {
                                     { totalSp.science_points ?? 0 } / {eraConf[1]?.cost_of_opening_era} SP
                                 </div>
                                 <div className="research-right__btn">
-                                    <NewEra />
+                                    <NewEra isNewEraAvailable={isNewEraAvailable} />
                                 </div>
                            </div>
                     </div>

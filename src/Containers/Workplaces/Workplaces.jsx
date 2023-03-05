@@ -217,8 +217,6 @@ const Workplaces = () => {
     // }
 
     const renderWorkPlaceTools = () => {
-
-        console.log(tools)
         const equipItems = tools.length < wp.data?.slots ? (
             Array.from({ length: wp.data?.slots - tools.length }, (_, i) => (
                 <div key={i} className="workplaces-item equip">
@@ -306,7 +304,6 @@ const Workplaces = () => {
 
     useEffect(() => {
         renderWorkPlaceTools();
-        console.log(tools)
     }, [tools]);
 
 
@@ -336,7 +333,6 @@ const Workplaces = () => {
             .then(() => {
                 fetchStakedWp({account: activeUser.accountName})
                     .then((items) => {
-                        console.log('correct')
                         setStakedItems(items)
                     })
                     .catch(e => console.log(e));
@@ -352,7 +348,6 @@ const Workplaces = () => {
             .then(() => {
                 fetchStakedWp({account: activeUser.accountName})
                     .then((items) => {
-                        console.log('correct')
                         setStakedItems(items)
                     })
                     .catch(e => console.log(e));

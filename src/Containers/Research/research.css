@@ -147,7 +147,7 @@ text-align: center;
 
 .research-right .research-right__btn button{
     background-color: transparent;
-    background-image: url("../../images/unactive_green_btn.png");
+    background-image: url("../../images/green_btn.png");
     background-size: cover;
     background-repeat: no-repeat;
     padding: 13px 30px;
@@ -157,6 +157,20 @@ text-align: center;
     display: block;
     margin: 0 auto;
     cursor: pointer;
+}
+
+.research-right .research-right__btn .disabled{
+    background-color: transparent;
+    background-image: url("../../images/unactive_green_btn.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 13px 30px;
+    color: #fff;
+    border: 0;
+    font-size: 24px;
+    display: block;
+    margin: 0 auto;
+    cursor: default;
 }
 
 

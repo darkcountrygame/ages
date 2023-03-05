@@ -13,7 +13,7 @@ import './newera.css'
 
 
 
-export default () => {
+export default ({isNewEraAvailable}) => {
     const { activeUser } = useContext(UALContext);
 
     const newEraHandler = () => {
@@ -27,9 +27,10 @@ export default () => {
 
     }
 
+
     return (
         <Popup
-            trigger={<button>Advance to New Era</button>}
+            trigger={<button className={isNewEraAvailable ? 'disabled' : ''} disabled={isNewEraAvailable}>Advance to New Era</button>}
             modal
             nested
             className={'new-era-popup'}

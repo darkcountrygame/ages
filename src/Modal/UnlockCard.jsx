@@ -26,7 +26,6 @@ export default ({wpID}) => {
                 toast.success('Unlocked')
             })
             .catch((e) => {
-                console.log('sd')
                 toast.error(e)
                 console.log(e)
             })
