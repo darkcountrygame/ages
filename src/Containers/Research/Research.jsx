@@ -11,7 +11,6 @@ import researchRight from '../../images/neolithic_illustration.png'
 import infoIcon from '../../images/info_btn.png'
 
 
-import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import ResearchCard from '../../Modal/ResearchCard'
 import NewEra from '../../Modal/EraModal'
@@ -20,7 +19,7 @@ import TostifyMessage from '../../components/Messages/Tostify'
 export default function Research() {
 
 
-    const { probabilityPoints, totalSp, spConfig } = useApp();
+    const { probabilityPoints, totalSp, spConfig, eraConf } = useApp();
     const [countdownCompleted, setCountdownCompleted] = useState(false);
     const [countdownKey, setCountdownKey] = useState(0);
 
@@ -88,7 +87,7 @@ export default function Research() {
                                     <img src={researchRight} alt="img" />
                                 </div>
                                 <div className="research-right__info">
-                                    { totalSp.science_points ?? 0 } / 10 000 SP
+                                    { totalSp.science_points ?? 0 } / {eraConf[1]?.cost_of_opening_era} SP
                                 </div>
                                 <div className="research-right__btn">
                                     <NewEra />

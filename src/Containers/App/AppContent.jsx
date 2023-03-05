@@ -227,9 +227,7 @@ const AppContent = () => {
         ) {
             setEraConfLoading(true);
 
-            fetchCurrentEra({
-                account: activeUser.accountName
-            })
+            fetchCurrentEra()
                 .then((value) => setEraConf(value))
                 .catch(e => {
                     console.log(e)

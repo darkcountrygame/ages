@@ -8,7 +8,7 @@ import {
     RTP_TOKEN,
 
 } from "../Constants";
-import { fetchRows, rpc, getDataFromAtomicApi } from '../Helpers';
+import { fetchRows } from '../Helpers';
 
 export const fetchWaxBalance = async ({ account }) => {
     const { rows } = await fetchRows({
@@ -144,7 +144,7 @@ export const fetchResources = async ({ account }) => {
 
 };
 
-export const fetchCurrentEra = async ({ account }) => {
+export const fetchCurrentEra = async () => {
     const { rows } = await fetchRows({
         contract: RTP_GAME,
         scope: RTP_GAME,
@@ -154,7 +154,13 @@ export const fetchCurrentEra = async ({ account }) => {
     if (!rows[0])
         return rows[0] = {title: 'Prehistoric age'};
 
-    return rows;
+    const lastOwned = rows.filter(item => item.owner !== 'none' ).pop() || rows[0];
+    const index = rows.findIndex(item => item === lastOwned);
+    const nextIndex = index + 1 < rows.length ? index + 1 : 0;
+    const nextItem = rows[nextIndex];
+    const newArray = [lastOwned, nextItem];
+
+    return newArray;
 
 };
 

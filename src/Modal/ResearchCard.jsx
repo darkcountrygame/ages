@@ -16,7 +16,7 @@ import { claimSciencePoints } from "../Services";
 
 
 export default ({countdownCompleted, setCountdownCompleted, setCountdownKey}) => {
-  const { spConfig, totalSp } = useApp();
+  const { spConfig, totalSp, eraConf } = useApp();
   const { activeUser } = useContext(UALContext);
 
   const pointsHandler = (close) => {
@@ -52,7 +52,7 @@ export default ({countdownCompleted, setCountdownCompleted, setCountdownKey}) =>
                     <div className="research-right-modal__header">
                       <h3>Prehistoric Age</h3>
                     </div>
-                    <p>{ totalSp.science_points ?? 0 } / 10 000 SP</p>
+                    <p>{ totalSp.science_points ?? 0 } / {eraConf[1]?.cost_of_opening_era}</p>
                   </div>
                 </div>
               </div>

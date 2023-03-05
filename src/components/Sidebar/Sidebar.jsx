@@ -14,7 +14,6 @@ export default function Sidebar({ handleWorkplaceTool,  selectItem, setSelectIte
     } = useApp();
 
 
-
     return (
         <div className="main-workplace-sidebar">
             <div className="main-workplace-sidebar__wrapper">
@@ -34,7 +33,6 @@ export default function Sidebar({ handleWorkplaceTool,  selectItem, setSelectIte
                         <p className={'no-workplaces'}>No workplaces</p>
                 }
 
-                {/*<EquipCardWp class="add-workplace" itemList={itemList} setSelectItem={setSelectItem} stakeHandler={stakeHandler} title='Add workplace'/>}*/}
             </div>
         </div>
     )

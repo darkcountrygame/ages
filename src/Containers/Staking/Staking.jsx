@@ -3,15 +3,11 @@ import React, {useContext, useEffect, useState} from 'react'
 import { useApp } from "../../Data/AppContext";
 import { toast } from "react-toastify";
 
-
-// import '../Workplaces/workplaces.css'
 import './staking.css'
 
-
-import Header from '../../components/HeaderGame/HeaderGame'
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 import UserTool from '../../components/UserTool/UserTool'
-import {stakedToCollectionAssets, stakeWp, unStakeWp} from "../../Services";
+import {fetchStakedWp, stakedToCollectionAssets, stakeWp, unStakeWp} from "../../Services";
 import {UALContext} from "ual-reactjs-renderer";
 
 
@@ -19,6 +15,7 @@ export default function Staking() {
 
     const {
         itemList,
+        setStakedItems
     } = useApp();
     const { activeUser } = useContext(UALContext);
 
@@ -40,6 +37,10 @@ export default function Staking() {
     const handleStake = () => {
         stakeWp({activeUser, selectItem: selectedTool})
             .then(() => {
+                fetchStakedWp({account: activeUser.accountName})
+                    .then((items) => setStakedItems(items))
+                    .catch(e => console.log(e));
+
                 toast.success('Staked');
             })
             .catch(e => toast.error(e.message))

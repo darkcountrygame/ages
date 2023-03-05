@@ -5,8 +5,6 @@ import { toast } from "react-toastify";
 
 import './workplaces.css'
 
-import Header from '../../components/HeaderGame/HeaderGame'
-
 import meat from '../../images/market-items/meat.png'
 import stone from '../../images/market-items/rock.png'
 import wood from '../../images/market-items/wood.png'
@@ -19,7 +17,15 @@ import UnlockCard from '../../Modal/UnlockCard'
 import EquipTool from '../../Modal/EquipTool'
 import Sidebar from '../../components/Sidebar/Sidebar'
 
-import {fetchResources, claimMiningResources, unStakeTool, fetchItems, stakeTool, stakeWp} from "../../Services";
+import {
+    fetchResources,
+    claimMiningResources,
+    unStakeTool,
+    fetchItems,
+    stakeTool,
+    stakeWp,
+    fetchStakedWp
+} from "../../Services";
 import {getDataFromAtomicApi} from "../../Helpers";
 import Timer from "../../components/Countdown/Timer";
 
@@ -32,7 +38,6 @@ const Workplaces = () => {
         setResources,
         stakedItemList,
         setStakedItems,
-        eraConf
     } = useApp();
 
 
@@ -61,10 +66,6 @@ const Workplaces = () => {
               return wood
       }
     }
-
-    // useEffect(() => {
-    //     setSelectedWorkPlace(stakedItemList[0]?.workplace_asset_id)
-    // }, [stakedItemList])
 
 
     useEffect(() => {
@@ -100,7 +101,6 @@ const Workplaces = () => {
         WPIdtoObj()
         toolsIdtoObj()
     }, [selectedWorkPlace, stakedItemList])
-
 
 
     // const renderWorkPlaceTools = () => {
@@ -217,6 +217,8 @@ const Workplaces = () => {
     // }
 
     const renderWorkPlaceTools = () => {
+
+        console.log(tools)
         const equipItems = tools.length < wp.data?.slots ? (
             Array.from({ length: wp.data?.slots - tools.length }, (_, i) => (
                 <div key={i} className="workplaces-item equip">
@@ -302,6 +304,13 @@ const Workplaces = () => {
         );
     };
 
+    useEffect(() => {
+        renderWorkPlaceTools();
+        console.log(tools)
+    }, [tools]);
+
+
+
 
 
     const handleWorkplaceTool = (item) => {
@@ -325,8 +334,11 @@ const Workplaces = () => {
     const stakeHandlerWp = () => {
         stakeWp({ activeUser, selectItem })
             .then(() => {
-                fetchItems({ account: activeUser.accountName })
-                    .then(items => setStakedItems(items))
+                fetchStakedWp({account: activeUser.accountName})
+                    .then((items) => {
+                        console.log('correct')
+                        setStakedItems(items)
+                    })
                     .catch(e => console.log(e));
 
                 toast.success('Staked successed');
@@ -338,6 +350,13 @@ const Workplaces = () => {
     const stakeHandler = (selectItem) => {
         stakeTool({ activeUser, selectItem, wp })
             .then(() => {
+                fetchStakedWp({account: activeUser.accountName})
+                    .then((items) => {
+                        console.log('correct')
+                        setStakedItems(items)
+                    })
+                    .catch(e => console.log(e));
+
                 toast.success('Staked successed');
             })
             .catch(e => toast.error(e.message))
@@ -347,10 +366,9 @@ const Workplaces = () => {
     const unstakeHandler = ( wpId, assetId ) => {
         unStakeTool({ activeUser, assetId, wpId })
             .then(() => {
-                // fetchItems({ account: activeUser.accountName })
-                //     .then(items => setStakedItems(items))
-                //     .catch(e => console.log(e));
-
+                fetchStakedWp({account: activeUser.accountName})
+                    .then((items) => setStakedItems(items))
+                    .catch(e => console.log(e));
 
                  toast.success('Unstaked');
             })

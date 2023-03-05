@@ -1,8 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import './header.css'
 
 import UserLogIn from './UserLogIn'
-import { UALContext } from "ual-reactjs-renderer";
 import { useApp } from "../../Data/AppContext";
 
 import meat from  '../../images/market-items/meat.png'
@@ -13,17 +12,11 @@ import plus from '../../images/plus.png'
 
 
 export default function Header() {
-
-    // const { activeUser } = useContext(UALContext);
-
     const { waxBalance, rtpBalance, resourcesList, eraConf } = useApp();
-
-    const [usersCurrentEra, setUsersCurrentEra] = useState(null)
 
 
 
     const findResourceAmount = (resource) => {
-        // console.log(resourcesList)
 
         if (resourcesList.length){
             const foundResource = resourcesList.find(
@@ -36,12 +29,22 @@ export default function Header() {
 
     };
 
+    console.log(eraConf)
 
-    useEffect(() => {
-        const firstOwnerEra = eraConf.find((era) => era.owner !== 'null');
-        const selectedEra = firstOwnerEra || eraConf[0];
-        setUsersCurrentEra(selectedEra);
-    }, [eraConf]);
+
+
+    //
+    // useEffect(() => {
+    //     const lastOwned = eraConf.filter(item => item.owner !== 'none' ).pop() || eraConf[0];
+    //     const index = eraConf.findIndex(item => item === lastOwned);
+    //     const nextIndex = index + 1 < eraConf.length ? index + 1 : 0;
+    //     const nextItem = eraConf[nextIndex];
+    //     const newArray = [lastOwned, nextItem];
+    //
+    //     setUsersCurrentEra(newArray);
+    // }, [eraConf]);
+
+    console.log(eraConf)
 
 
 
@@ -77,14 +80,14 @@ export default function Header() {
                 <div className="header-stats">
 
                     <div className="header-stats__title">
-                        {usersCurrentEra && (
-                            <h2>{usersCurrentEra?.title}</h2>
+                        {eraConf && (
+                            <h2>{eraConf[0]?.title}</h2>
                         )}
                     </div>
                     <div className="header-stats__under">
                         <div className="header-stats__sp">
                             <span></span>
-                            0 / 10 000
+                            0 / {eraConf[1]?.cost_of_opening_era}
                         </div>
                         <div className="add">
                             <img src={plus} alt="plus" />
