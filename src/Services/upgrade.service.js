@@ -10,8 +10,8 @@ export const upgradeTool = async ({ activeUser, selectedTool }) => {
         data: {
             from: activeUser.accountName,
             to: RTP_GAME,
-            quantity: '100.0000 RTP',
-            memo: `upgrade:tool:0:1099524450043:${selectedTool}`
+            quantity: '50.0000 RTP',
+            memo: `upgrade:tool:0:${selectedTool}`
         }
     });
 };

@@ -38,6 +38,7 @@ const Workplaces = () => {
         setResources,
         stakedItemList,
         setStakedItems,
+        eraConf
     } = useApp();
 
 
@@ -72,6 +73,8 @@ const Workplaces = () => {
     useEffect(() => {
         setMiningCount(tools.reduce((acc, curr) => acc + curr.data.power, 0))
     }, [tools])
+
+    console.log(wp)
 
 
     useEffect(() => {
