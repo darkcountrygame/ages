@@ -18,8 +18,8 @@ const UserTool = ({
     return(
         <>
                 <div key={index}
-                     className={item.asset_id === selectedTool ? "market-list_item selected" : "market-list_item"}
-                     onClick={() => setSelectTool(item.asset_id)}
+                     className={item.asset_id === selectedTool.asset_id ? "market-list_item selected" : "market-list_item"}
+                     onClick={() => setSelectTool(item)}
                 >
                     <div className="list-item-wrapper">
                         <img src={`https://cloudflare-ipfs.com/ipfs/${item.data.img}`} alt="img" />

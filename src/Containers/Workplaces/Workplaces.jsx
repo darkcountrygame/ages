@@ -47,6 +47,7 @@ const Workplaces = () => {
     const [tools, setTools] = useState([])
     const [wp, setWP] = useState([])
     const [countdownCompleted, setCountdownCompleted] = useState(false);
+    const [miningCount, setMiningCount] = useState(0);
 
     const getResourceIcon = (name) => {
       switch (name) {
@@ -66,6 +67,11 @@ const Workplaces = () => {
               return wood
       }
     }
+
+
+    useEffect(() => {
+        setMiningCount(tools.reduce((acc, curr) => acc + curr.data.power, 0))
+    }, [tools])
 
 
     useEffect(() => {
@@ -261,7 +267,7 @@ const Workplaces = () => {
 
                           <div className={'workplace-header-right'}>
                               <p>
-                                  <span>0</span>
+                                  <span>{miningCount}</span>
                                   <img src={getResourceIcon(selectedWorkPlace?.generate_resource)} alt="" />
                               </p>
                               <button

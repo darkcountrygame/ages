@@ -18,15 +18,12 @@ export default function Market() {
 
     const {
         itemList,
-        wpConfig,
-        poolConfig
     } = useApp();
 
     const [selectedTool, setSelectTool] = useState([])
     const [selectedToolImg, setSelectToolImg] = useState([])
     const [toolName, setToolName] = useState([])
 
-    // console.log(poolConfig)
     const toastyErr = () => {
         toast.error('First select tool');
     }
@@ -34,11 +31,12 @@ export default function Market() {
        window.open('https://wax-test.atomichub.io/market?collection_name=rush2prosper&order=desc&sort=created&symbol=WAX', '_blank')
     }
 
+    console.log(selectedTool)
+
 
     if (!itemList.length){
         return (
             <section className='workplace'>
-                {/*<Header />*/}
                 <div className="main-workplace market">
                     <div className="main-main">
                         <div className="main-title">
@@ -78,7 +76,6 @@ export default function Market() {
 
     return (
         <section className='workplace'>
-            {/*<Header />*/}
             <div className="main-workplace market">
                 <div className="main-main">
                     <div className="main-title">
@@ -117,7 +114,7 @@ export default function Market() {
 
                             </div>
                             <div className="market-btn">
-                                {!selectedTool.length ?
+                                {!selectedTool ?
                                     <button onClick={toastyErr}>
                                         Upgrade
                                     </button>

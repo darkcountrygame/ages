@@ -18,7 +18,7 @@ export default({ disabled, selectedTool}) => {
   const { activeUser } = useContext(UALContext);
 
   const upgradeHandler = (close) => {
-    upgradeTool({activeUser, selectedTool})
+    upgradeTool({activeUser, selectedTool: selectedTool.asset_id})
         .then(() => {
 
             close()
@@ -47,16 +47,16 @@ export default({ disabled, selectedTool}) => {
                   <div className="info-card__img">
                     <div className="info-card__img-wrapper">
                       <div className="info-card__photo">
-                          {/*{selectedToolImg && <img src={`https://cloudflare-ipfs.com/ipfs/${selectedToolImg}`} alt="cardIcon" />}*/}
+                          {selectedTool && selectedTool.data && <img src={`https://cloudflare-ipfs.com/ipfs/${selectedTool.data.img}`} alt=""/>}
                       </div>
                     </div>
                   </div>
                   <div className="info-card__asset">
                     <ul>
                       <li>Asset Name</li>
-                      <span></span>
+                      <span>{selectedTool && selectedTool.data ? selectedTool.data.name : 'name'}</span>
                       <li>Asset ID</li>
-                      <span>#{selectedTool}</span>
+                      <span>#{selectedTool.asset_id}</span>
                       <li>Rarity</li>
                       <span>Common</span>
                       <li>Mint Number</li>

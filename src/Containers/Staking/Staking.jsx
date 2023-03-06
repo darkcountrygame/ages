@@ -34,7 +34,7 @@ export default function Staking() {
     };
 
     const handleStake = () => {
-        stakeWp({activeUser, selectItem: selectedTool})
+        stakeWp({activeUser, selectItem: selectedTool.asset_id})
             .then(() => {
                 fetchStakedWp({account: activeUser.accountName})
                     .then((items) => setStakedItems(items))
@@ -46,7 +46,7 @@ export default function Staking() {
     };
 
     const handleUnStake = () => {
-        unStakeWp({activeUser, selectItem: selectedTool})
+        unStakeWp({activeUser, selectItem: selectedTool.asset_id})
             .then(() => {
                 toast.success('Unstaked');
             })
