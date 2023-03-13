@@ -18,6 +18,7 @@ export default function Swap() {
 
     const [amount, setAmount] = useState('');
     const [result, setResult] = useState(0);
+    const [totalToken, setTotalToken] = useState(0);
     const [isInitialInputChange, setIsInitialInputChange] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedResourceAmount, setSelectedResourceAmount] = useState(0);
@@ -30,27 +31,15 @@ export default function Swap() {
         }
     };
 
-    const calculateResult = () => {
 
-        const res_multiplier = 1;
-        const total_resources = poolConfig ? poolConfig.total_minted_resources : 1 ;
-        const mined_tokens = poolConfig ? Number(poolConfig.total_minted_tokens?.split(' ')[0]) : 0;
-
-        if (amount === 0 || amount === '') {
-            setResult(0);
-        } else {
-            const result = (amount * res_multiplier / total_resources) * mined_tokens;
-            setResult(result);
-        }
-    };
 
     useEffect(() => {
         if (isInitialInputChange) {
-            calculateResult();
+            handleRefreshPool();
         } else {
             setIsInitialInputChange(true);
         }
-    }, [amount, calculateResult, isInitialInputChange]);
+    }, [amount, isInitialInputChange]);
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
@@ -80,6 +69,36 @@ export default function Swap() {
             .catch(e => toast.error(e.message))
 
     }
+
+    const handleRefreshPool = (
+        resourceAmount = amount,
+        resourceMultiplier = 1,
+        totalResources = poolConfig ? poolConfig.total_minted_resources : 1 ,
+        totalTokens = poolConfig ? Number(poolConfig.total_minted_tokens?.split(' ')[0]) : 0,
+        lastUpdate = 1678534452,
+        tokenMiningRate = 0.001) => {
+
+        const currentTime = Math.floor(Date.now() / 1000);
+        const newTotalTokens = totalTokens + ((currentTime - lastUpdate) * tokenMiningRate);
+        let resultSwap = ((resourceAmount * resourceMultiplier) / totalResources) * newTotalTokens
+        setResult(resultSwap)
+        setAmount(amount)
+        setTotalToken(newTotalTokens)
+    }
+
+    // const calculateResult = () => {
+    //
+    //     const res_multiplier = 1;
+    //     const total_resources = poolConfig ? poolConfig.total_minted_resources : 1 ;
+    //     const mined_tokens = poolConfig ? Number(poolConfig.total_minted_tokens?.split(' ')[0]) : 0;
+    //
+    //     if (amount === 0 || amount === '') {
+    //         setResult(0);
+    //     } else {
+    //         const result = (amount * res_multiplier / total_resources) * mined_tokens;
+    //         setResult(result);
+    //     }
+    // };
 
     const isSwapButtonDisabled = !amount.length || !selectedOption.length;
 
@@ -133,12 +152,14 @@ export default function Swap() {
                                 </div>
                                 <div className="statistic-field">
                                     <h5>Total mined tokens:</h5>
-                                    <p>{poolConfig ? poolConfig.total_minted_tokens : 0}</p>
+                                    <p>{totalToken} RTP</p>
                                 </div>
                                 <div className="statistic-field">
                                     <h5>Mining rate per second:</h5>
                                     <p>{eraConf.length && eraConf[0].token_mining_rate}</p>
                                 </div>
+
+                                <button className={`swap-btn`} onClick={() => handleRefreshPool()}><p>Refresh</p></button>
                             </div>
                         </div>
                     </div>
