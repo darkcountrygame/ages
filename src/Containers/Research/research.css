@@ -258,6 +258,10 @@ text-align: center;
     .research-right .research-right__btn button{
         font-size: 20px;
     }
+
+    .research-right .research-right__btn .disabled{
+        font-size: 20px;
+    }
 }
 
 

@@ -38,10 +38,7 @@ const Workplaces = () => {
         setResources,
         stakedItemList,
         setStakedItems,
-        eraConf
     } = useApp();
-
-
 
     const [selectItem, setSelectItem] = useState([])
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([])
@@ -74,22 +71,21 @@ const Workplaces = () => {
         setMiningCount(tools.reduce((acc, curr) => acc + curr.data.power, 0))
     }, [tools])
 
-    console.log(wp)
 
 
     useEffect(() => {
         const toolsIdtoObj = async () => {
             if (selectedWorkPlace && selectedWorkPlace.tools && selectedWorkPlace.tools.length){
-                const newTools = [];
+                // const newTools = [];
                 await Promise.all(selectedWorkPlace.tools.map(async item => {
+                    console.log(selectedWorkPlace)
                     const data = await getDataFromAtomicApi(`assets?ids=${item.key}&page=1&limit=100`);
-                    newTools.push(...data);
+                    setTools(data);
                 }));
-                setTools(newTools);
-            } else if(stakedItemList && stakedItemList[0]?.tools && stakedItemList.length && stakedItemList[0]?.tools[0]?.key){
-                    const data = await getDataFromAtomicApi(`assets?ids=${stakedItemList[0]?.tools[0]?.key}&page=1&limit=100`)
-                setTools(data)
-            } else {
+
+                // setTools(newTools);
+            }
+             else {
                 setTools([])
             }
         }
@@ -110,6 +106,7 @@ const Workplaces = () => {
         WPIdtoObj()
         toolsIdtoObj()
     }, [selectedWorkPlace, stakedItemList])
+
 
 
     // const renderWorkPlaceTools = () => {

@@ -51,8 +51,8 @@
   
 .upgrade > .close{
     position: absolute;
-    right: 0;
-    top: 5%;
+    right: -28px;
+    top: 3%;
     cursor: pointer;
 }
 
@@ -99,18 +99,24 @@
     text-align: left;
     margin-right: 60px;
 }
-
+.info-card__progress{
+    margin-top: 17px;
+}
 .upgrade .info-card__progress p:first-child{
+    text-align: center;
     margin: 0;
 }
 
 .upgrade .info-card ul li{
     font-size: 14px;
     margin-top: 17px;
+    color: #512B47;
+    list-style-type: none;
 }
 
 .upgrade .info-card ul span{
     margin-bottom: 17px;
+    color: #512B47;
 }
 
 .info-card ul span{
@@ -119,26 +125,36 @@
     margin-bottom: 10px;
 }
 
+.info-card__progress ul{
+
+}
+
 .info-card__progress li{
     font-weight: bold;
-    color: #000;
+    color: #FFFFFF!important;;
+    list-style-type: none;
 }
 
 .li-wrapper{
     display: flex;
-    align-items: center
+    align-items: center;
+
+}
+
+.li-wrapper p{
+    color: #FFFFFF;
 }
 
 .info-card__progress p:first-child{
     font-size: 16px;
     font-weight: 400;
-    color: #815F50;
-    text-align: left;
+    color: #512B47!important;
+    text-align: center;
 }
 
 .info-card__progress p {
     padding-bottom: 20px;
-    color: #000;
+    color: #fff!important;
     font-weight: bold;
 }
 

@@ -152,7 +152,7 @@ export default function Swap() {
                                 </div>
                                 <div className="statistic-field">
                                     <h5>Total mined tokens:</h5>
-                                    <p>{totalToken} RTP</p>
+                                    <p>{totalToken.toFixed(4)} RTP</p>
                                 </div>
                                 <div className="statistic-field">
                                     <h5>Mining rate per second:</h5>

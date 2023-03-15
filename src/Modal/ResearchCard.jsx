@@ -50,7 +50,9 @@ export default ({countdownCompleted, setCountdownCompleted, setCountdownKey}) =>
                   </div>
                   <div className="research-right-modal">
                     <div className="research-right-modal__header">
-                      <h3>Prehistoric Age</h3>
+                        {eraConf && (
+                            <h3>{eraConf[0]?.title}</h3>
+                        )}
                     </div>
                     <p>{ totalSp.science_points ?? 0 } / {eraConf[1]?.cost_of_opening_era}</p>
                   </div>

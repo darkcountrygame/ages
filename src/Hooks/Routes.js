@@ -26,6 +26,10 @@ export const useRoutes = () => {
                          <Workpalces />
                      </Route>
 
+                     <Route exact path="/workpalces/:id">
+                         <Workpalces />
+                     </Route>
+
                      <Route exact path="/inventory">
                          <Staking />
                      </Route>

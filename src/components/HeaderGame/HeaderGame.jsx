@@ -79,15 +79,15 @@ export default function Header() {
                             <h2>{eraConf[0]?.title}</h2>
                         )}
                     </div>
-                    <div className="header-stats__under">
-                        <div className="header-stats__sp">
-                            <span></span>
-                            0 / {eraConf[1]?.cost_of_opening_era}
-                        </div>
-                        <div className="add">
-                            <img src={plus} alt="plus" />
-                        </div>
-                    </div>
+                    {/*<div className="header-stats__under">*/}
+                    {/*    <div className="header-stats__sp">*/}
+                    {/*        <span></span>*/}
+                    {/*        0 / {eraConf[1]?.cost_of_opening_era}*/}
+                    {/*    </div>*/}
+                    {/*    <div className="add">*/}
+                    {/*        <img src={plus} alt="plus" />*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
                 <div className="header-items">
                     <ul className="header-items_list">

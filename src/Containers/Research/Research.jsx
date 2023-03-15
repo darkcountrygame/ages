@@ -66,7 +66,7 @@ export default function Research() {
                                                 <Countdown
                                                     key={countdownKey}
                                                     date={(totalSp.last_time_research * 1000 - Date.now()) + Date.now()}
-                                                renderer={countdownRenderer}
+                                                    renderer={countdownRenderer}
                                                 />
                                             </span>
                                         </li>

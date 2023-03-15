@@ -20,20 +20,28 @@
 .nav-list li{
     display: flex;
     align-items: center;
-    padding: 20px;
-    margin: 10px;
+    padding: 10px 20px;
+    width: 192px;
+    height: 46px;
+    margin: 10px 0 10px 10px;
     position: relative;
-
 }
 
 .nav-list li img{
     text-decoration: none;
     color: #fff;
     z-index: 2;
-    margin-right: 20px;
+    margin-right: 13px;
 }
 
-.nav-list li:hover{
+.nav-list a.active{
+    background-image: url('../../images/select_tab.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.nav-list a:hover{
     background-image: url('../../images/select_tab.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -47,7 +55,18 @@
     background-size: cover;
 }
 
-
+@media screen and (max-width: 1699px) {
+    .nav-list li{
+        width: 180px;
+        padding: 10px 10px;
+        font-size: 18px;
+    }
+    .nav-list li img{
+        width: 33px;
+        height: 33px;
+        padding: 0;
+    }
+}
 
 
 @media screen and (max-width: 890px) {

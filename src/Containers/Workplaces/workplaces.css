@@ -64,7 +64,7 @@
     display: inline-block;
     font-size: 28px;
     font-weight: bold;
-    padding: 15px;
+    padding: 18px;
     color: #fff;
     text-shadow: 0 0 7px #FF9600CC;
     margin: 0;
@@ -77,7 +77,7 @@
 }
 
 .main-main-wrapper{
-    padding: 62px 120px 50px 120px;
+    padding: 62px 120px 53px 120px;
 }
 
 .empty{
@@ -94,6 +94,11 @@
 }
 
 .workplace-header-right{
+    display: flex;
+    align-items: center;
+}
+
+.workplace-header-right p{
     display: flex;
     align-items: center;
 }
@@ -229,7 +234,8 @@
 .produces p{
     padding: 0;
     margin: 0;
-    font-size: 12px;
+    color: #1A1A1A;
+    font-weight: bold;
 }
 
 
@@ -345,7 +351,7 @@
 }
 
 .main-workplace-sidebar__list{
-    width: 80%;
+    width: 85%;
     overflow-y: auto;
     height: 100%;
     margin: 10px auto;
@@ -423,12 +429,16 @@
     }
 
     .main-main-wrapper{
-        padding: 62px 120px 4px 120px;
+        padding: 62px 120px 7px 120px;
     }
 
     .main-workplace-sidebar__item{
         width: 145px;
         height: 200px;
+    }
+
+    .nav-list li{
+        width: 167px;
     }
 
     .start-work_btn{
@@ -464,6 +474,11 @@
 }
 
 @media screen and (max-width: 1690px) {
+
+    .unequip-img, .locked-img{
+        margin-top: 100px;
+    }
+
     .header{
         height: 140px;
         margin-bottom: 10px;
@@ -501,7 +516,7 @@
     }
 
     .main-main-wrapper{
-        padding: 50px 105px 40px 105px;
+        padding: 50px 105px 44px 105px;
     }
 
     .workplaces-item{

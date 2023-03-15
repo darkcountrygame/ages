@@ -107,9 +107,8 @@
 }
 
 .header-items .header-items_list li img{
-    width: 30px;
-    height: 30px;
-
+    width: 34px;
+    height: 27px;
 }
 
 .header-user{
@@ -184,8 +183,8 @@
 
 
     .header-items .header-items_list li img{
-        width: 20px;
-        height: 20px;
+        width: 28px;
+        height: 25px;
     }
 
     .header-stats-bg{

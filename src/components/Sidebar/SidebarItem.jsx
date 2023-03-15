@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './sidebar.css'
 import {getDataFromAtomicApi} from "../../Helpers";
+import { Link } from 'react-router-dom';
 
 export default function Sidebar({ item, index, setSelectedWorkPlace, selectedWorkPlace, handleWorkplaceTool }) {
     const [itemObj, setItemObj] = useState({})
@@ -23,9 +24,11 @@ export default function Sidebar({ item, index, setSelectedWorkPlace, selectedWor
 
     return (
         <div key={index}>
+            <Link to={`/workpalces/${itemObj.asset_id}`}>
                 <div className={(selectedWorkPlace === String(itemObj.asset_id) || (selectedWorkPlace.workplace_asset_id === String(itemObj.asset_id))) || (selectedWorkPlace === null && index === 0) ? "main-workplace-sidebar__item wp-active" : "main-workplace-sidebar__item"} onClick={() => setSelectedWorkPlace(() => handleWorkplaceTool(item))}>
                     {itemObj && <img src={`https://cloudflare-ipfs.com/ipfs/${itemObj.data?.img}`} alt="img" />}
                 </div>
+            </Link>
         </div>
     )
 }
