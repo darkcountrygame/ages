@@ -68,6 +68,7 @@
 
 .main-workplace.swap .swap-container .swap-block .swiper-field .options{
     display: flex;
+    flex-direction: column;
 }
 
 .main-workplace.swap .swap-container .swap-block .swiper-field .result{
@@ -94,6 +95,16 @@
     font-size: 18px;
     text-align: center;
     border: 0;
+}
+
+.main-workplace.swap .swap-container .swap-block .swiper-field .resource-amount{
+    margin: 0;
+    font-size: 12px;
+    padding-top: 8px;
+    cursor: pointer;
+    padding-bottom: 5px;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .main-workplace.swap .swap-container .swap-block .swiper-field .resource-block:focus{
@@ -207,6 +218,10 @@
         font-size: 10px;
     }
 
+    .main-workplace.swap .swap-container .swap-block .swiper-field .resource-amount{
+        font-size: 10px;
+    }
+
     .main-workplace.swap .swap-container .swap-block .swiper-field .result{
         margin: 15px 0 17px 0;
         font-size: 27px;
@@ -246,6 +261,10 @@
     }
 
     .main-workplace.swap .swap-container .swap-block .swiper-field .token-block .balance{
+        font-size: 9px;
+    }
+
+    .main-workplace.swap .swap-container .swap-block .swiper-field .resource-amount{
         font-size: 9px;
     }
 

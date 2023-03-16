@@ -22,7 +22,7 @@ export default function Swap() {
     const [isInitialInputChange, setIsInitialInputChange] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedResourceAmount, setSelectedResourceAmount] = useState(0);
-
+    const [selectedResource, setSelectedResource] = useState('')
 
 
     const handleInputChange = (e) => {
@@ -43,6 +43,7 @@ export default function Swap() {
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
+        setSelectedResource(e.target.value)
         const selectedResource = resourcesList.find(
             (resource) => resource.resource === e.target.value
         );
@@ -100,7 +101,12 @@ export default function Swap() {
     //     }
     // };
 
-    const isSwapButtonDisabled = !amount.length || !selectedOption.length;
+    const isSwapButtonDisabled = !amount.length && !selectedOption.length;
+
+    const selectedResourceObject = resourcesList.find(resource => resource.resource === selectedResource);
+    const selectedResourceValue = selectedResourceObject ? selectedResourceObject.amount : '';
+
+    console.log(selectedResourceObject)
 
     return (
         <section className='workplace'>
@@ -129,6 +135,9 @@ export default function Swap() {
                                                 <option key={resource} value={resource}>{resource}</option>
                                             ))}
                                         </select>
+                                        {selectedResource &&
+                                            <p onClick={() => setAmount(selectedResourceValue)} className={'resource-amount'}>Amount: {selectedResourceValue}</p>
+                                        }
                                     </div>
                                 </div>
                                 <div className="swiper-field">
