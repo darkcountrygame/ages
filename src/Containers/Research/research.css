@@ -168,7 +168,7 @@ h3{
 }
 
 .research-right .research-right__btn{
-margin-top: 30px;
+margin-top: 43px;
 text-align: center;
 }
 
@@ -215,6 +215,10 @@ text-align: center;
         padding: 40px 65px 30px 65px;
     }
 
+    .research-right .research-right__btn .disabled{
+        font-size: 22px;
+    }
+
     .research-left .research-left__btn button{
         font-size: 22px;
         width: 90%;
@@ -236,10 +240,17 @@ text-align: center;
 }
 
 @media screen and (max-width: 1699px) {
+
     .research-left .research-left_img{
         width: 270px;
         height: 150px;
     }
+
+    /*.research-left .research-left_img{*/
+    /*    width: 365px;*/
+    /*    height: 225px;*/
+    /*}*/
+
 
     .research-left{
         padding-top: 15px;
@@ -270,7 +281,7 @@ text-align: center;
 
     .research-right .research-right__info{
         /*width: 295px;*/
-        height: 70px;
+        height: 30px;
         font-size: 16px;
     }
 
@@ -280,7 +291,7 @@ text-align: center;
     }
 
     .research-right .research-right__btn{
-        margin-top: 20px;
+        margin-top: 0;
     }
     .research-right .research-right__btn button{
         font-size: 20px;
@@ -292,7 +303,12 @@ text-align: center;
 }
 
 
+@media screen and (max-width: 1599px){
+
+}
+
 @media screen and (max-width: 1450px) {
+
 .research{
     height: 92%;
 }
