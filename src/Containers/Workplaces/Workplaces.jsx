@@ -28,6 +28,7 @@ import {
 } from "../../Services";
 import {getDataFromAtomicApi} from "../../Helpers";
 import Timer from "../../components/Countdown/Timer";
+import {createBrowserHistory} from "history";
 
 const Workplaces = () => {
 
@@ -46,6 +47,7 @@ const Workplaces = () => {
     const [wp, setWP] = useState([])
     const [countdownCompleted, setCountdownCompleted] = useState(false);
     const [miningCount, setMiningCount] = useState(0);
+
 
     const getResourceIcon = (name) => {
       switch (name) {
@@ -66,10 +68,21 @@ const Workplaces = () => {
       }
     }
 
+    const history = createBrowserHistory();
+
 
     useEffect(() => {
         setMiningCount(tools.reduce((acc, curr) => acc + curr.data.power, 0))
     }, [tools])
+
+    useEffect(() => {
+        if (wp.asset_id !== undefined){
+            history.push(`/workplace/${wp.asset_id}`)
+        }else {
+            history.push(`/workplace`)
+        }
+
+    }, [history])
 
 
 

@@ -63,11 +63,11 @@ export default function Research() {
                                     <ul>
                                         <li>Research duration:
                                             <span>
-                                                <Countdown
-                                                    key={countdownKey}
-                                                    date={(totalSp.last_time_research * 1000 - Date.now()) + Date.now()}
-                                                    renderer={countdownRenderer}
-                                                />
+                                              <Countdown
+                                                  key={countdownKey}
+                                                  date={(totalSp.last_time_research * 1000 - Date.now()) + Date.now()}
+                                                  renderer={countdownRenderer}
+                                              />
                                             </span>
                                         </li>
                                         {probabilityPoints ?

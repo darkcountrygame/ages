@@ -14,7 +14,7 @@ export default function Footer() {
                 setActiveLink(link.url);
             }
         });
-    }, []);
+    }, [activeLink]);
 
     return (
         <div className="footer">

@@ -22,11 +22,11 @@ export const useRoutes = () => {
          return (
              <Router history={history}>
                  <Switch>
-                     <Route exact path="/workpalces">
+                     <Route exact path="/workplaces">
                          <Workpalces />
                      </Route>
 
-                     <Route exact path="/workpalces/:id">
+                     <Route exact path="/workplaces/:id">
                          <Workpalces />
                      </Route>
 
@@ -46,7 +46,7 @@ export const useRoutes = () => {
                          <Research />
                      </Route>
 
-                     <Redirect exact to="/workpalces" />
+                     <Redirect exact to="/workplaces" />
                  </Switch>
              </Router>
 
