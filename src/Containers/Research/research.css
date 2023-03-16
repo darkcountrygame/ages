@@ -129,15 +129,42 @@ h3{
     height: 100%;
 }
 
+/*.research-right .progress-bar-block {*/
+/*    color: #fff;*/
+/*    font-size: 20px;*/
+/*    font-weight: bold;*/
+/*    text-align: center;*/
+/*    background-image: url("../../images/desighn_bg.png");*/
+/*    width: 325px;*/
+/*    height: 88px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+.research-right .progress-bar-block p{
+    margin: 0;
+}
+
+
+.research-right .progress-bar{
+    width: 287px;
+    height: 18px;
+    background: #1D0F26 0 0 no-repeat padding-box;
+    border-radius: 9px;
+    opacity: 1;
+    margin: 30px auto 0 auto;
+    overflow: hidden;
+}
+
+.research-right .progress-bar span{
+    display: block;
+    background-color: #F99715;
+    height: 100%;
+}
+
 .research-right .research-right__info{
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
     text-align: center;
-    background-image: url("../../images/desighn_bg.png");
-    width: 325px;
-    height: 88px;
-    margin: 0 auto;
+    color: #FFFFFF;
+    margin-top: 10px;
 }
 
 .research-right .research-right__btn{
@@ -242,7 +269,7 @@ text-align: center;
     }
 
     .research-right .research-right__info{
-        width: 295px;
+        /*width: 295px;*/
         height: 70px;
         font-size: 16px;
     }

@@ -23,6 +23,7 @@ export default function Research() {
     const [countdownCompleted, setCountdownCompleted] = useState(false);
     const [countdownKey, setCountdownKey] = useState(0);
     const [isNewEraAvailable, setIsNewEraAvailable] = useState(true)
+    const [spPercentage, setSpPercentage] = useState('0%')
 
     function countdownRenderer({  hours, minutes, seconds, completed }) {
         if (completed) {
@@ -36,6 +37,18 @@ export default function Research() {
         setCountdownCompleted(true);
         return <>{ hours }h { minutes }m { seconds }s</>;
     }
+
+    
+    useEffect(() => {
+        const calculateProgressPercentage = () => {
+            console.log(totalSp.science_points ?? 0)
+            const percentage = (totalSp.science_points * 100 / eraConf[1]?.cost_of_opening_era);
+            setSpPercentage(`${percentage}%`);
+        }
+        
+        calculateProgressPercentage()
+    },[eraConf, totalSp.science_points])
+   
 
     useEffect(() => {
         if (totalSp.science_points <= eraConf[1]?.cost_of_opening_era) {
@@ -95,17 +108,22 @@ export default function Research() {
                                 <div className="research-right__img">
                                     <img src={researchRight} alt="img" />
                                 </div>
-                                <div className="research-right__info">
-                                    { totalSp.science_points ?? 0 } / {eraConf[1]?.cost_of_opening_era} SP
-                                </div>
+                               <div className="progress-bar-block">
+                                   <div className="progress-bar">
+                                       <span style={{width: spPercentage}}></span>
+                                   </div>
+                                   <div className="research-right__info">
+                                       <p>
+                                           { totalSp.science_points ?? 0 } / {eraConf[1]?.cost_of_opening_era} SP
+                                       </p>
+                                   </div>
+                               </div>
                                 <div className="research-right__btn">
                                     <NewEra isNewEraAvailable={isNewEraAvailable} />
                                 </div>
                            </div>
                     </div>
                 </div>
-
-
             </div>
             <Footer />
             <TostifyMessage />
