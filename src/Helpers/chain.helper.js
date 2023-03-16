@@ -9,9 +9,8 @@ const ENDPOINTS = [
     // 'https://wax.pink.gg'
 
     //testnet
-    'https://wax-test.blokcrafters.io',
-    'https://waxtest.eu.eosamsterdam.net',
     'https://waxtestnet.ledgerwise.io',
+    'https://wax-test.blokcrafters.io',
     'https://wax-testnet.eosphere.io'
 ];
 

@@ -140,6 +140,8 @@ export const fetchResources = async ({ account }) => {
     if (!rows[0])
         return rows[0] = {wood: 0, stone: 0, food: 0, miles: 0, science_points: 0};
 
+    console.log(rows)
+
     return rows;
 
 };

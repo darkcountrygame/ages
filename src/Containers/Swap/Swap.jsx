@@ -23,6 +23,7 @@ export default function Swap() {
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedResourceAmount, setSelectedResourceAmount] = useState(0);
     const [selectedResource, setSelectedResource] = useState('')
+    const [selectedResourceValue, setSelectedResourceValue] = useState('')
 
 
     const handleInputChange = (e) => {
@@ -87,26 +88,18 @@ export default function Swap() {
         setTotalToken(newTotalTokens)
     }
 
-    // const calculateResult = () => {
-    //
-    //     const res_multiplier = 1;
-    //     const total_resources = poolConfig ? poolConfig.total_minted_resources : 1 ;
-    //     const mined_tokens = poolConfig ? Number(poolConfig.total_minted_tokens?.split(' ')[0]) : 0;
-    //
-    //     if (amount === 0 || amount === '') {
-    //         setResult(0);
-    //     } else {
-    //         const result = (amount * res_multiplier / total_resources) * mined_tokens;
-    //         setResult(result);
-    //     }
-    // };
 
     const isSwapButtonDisabled = !amount.length && !selectedOption.length;
 
-    const selectedResourceObject = resourcesList.find(resource => resource.resource === selectedResource);
-    const selectedResourceValue = selectedResourceObject ? selectedResourceObject.amount : '';
 
-    console.log(selectedResourceObject)
+    useEffect(() => {
+        if (Array.isArray(resourcesList)) {
+            const selectedResourceObject = resourcesList.find(resource => resource.resource === selectedResource);
+            const res = selectedResourceObject ? selectedResourceObject.amount : '';
+            setSelectedResourceValue(res)
+        }
+    }, [resourcesList, selectedResource])
+
 
     return (
         <section className='workplace'>
