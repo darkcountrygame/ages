@@ -125,7 +125,6 @@
 .start-work_btn{
     background-color: transparent;
     background-image: url("../../images/green_btn.png");
-    background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
@@ -486,9 +485,7 @@
     .header-stats__title{
         font-size: 16px;
     }
-    .header-wrapper::before{
-        top: 5%;
-    }
+
 
     .main-main-list{
         height: 355px;
@@ -502,9 +499,6 @@
         background-size: 40%;
     }
 
-    .header-wrapper{
-        padding: 5px 36px;
-    }
 
     .main-workplace{
         height: 515px;

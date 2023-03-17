@@ -6,7 +6,7 @@
 }
 
 .header-wrapper{
-    padding: 20px 36px;
+    padding: 10px 36px 20px 20px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -18,7 +18,7 @@
 }
 .header-stats-bg{
     position: absolute;
-    top: 31px;
+    top: 20px;
     left: 0;
     width: 338px;
     height: 71px;
@@ -30,41 +30,47 @@
     font-size: 20px;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 
 }
 
 
-.header-stats__under{
+.header-progress-bar-block{
+    width: 287px;
+    height: auto;
+}
+
+.contant-bar{
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
 }
 
-.header-stats__sp{
-    height: 20px;
-    color: #fff;
-    text-align: right;
-    background: #6B4C3E;
-    padding: 0px 5px;
-    border-radius: 5px;
-    position: relative;
-    flex: 0 0 85%;
-    margin-right: 5px;
-    font-size: 14px;
+.contant-bar .plus{
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
 }
 
-.header-stats__sp::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30%;
+.header-progress-bar-block .header-progress-bar{
+    width: 287px;
+    height: 12px;
+    background: #1D0F26 0 0 no-repeat padding-box;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.header-progress-bar-block .header-progress-bar span{
+    display: block;
+    background-color: #F99715;
     height: 100%;
-    background: #fff;
-    border-radius: 5px;
 }
 
-
+.header-progress-bar-block .progress-bar-info p{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 0;
+}
 
 .header-items{
     margin-left: 160px;
@@ -163,22 +169,56 @@
     align-items: center;
 }
 
-@media screen and (max-width: 1690px) {
+@media screen and (max-width: 1815px){
+    .header-stats__title{
+        margin-bottom: 27px;
+    }
+
+    .header-progress-bar-block .header-progress-bar{
+        width: 270px;
+        height: 10px;
+    }
+
+    .header-progress-bar-block .progress-bar-info p{
+        font-size: 13px;
+        margin-top: 3px;
+    }
+
+    .contant-bar .plus{
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+    }
+
+}
+
+@media screen and (max-width: 1699px) {
     .header{
         margin: 0;
     }
+
+    .header-wrapper{
+        padding: 10px 36px 20px 20px;
+    }
+
     .header-items .header-items_list li span{
         font-size: 16px;
     }
     .header-stats__title{
-        font-size: 18px;
         font-weight: 700;
         color: #fff;
-        margin: 15px;
+        font-size: 16px;
+        margin-bottom: 19px;
     }
 
     .header-stats__title h2{
         margin: 0;
+    }
+
+    .contant-bar .plus{
+        width: 16px;
+        height: 16px;
+        margin-left: 10px;
     }
 
 
@@ -189,10 +229,21 @@
 
     .header-stats-bg{
         position: absolute;
-        top: 7px;
+        top: -2px;
         left: 0;
         width: 276px;
         height: 56px;
+    }
+
+    .header-progress-bar-block .header-progress-bar{
+        width: 210px;
+        height: 10px;
+    }
+
+    .header-progress-bar-block .progress-bar-info p{
+        font-size: 12px;
+        margin-top: 3px;
+        width: 210px;
     }
 
 }

@@ -1,5 +1,7 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './header.css'
+
+import {Link} from 'react-router-dom'
 
 import UserLogIn from './UserLogIn'
 import { useApp } from "../../Data/AppContext";
@@ -12,7 +14,21 @@ import plus from '../../images/plus.png'
 
 
 export default function Header() {
-    const { waxBalance, rtpBalance, resourcesList, eraConf } = useApp();
+    const { waxBalance, rtpBalance, resourcesList, eraConf, totalSp } = useApp();
+
+
+    const [progressBarValue, setProgressBarValue] = useState('0%')
+
+
+    useEffect(() => {
+        const calculateProgressPercentage = () => {
+            console.log(totalSp.science_points ?? 0)
+            const percentage = (totalSp.science_points * 100 / eraConf[1]?.cost_of_opening_era);
+            setProgressBarValue(`${percentage}%`);
+        }
+
+        calculateProgressPercentage()
+    },[eraConf, totalSp.science_points])
 
 
 
@@ -28,18 +44,6 @@ export default function Header() {
         }
 
     };
-
-
-    //
-    // useEffect(() => {
-    //     const lastOwned = eraConf.filter(item => item.owner !== 'none' ).pop() || eraConf[0];
-    //     const index = eraConf.findIndex(item => item === lastOwned);
-    //     const nextIndex = index + 1 < eraConf.length ? index + 1 : 0;
-    //     const nextItem = eraConf[nextIndex];
-    //     const newArray = [lastOwned, nextItem];
-    //
-    //     setUsersCurrentEra(newArray);
-    // }, [eraConf]);
 
 
 
@@ -88,6 +92,20 @@ export default function Header() {
                     {/*        <img src={plus} alt="plus" />*/}
                     {/*    </div>*/}
                     {/*</div>*/}
+                    <div className="header-progress-bar-block">
+                        <div className="contant-bar">
+                            <div className="header-progress-bar">
+                                <span style={{width: progressBarValue}}></span>
+                            </div>
+                            <Link to={'/research'}>
+                                <img className={'plus'} src={plus} onClick={() => {}} alt=""/>
+                            </Link>
+                        </div>
+
+                        <div className="progress-bar-info">
+                            <p>{ totalSp.science_points ?? 0 } / {eraConf[1]?.cost_of_opening_era} SP</p>
+                        </div>
+                    </div>
                 </div>
                 <div className="header-items">
                     <ul className="header-items_list">
