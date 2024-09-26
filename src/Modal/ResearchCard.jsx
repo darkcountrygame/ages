@@ -15,6 +15,7 @@ import './research.css'
 import { claimSciencePoints } from "../Services";
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default ({countdownCompleted, setCountdownCompleted, setCountdownKey}) => {
   const { spConfig, totalSp, eraConf } = useApp();
   const { activeUser } = useContext(UALContext);

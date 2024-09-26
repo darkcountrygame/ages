@@ -21,8 +21,8 @@ export default function Market() {
     } = useApp();
 
     const [selectedTool, setSelectTool] = useState([])
-    const [selectedToolImg, setSelectToolImg] = useState([])
-    const [toolName, setToolName] = useState([])
+    // const [selectedToolImg, setSelectToolImg] = useState([])
+    // const [toolName, setToolName] = useState([])
 
     const toastyErr = () => {
         toast.error('First select tool');
@@ -121,8 +121,8 @@ export default function Market() {
                                 :
                                     <UpgradeCard
                                         selectedTool={selectedTool}
-                                        selectedToolImg={selectedToolImg}
-                                        toolName={toolName}
+                                        // selectedToolImg={selectedToolImg}
+                                        // toolName={toolName}
                                     />
                                 }
                             </div>

@@ -14,6 +14,7 @@ import './inventory.css'
 import {exchangeResources, fetchResources} from "../Services";
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default ({ img, resource }) => {
     const {
         setResources

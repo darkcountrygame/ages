@@ -17,6 +17,7 @@ export default function Sidebar({ item, index, setSelectedWorkPlace, selectedWor
 
     useEffect(() => {
         generateItemFromId()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     //
     // console.log(itemObj)

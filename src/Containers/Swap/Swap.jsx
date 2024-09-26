@@ -40,6 +40,7 @@ export default function Swap() {
         } else {
             setIsInitialInputChange(true);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [amount, isInitialInputChange]);
 
     const handleOptionChange = (e) => {

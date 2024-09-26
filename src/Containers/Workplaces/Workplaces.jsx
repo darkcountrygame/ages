@@ -21,7 +21,6 @@ import {
     fetchResources,
     claimMiningResources,
     unStakeTool,
-    fetchItems,
     stakeTool,
     stakeWp,
     fetchStakedWp
@@ -45,7 +44,7 @@ const Workplaces = () => {
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([])
     const [tools, setTools] = useState([])
     const [wp, setWP] = useState([])
-    const [countdownCompleted, setCountdownCompleted] = useState(false);
+    // const [countdownCompleted, setCountdownCompleted] = useState(false);
     const [miningCount, setMiningCount] = useState(0);
 
 
@@ -82,6 +81,7 @@ const Workplaces = () => {
             history.push(`/workplace`)
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [history])
 
 
@@ -272,7 +272,6 @@ const Workplaces = () => {
                                     <Timer
                                         wp={wp}
                                         stakedWP={stakedItemList}
-                                        setCountdownCompleted={setCountdownCompleted}
                                     />
                                 </div>
                             </p>
@@ -286,7 +285,7 @@ const Workplaces = () => {
                               <button
                                   className={"start-work_btn"}
                                   onClick={() => handleClaim(selectedWorkPlace && String(wp.asset_id))}
-                                  disabled={countdownCompleted}
+                                //   disabled={countdownCompleted}
                               >
                                   Claim
                               </button>
@@ -323,6 +322,7 @@ const Workplaces = () => {
 
     useEffect(() => {
         renderWorkPlaceTools();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tools]);
 
 

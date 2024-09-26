@@ -12,6 +12,7 @@ import './unlock.css'
 import {toast} from "react-toastify";
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default ({wpID}) => {
 
     const {

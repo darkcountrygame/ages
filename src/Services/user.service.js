@@ -48,20 +48,20 @@ export const fetchItems = async ({ account }) => {
     return data
 };
 
-const sliceArrayIntoChunks = (array) => {
-    const perChunk = 500; // items per chunk + limit for assets per one request on atomic api
+// const sliceArrayIntoChunks = (array) => {
+//     const perChunk = 500; // items per chunk + limit for assets per one request on atomic api
 
-    return array.reduce((resultArray, item, index) => {
-        const chunkIndex = Math.floor(index/perChunk);
+//     return array.reduce((resultArray, item, index) => {
+//         const chunkIndex = Math.floor(index/perChunk);
 
-        if(!resultArray[chunkIndex])
-            resultArray[chunkIndex] = [];
+//         if(!resultArray[chunkIndex])
+//             resultArray[chunkIndex] = [];
 
-        resultArray[chunkIndex].push(item);
+//         resultArray[chunkIndex].push(item);
 
-        return resultArray;
-    }, []);
-};
+//         return resultArray;
+//     }, []);
+// };
 
 export const fetchStakedWp = async ({account}) => {
     const { rows } = await fetchRows({

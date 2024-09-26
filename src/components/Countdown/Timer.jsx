@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Countdown from 'react-countdown';
 
 const Timer = ({ wp, stakedWP }) => {
-    const [countdownCompleted, setCountdownCompleted] = useState(false);
+    // const [countdownCompleted, setCountdownCompleted] = useState(false);
 
     const formatTime = ({ hours, minutes, seconds, completed }) => {
         return `${hours.toString().padStart(2, '0')}:${minutes
@@ -11,7 +11,7 @@ const Timer = ({ wp, stakedWP }) => {
     };
 
     const handleCountdownCompletion = (completed) => {
-        setCountdownCompleted(completed);
+        // setCountdownCompleted(completed);
     };
 
     const getTimestampFromCurrentWP = () => {

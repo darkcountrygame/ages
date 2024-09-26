@@ -40,14 +40,9 @@ const AppContent = () => {
         setRtpBalance,
         rtpBalanceFetched,
         itemListFetched,
-        itemList,
         stakedItemListFetched,
-        stakedItemList,
         setStakedItems,
         setItems,
-        setStakedTools,
-        stakedToolsListFetched,
-        resourcesList,
         resourcesFetched,
         setResources,
          setProbability,
@@ -83,7 +78,7 @@ const AppContent = () => {
 
     const [itemsLoading, setItemsLoading] = useState(false);
     const [stakedItemsLoading, setStakedItemsLoading] = useState(false);
-    const [stakedToolsLoading, setStakedToolsLoading] = useState(false);
+    // const [stakedToolsLoading, setStakedToolsLoading] = useState(false);
 
     const [resourcesLoading, setResourcesLoading] = useState(false);
      const [probabilityLoading, setProbabilityLoading] = useState(false);
@@ -162,7 +157,7 @@ const AppContent = () => {
                 })
                 .finally(() => setItemsLoading(false));
         }
-    }, [activeUser, setItemsLoading, itemListFetched, setItems]);
+    }, [activeUser, setItemsLoading, itemListFetched, setItems, itemsLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !stakedItemListFetched && setStakedItems
@@ -181,7 +176,7 @@ const AppContent = () => {
                 })
                 .finally(() => setStakedItemsLoading(false));
         }
-    }, [activeUser, setStakedItemsLoading, stakedItemListFetched, setStakedItems]);
+    }, [activeUser, setStakedItemsLoading, stakedItemListFetched, setStakedItems, stakedItemsLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !resourcesFetched && setResources
@@ -200,7 +195,7 @@ const AppContent = () => {
                 })
                 .finally(() => setResourcesLoading(false));
         }
-    }, [activeUser, setResourcesLoading, resourcesFetched, setResources]);
+    }, [activeUser, setResourcesLoading, resourcesFetched, setResources, resourcesLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !eraConfFetched && setEraConf
@@ -216,7 +211,7 @@ const AppContent = () => {
                 })
                 .finally(() => setEraConfLoading(false));
         }
-    }, [activeUser, setEraConfLoading, eraConfFetched, setEraConf]);
+    }, [activeUser, setEraConfLoading, eraConfFetched, setEraConf, eraConfLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !waxCourseFetched && setWaxCourse
@@ -234,7 +229,7 @@ const AppContent = () => {
                 })
                 .finally(() => setWaxCourseLoading(false));
 }
-}, [activeUser, setWaxCourseLoading, waxCourseFetched, setWaxCourse]);
+}, [activeUser, setWaxCourseLoading, waxCourseFetched, setWaxCourse, waxCourseLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !probabilityFetched && setProbability
@@ -252,7 +247,7 @@ const AppContent = () => {
                 })
                 .finally(() => setProbabilityLoading(false));
         }
-    }, [activeUser, setProbabilityLoading, probabilityFetched, setProbability]);
+    }, [activeUser, setProbabilityLoading, probabilityFetched, setProbability, probabilityLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !spConfigFetched && setSpConfig
@@ -268,7 +263,7 @@ const AppContent = () => {
                 })
                 .finally(() => setSpConfigLoading(false));
         }
-    }, [activeUser, setSpConfigLoading, spConfigFetched, setSpConfig]);
+    }, [activeUser, setSpConfigLoading, spConfigFetched, setSpConfig, spConfigLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !totalSpFetched && setTotalSp
@@ -302,7 +297,7 @@ const AppContent = () => {
                 })
                 .finally(() => setToolConfgLoading(false));
         }
-    }, [activeUser, setToolConfgLoading, toolConfigFetched, setToolConfig]);
+    }, [activeUser, setToolConfgLoading, toolConfigFetched, setToolConfig, toolConfigLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !wpConfigFetched && setWpConfig
@@ -320,7 +315,7 @@ const AppContent = () => {
                 })
                 .finally(() => setWpConfgLoading(false));
         }
-    }, [activeUser, setWpConfgLoading, wpConfigFetched, setWpConfig]);
+    }, [activeUser, setWpConfgLoading, wpConfigFetched, setWpConfig, wpConfigLoading]);
 
     useEffect(() => {
         if (activeUser && activeUser.accountName && !poolConfigFetched && setPoolConfig
@@ -336,7 +331,7 @@ const AppContent = () => {
                 })
                 .finally(() => setPoolConfgLoading(false));
         }
-    }, [activeUser, setPoolConfgLoading, poolConfigFetched, setPoolConfig]);
+    }, [activeUser, setPoolConfgLoading, poolConfigFetched, setPoolConfig, poolConfigLoading]);
 
 
 

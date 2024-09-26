@@ -55,9 +55,9 @@ export default function Staking() {
 
 
 
-    const toastyErr = () => {
-        toast.error('First select tool');
-    }
+    // const toastyErr = () => {
+    //     toast.error('First select tool');
+    // }
 
     useEffect(() => {
         stakedToCollectionAssets({activeUser})

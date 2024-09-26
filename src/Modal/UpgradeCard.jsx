@@ -14,6 +14,7 @@ import './upgrade.css'
 
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default({ disabled, selectedTool}) => {
   const { activeUser } = useContext(UALContext);
 
