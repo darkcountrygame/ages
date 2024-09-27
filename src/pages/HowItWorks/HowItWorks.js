@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
@@ -9,11 +9,11 @@ import './HowItWorks.scss';
 
 
 const HowItWorks = () => {
-    const [activeSection, setActiveSection] = useState(1);
+    // const [activeSection, setActiveSection] = useState(1);
 
-    const handleNavigationClick = (sectionNumber) => {
-        setActiveSection(sectionNumber);
-    };
+    // const handleNavigationClick = (sectionNumber) => {
+    //     setActiveSection(sectionNumber);
+    // };
 
     const responsive = {
         0: { items: 1 },

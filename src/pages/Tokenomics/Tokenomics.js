@@ -1,39 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NavBar from "../../components/NavBar/NavBar";
-import diagramImg from '../../images/diagram.png'
+
+
+import startScreen from '../../images/screens/start.jpg';
+import inventoryScreen from '../../images/screens/Inventory.jpg';
+import upgrade1Screen from '../../images/screens/Upgrade1.jpg';
+import upgrade2Screen from '../../images/screens/Upgrade2.jpg';
+import workplaces_miningScreen from '../../images/screens/workplaces_mining.jpg';
 
 import './Tokenomics.scss';
-
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 
 const Tokenomics = () => {
-    const [activeSection, setActiveSection] = useState(1);
 
-    const handleNavigationClick = (sectionNumber) => {
-        setActiveSection(sectionNumber);
-    };
 
     return (
-        <div className="tokenomics_container">
+        <div className="screens_container">
             <NavBar />
-            <div className="tokenomics_content">
-                <div className="tokenomic_content-diagram">
-                    <img src={diagramImg} alt=""/>
-                    <span>50M</span>
-                </div>
-                <div className="green-line_blck">
-                    <p>40% to be distributed via daily pools</p>
-                    <p>(resources to exchange for RTP)</p>
-                </div>
-                <div className="pink-line_blck">
-                    <p>40% to be mined via trading</p>
-                    <p>(every buyer received a chunk of RTP token)</p>
-                </div>
-                <div className="purple-line_blck">
-                    <p>15% provided into LP farming</p>
-                </div>
-                <div className="orange-line_blck">
-                    <p>5% salaries (community managers)</p>
-                </div>
+            <div className="screens_content">
+                <Carousel>
+                    <div>
+                        <img src={startScreen} alt="Start Screen" />
+                    </div>
+                    <div>
+                        <img src={inventoryScreen} alt="Inventory Screen" />
+                    </div>
+                    <div>
+                        <img src={upgrade1Screen} alt="Upgrade 1 Screen" />
+                    </div>
+                    <div>
+                        <img src={upgrade2Screen} alt="Upgrade 1 Screen" />
+                    </div>
+                    <div>
+                        <img src={workplaces_miningScreen} alt="Upgrade 1 Screen" />
+                    </div>
+                </Carousel>
             </div>
         </div>
     );
