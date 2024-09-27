@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NavBar from "../../components/NavBar/NavBar";
 import './RoadMap.scss';
 import dropIcon from '../../images/roadmap/drop_1.png'
@@ -8,11 +8,6 @@ import poolIcon from '../../images/roadmap/pool.png'
 import tradeIcon from '../../images/roadmap/trade.png'
 
 const RoadMap = () => {
-    const [activeSection, setActiveSection] = useState(1);
-
-    const handleNavigationClick = (sectionNumber) => {
-        setActiveSection(sectionNumber);
-    };
 
     return (
         <div className="roadmap_container">

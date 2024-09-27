@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NavBar from "../../components/NavBar/NavBar";
 import './NFTs.scss';
 
@@ -27,11 +27,6 @@ const nftImages = [
 ];
 
 const NFTs = () => {
-    const [activeSection, setActiveSection] = useState(1);
-
-    const handleNavigationClick = (sectionNumber) => {
-        setActiveSection(sectionNumber);
-    };
 
     return (
         <div className="nfts_container">

@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@ap.cx/react-fullpage": "^0.3.0",
-    "@codegabo/reactivefullpage": "^1.0.9",
     "@fullpage/react-fullpage": "^0.1.36",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
