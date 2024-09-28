@@ -21,7 +21,7 @@ const HowItWorks = () => {
         1024: { items: 3 },
         1480: { items: 4 },
         1936: { items: 5 },
-        2392 : { items: 6 },
+        2392: { items: 6 },
     };
 
     const items = [
@@ -53,20 +53,28 @@ const HowItWorks = () => {
         //         <p>There is a certain amount of RTP token to be produced via trading fees</p>
         //     </div>
         // </div>,
-        // <div className="how-it-works_container_item">
-        //     <div className="img-block_5"></div>
-        //     <div className="item-content">
-        //         <h5>You receive Science Points </h5>
-        //         <p>while working on workplaces that are necessary to advance to the next Technological era</p>
-        //     </div>
-        // </div>,
-        // <div className="how-it-works_container_item">
-        //     <div className="img-block_6"></div>
-        //     <div className="item-content">
-        //         <h5>Starting new Era</h5>
-        //         <p>will grant you a percentage of all resources that players will spend to upgrade their tools and workplaces</p>
-        //     </div>
-        // </div>,
+        <div className="how-it-works_container_item soon">
+          <div className="soon-layout">
+            <p>coming soon</p>
+            </div>
+                <div className="img-block_5"></div>
+                <div className="item-content">
+                    <h5>You receive Science Points </h5>
+                    <p>while working on workplaces that are necessary to advance to the next Technological era</p>
+                </div>
+    
+        </div>,
+        <div className="how-it-works_container_item soon">
+           <div className="soon-layout">
+            <p>coming soon</p>
+            </div>
+                <div className="img-block_6"></div>
+                <div className="item-content">
+                    <h5>Starting new Era</h5>
+                    <p>will grant you a percentage of all resources that players will spend to upgrade their tools and workplaces</p>
+                </div>
+          
+        </div>,
     ];
 
     return (
@@ -83,7 +91,7 @@ const HowItWorks = () => {
                         paddingLeft={10}
                         paddingRight={10}
                         autoPlayStrategy={'action'}
-                        // autoPlayInterval={2000}/>
+                    // autoPlayInterval={2000}/>
                     />
                 </div>
             </div>

@@ -13,7 +13,7 @@ const NavBar = () => {
                 <li><a href="/">How it works</a></li>
                 <li><a href="/">Roadmap</a></li>
                 {/* <li><a href="/tokenomics">Tokenomics</a></li> */}
-                <li><a href="/">NFTs</a></li>
+                <li><a href="/">Art</a></li>
             </ul>
         </div>
     );

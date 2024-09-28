@@ -11,7 +11,7 @@ const Header = () => {
                 <a href="/" className="nav__item">How it works</a>
                 <a href="/" className="nav__item">Roadmap</a>
                 {/* <a href="#" className="nav__item">Tokenomics</a> */}
-                <a href="/" className="nav__item">NFT</a>
+                <a href="/" className="nav__item">Art</a>
             </nav>
         </header>
     );

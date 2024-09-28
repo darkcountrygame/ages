@@ -23,7 +23,7 @@ const Footer = () => {
                     </button>
                     <div className="copy-r">
                         <img src={copyr} alt=""/>
-                        <p>Dapplica, 2023</p>
+                        <p>Dapplica, 2024</p>
                     </div>
                 </div>
 
