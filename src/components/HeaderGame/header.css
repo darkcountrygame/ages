@@ -72,9 +72,9 @@
     margin: 0;
 }
 
-.header-items{
+/* .header-items{
     margin-left: 160px;
-}
+} */
 
 .header-items .header-items_list{
     display: flex;

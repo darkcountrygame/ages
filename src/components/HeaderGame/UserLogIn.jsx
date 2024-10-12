@@ -7,11 +7,10 @@ import wax from "../../images/wax.png";
 
 const WaxLogo = ({waxBalance, rtpBalance}) => {
 
-    const { logout } = useContext(UALContext);
     const { userData, isAuthenticated, userLogoutHandler, waxCourse } = useApp();
 
     const userLogout = () => {
-        logout();
+        // logout();
         userLogoutHandler();
     }
 
