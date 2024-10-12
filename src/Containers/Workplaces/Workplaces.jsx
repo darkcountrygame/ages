@@ -121,120 +121,6 @@ const Workplaces = () => {
     }, [selectedWorkPlace, stakedItemList])
 
 
-
-    // const renderWorkPlaceTools = () => {
-    //   return(
-    //       <div className="container">
-    //           <div className="main-main-wrapper">
-    //               {tools.length ?
-    //                   <>
-    //                       <div className="main-workplace-header">
-    //                           <div className="start-work_btn" onClick={() => handleClaim(selectedWorkPlace && String(selectedWorkPlace.workplace_asset_id))}>
-    //                               <p>Start Work</p>
-    //                           </div>
-    //                           <p>Total Prodused <span>0</span><img src={getResourceIcon(selectedWorkPlace?.generate_resource)} alt='' /></p>
-    //                       </div>
-    //                       <div className="main-main-contant">
-    //                           <div className="main-main-list">
-    //                               {tools.map(item =>
-    //                                   <>
-    //                                       <div key={Number(item.asset_id)} className="workplaces-item">
-    //                                           <div className="workplaces-img available-img">
-    //                                               <img src={`https://atomichub-ipfs.com/ipfs/${item.data.img}`} alt="" />
-    //                                               {/*<p className={'workplaces-img_name'}>{item.name}</p>*/}
-    //                                           </div>
-    //                                           <div className="produces">
-    //                                               <p>Produces:</p>
-    //                                               <p>{item.data.power}/Hour</p>
-    //                                           </div>
-    //                                           <div className="btn-unequip">
-    //                                               <button onClick={() => unstakeHandler(selectedWorkPlace.workplace_asset_id, item.asset_id)}>Unequip</button>
-    //                                           </div>
-    //                                       </div>
-    //                                       <div className="workplaces-item lock">
-    //                                           <div className="workplaces-img locked-img">
-    //                                               <img src={lock} alt="spear" />
-    //                                           </div>
-    //                                           <div className="btn-lock">
-    //                                               <UnlockCard />
-    //                                           </div>
-    //                                       </div>
-    //                                       <div className="workplaces-item lock">
-    //                                           <div className="workplaces-img locked-img">
-    //                                               <img src={lock} alt="spear" />
-    //                                           </div>
-    //                                           <div className="btn-lock">
-    //                                               <UnlockCard />
-    //                                           </div>
-    //                                       </div>
-    //                                       <div className="workplaces-item lock">
-    //                                           <div className="workplaces-img locked-img">
-    //                                               <img src={lock} alt="spear" />
-    //                                           </div>
-    //                                           <div className="btn-lock">
-    //                                               <UnlockCard />
-    //                                           </div>
-    //                                       </div>
-    //                                   </>
-    //                               )}
-    //
-    //                               {/*to unlock workplace slots - unlock:slot:workplace:[is staked 0 or 1]:[WORKPLACE_ID]*/}
-    //
-    //                               {/*<div className="workplaces-item">*/}
-    //                               {/*    <div className="workplaces-img available-img">*/}
-    //                               {/*        <img src={WoodenSpear} alt="spear" />*/}
-    //                               {/*        <p className={'workplaces-img_name'}>Wooden Spear</p>*/}
-    //                               {/*    </div>*/}
-    //                               {/*    <div className="produces">*/}
-    //                               {/*        <p>Produces:</p>*/}
-    //                               {/*        <p>100/Hour</p>*/}
-    //                               {/*    </div>*/}
-    //                               {/*    <div className="btn-equip">*/}
-    //                               {/*        <EquipTool itemList={itemList} />*/}
-    //                               {/*    </div>*/}
-    //                               {/*</div>*/}
-    //
-    //                               {/*<div className="workplaces-item equip">*/}
-    //                               {/*    <div className="workplaces-img unequip-img">*/}
-    //                               {/*        { !stakedToolsList.length ?  <img src={equip} alt="spear" /> : <img src={`https://cloudflare-ipfs.com/ipfs/${stakedToolsList[0].data.img}`} alt="spear" /> }*/}
-    //                               {/*    </div>*/}
-    //                               {/*    <div className="btn-equip">*/}
-    //                               {/*        <EquipTool itemList={[]} />*/}
-    //                               {/*    </div>*/}
-    //                               {/*</div>*/}
-    //
-    //                               {/*<div className="workplaces-item lock">*/}
-    //                               {/*    <div className="workplaces-img locked-img">*/}
-    //                               {/*        <img src={lock} alt="spear" />*/}
-    //                               {/*    </div>*/}
-    //                               {/*    <div className="btn-lock">*/}
-    //                               {/*        <UnlockCard />*/}
-    //                               {/*    </div>*/}
-    //                               {/*</div>*/}
-    //
-    //                               {/*<div className="workplaces-item lock">*/}
-    //                               {/*    <div className="workplaces-img locked-img">*/}
-    //                               {/*        <img src={lock} alt="spear" />*/}
-    //                               {/*    </div>*/}
-    //                               {/*    <div className="btn-lock">*/}
-    //                               {/*        <UnlockCard />*/}
-    //                               {/*    </div>*/}
-    //                               {/*</div>*/}
-    //
-    //                           </div>
-    //                       </div>
-    //                   </>
-    //
-    //                   :
-    //                   <div className={'no-tools'}>No tools</div>
-    //
-    //               }
-    //
-    //           </div>
-    //       </div>
-    //   )
-    // }
-
     const renderWorkPlaceTools = () => {
         const equipItems = tools.length < wp.data?.slots ? (
             Array.from({ length: wp.data?.slots - tools.length }, (_, i) => (
@@ -322,7 +208,6 @@ const Workplaces = () => {
 
     useEffect(() => {
         renderWorkPlaceTools();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tools]);
 
 

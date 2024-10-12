@@ -15,10 +15,7 @@ import {
 const history = createBrowserHistory();
 
 export const useRoutes = () => {
-     const {isAuthenticated} = useApp();
 
-
-     if (isAuthenticated){
          return (
              <Router history={history}>
                  <Switch>
@@ -51,15 +48,5 @@ export const useRoutes = () => {
              </Router>
 
          )
-     }
 
-
-    return (
-        <Switch>
-            <Route exact path="/">
-                <MainPage />
-            </Route>
-            <Redirect to="/" />
-        </Switch>
-    );
 };

@@ -6,8 +6,6 @@ import { useApp } from '../../Data/AppContext';
 import { useRoutes } from '../../Hooks/Routes';
 import { ToastContainer } from "react-toastify";
 
-
-
 import {
     fetchWaxBalance,
     fetchRtpBalance,
@@ -338,7 +336,7 @@ const AppContent = () => {
     return (
             <div>
                 <main className={'main-bg'}>
-                    {activeUser && <Header />}
+                    { <Header />}
                     { routes }
                 </main>
 

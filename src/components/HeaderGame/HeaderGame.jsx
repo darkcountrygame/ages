@@ -45,33 +45,6 @@ export default function Header() {
 
     };
 
-
-
-    // if(!isAuthenticated) {
-    //     return (
-    //         <header className="header">
-    //             <div className="header-wrapper">
-    //                 <div className="header-stats">
-    //                     <div className="header-stats__title">
-    //                         <h2>Prehistoric age</h2>
-    //                     </div>
-    //                     <div className="header-stats__under">
-    //                         <div className="header-stats__sp">
-    //                             <span></span>
-    //                             { resourcesList.science_points } / 10 000
-    //                         </div>
-    //                         <div className="add">
-    //                             <img src={plus} alt="plus" />
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //
-    //                 <UserLogIn waxBalance={waxBalance} rtpBalance={rtpBalance} />
-    //             </div>
-    //         </header>
-    //     )
-    // }
-
     return(
         <header className="header">
             <div className="header-wrapper">
@@ -83,15 +56,6 @@ export default function Header() {
                             <h2>{eraConf[0]?.title}</h2>
                         )}
                     </div>
-                    {/*<div className="header-stats__under">*/}
-                    {/*    <div className="header-stats__sp">*/}
-                    {/*        <span></span>*/}
-                    {/*        0 / {eraConf[1]?.cost_of_opening_era}*/}
-                    {/*    </div>*/}
-                    {/*    <div className="add">*/}
-                    {/*        <img src={plus} alt="plus" />*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                     <div className="header-progress-bar-block">
                         <div className="contant-bar">
                             <div className="header-progress-bar">

@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-// import { useNavigate } from "react-router-dom";
 
 import { UALContext } from "ual-reactjs-renderer";
 import { useApp } from "../../Data/AppContext";
@@ -7,9 +6,8 @@ import { useApp } from "../../Data/AppContext";
 import wax from "../../images/wax.png";
 
 const WaxLogo = ({waxBalance, rtpBalance}) => {
-    // const history = useNavigate();
-    // console.log(rtpBalance)
-    const { showModal, logout } = useContext(UALContext);
+
+    const { logout } = useContext(UALContext);
     const { userData, isAuthenticated, userLogoutHandler, waxCourse } = useApp();
 
     const userLogout = () => {
@@ -18,17 +16,10 @@ const WaxLogo = ({waxBalance, rtpBalance}) => {
     }
 
     const handleLogin = () => {
-        // history.push('/');
-        showModal();
+
     };
 
-    // useEffect(() => {
-    //     console.log(waxCourse)
-    // }, [waxCourse])
-
-    // console.log(String(waxBalance))
-    // console.log(String(rtpBalance))
-
+ 
     if (!isAuthenticated) {
         return (
             <div className="header-user">
