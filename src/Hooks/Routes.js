@@ -2,9 +2,8 @@ import React from "react";
 import { Router ,Route, Switch, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
- import { useApp } from "../Data/AppContext";
 import {
-    MainPage,
+    // MainPage,
     Workpalces,
     Staking,
     Swap,

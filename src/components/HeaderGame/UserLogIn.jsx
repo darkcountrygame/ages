@@ -1,6 +1,5 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
-import { UALContext } from "ual-reactjs-renderer";
 import { useApp } from "../../Data/AppContext";
 
 import wax from "../../images/wax.png";

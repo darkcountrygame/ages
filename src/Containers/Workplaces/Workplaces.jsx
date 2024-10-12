@@ -208,6 +208,7 @@ const Workplaces = () => {
 
     useEffect(() => {
         renderWorkPlaceTools();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tools]);
 
 
