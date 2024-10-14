@@ -9,8 +9,10 @@ import UserItems from "../components/UserWorkplace/UserItems";
 
 import './EquipTool.css';
 
-const EquipTool = ({ stakeHandler, itemList }) => {
+const EquipTool = ({ stakeHandler, itemList, wp }) => {
     const [toolSelected, setToolSelected] = useState(null);
+    
+    console.log(itemList);
     
 
     return (
@@ -42,6 +44,7 @@ const EquipTool = ({ stakeHandler, itemList }) => {
                             <div className="card-list">
                                 {itemList
                                  .filter(nft => !nft.token_properties_mutated_v1?.hasOwnProperty('Slots'))
+                                 .filter(item => wp.res[0].resource_type === item.token_properties_mutated_v1["Resource Type"])
                                 .map((item, index) => (
                                     
                                         <UserItems

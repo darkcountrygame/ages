@@ -35,6 +35,7 @@ const Workplaces = () => {
     console.log(setMiningCount);
     console.log(loading);
     
+    console.log(wp);
     
     
 
@@ -56,8 +57,6 @@ const Workplaces = () => {
         setWP(selectedWorkPlace);
     }, [selectedWorkPlace]);
 
-    console.log(selectedWorkPlace);
-
 
     useEffect(() => {
         if (wp?.token_name) {
@@ -78,7 +77,7 @@ const Workplaces = () => {
                         <img src={equip} alt="equip" />
                     </div>
                     <div className="btn-equip">
-                        <EquipTool stakeHandler={equipTool} itemList={itemList} />
+                        <EquipTool stakeHandler={equipTool} itemList={itemList} wp={wp} />
                     </div>
                 </div>
             ))
