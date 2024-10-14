@@ -1,17 +1,11 @@
 import React from "react";
 
-const UserTool = ({
-                      item,
-                      index,
-                      setSelectTool,
-                      selectedTool,
-}) => {
-
+const UserTool = ({ item, index, setSelectTool, selectedTool }) => {
     return (
         <>
             <div 
                 key={index}
-                className={item.token_name === selectedTool.token_name ? "market-list_item selected" : "market-list_item"}
+                className={selectedTool && item.token_name === selectedTool.token_name ? "market-list_item selected" : "market-list_item"}
                 onClick={() => {
                     setSelectTool(item);
                 }}

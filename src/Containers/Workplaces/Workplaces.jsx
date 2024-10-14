@@ -17,7 +17,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Timer from "../../components/Countdown/Timer";
 import { createBrowserHistory } from "history";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
-import { contract_address } from "../../Services";
+import { contract_address, getUserNfts } from "../../Services";
 import { toast } from "react-toastify";
 
 const Workplaces = () => {
@@ -163,8 +163,16 @@ const Workplaces = () => {
                   functionArguments: [item],
                 },
             });
-            toast.success("Success staked tool!");
-           
+
+            getUserNfts()
+                .then(() => {
+                    toast.success("Success staked tool!");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    toast.error(error);
+                })
+          
            
           } catch (error) {
             toast.error(error.message || error);

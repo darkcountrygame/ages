@@ -11,9 +11,7 @@ import './EquipTool.css';
 
 const EquipTool = ({ stakeHandler, itemList, wp }) => {
     const [toolSelected, setToolSelected] = useState(null);
-    
-    console.log(itemList);
-    
+
 
     return (
         <Popup

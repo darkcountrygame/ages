@@ -21,7 +21,8 @@ export const getStakedWP = async () => {
     resourceType
   });
   
-
+  console.log(staking_store.staked_tokens);
+  
   return staking_store.staked_tokens
 };
 
