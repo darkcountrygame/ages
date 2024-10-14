@@ -3,7 +3,7 @@ import { useApp } from "../../Data/AppContext";
 import Footer from '../../components/FooterGameNav/FooterGameNav';
 import UserTool from '../../components/UserTool/UserTool';
 import './staking.css';
-import { contract_address, getAptosStakedWP, getStakedWP, getUserNfts } from '../../Services';
+import { contract_address, getAptosStakedWP, getUserNfts } from '../../Services';
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import { toast } from 'react-toastify';
 

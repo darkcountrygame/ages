@@ -19,7 +19,7 @@ export default function Navbar() {
     return (
         <nav className="NavbarItem">
             <div className="navbar-left">
-                <h1 className="navbar-logo">Rush to Prosperity</h1>
+                <h1 className="navbar-logo">Legacy Of Ages</h1>
                 <ul>
                     {MenuItems.map((item, index) => {
                         return (

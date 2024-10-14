@@ -165,7 +165,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     overflow-y: auto;
-    height: 495px;
+    height: 550px;
     /*padding-right: 10px;*/
 }
 
@@ -185,7 +185,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 234px;
-    height: 482px;
+    height: 520px;
     background-color: rgba(0, 0, 0, 0.103);
     border-radius: 10px;
     margin-bottom: 10px;

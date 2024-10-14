@@ -2,7 +2,7 @@ import React from 'react';
 import { useApp } from "../../Data/AppContext";
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 
-import wax from "../../images/wax.png";
+import AptosIcon from "../../images/AptosIcon.png";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const WaxLogo = ({ waxBalance, rtpBalance }) => {
@@ -30,7 +30,7 @@ const WaxLogo = ({ waxBalance, rtpBalance }) => {
             <div className="money">
                 {!isAuthenticated ? (
                     <p>
-                        <img src={wax} alt="wax" />
+                        <img className='aptos_logo' src={AptosIcon} alt="wax" />
                         <span className="wax" onClick={handleLogin}>Log In</span>
                     </p>
                 ) : (
@@ -39,7 +39,7 @@ const WaxLogo = ({ waxBalance, rtpBalance }) => {
                             <p><span className="rtp">{0 || '0'} LOA</span></p>
                         </div>
                         <p>
-                            <img src={wax} alt="wax" />
+                            <img className='aptos_logo' src={AptosIcon} alt="wax" />
                             <span className="wax login">
                                 {account?.address ? shortenAddress(account.address) : 'Unknown User'}
                             </span>

@@ -57,7 +57,7 @@ const EquipTool = ({ stakeHandler, itemList, wp }) => {
                                 ))}
                             </div>
                         </div>
-                        <div className="equip_btn" onClick={() => stakeHandler(toolSelected)}>
+                        <div className="equip_btn" onClick={() => stakeHandler(toolSelected, close)}>
                             <p>Equip</p>
                         </div>
                     </div>

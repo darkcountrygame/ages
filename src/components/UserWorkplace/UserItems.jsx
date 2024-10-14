@@ -1,10 +1,6 @@
 import React from "react";
 
 const UserItems = ({ item, index, setToolSelected, toolSelected }) => {
-    console.log(item);
-    
-    console.log(toolSelected);
-    
 
     return (
         <div

@@ -3,10 +3,10 @@ import { useApp } from "../../Data/AppContext";
 
 import './workplaces.css';
 
-import meat from '../../images/market-items/meat.png';
-import stone from '../../images/market-items/rock.png';
-import wood from '../../images/market-items/wood.png';
-import wheel from '../../images/market-items/wheel.png';
+// import meat from '../../images/market-items/meat.png';
+// import stone from '../../images/market-items/rock.png';
+// import wood from '../../images/market-items/wood.png';
+// import wheel from '../../images/market-items/wheel.png';
 import equip from '../../images/plus_icon_section.png';
 import lock from '../../images/lock.png';
 
@@ -14,7 +14,7 @@ import Footer from '../../components/FooterGameNav/FooterGameNav';
 import UnlockCard from '../../Modal/UnlockCard';
 import EquipTool from '../../Modal/EquipTool';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import Timer from "../../components/Countdown/Timer";
+// import Timer from "../../components/Countdown/Timer";
 import { createBrowserHistory } from "history";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { contract_address, getUserNfts } from "../../Services";
@@ -22,7 +22,7 @@ import { toast } from "react-toastify";
 
 const Workplaces = () => {
     const {account, signAndSubmitTransaction} = useWallet();
-    const { itemList, stakedItemList } = useApp();
+    const { itemList, setItems } = useApp();
     const [selectItem, setSelectItem] = useState([]);
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([]);
     const [tools, setTools] = useState([]);
@@ -36,22 +36,24 @@ const Workplaces = () => {
     console.log(loading);
     
     console.log(wp);
+    console.log(miningCount);
+    
     
     
 
-    const getResourceIcon = (name) => {
-        switch (name) {
-            case "food":
-                return meat;
-            case "stone":
-                return stone;
-            case "miles":
-                return wheel;
-            case "wood":
-            default:
-                return wood;
-        }
-    };
+    // const getResourceIcon = (name) => {
+    //     switch (name) {
+    //         case "food":
+    //             return meat;
+    //         case "stone":
+    //             return stone;
+    //         case "miles":
+    //             return wheel;
+    //         case "wood":
+    //         default:
+    //             return wood;
+    //     }
+    // };
 
     useEffect(() => {
         setWP(selectedWorkPlace);
@@ -99,7 +101,7 @@ const Workplaces = () => {
         return (
             <div className="container">
                 <div className="main-main-wrapper">
-                    <div className="main-workplace-header">
+                    {/* <div className="main-workplace-header">
                         <p className="time">Left to the next production:
                             <div className="timer">
                                 <Timer wp={wp} stakedWP={stakedItemList} />
@@ -116,7 +118,7 @@ const Workplaces = () => {
                                 Claim
                             </button>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="main-main-content">
                         {wp ?
                             <div className="main-main-list">
@@ -153,7 +155,7 @@ const Workplaces = () => {
         // Claim logic here
     };
 
-    const equipTool = async (item) => {
+    const equipTool = async (item, close) => {
         try {
             setLoading(true);
             await signAndSubmitTransaction({
@@ -164,15 +166,10 @@ const Workplaces = () => {
                 },
             });
 
-            getUserNfts()
-                .then(() => {
-                    toast.success("Success staked tool!");
-                })
-                .catch((error) => {
-                    console.log(error);
-                    toast.error(error);
-                })
-          
+            const userNfts = await getUserNfts({ account: account.address });
+            setItems(userNfts);
+            toast.success("Success equiped!");
+            close();
            
           } catch (error) {
             toast.error(error.message || error);
