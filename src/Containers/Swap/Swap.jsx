@@ -1,11 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useApp} from "../../Data/AppContext";
-import {toast} from "react-toastify";
 
 import Footer from '../../components/FooterGameNav/FooterGameNav'
 
-import {exchangeResources, fetchResources} from "../../Services";
-import {UALContext} from "ual-reactjs-renderer";
+// import {UALContext} from "ual-reactjs-renderer";
 
 import './Swap.css'
 
@@ -13,8 +11,8 @@ import './Swap.css'
 
 
 export default function Swap() {
-    const { activeUser } = useContext(UALContext);
-    const { rtpBalance, resourcesList, poolConfig, eraConf, setResources } = useApp();
+    // const { activeUser } = useContext(UALContext);
+    const { rtpBalance, resourcesList, poolConfig, eraConf } = useApp();
 
     const [amount, setAmount] = useState('');
     const [result, setResult] = useState(0);
@@ -60,16 +58,16 @@ export default function Swap() {
     };
 
     const handleSwapClick = () => {
-        exchangeResources({activeUser, resource: selectedOption, count: amount})
-            .then(() => {
-                fetchResources({ account: activeUser.accountName })
-                    .then(resource => setResources(resource))
-                    .catch(e => console.log(e));
+        // exchangeResources({activeUser, resource: selectedOption, count: amount})
+        //     .then(() => {
+        //         fetchResources({ account: activeUser.accountName })
+        //             .then(resource => setResources(resource))
+        //             .catch(e => console.log(e));
 
 
-                toast.success('Exchanged');
-            })
-            .catch(e => toast.error(e.message))
+        //         toast.success('Exchanged');
+        //     })
+        //     .catch(e => toast.error(e.message))
 
     }
 
@@ -137,7 +135,7 @@ export default function Swap() {
                                 <div className="swiper-field">
                                     <p className={'result'}>{result ? result.toFixed(4) : 0}</p>
                                     <div className="token-block">
-                                        <p>RTP</p>
+                                        <p>LOA</p>
                                         <p className={'balance'}>Balance: {rtpBalance}</p>
                                     </div>
                                 </div>

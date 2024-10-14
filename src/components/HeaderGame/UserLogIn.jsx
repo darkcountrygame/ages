@@ -1,48 +1,55 @@
 import React from 'react';
-
 import { useApp } from "../../Data/AppContext";
+import { useWallet } from '@aptos-labs/wallet-adapter-react';
 
 import wax from "../../images/wax.png";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-const WaxLogo = ({waxBalance, rtpBalance}) => {
+const WaxLogo = ({ waxBalance, rtpBalance }) => {
+    const history  = useHistory();
+    const { account, disconnect } = useWallet();
+    const { isAuthenticated } = useApp();
 
-    const { userData, isAuthenticated, userLogoutHandler, waxCourse } = useApp();
-
-    const userLogout = () => {
-        // logout();
-        userLogoutHandler();
-    }
-
-    const handleLogin = () => {
-
+    const handleLogout = () => {
+        history.push('/')
+        disconnect();
+       
     };
 
- 
-    if (!isAuthenticated) {
-        return (
-            <div className="header-user">
-                <div className="money">
-                    <p><img src={wax} alt="wax" /><span className="wax" onClick={ handleLogin }>Log In</span></p>
-                </div>
-            </div>
-        )
-    }
+    const handleLogin = () => {
+        // Logic for login goes here
+    };
+
+    // Функція для скорочення адреси
+    const shortenAddress = (address) => {
+        return `${address.slice(0, 4)}...${address.slice(-4)}`;
+    };
 
     return (
         <div className="header-user">
             <div className="money">
-                <div className="crypto">
-                    <p><span className="rtp">{ Number(rtpBalance.toString().replace(' RTP', '')).toFixed(4) } RTP</span>
-                        ($0)
+                {!isAuthenticated ? (
+                    <p>
+                        <img src={wax} alt="wax" />
+                        <span className="wax" onClick={handleLogin}>Log In</span>
                     </p>
-                    <p><span className="rtp">{ Number(waxBalance.toString().replace(' WAX', '')).toFixed(4) } WAX</span>
-                        (${ Math.floor(Number(waxBalance.toString().replace(' WAX', '')) * `0.${waxCourse.median}`) })
-                    </p>
-                </div>
-                <p><img src={wax} alt="wax" /><span className="wax login">{ userData?.accountName } </span><span className="logout" onClick={userLogout}> / Log Out</span></p>
+                ) : (
+                    <>
+                        <div className="crypto">
+                            <p><span className="rtp">{0 || '0'} LOA</span></p>
+                        </div>
+                        <p>
+                            <img src={wax} alt="wax" />
+                            <span className="wax login">
+                                {account?.address ? shortenAddress(account.address) : 'Unknown User'}
+                            </span>
+                            <span className="logout" onClick={handleLogout}> / Log Out</span>
+                        </p>
+                    </>
+                )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default WaxLogo;

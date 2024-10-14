@@ -46,6 +46,8 @@
 
 .equip-tool > .actions .green-btn{
     margin-top: 45px;
+    width: 160px;
+    margin: 0 auto;
 }
 
 .equip-tool > .actions a{

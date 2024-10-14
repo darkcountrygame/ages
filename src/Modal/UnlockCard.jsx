@@ -1,15 +1,13 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Popup from 'reactjs-popup';
 import { useApp } from "../Data/AppContext";
-import {unlockSlot} from "../Services";
-import {UALContext} from "ual-reactjs-renderer";
+
 
 import cardIcon from '../images/unlock.png'
 import closeImg from '../images/close.png'
 
 
 import './unlock.css'
-import {toast} from "react-toastify";
 
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -19,17 +17,10 @@ export default ({wpID}) => {
         wpConfig,
     } = useApp();
 
-    const { activeUser } = useContext(UALContext);
+    // const { activeUser } = useContext(UALContext);
 
     const handleUnLock = () => {
-        unlockSlot({activeUser, selectedWP: wpID})
-            .then(() => {
-                toast.success('Unlocked')
-            })
-            .catch((e) => {
-                toast.error(e)
-                console.log(e)
-            })
+       
     }
 
 
@@ -50,8 +41,8 @@ export default ({wpID}) => {
               <div className="actions" onClick={handleUnLock}>
                   <button>
                       {!wpConfig || !wpConfig.length || !wpConfig[0].price_unlock_slot
-                          ? '100 RTP'
-                          : Math.floor(+wpConfig[0].price_unlock_slot.split(' ')[0]) + ' RTP'}
+                          ? '100 LOA'
+                          : Math.floor(+wpConfig[0].price_unlock_slot.split(' ')[0]) + ' LOA'}
                   </button>
               </div>
             </div>

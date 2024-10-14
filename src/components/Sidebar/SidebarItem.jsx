@@ -1,35 +1,21 @@
-import React, {useEffect, useState} from "react";
-import './sidebar.css'
-import {getDataFromAtomicApi} from "../../Helpers";
+import React from "react";
+import './sidebar.css';
 import { Link } from 'react-router-dom';
 
-export default function Sidebar({ item, index, setSelectedWorkPlace, selectedWorkPlace, handleWorkplaceTool }) {
-    const [itemObj, setItemObj] = useState({})
+export default function Sidebar({ item, index, setSelectedWorkPlace, selectedWorkPlace }) {
 
-
-
-    const generateItemFromId = async () => {
-        const data = await getDataFromAtomicApi(`assets?ids=${item.workplace_asset_id}&page=1&limit=100`)
-
-        setItemObj(data[0])
-    }
-
-
-    useEffect(() => {
-        generateItemFromId()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-    //
-    // console.log(itemObj)
-    // console.log(selectedWorkPlace)
+    const isActive = selectedWorkPlace.token_name === item.token_name;
 
     return (
         <div key={index}>
-            <Link to={`/workplaces/${itemObj.asset_id}`}>
-                <div className={(selectedWorkPlace === String(itemObj.asset_id) || (selectedWorkPlace.workplace_asset_id === String(itemObj.asset_id))) || (selectedWorkPlace === null && index === 0) ? "main-workplace-sidebar__item wp-active" : "main-workplace-sidebar__item"} onClick={() => setSelectedWorkPlace(() => handleWorkplaceTool(item))}>
-                    {itemObj && <img src={`https://cloudflare-ipfs.com/ipfs/${itemObj.data?.img}`} alt="img" />}
+            <Link to={`/workplace/${item.token_name.replace('#', '')}`}>
+                <div 
+                    className={`main-workplace-sidebar__item ${isActive ? 'wp-active' : ''}`} 
+                    onClick={() => setSelectedWorkPlace(item)}
+                >
+                    {item && <img src={item.token_uri} alt="img" />}
                 </div>
             </Link>
         </div>
-    )
+    );
 }

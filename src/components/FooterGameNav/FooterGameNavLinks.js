@@ -10,7 +10,7 @@ export const navMenu = [
     {
         title: 'Workplaces',
         icon: workplacesIcon,
-        url: '/workplaces'
+        url: '/workplace'
     },
     {
         title: 'Inventory',

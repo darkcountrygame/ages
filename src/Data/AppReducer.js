@@ -39,7 +39,6 @@ const AppReducer = (state, action) => {
                 rtpBalanceFetched: false,
                 itemList: [],
                 itemListFetched: false,
-
             };
         }
 

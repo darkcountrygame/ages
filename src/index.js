@@ -1,25 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import { App } from './Containers';
+import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
 
-import { UALProvider } from "ual-reactjs-renderer";
-import { waxChain, waxAuthenticators } from "./Config/wax.config";
+import { MartianWallet } from "@martianwallet/aptos-wallet-adapter";
+import { PetraWallet } from "petra-plugin-wallet-adapter";
 
 
-ReactDOM.render(
-    <UALProvider
-        chains={[waxChain]}
-        authenticators={waxAuthenticators}
-        appName={'RTP'}
-    >
+const wallets  = [
+    new PetraWallet(),
+    new MartianWallet(),
+]
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+    <AptosWalletAdapterProvider plugins={wallets} autoConnect={true} optInWallets={["Petra"]}>
         <App />
-    </UALProvider>,
-  document.getElementById('root')
+    </AptosWalletAdapterProvider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-

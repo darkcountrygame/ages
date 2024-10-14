@@ -1,6 +1,8 @@
 import React from "react";
 
 const UserItems = ({ item, index, setToolSelected, toolSelected }) => {
+    console.log(item);
+    
 
     return (
         <div
@@ -9,7 +11,7 @@ const UserItems = ({ item, index, setToolSelected, toolSelected }) => {
             onClick={() => setToolSelected(item.asset_id)}
         >
             <div className="card-item__img">
-                <img src={`https://cloudflare-ipfs.com/ipfs/${item.data.img}`} alt='item' />
+                <img src={`${item.token_uri}`} alt='item' />
             </div>
         </div>
     );

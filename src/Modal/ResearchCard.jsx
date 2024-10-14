@@ -35,7 +35,7 @@ export default ({countdownCompleted, setCountdownCompleted, setCountdownKey}) =>
 
   return(
       <Popup
-          trigger={<button disabled={countdownCompleted}>Research {Number(spConfig?.research_price?.split(' ')[0])} RTP</button>}
+          trigger={<button disabled={countdownCompleted}>Research {Number(spConfig?.research_price?.split(' ')[0])} LOA</button>}
           modal
           nested
           className={'research-card'}

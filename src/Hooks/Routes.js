@@ -2,27 +2,28 @@ import React from "react";
 import { Router ,Route, Switch, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
+ import { useApp } from "../Data/AppContext";
 import {
-    // MainPage,
+    MainPage,
     Workpalces,
     Staking,
-    Swap,
-    Market,
-    Research,
 } from "../Containers";
 
 const history = createBrowserHistory();
 
 export const useRoutes = () => {
+     const {isAuthenticated} = useApp();
 
+
+     if (isAuthenticated){
          return (
              <Router history={history}>
                  <Switch>
-                     <Route exact path="/workplaces">
+                     <Route exact path="/workplace">
                          <Workpalces />
                      </Route>
 
-                     <Route exact path="/workplaces/:id">
+                     <Route exact path="/workplace/:id">
                          <Workpalces />
                      </Route>
 
@@ -30,7 +31,7 @@ export const useRoutes = () => {
                          <Staking />
                      </Route>
 
-                     <Route exact path="/upgrade">
+                     {/* <Route exact path="/upgrade">
                          <Market />
                      </Route>
 
@@ -40,12 +41,22 @@ export const useRoutes = () => {
 
                      <Route exact path="/research">
                          <Research />
-                     </Route>
+                     </Route> */}
 
-                     <Redirect exact to="/workplaces" />
+                     <Redirect exact to="/workplace" />
                  </Switch>
              </Router>
 
          )
+     }
 
+
+    return (
+        <Switch>
+            <Route exact path="/">
+                <MainPage />
+            </Route>
+            <Redirect to="/" />
+        </Switch>
+    );
 };

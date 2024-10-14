@@ -15,31 +15,31 @@ const EquipCard = ({ itemList, setSelectItem, stakeHandler }) => {
 
   return (
 
-      <Popup
-          trigger={<button className="add-workplace" onClick={stakeHandler}> <img src={add} alt="add"/> </button>}
-          modal
-          nested
-      >
-        {close => (
-            <div className="modal equip">
-              <img className="close" src={closeImg} alt="close" onClick={close}/>
-              <div className="header-modal"> Equip Workplace </div>
-              <div className="content">
-                <div className="content-card-list">
+    <Popup
+      trigger={<button className="add-workplace" onClick={stakeHandler}> <img src={add} alt="add" /> </button>}
+      modal
+      nested
+    >
+      {close => (
+        <div className="modal equip">
+          <img className="close" src={closeImg} alt="close" onClick={close} />
+          <div className="header-modal"> Equip Workplace </div>
+          <div className="content">
+            <div className="content-card-list">
 
-                    {itemList.map( (item, index) => (item.schema.schema_name === 'workplace' ? <UserItems itemList={itemList} item={item} setSelectItem={setSelectItem} index={index} />
-                            :
-                            false
-                    ))}
-                
-                </div>
-              </div>
-              <div className="actions" onClick={close}>
-                <button onClick={stakeHandler}> Equip </button>
-              </div>
+              {itemList
+                .filter(nft => !nft.token_properties_mutated_v1?.hasOwnProperty('Slots'))
+                .map((item, index) => <UserItems itemList={itemList} item={item} setSelectItem={setSelectItem} index={index} />
+                )}
+
             </div>
-        )}
-      </Popup>
+          </div>
+          <div className="actions" onClick={close}>
+            <button onClick={stakeHandler}> Equip </button>
+          </div>
+        </div>
+      )}
+    </Popup>
 
   );
 }
