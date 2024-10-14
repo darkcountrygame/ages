@@ -11,8 +11,6 @@ import './EquipTool.css';
 
 const EquipTool = ({ stakeHandler, itemList }) => {
     const [toolSelected, setToolSelected] = useState(null);
-
-    console.log(itemList);
     
 
     return (

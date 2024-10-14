@@ -16,18 +16,25 @@ import EquipTool from '../../Modal/EquipTool';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Timer from "../../components/Countdown/Timer";
 import { createBrowserHistory } from "history";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { contract_address } from "../../Services";
+import { toast } from "react-toastify";
 
 const Workplaces = () => {
+    const {account, signAndSubmitTransaction} = useWallet();
     const { itemList, stakedItemList } = useApp();
     const [selectItem, setSelectItem] = useState([]);
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([]);
     const [tools, setTools] = useState([]);
     const [wp, setWP] = useState([]);
     const [miningCount, setMiningCount] = useState(0);
+    const [loading, setLoading] = useState(0);
 
     const history = createBrowserHistory();
     console.log(setTools);
     console.log(setMiningCount);
+    console.log(loading);
+    
     
     
 
@@ -71,7 +78,7 @@ const Workplaces = () => {
                         <img src={equip} alt="equip" />
                     </div>
                     <div className="btn-equip">
-                        <EquipTool stakeHandler={stakeHandler} itemList={itemList} />
+                        <EquipTool stakeHandler={equipTool} itemList={itemList} />
                     </div>
                 </div>
             ))
@@ -147,8 +154,24 @@ const Workplaces = () => {
         // Claim logic here
     };
 
-    const stakeHandler = (selectItem) => {
-        // Stake logic here
+    const equipTool = async (item) => {
+        try {
+            setLoading(true);
+            await signAndSubmitTransaction({
+                sender: account.address,
+                data: {
+                  function: `${contract_address}::farm::stake_instrument`,
+                  functionArguments: [item],
+                },
+            });
+            toast.success("Success staked tool!");
+           
+           
+          } catch (error) {
+            toast.error(error.message || error);
+          } finally {
+            setLoading(false)
+          }
     };
 
     const unstakeHandler = (wpId, assetId) => {
@@ -162,7 +185,7 @@ const Workplaces = () => {
                     setSelectedWorkPlace={setSelectedWorkPlace}
                     selectItem={selectItem}
                     setSelectItem={setSelectItem}
-                    stakeHandler={stakeHandler}
+                    stakeHandler={equipTool}
                     selectedWorkPlace={selectedWorkPlace}
                 />
                 <div className="main-main">
