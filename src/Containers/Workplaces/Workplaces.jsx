@@ -112,7 +112,10 @@ const Workplaces = () => {
         const slots = wp?.res?.[0]?.slots || 0;
         
         // Отримуємо кількість зайнятих слотів
-        const occupiedSlots = stakedTools.filter(item => wp.res[0].resource_type === item.res[0].resource_type).length;
+        const occupiedSlots = wp?.res?.[0] 
+        ? stakedTools.filter(item => wp.res[0].resource_type === item.res[0].resource_type).length
+        : 0; // Якщо wp або res[0] не існує, вважаємо, що зайнятих слотів немає.
+    
         
         // Кількість вільних слотів
         const freeSlots = Math.max(0, slots - occupiedSlots);
