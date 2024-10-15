@@ -221,12 +221,18 @@
     }
 }
 
-
-/* Контейнер для списку елементів з прокруткою */
 .container-market {
-    height: 335px;
+    height: 470px;
     overflow: auto;
 }
+
+@media screen and (max-width: 1699px) {
+    .container-market {
+        height: 335px;
+        overflow: auto;
+    } 
+}
+
 
 /* Стили для вкладок */
 .tabs {
