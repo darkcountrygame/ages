@@ -33,6 +33,9 @@ const AppContent = () => {
     const routes = useRoutes();
     const { account } = useWallet();
 
+    console.log(account);
+    
+
     const {
         isAuthenticated,
         userLoginHandler,
@@ -45,6 +48,7 @@ const AppContent = () => {
         stakedItemListFetched,
         setStakedItems,
         setItems,
+        userLogoutHandler
         // resourcesFetched,
         // setResources,
         //  setProbability,
@@ -99,28 +103,22 @@ const AppContent = () => {
     
  
     useEffect(() => {
-        if (account && account.address && setUserDataHandler && userLoginHandler && !isAuthenticated) {
+        if (account && setUserDataHandler && userLoginHandler && !isAuthenticated) {
             setUserDataHandler(account);
             userLoginHandler();
+            
         }
     }, [account, setUserDataHandler, userLoginHandler, isAuthenticated]);
 
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && setWaxBalance && !waxBalanceLoading && !waxBalanceFetched) {
-//             setWaxBalanceLoading(true);
+    useEffect(() => {
+        if (!account) {
+            userLogoutHandler();
+            // userLoginHandler();
 
-//             fetchWaxBalance({ account: activeUser.accountName })
-//                 .then(balance => setWaxBalance(balance))
-//                 .catch(e => {
-//                     setWaxBalance(0);
-
-//                     console.log(e.message)
-//                     console.log(e)
-
-//                 })
-//                 .finally(() => setWaxBalanceLoading(false));
-//         }
-//     }, [activeUser, waxBalanceLoading, setWaxBalance, waxBalanceFetched]);
+         
+            
+        }
+    }, [account]);
 
 //     useEffect(() => {
 //         if (activeUser && activeUser.accountName && setRtpBalance && !rtpBalanceLoading && !rtpBalanceFetched) {
@@ -194,142 +192,6 @@ const AppContent = () => {
 //                 .finally(() => setResourcesLoading(false));
 //         }
 //     }, [activeUser, setResourcesLoading, resourcesFetched, setResources, resourcesLoading]);
-
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && !eraConfFetched && setEraConf
-//             && !eraConfLoading
-//         ) {
-//             setEraConfLoading(true);
-
-//             fetchCurrentEra()
-//                 .then((value) => setEraConf(value))
-//                 .catch(e => {
-//                     console.log(e)
-//                     setEraConf([]);
-//                 })
-//                 .finally(() => setEraConfLoading(false));
-//         }
-//     }, [activeUser, setEraConfLoading, eraConfFetched, setEraConf, eraConfLoading]);
-
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && !waxCourseFetched && setWaxCourse
-//             && !waxCourseLoading
-//         ) {
-//             setWaxCourseLoading(true);
-
-//             fetchWaxCourse({
-//                 account: activeUser.accountName
-//             })
-//                 .then((value) => setWaxCourse(value))
-//                 .catch(e => {
-//                     console.log(e)
-//                     setWaxCourse([]);
-//                 })
-//                 .finally(() => setWaxCourseLoading(false));
-// }
-// }, [activeUser, setWaxCourseLoading, waxCourseFetched, setWaxCourse, waxCourseLoading]);
-
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && !probabilityFetched && setProbability
-//             && !probabilityLoading
-//         ) {
-//             setProbabilityLoading(true);
-
-//             probabilityGetPoints({
-//                 account: activeUser.accountName
-//             })
-//                 .then((value) => setProbability(value))
-//                 .catch(e => {
-//                     console.log(e)
-//                     setProbability(0);
-//                 })
-//                 .finally(() => setProbabilityLoading(false));
-//         }
-//     }, [activeUser, setProbabilityLoading, probabilityFetched, setProbability, probabilityLoading]);
-
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && !spConfigFetched && setSpConfig
-//             && !spConfigLoading
-//         ) {
-//             setSpConfigLoading(true);
-
-//             spConfig()
-//                 .then((value) => setSpConfig(value))
-//                 .catch(e => {
-//                     console.log(e)
-//                     setSpConfig([]);
-//                 })
-//                 .finally(() => setSpConfigLoading(false));
-//         }
-//     }, [activeUser, setSpConfigLoading, spConfigFetched, setSpConfig, spConfigLoading]);
-
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && !totalSpFetched && setTotalSp
-//             && !totalSpLoading
-//         ) {
-//             setTotalSpLoading(true);
-
-//             totalSp({account: activeUser.accountName})
-//                 .then((value) => setTotalSp(value))
-//                 .catch(e => {
-//                     console.log(e)
-//                     setTotalSp([]);
-//                 })
-//                 .finally(() => setTotalSpLoading(false));
-//         }
-//     }, [activeUser, setTotalSpLoading, totalSpFetched, setTotalSp, totalSpLoading]);
-
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && !toolConfigFetched && setToolConfig
-//             && !toolConfigLoading
-//         ) {
-//             setToolConfgLoading(true);
-
-//             fetchToolConfig({
-//                 account: activeUser.accountName
-//             })
-//                 .then((value) => setToolConfig(value))
-//                 .catch(e => {
-//                     console.log(e)
-//                     setToolConfig([]);
-//                 })
-//                 .finally(() => setToolConfgLoading(false));
-//         }
-//     }, [activeUser, setToolConfgLoading, toolConfigFetched, setToolConfig, toolConfigLoading]);
-
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && !wpConfigFetched && setWpConfig
-//             && !wpConfigLoading
-//         ) {
-//             setWpConfgLoading(true);
-
-//             fetchWpConfig({
-//                 account: activeUser.accountName
-//             })
-//                 .then((value) => setWpConfig(value))
-//                 .catch(e => {
-//                     console.log(e)
-//                     setWpConfig([]);
-//                 })
-//                 .finally(() => setWpConfgLoading(false));
-//         }
-//     }, [activeUser, setWpConfgLoading, wpConfigFetched, setWpConfig, wpConfigLoading]);
-
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && !poolConfigFetched && setPoolConfig
-//             && !poolConfigLoading
-//         ) {
-//             setPoolConfgLoading(true);
-
-//             fetchPoolConfig()
-//                 .then((value) => setPoolConfig(value))
-//                 .catch(e => {
-//                     console.log(e)
-//                     setPoolConfig([]);
-//                 })
-//                 .finally(() => setPoolConfgLoading(false));
-//         }
-//     }, [activeUser, setPoolConfgLoading, poolConfigFetched, setPoolConfig, poolConfigLoading]);
 
 
 

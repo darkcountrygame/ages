@@ -8,9 +8,10 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 const WaxLogo = ({ waxBalance, rtpBalance }) => {
     const history  = useHistory();
     const { account, disconnect } = useWallet();
-    const { isAuthenticated } = useApp();
+    const { isAuthenticated, userLogoutHandler } = useApp();
 
     const handleLogout = () => {
+        userLogoutHandler();
         history.push('/')
         disconnect();
        

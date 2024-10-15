@@ -25,7 +25,7 @@ export const get_staking_object_address = "0xa1a426d1fa1132357974cf68856d3b551a2
 //   return staking_store.staked_tokens
 // };
 
-export const getStakedTokens = async ({account}) => {
+export const getStakedTokensWP = async ({account}) => {
   let resourceType = `${contract_address}::farm::FarmStore`;
 
   const staking_store = await aptos.getAccountResource({
@@ -44,16 +44,64 @@ export const getStakedTokens = async ({account}) => {
   return worksites;
 };
 
+export const getStakedTokensTool = async ({account}) => {
+  let resourceType = `${contract_address}::farm::FarmStore`;
+
+  const staking_store = await aptos.getAccountResource({
+    accountAddress: account.address,
+    resourceType
+  });
+  
+  const instrumentKeys = Object.keys(staking_store).filter(key => key.endsWith('_instrument'));
+
+  const instruments = instrumentKeys
+  .map(key => staking_store[key])
+  // .filter(instrument => instrument.trim() !== "");
+
+  console.log(instruments);
+  
+  return instruments;
+};
+
 
 export const getAptosStakedWP = async ({account}) => {
 
-  const stakedNames = await getStakedTokens({account});
+  const stakedNames = await getStakedTokensWP({account});
 
   const results = await Promise.all(
     stakedNames.map(async (name) => {
       const res = await aptos.view({
         payload: {
           function: `${contract_address}::minter::get_worksite`,
+          typeArguments: [],
+          functionArguments: [
+            get_staking_object_address,
+            name,
+          ],
+        },
+      });
+
+      console.log(res);
+      
+    
+      return {res, token_name: name, token_uri: res[0].uri};
+    })
+  );
+
+  console.log(results.flat());
+  
+  return results.flat();
+};
+
+export const getAptosStakedTools = async ({account}) => {
+
+  const stakedNames = await getStakedTokensTool({account});
+
+  const results = await Promise.all(
+    stakedNames.map(async (name) => {
+      const res = await aptos.view({
+        payload: {
+          function: `${contract_address}::minter::get_instrument`,
           typeArguments: [],
           functionArguments: [
             get_staking_object_address,
