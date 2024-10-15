@@ -65,7 +65,7 @@ export default function Research() {
 
                 <div className="main-main">
                     <div className="main-title">
-                        <h2>Research</h2>
+                        <h2>Craft</h2>
                     </div>
                     <div className="container">
                            <div className="research-left">

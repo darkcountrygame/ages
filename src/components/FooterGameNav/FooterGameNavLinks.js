@@ -28,7 +28,7 @@ export const navMenu = [
         url: '/swap'
     },
     {
-        title: 'Research',
+        title: 'Craft',
         icon: researchIcon,
         url: '/research'
     },

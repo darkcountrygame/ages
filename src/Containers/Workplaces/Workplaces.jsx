@@ -143,7 +143,6 @@ const Workplaces = () => {
                                             </div>
                                             <div className="produces">
                                                 <p>Produces:</p>
-                                                {/* <p>{item.data.power}/Hour</p> */}
                                             </div>
                                             <div className="btn-unequip">
                                                 <button onClick={() => unstakeHandler(selectedWorkPlace.workplace_asset_id, item.asset_id)}>

@@ -62,7 +62,7 @@ export default function Header() {
                             <div className="header-progress-bar">
                                 <span style={{width: progressBarValue}}></span>
                             </div>
-                            <Link to={'/research'}>
+                            <Link to={'/craft'}>
                                 <img className={'plus'} src={plus} onClick={() => {}} alt=""/>
                             </Link>
                         </div>
