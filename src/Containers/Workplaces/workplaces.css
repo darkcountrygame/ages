@@ -210,9 +210,41 @@
     position: relative;
 }
 
-.available-img{
+.available-img {
     margin-top: 31px;
+    position: relative; /* Для того, щоб кнопка відображалася поверх зображення */
 }
+
+.available-img img {
+    transition: opacity 0.3s ease; /* Плавна зміна прозорості */
+}
+
+.available-img:hover img {
+    opacity: 0.5; /* Прозорість при наведенні */
+}
+
+.unequip-btn {
+    position: absolute;
+    width: 160px;
+    height: 50px;
+    font-size: 22px;
+    color: #ffffff;
+    border: none;
+    background: transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Спочатку приховуємо кнопку */
+    cursor: pointer;
+    background-image: url('../../images/red_btn.png');
+    background-size: contain;
+ 
+}
+
+.available-img:hover .unequip-btn {
+    display: block; /* Показуємо кнопку при наведенні */
+}
+
 
 .workplaces-img_name{
     position: absolute;

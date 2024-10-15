@@ -167,9 +167,9 @@ const Workplaces = () => {
                             {wp?.res?.length > 0 && (
                                 <img src={getResourceIcon(wp.res[0]?.resource_type)} alt="resource" />
                             )}
-                            <button className="start-work_btn" onClick={() => handleClaim(wp?.token_name?.replace('#', ''))}>
+                            {/* <button className="start-work_btn" onClick={() => handleClaim(wp?.token_name?.replace('#', ''))}>
                                 Claim
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                     <div className="main-main-content">
@@ -181,13 +181,15 @@ const Workplaces = () => {
                                         const isFarming = item.res[0].last_farm_time !== "0"; // Перевірка, чи айтем фармиться
                                         const cooldownTime = isFarming ? calculateCooldown(item.res[0].last_farm_time, item.res[0].cooldown) : 0;
 
-                                        console.log(cooldownTime);
-
                                         return (
                                             <div key={item.asset_id} className="workplaces-item">
                                                 <div className="workplaces-img available-img">
                                                     <img src={item.token_uri} alt="tool" />
+                                                    <button className="unequip-btn" onClick={() => handleUnEquip(item.token_name)}>
+                                                        Unequip
+                                                    </button>
                                                 </div>
+
                                                 <div className="produces">
                                                     <p>Produces:</p>
                                                 </div>
@@ -223,8 +225,29 @@ const Workplaces = () => {
         );
     };
 
-    const handleClaim = (workplace_id) => {
-        // Claim logic here
+    const handleUnEquip = async (name) => {
+        try {
+            setLoading(true);
+            await signAndSubmitTransaction({
+                sender: account.address,
+                data: {
+                    function: `${contract_address}::farm::unstake_instrument`,
+                    functionArguments: [name],
+                },
+            });
+
+            const userNfts = await getUserNfts({ account: account.address });
+            setItems(userNfts);
+            toast.success("Success unstaked!");
+
+            const data = await getAptosStakedTools({ account });
+            setStakedTools(data);
+
+        } catch (error) {
+            toast.error(error.message || error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const equipTool = async (item, close) => {
@@ -253,9 +276,6 @@ const Workplaces = () => {
         }
     };
 
-    // const unstakeHandler = (wpId, assetId) => {
-    //     // Unstake logic here
-    // };
 
     return (
         <section className="workplace">
