@@ -17,29 +17,38 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Timer from "../../components/Countdown/Timer";
 import { createBrowserHistory } from "history";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
-import { contract_address, getUserNfts } from "../../Services";
+import { contract_address, getAptosStakedTools, getUserNfts } from "../../Services";
 import { toast } from "react-toastify";
 
 const Workplaces = () => {
-    const {account, signAndSubmitTransaction} = useWallet();
-    const {stakedItemList, itemList, setItems } = useApp();
+    const { account, signAndSubmitTransaction } = useWallet();
+    const { stakedItemList, itemList, setItems } = useApp();
     const [selectItem, setSelectItem] = useState([]);
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([]);
     const [tools, setTools] = useState([]);
     const [wp, setWP] = useState([]);
     const [miningCount, setMiningCount] = useState(0);
+    const [stakedTools, setStakedTools] = useState([]);
     const [loading, setLoading] = useState(0);
 
     const history = createBrowserHistory();
-    console.log(setTools);
-    console.log(setMiningCount);
-    console.log(loading);
-    
+    // console.log(setTools);
+    // console.log(setMiningCount);
+    // console.log(loading);
+
     // console.log(wp);
     // console.log(miningCount);
-    
-    
-    
+
+
+    useEffect(() => {
+        getAptosStakedTools({ account })
+            .then((data) => {
+                setStakedTools(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [account])
 
     const getResourceIcon = (name) => {
         switch (name) {
@@ -59,6 +68,9 @@ const Workplaces = () => {
         setWP(selectedWorkPlace);
     }, [selectedWorkPlace]);
 
+    console.log(wp);
+
+
 
     useEffect(() => {
         if (wp?.token_name) {
@@ -71,7 +83,7 @@ const Workplaces = () => {
 
     const renderWorkPlaceTools = () => {
         const slots = wp?.res?.[0]?.slots || 0; // Перевірка на існування wp.res і wp.res[0]
-    
+
         const equipItems = tools.length < slots ? (
             Array.from({ length: slots - tools.length }, (_, i) => (
                 <div key={i} className="workplaces-item equip">
@@ -84,7 +96,7 @@ const Workplaces = () => {
                 </div>
             ))
         ) : null;
-    
+
         const lockItems = tools.length <= slots ? (
             Array.from({ length: 4 - slots }, (_, i) => (
                 <div key={i} className="workplaces-item lock">
@@ -97,7 +109,7 @@ const Workplaces = () => {
                 </div>
             ))
         ) : null;
-    
+
         return (
             <div className="container">
                 <div className="main-main-wrapper">
@@ -109,7 +121,7 @@ const Workplaces = () => {
                         </p>
                         <div className="workplace-header-right">
                             <p>
-                                <span>{miningCount}</span>
+                                {/* <span>{miningCount}</span> */}
                                 {wp?.res?.length > 0 && (
                                     <img src={getResourceIcon(wp.res[0]?.resource_type)} alt="resource" />
                                 )}
@@ -120,36 +132,41 @@ const Workplaces = () => {
                         </div>
                     </div>
                     <div className="main-main-content">
-                        {wp ?
+                        {wp && wp.res && wp.res[0] ? (
                             <div className="main-main-list">
-                                {tools.map((item) => (
-                                    <div key={Number(item.asset_id)} className="workplaces-item">
-                                        <div className="workplaces-img available-img">
-                                            <img src={`https://atomichub-ipfs.com/ipfs/${item.data.img}`} alt="tool" />
+                                {stakedTools
+                                    .filter((item) => wp.res[0].resource_type === item.res[0].resource_type)
+                                    .map((item) => (
+                                        <div key={Number(item.asset_id)} className="workplaces-item">
+                                            <div className="workplaces-img available-img">
+                                                <img src={item.token_uri} alt="tool" />
+                                            </div>
+                                            <div className="produces">
+                                                <p>Produces:</p>
+                                                {/* <p>{item.data.power}/Hour</p> */}
+                                            </div>
+                                            <div className="btn-unequip">
+                                                <button onClick={() => unstakeHandler(selectedWorkPlace.workplace_asset_id, item.asset_id)}>
+                                                    Unequip
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div className="produces">
-                                            <p>Produces:</p>
-                                            <p>{item.data.power}/Hour</p>
-                                        </div>
-                                        <div className="btn-unequip">
-                                            <button onClick={() => unstakeHandler(selectedWorkPlace.workplace_asset_id, item.asset_id)}>
-                                                Unequip
-                                            </button>
-                                        </div>
-                                    </div>
-                                ))}
+                                    ))}
                                 {equipItems}
                                 {lockItems}
-                            </div> :
+                            </div>
+                        ) : (
                             <div className="main-main-list">
                                 <p>Firstly select a Workstation</p>
-                            </div>}
+                            </div>
+                        )}
                     </div>
+
                 </div>
             </div>
         );
     };
-    
+
 
     const handleClaim = (workplace_id) => {
         // Claim logic here
@@ -161,8 +178,8 @@ const Workplaces = () => {
             await signAndSubmitTransaction({
                 sender: account.address,
                 data: {
-                  function: `${contract_address}::farm::stake_instrument`,
-                  functionArguments: [item],
+                    function: `${contract_address}::farm::stake_instrument`,
+                    functionArguments: [item],
                 },
             });
 
@@ -170,12 +187,12 @@ const Workplaces = () => {
             setItems(userNfts);
             toast.success("Success equiped!");
             close();
-           
-          } catch (error) {
+
+        } catch (error) {
             toast.error(error.message || error);
-          } finally {
+        } finally {
             setLoading(false)
-          }
+        }
     };
 
     const unstakeHandler = (wpId, assetId) => {

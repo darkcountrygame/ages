@@ -25,6 +25,25 @@ export const get_staking_object_address = "0xa1a426d1fa1132357974cf68856d3b551a2
 //   return staking_store.staked_tokens
 // };
 
+export const getStakedTokensTools = async ({account}) => {
+  let resourceType = `${contract_address}::farm::FarmStore`;
+
+  const staking_store = await aptos.getAccountResource({
+    accountAddress: account.address,
+    resourceType
+  });
+  
+  const worksiteKeys = Object.keys(staking_store).filter(key => key.endsWith('_instruments'));
+
+  const worksites = worksiteKeys
+  .map(key => staking_store[key])
+  .filter(worksite => worksite);
+
+  console.log(worksites);
+  
+  return worksites;
+};
+
 export const getStakedTokensWP = async ({account}) => {
   let resourceType = `${contract_address}::farm::FarmStore`;
 
@@ -32,6 +51,8 @@ export const getStakedTokensWP = async ({account}) => {
     accountAddress: account.address,
     resourceType
   });
+
+  // await getAptosStakedTools({account})
   
   const worksiteKeys = Object.keys(staking_store).filter(key => key.endsWith('_worksite'));
 
@@ -43,26 +64,6 @@ export const getStakedTokensWP = async ({account}) => {
   
   return worksites;
 };
-
-export const getStakedTokensTool = async ({account}) => {
-  let resourceType = `${contract_address}::farm::FarmStore`;
-
-  const staking_store = await aptos.getAccountResource({
-    accountAddress: account.address,
-    resourceType
-  });
-  
-  const instrumentKeys = Object.keys(staking_store).filter(key => key.endsWith('_instrument'));
-
-  const instruments = instrumentKeys
-  .map(key => staking_store[key])
-  // .filter(instrument => instrument.trim() !== "");
-
-  console.log(instruments);
-  
-  return instruments;
-};
-
 
 export const getAptosStakedWP = async ({account}) => {
 
@@ -80,8 +81,6 @@ export const getAptosStakedWP = async ({account}) => {
           ],
         },
       });
-
-      console.log(res);
       
     
       return {res, token_name: name, token_uri: res[0].uri};
@@ -93,34 +92,34 @@ export const getAptosStakedWP = async ({account}) => {
   return results.flat();
 };
 
-export const getAptosStakedTools = async ({account}) => {
+export const getAptosStakedTools = async ({ account }) => {
+  const stakedNames = await getStakedTokensTools({ account });
 
-  const stakedNames = await getStakedTokensTool({account});
-
+  // Обробляємо масив масивів за допомогою flatMap
   const results = await Promise.all(
-    stakedNames.map(async (name) => {
-      const res = await aptos.view({
-        payload: {
-          function: `${contract_address}::minter::get_instrument`,
-          typeArguments: [],
-          functionArguments: [
-            get_staking_object_address,
-            name,
-          ],
-        },
-      });
+    stakedNames.flatMap((namesArray) =>
+      namesArray.map(async (name) => {
+        const res = await aptos.view({
+          payload: {
+            function: `${contract_address}::minter::get_instrument`,
+            typeArguments: [],
+            functionArguments: [
+              get_staking_object_address,
+              name,
+            ],
+          },
+        });
 
-      console.log(res);
-      
-    
-      return {res, token_name: name, token_uri: res[0].uri};
-    })
+        return { res, token_name: name, token_uri: res[0].uri };
+      })
+    )
   );
 
-  console.log(results.flat());
+  console.log(results);
   
-  return results.flat();
+  return results;
 };
+
 
 
 // export const getMyTools = async () => {

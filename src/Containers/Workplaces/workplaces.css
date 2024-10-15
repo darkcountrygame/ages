@@ -103,6 +103,8 @@
 .workplace-header-right p{
     display: flex;
     align-items: center;
+
+    /* opacity: 0; */
 }
 
 .main-workplace-header .time{
@@ -171,6 +173,13 @@
     overflow-y: auto;
     height: 550px;
     /*padding-right: 10px;*/
+
+    overflow: hidden;
+}
+
+.main-main-list p{
+    width: 100%;
+    text-align: center;
 }
 
 .no-tools{
