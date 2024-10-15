@@ -151,9 +151,9 @@ const Workplaces = () => {
     };
     
 
-    const handleClaim = (workplace_id) => {
-        // Claim logic here
-    };
+    // const handleClaim = (workplace_id) => {
+    //     // Claim logic here
+    // };
 
     const equipTool = async (item, close) => {
         try {

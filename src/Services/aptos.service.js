@@ -13,7 +13,7 @@ export const get_staking_object_address = "0xa1a426d1fa1132357974cf68856d3b551a2
 
 
 
-export const getStakedWP = async () => {
+export const getStakedTokens = async () => {
   let resourceType = `${contract_address}::farm::StakingStore`;
 
   const staking_store = await aptos.getAccountResource({
@@ -29,7 +29,7 @@ export const getStakedWP = async () => {
 
 export const getAptosStakedWP = async () => {
 
-  const stakedNames = await getStakedWP();
+  const stakedNames = await getStakedTokens();
 
   const results = await Promise.all(
     stakedNames.map(async (name) => {
