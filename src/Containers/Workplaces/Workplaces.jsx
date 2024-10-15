@@ -209,8 +209,9 @@ const Workplaces = () => {
                                                 <div className="btn-equip">
                                                     {isFarming ? (
                                                         cooldownTime !== "0:00" ? (
-                                                            <>
-                                                            </>
+                                                            <button style={{opacity: 0}} onClick={() => handlerFarmItem(item.token_name)}>
+                                                            Farm
+                                                        </button>
                                                         ) : (
                                                             <button onClick={() => handlerFarmItem(item.token_name)}>
                                                                 Farm
