@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useApp } from "../../Data/AppContext";
-
 import './workplaces.css';
-
 import meat from '../../images/market-items/meat.png';
 import stone from '../../images/market-items/rock.png';
 import wood from '../../images/market-items/wood.png';
 import wheel from '../../images/market-items/wheel.png';
 import equip from '../../images/plus_icon_section.png';
 import lock from '../../images/lock.png';
-
 import Footer from '../../components/FooterGameNav/FooterGameNav';
 import UnlockCard from '../../Modal/UnlockCard';
 import EquipTool from '../../Modal/EquipTool';
@@ -25,30 +22,31 @@ const Workplaces = () => {
     const { stakedItemList, itemList, setItems } = useApp();
     const [selectItem, setSelectItem] = useState([]);
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([]);
-    const [tools, setTools] = useState([]);
     const [wp, setWP] = useState([]);
-    const [miningCount, setMiningCount] = useState(0);
     const [stakedTools, setStakedTools] = useState([]);
-    const [loading, setLoading] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const history = createBrowserHistory();
-    console.log(setTools);
-    console.log(setMiningCount);
-    console.log(loading);
-
-    console.log(wp);
-    console.log(miningCount);
-
 
     useEffect(() => {
         getAptosStakedTools({ account })
-            .then((data) => {
-                setStakedTools(data);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }, [account])
+            .then(setStakedTools)
+            .catch(console.log);
+    }, [account]);
+
+    useEffect(() => {
+        setWP(selectedWorkPlace);
+    }, [selectedWorkPlace]);
+
+    console.log(loading);
+
+    useEffect(() => {
+        if (wp?.token_name) {
+            history.push(`/workplace/${wp.token_name.replace('#', '')}`);
+        } else {
+            history.push(`/workplace`);
+        }
+    }, [wp, history]);
 
     const getResourceIcon = (name) => {
         switch (name) {
@@ -64,28 +62,11 @@ const Workplaces = () => {
         }
     };
 
-    useEffect(() => {
-        setWP(selectedWorkPlace);
-    }, [selectedWorkPlace]);
-
-    console.log(wp);
-
-
-
-    useEffect(() => {
-        if (wp?.token_name) {
-            history.push(`/workplace/${wp.token_name.replace('#', '')}`);
-        } else {
-            history.push(`/workplace`);
-        }
-    }, [wp, history]);
-
-
     const renderWorkPlaceTools = () => {
-        const slots = wp?.res?.[0]?.slots || 0; // Перевірка на існування wp.res і wp.res[0]
+        const slots = wp?.res?.[0]?.slots || 0;
 
-        const equipItems = tools.length < slots ? (
-            Array.from({ length: slots - tools.length }, (_, i) => (
+        const equipItems = stakedTools.length < slots && (
+            Array.from({ length: slots - stakedTools.length }).map((_, i) => (
                 <div key={i} className="workplaces-item equip">
                     <div className="workplaces-img unequip-img">
                         <img src={equip} alt="equip" />
@@ -95,10 +76,10 @@ const Workplaces = () => {
                     </div>
                 </div>
             ))
-        ) : null;
+        );
 
-        const lockItems = tools.length <= slots ? (
-            Array.from({ length: 4 - slots }, (_, i) => (
+        const lockItems = stakedTools.length <= slots && (
+            Array.from({ length: 4 - slots }).map((_, i) => (
                 <div key={i} className="workplaces-item lock">
                     <div className="workplaces-img locked-img">
                         <img src={lock} alt="lock" />
@@ -108,45 +89,61 @@ const Workplaces = () => {
                     </div>
                 </div>
             ))
-        ) : null;
+        );
+
+        const handlerFarmItem = async (name) => {
+            if (account) {
+                try {
+                    await signAndSubmitTransaction({
+                        sender: account.address,
+                        data: {
+                            function: `${contract_address}::farm::farm_instrument`, // String interpolation
+                            functionArguments: [
+                                name
+                            ],
+                        },
+                    });
+                } catch (error) {
+                    console.error("Transaction failed:", error); // Error handling
+                }
+            }
+        }
 
         return (
             <div className="container">
                 <div className="main-main-wrapper">
                     <div className="main-workplace-header">
-                        <p className="time">Left to the next production:
+                        <p className="time">
+                            Left to the next production:
                             <div className="timer">
                                 <Timer wp={wp} stakedWP={stakedItemList} />
                             </div>
                         </p>
                         <div className="workplace-header-right">
-                            <p>
-                                {/* <span>{miningCount}</span> */}
-                                {wp?.res?.length > 0 && (
-                                    <img src={getResourceIcon(wp.res[0]?.resource_type)} alt="resource" />
-                                )}
-                            </p>
-                            <button className="start-work_btn" onClick={() => handleClaim(String(wp?.token_name?.replace('#', '')))}>
+                            {wp?.res?.length > 0 && (
+                                <img src={getResourceIcon(wp.res[0]?.resource_type)} alt="resource" />
+                            )}
+                            <button className="start-work_btn" onClick={() => handleClaim(wp?.token_name?.replace('#', ''))}>
                                 Claim
                             </button>
                         </div>
                     </div>
                     <div className="main-main-content">
-                        {wp && wp.res && wp.res[0] ? (
+                        {wp?.res?.[0] ? (
                             <div className="main-main-list">
                                 {stakedTools
-                                    .filter((item) => wp.res[0].resource_type === item.res[0].resource_type)
-                                    .map((item) => (
-                                        <div key={Number(item.asset_id)} className="workplaces-item">
+                                    .filter(item => wp.res[0].resource_type === item.res[0].resource_type)
+                                    .map(item => (
+                                        <div key={item.asset_id} className="workplaces-item">
                                             <div className="workplaces-img available-img">
                                                 <img src={item.token_uri} alt="tool" />
                                             </div>
                                             <div className="produces">
                                                 <p>Produces:</p>
                                             </div>
-                                            <div className="btn-unequip">
-                                                <button onClick={() => unstakeHandler(selectedWorkPlace.workplace_asset_id, item.asset_id)}>
-                                                    Unequip
+                                            <div className="btn-equip">
+                                                <button onClick={() => handlerFarmItem(item.token_name)}>
+                                                    Farm
                                                 </button>
                                             </div>
                                         </div>
@@ -160,12 +157,10 @@ const Workplaces = () => {
                             </div>
                         )}
                     </div>
-
                 </div>
             </div>
         );
     };
-
 
     const handleClaim = (workplace_id) => {
         // Claim logic here
@@ -184,22 +179,16 @@ const Workplaces = () => {
 
             const userNfts = await getUserNfts({ account: account.address });
             setItems(userNfts);
-            toast.success("Success equiped!");
+            toast.success("Success equipped!");
 
-            getAptosStakedTools({ account })
-            .then((data) => {
-                setStakedTools(data);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            
+            const data = await getAptosStakedTools({ account });
+            setStakedTools(data);
+
             close();
-
         } catch (error) {
             toast.error(error.message || error);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     };
 
