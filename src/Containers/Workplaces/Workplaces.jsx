@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useApp } from "../../Data/AppContext";
 
-import meat from '../../images/market-items/meat.png';
-import stone from '../../images/market-items/rock.png';
-import wood from '../../images/market-items/wood.png';
-import wheel from '../../images/market-items/wheel.png';
+// import meat from '../../images/market-items/meat.png';
+// import stone from '../../images/market-items/rock.png';
+// import wood from '../../images/market-items/wood.png';
+// import wheel from '../../images/market-items/wheel.png';
 import equip from '../../images/plus_icon_section.png';
 import lock from '../../images/lock.png';
 import Footer from '../../components/FooterGameNav/FooterGameNav';
 import UnlockCard from '../../Modal/UnlockCard';
 import EquipTool from '../../Modal/EquipTool';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import Timer from "../../components/Countdown/Timer";
+// import Timer from "../../components/Countdown/Timer";
 import { createBrowserHistory } from "history";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { contract_address, getAptosStakedTools, getUserNfts } from "../../Services";
@@ -22,15 +22,18 @@ import './workplaces.css';
 
 const Workplaces = () => {
     const { account, signAndSubmitTransaction } = useWallet();
-    const { stakedItemList, itemList, setItems } = useApp();
+    const {  itemList, setItems } = useApp();
     const [selectItem, setSelectItem] = useState([]);
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([]);
     const [wp, setWP] = useState([]);
     const [stakedTools, setStakedTools] = useState([]);
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [currentTime, setCurrentTime] = useState(Math.floor(Date.now() / 1000));
 
     const history = createBrowserHistory();
+
+    console.log();
+    
 
 
     useEffect(() => {
@@ -87,19 +90,19 @@ const Workplaces = () => {
         }
     }, [wp, history]);
 
-    const getResourceIcon = (name) => {
-        switch (name) {
-            case "food":
-                return meat;
-            case "stone":
-                return stone;
-            case "miles":
-                return wheel;
-            case "wood":
-            default:
-                return wood;
-        }
-    };
+    // const getResourceIcon = (name) => {
+    //     switch (name) {
+    //         case "food":
+    //             return meat;
+    //         case "stone":
+    //             return stone;
+    //         case "miles":
+    //             return wheel;
+    //         case "wood":
+    //         default:
+    //             return wood;
+    //     }
+    // };
 
     const handleCollect = () => {
 
@@ -219,7 +222,7 @@ const Workplaces = () => {
 
     const handleUnEquip = async (name) => {
         try {
-            setLoading(true);
+            // setLoading(true);
             await signAndSubmitTransaction({
                 sender: account.address,
                 data: {
@@ -238,13 +241,13 @@ const Workplaces = () => {
         } catch (error) {
             toast.error(error.message || error);
         } finally {
-            setLoading(false);
+            // setLoading(false);
         }
     };
 
     const equipTool = async (item, close) => {
         try {
-            setLoading(true);
+            // setLoading(true);
             await signAndSubmitTransaction({
                 sender: account.address,
                 data: {
@@ -264,7 +267,7 @@ const Workplaces = () => {
         } catch (error) {
             toast.error(error.message || error);
         } finally {
-            setLoading(false);
+            // setLoading(false);
         }
     };
 
