@@ -12,38 +12,34 @@ import rock from '../../images/market-items/rock.png'
 import wheel from  '../../images/market-items/wheel.png'
 import wood from '../../images/market-items/wood.png'
 import plus from '../../images/plus.png'
+import { getResources } from '../../Services';
+import { useWallet } from '@aptos-labs/wallet-adapter-react';
 
 
 export default function Header() {
-    const { waxBalance, rtpBalance, resourcesList, eraConf, totalSp } = useApp();
+    const { account } = useWallet();
+    const { waxBalance, rtpBalance, eraConf, totalSp } = useApp();
+    const [resources, setResources] = useState({
 
-
-    const [progressBarValue, setProgressBarValue] = useState('0%')
+    });
 
 
     useEffect(() => {
-        const calculateProgressPercentage = () => {
-            console.log(totalSp.science_points ?? 0)
-            const percentage = (totalSp.science_points * 100 / eraConf[1]?.cost_of_opening_era);
-            setProgressBarValue(`${percentage}%`);
-        }
-
-        calculateProgressPercentage()
-    },[eraConf, totalSp.science_points])
-
-
+        const fetchResources = async () => {
+            await getResources({ account })
+                .then((data) => {
+                    setResources(data)
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        };
+        
+        fetchResources();
+    }, [account]);
 
     const findResourceAmount = (resource) => {
-
-        if (resourcesList.length){
-            const foundResource = resourcesList.find(
-                (res) => res.resource === resource
-            );
-            return foundResource?.amount || 0;
-        }else {
-            return 0
-        }
-
+        return resources[resource] ?? 0;
     };
 
     return(
@@ -60,7 +56,7 @@ export default function Header() {
                     <div className="header-progress-bar-block">
                         <div className="contant-bar">
                             <div className="header-progress-bar">
-                                <span style={{width: progressBarValue}}></span>
+                                <span>0</span>
                             </div>
                             <Link to={'/craft'}>
                                 <img className={'plus'} src={plus} onClick={() => {}} alt=""/>

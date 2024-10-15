@@ -66,12 +66,7 @@ const Workplaces = () => {
         const minutes = Math.floor(remainingCooldown / 60); // Залишкові хвилини
         const seconds = remainingCooldown % 60; // Залишкові секунди
 
-        // Якщо повна хвилина, показуємо 60:00, інакше формат хвилини:секунди
-        if (seconds === 0 && minutes > 0) {
-            return "60:00"; // Показуємо 60, коли повна хвилина
-        } else {
-            return `${minutes}:${seconds.toString().padStart(2, '0')}`; // Формат хвилини:секунди
-        }
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`; // Формат хвилини:секунди
     };
 
 

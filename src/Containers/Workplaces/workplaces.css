@@ -305,6 +305,13 @@
    width: 28px;
 }
 
+@media screen and (max-width: 1599px) {
+    .produces img{
+        width: 16px;
+        height: 16px;
+     }
+}
+
 .produces p{
     padding: 0;
     margin: 0;
@@ -322,12 +329,15 @@
     display: flex;
     gap: 7px;
     justify-content: flex-start;
+    align-items: center;
 }
+
 
 .produces .produces-energy-count{
     display: flex;
     gap: 7px;
     justify-content: flex-end;
+    align-items: center;
 }
 
 
@@ -335,6 +345,7 @@
     width: 92px;
     height: 92px;
 }
+
 
 
 .lock .workplaces-img{

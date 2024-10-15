@@ -25,18 +25,44 @@ export const get_staking_object_address = "0xa1a426d1fa1132357974cf68856d3b551a2
 //   return staking_store.staked_tokens
 // };
 
-export const getResources = async () => {
- const resourceType = `0x1::coin::CoinStore<${contract_address}::FOOD::FOOD`;
+export const getResources = async ({account}) => {
+  const resource_typeFOOD = `0x1::coin::CoinStore<${contract_address}::FOOD::FOOD>`;
+  const resource_typeWOOD = `0x1::coin::CoinStore<${contract_address}::wood::WOOD>`;
+  const resource_typeSTONE = `0x1::coin::CoinStore<${contract_address}::STONE::STONE>`;
+  const resource_typeGEMS = `0x1::coin::CoinStore<${contract_address}::GEMS::GEMS>`;
 
+  const resources = await Promise.all([
+    aptos.getAccountResource({
+      accountAddress: account.address,
+      resourceType: resource_typeFOOD
+    }),
+    aptos.getAccountResource({
+      accountAddress: account.address,
+      resourceType: resource_typeWOOD
+    }),
+    aptos.getAccountResource({
+      accountAddress: account.address,
+      resourceType: resource_typeSTONE
+    }),
+    aptos.getAccountResource({
+      accountAddress: account.address,
+      resourceType: resource_typeGEMS
+    })
+  ]);
 
-  const food_res = await aptos.getAccountResource({
-    accountAddress: '0xba8369c6946ddb9f15b6242186dd80f6dee26cf928a904a765cab6f4cc897cf5',
-    resourceType
-  });
+  console.log(resources);
   
-  console.log(food_res);
-  
-  return food_res
+
+  const result = {
+    food: resources[0]?.coin?.value / 10000 || 0,
+    wood: resources[1]?.coin?.value / 10000 || 0,
+    stone: resources[2]?.coin?.value / 10000 || 0,
+    gems: resources[3]?.coin?.value / 10000 || 0
+  };
+
+  console.log(result);
+
+  return result;
 };
 
 export const getStakedTokensTools = async ({account}) => {
