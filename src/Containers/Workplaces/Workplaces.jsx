@@ -35,8 +35,8 @@ const Workplaces = () => {
     console.log(setMiningCount);
     console.log(loading);
     
-    console.log(wp);
-    console.log(miningCount);
+    // console.log(wp);
+    // console.log(miningCount);
     
     
     

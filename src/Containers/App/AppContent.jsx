@@ -5,6 +5,7 @@ import { useRoutes } from '../../Hooks/Routes';
 import { ToastContainer } from "react-toastify";
 
 import {
+    contract_address,
     // fetchWaxBalance,
     // fetchRtpBalance,
     // fetchItems,
@@ -31,9 +32,7 @@ import '../../index.css'
 
 const AppContent = () => {
     const routes = useRoutes();
-    const { account } = useWallet();
-
-    console.log(account);
+    const { account, signAndSubmitTransaction } = useWallet();
     
 
     const {
@@ -100,6 +99,25 @@ const AppContent = () => {
     // const [poolConfigLoading, setPoolConfgLoading] = useState(false);
 
 
+    useEffect(() => {
+        const registerCoins = async () => {
+            if (account) {
+                try {
+                    await signAndSubmitTransaction({
+                        sender: account.address,
+                        data: {
+                            function: `${contract_address}::farm::register`, // String interpolation
+                            functionArguments: [],
+                        },
+                    });
+                } catch (error) {
+                    console.error("Transaction failed:", error); // Error handling
+                }
+            }
+        };
+    
+        registerCoins();
+    }, [account]);
     
  
     useEffect(() => {
