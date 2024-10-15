@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useApp } from "../../Data/AppContext";
 
-// import meat from '../../images/market-items/meat.png';
-// import stone from '../../images/market-items/rock.png';
-// import wood from '../../images/market-items/wood.png';
-// import wheel from '../../images/market-items/wheel.png';
+import meat from '../../images/market-items/meat.png';
+import stone from '../../images/market-items/rock.png';
+import wood from '../../images/market-items/wood.png';
+import wheel from '../../images/market-items/wheel.png';
 import equip from '../../images/plus_icon_section.png';
+import energyIcon from '../../images/market-items/energy.png';
+
 import lock from '../../images/lock.png';
 import Footer from '../../components/FooterGameNav/FooterGameNav';
 import UnlockCard from '../../Modal/UnlockCard';
@@ -22,7 +24,7 @@ import './workplaces.css';
 
 const Workplaces = () => {
     const { account, signAndSubmitTransaction } = useWallet();
-    const {  itemList, setItems } = useApp();
+    const { itemList, setItems } = useApp();
     const [selectItem, setSelectItem] = useState([]);
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([]);
     const [wp, setWP] = useState([]);
@@ -33,7 +35,7 @@ const Workplaces = () => {
     const history = createBrowserHistory();
 
     console.log();
-    
+
 
 
     useEffect(() => {
@@ -90,36 +92,31 @@ const Workplaces = () => {
         }
     }, [wp, history]);
 
-    // const getResourceIcon = (name) => {
-    //     switch (name) {
-    //         case "food":
-    //             return meat;
-    //         case "stone":
-    //             return stone;
-    //         case "miles":
-    //             return wheel;
-    //         case "wood":
-    //         default:
-    //             return wood;
-    //     }
-    // };
-
-    const handleCollect = () => {
-
-    }
+    const getResourceIcon = (name) => {
+        switch (name) {
+            case "food":
+                return meat;
+            case "stone":
+                return stone;
+            case "miles":
+                return wheel;
+            case "wood":
+            default:
+                return wood;
+        }
+    };
 
     const renderWorkPlaceTools = () => {
         const slots = wp?.res?.[0]?.slots || 0;
-        
-        // Отримуємо кількість зайнятих слотів
-        const occupiedSlots = wp?.res?.[0] 
-        ? stakedTools.filter(item => wp.res[0].resource_type === item.res[0].resource_type).length
-        : 0; // Якщо wp або res[0] не існує, вважаємо, що зайнятих слотів немає.
-    
-        
+
+        const occupiedSlots = wp?.res?.[0]
+            ? stakedTools.filter(item => wp.res[0].resource_type === item.res[0].resource_type).length
+            : 0;
+
+
         // Кількість вільних слотів
         const freeSlots = Math.max(0, slots - occupiedSlots);
-    
+
         const equipItems = (
             Array.from({ length: freeSlots }).map((_, i) => (
                 <div key={i} className="workplaces-item equip">
@@ -132,7 +129,7 @@ const Workplaces = () => {
                 </div>
             ))
         );
-    
+
         const lockItems = (
             Array.from({ length: Math.max(0, 4 - slots) }).map((_, i) => (
                 <div key={i} className="workplaces-item lock">
@@ -145,7 +142,7 @@ const Workplaces = () => {
                 </div>
             ))
         );
-    
+
         const handlerFarmItem = async (name) => {
             if (account) {
                 try {
@@ -156,18 +153,18 @@ const Workplaces = () => {
                             functionArguments: [name],
                         },
                     });
-    
+
                     toast.success('Farming...');
-    
+
                     getAptosStakedTools({ account })
-                    .then(setStakedTools)
-                    .catch(console.log);
+                        .then(setStakedTools)
+                        .catch(console.log);
                 } catch (error) {
                     console.error("Transaction failed:", error);
                 }
             }
         };
-    
+
         return (
             <div className="container">
                 <div className="main-main-wrapper">
@@ -179,7 +176,7 @@ const Workplaces = () => {
                                     .map(item => {
                                         const isFarming = item.res[0].last_farm_time !== "0";
                                         const cooldownTime = isFarming ? calculateCooldown(item.res[0].last_farm_time, item.res[0].cooldown) : 0;
-    
+
                                         return (
                                             <div key={item.asset_id} className="workplaces-item">
                                                 <div className="workplaces-img available-img">
@@ -188,16 +185,42 @@ const Workplaces = () => {
                                                         Unequip
                                                     </button>
                                                 </div>
-    
-                                                <div className="produces">
-                                                    <p>Produces:</p>
+
+                                                <div className="cooldown">
+                                                    <p>Cooldown:</p>
+                                                    <span className="cooldown-time">
+                                                        {isFarming && cooldownTime !== "0:00"
+                                                            ? cooldownTime
+                                                            : `${item.res[0].cooldown} min`}
+                                                    </span>
                                                 </div>
+
+                                                <div className="produces">
+                                                    <div className="produces-product">
+                                                        <p>Produces:</p>
+                                                        <div className="produces-product-count">
+                                                            <span>0</span>
+                                                            <img src={getResourceIcon(item.res[0].resource_type)} alt="" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="produces-energy">
+                                                        <p>Energy consume:</p>
+                                                        <div className="produces-energy-count">
+                                                            <span>0</span>
+                                                            <img src={energyIcon} alt="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div className="btn-equip">
                                                     {isFarming ? (
                                                         cooldownTime !== "0:00" ? (
-                                                            <p>Cooldown: {cooldownTime}</p>
+                                                            <>
+                                                            </>
                                                         ) : (
-                                                            <button onClick={() => handleCollect(item.token_name)}>Collect</button>
+                                                            <button onClick={() => handlerFarmItem(item.token_name)}>
+                                                                Farm
+                                                            </button>
                                                         )
                                                     ) : (
                                                         <button onClick={() => handlerFarmItem(item.token_name)}>
@@ -221,7 +244,7 @@ const Workplaces = () => {
             </div>
         );
     };
-    
+
 
     const handleUnEquip = async (name) => {
         try {

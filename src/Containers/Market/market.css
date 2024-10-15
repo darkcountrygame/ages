@@ -36,6 +36,7 @@
 .main-workplace.market .container{
     height: 580px;
     padding: 85px 85px 0 111px;
+    margin-bottom: 40px;
 }
 
 .header-market{
@@ -169,6 +170,7 @@
 
     .main-workplace.market .container{
         height: 430px;
+        margin-bottom: 40px;
     }
 
     .header-market__wrapper .filter select{
@@ -181,6 +183,7 @@
 
     .main-workplace.market .container{
         padding: 45px 85px 0 111px;
+        margin-bottom: 40px;
     }
 
     /*.market-list_item.selected, .market-list_item:hover{*/
@@ -204,6 +207,7 @@
 
     .inventory .container{
         padding: 90px 55px;
+        margin-bottom: 40px;
     }
 
     .inventory-item{

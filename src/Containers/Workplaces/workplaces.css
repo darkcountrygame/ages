@@ -1,12 +1,5 @@
-.workplace{
-    /*background-color: rgb(0, 0, 0);*/
-    /*background-image: url('../../images/ingame_background.png');*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
-    /*position: fixed;*/
-    /*width: 100%;*/
-    /*height: 100vh;*/
-    /*overflow: auto;*/
+.workplace .container{
+    margin-bottom: 40px;
 }
 
 ::-webkit-scrollbar {
@@ -173,7 +166,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     overflow-y: auto;
-    height: 550px;
+    height: 520px;
     /*padding-right: 10px;*/
 
     overflow: hidden;
@@ -200,7 +193,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 234px;
-    height: 520px;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.103);
     border-radius: 10px;
     margin-bottom: 10px;
@@ -213,7 +206,7 @@
 }
 
 .available-img {
-    margin-top: 31px;
+    margin-top: 18px;
     position: relative; /* Для того, щоб кнопка відображалася поверх зображення */
 }
 
@@ -272,16 +265,69 @@
     height: 100%;
 }
 
+.cooldown{
+    p{
+        margin: 0;
+    }
+    span{
+        display: block;
+        font-size: 18px;
+        color: #ffffff;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1599px) {
+    .cooldown{
+        p{
+            font-size: 10px;
+        }
+    }
+}
+
 .produces{
+    display: flex;
+    justify-content: center;
+    gap: 23px;
     text-align: center;
     font-size: 18px;
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 1599px) {
+    .produces{
+        font-size: 14px;
+    }
+    
+}
+
+.produces img{
+   width: 28px;
 }
 
 .produces p{
     padding: 0;
     margin: 0;
-    color: #1A1A1A;
+    color: #1D0F26;
     font-weight: bold;
+    font-size: 12px;
+}
+
+.produces span{
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.produces .produces-product-count{
+    display: flex;
+    gap: 7px;
+    justify-content: flex-start;
+}
+
+.produces .produces-energy-count{
+    display: flex;
+    gap: 7px;
+    justify-content: flex-end;
 }
 
 
@@ -466,7 +512,7 @@
 
     .workplaces-item{
         width: 200px;
-        height: 450px;
+        height: 100%;
     }
 
     .main-workplace-sidebar{
@@ -559,12 +605,12 @@
     }
 
     .main-main-wrapper{
-        padding: 50px 105px 44px 105px;
+        padding: 50px 74px 44px 74px;
     }
 
     .workplaces-item{
-        width: 180px;
-        height: 345px;
+        width: 195px;
+        height: 100%;
     }
 
     .main-workplace-sidebar{
@@ -641,8 +687,8 @@
     }
 
     .workplaces-item{
-        width: 165px;
-        height: 345px;
+        width: 195px;
+        height: 100%;
     }
 
     .btn-equip button{

@@ -36,6 +36,7 @@
 .main-workplace.stake .container{
     height: 580px;
     padding: 85px 85px 0 111px;
+    margin-bottom: 40px;
 }
 
 .header-stake{
@@ -282,6 +283,7 @@
 
     .inventory .container{
         padding: 90px 55px;
+        margin-bottom: 10px;
     }
 
     .inventory-item{
@@ -305,6 +307,7 @@
 
     .main-workplace.stake .container{
         padding: 70px 85px 0 111px;
+        margin-bottom: 10px;
     }
 
     .main-main .add{
