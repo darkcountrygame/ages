@@ -147,6 +147,10 @@ const Workplaces = () => {
                     });
 
                     toast.success('Farming...');
+
+                    getAptosStakedTools({ account })
+                    .then(setStakedTools)
+                    .catch(console.log);
                 } catch (error) {
                     console.error("Transaction failed:", error); // Error handling
                 }
