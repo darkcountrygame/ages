@@ -103,6 +103,8 @@ const Workplaces = () => {
                             ],
                         },
                     });
+
+                    toast.success('Farming...');
                 } catch (error) {
                     console.error("Transaction failed:", error); // Error handling
                 }
