@@ -12,24 +12,36 @@ export const collection_hash = "0xeff1ba2e966e999481c64601e19e67f1cb09728b1a7ee5
 export const get_staking_object_address = "0xa1a426d1fa1132357974cf68856d3b551a208263ddbdcdcc8d41afd6fe0564c7";
 
 
+// export const getStakedTokens = async () => {
+//   let resourceType = `${contract_address}::farm::StakingStore`;
 
-export const getStakedTokens = async () => {
+//   const staking_store = await aptos.getAccountResource({
+//     accountAddress: '0xba8369c6946ddb9f15b6242186dd80f6dee26cf928a904a765cab6f4cc897cf5',
+//     resourceType
+//   });
+  
+//   console.log(staking_store);
+  
+//   return staking_store.staked_tokens
+// };
+
+export const getStakedTokens = async ({account}) => {
   let resourceType = `${contract_address}::farm::StakingStore`;
 
   const staking_store = await aptos.getAccountResource({
-    accountAddress: '0xba8369c6946ddb9f15b6242186dd80f6dee26cf928a904a765cab6f4cc897cf5',
+    accountAddress: account.address,
     resourceType
   });
   
-  console.log(staking_store.staked_tokens);
+  console.log(staking_store);
   
   return staking_store.staked_tokens
 };
 
 
-export const getAptosStakedWP = async () => {
+export const getAptosStakedWP = async ({account}) => {
 
-  const stakedNames = await getStakedTokens();
+  const stakedNames = await getStakedTokens({account});
 
   const results = await Promise.all(
     stakedNames.map(async (name) => {

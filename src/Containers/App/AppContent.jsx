@@ -165,7 +165,7 @@ const AppContent = () => {
         ) {
             setStakedItemsLoading(true);
 
-            getAptosStakedWP()
+            getAptosStakedWP({account})
                 .then((items) => setStakedItems(items))
                 .catch(e => {
                     console.log(e)
