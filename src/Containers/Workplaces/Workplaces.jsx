@@ -70,10 +70,6 @@ const Workplaces = () => {
     };
 
 
-
-
-
-
     useEffect(() => {
         setWP(selectedWorkPlace);
     }, [selectedWorkPlace]);
@@ -194,7 +190,7 @@ const Workplaces = () => {
                                                     <div className="produces-product">
                                                         <p>Produces:</p>
                                                         <div className="produces-product-count">
-                                                            <span>0</span>
+                                                            <span>{Number(wp.res[0].farming_boost) * Number(item.res[0].farming_rate)}</span>
                                                             <img src={getResourceIcon(item.res[0].resource_type)} alt="" />
                                                         </div>
                                                     </div>
