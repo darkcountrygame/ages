@@ -30,6 +30,6 @@ export const navMenu = [
     {
         title: 'Craft',
         icon: researchIcon,
-        url: '/research'
+        url: '/craft'
     },
 ]

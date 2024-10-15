@@ -185,6 +185,15 @@ const Workplaces = () => {
             const userNfts = await getUserNfts({ account: account.address });
             setItems(userNfts);
             toast.success("Success equiped!");
+
+            getAptosStakedTools({ account })
+            .then((data) => {
+                setStakedTools(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            
             close();
 
         } catch (error) {
