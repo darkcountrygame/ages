@@ -16,7 +16,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 // import Timer from "../../components/Countdown/Timer";
 import { createBrowserHistory } from "history";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
-import { contract_address, getAptosStakedTools, getUserNfts } from "../../Services";
+import { contract_address, getAptosStakedTools, getResources, getUserNfts } from "../../Services";
 import { toast } from "react-toastify";
 
 
@@ -147,9 +147,12 @@ const Workplaces = () => {
 
                     toast.success('Farming...');
 
-                    getAptosStakedTools({ account })
+                    await getAptosStakedTools({ account })
                         .then(setStakedTools)
                         .catch(console.log);
+
+                    await getResources({ account })
+                       
                 } catch (error) {
                     console.error("Transaction failed:", error);
                 }

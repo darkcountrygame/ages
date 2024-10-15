@@ -220,3 +220,103 @@
         padding: 5px 35px;
     }
 }
+
+
+/* Контейнер для списку елементів з прокруткою */
+.container-market {
+    height: 335px;
+    overflow: auto;
+}
+
+/* Стили для вкладок */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 65px;
+}
+
+.tabs button {
+    padding: 10px 30px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #e6dbc1; /* Нейтральний колір кнопок */
+    border: 1px solid #8b7040; /* Темно-коричневий бордер */
+    border-radius: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    color: #5c3c1c;
+}
+
+.tabs button:hover {
+    background-color: #d8c497;
+}
+
+.active-tab {
+    background-color: #8b7040;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    border: 1px solid #5c3c1c;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+/* Стиль для елементів списку */
+.item-list {
+    list-style-type: none;
+    padding: 0;
+    max-width: 735px;
+    margin: 0 auto;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background-color: #f6ecd2;
+    border: 1px solid #8b7040;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.list-item:hover {
+    background-color: #e0c99b;
+}
+
+/* Стиль для зображень */
+.item-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Стейкінг кнопка */
+.stake-button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.stake-button:hover {
+    background-color: #218838;
+}
+
+/* Вже застейкані елементи */
+.staked-item {
+    background-color: #d8c497;
+    border-color: #8b7040;
+}
+
+.staked-button {
+    background-color: grey;
+    cursor: not-allowed;
+}

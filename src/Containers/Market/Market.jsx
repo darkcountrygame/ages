@@ -1,141 +1,127 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
+import Footer from '../../components/FooterGameNav/FooterGameNav';
+import './market.css';
+import { useWallet } from '@aptos-labs/wallet-adapter-react';
+import { contract_address } from '../../Services';
+import { toast } from 'react-toastify';
 
-import { useApp } from "../../Data/AppContext";
-import { toast } from "react-toastify";
+const Market = () => {
+    const { account, signAndSubmitTransaction } = useWallet();
+    const [activeTab, setActiveTab] = useState('workplace');
+    const [stakedItems, setStakedItems] = useState([]);
 
+    // Дані для Workplace та Instruments з вашої таблиці, включаючи URI для зображень
+    const workplaceItems = [
+        { name: 'Barn', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Barn.png', template_id: 0 },
+        { name: 'Field', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Field.png', template_id: 1 },
+        { name: 'Mill', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Mill.png', template_id: 2 },
+        { name: 'Storehouse', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Storehouse.png', template_id: 3 }
+    ];
+    
+    const instrumentItems = [
+        { name: 'Basket', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Basket.png', template_id: 4 },
+        { name: 'Wheel Barrow', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Wheel_Barrow.png', template_id: 5 },
+        { name: 'Wooden Raft', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Wooden_Raft.png', template_id: 6 },
+        { name: 'Wooden Spear', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Wooden_Spear.png', template_id: 7 },
+        { name: 'Chopper', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Chopper.png', template_id: 8 },
+        { name: 'Stone Pickaxe', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Stone_Pickaxe.png', template_id: 9 },
+        { name: 'Hand Axe', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Hand_Axe.png', template_id: 10 },
+        { name: 'Stone Axe', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Stone_Axe.png', template_id: 11 }
+    ];
+    
 
-// import '../Workplaces/workplaces.css'
-import './market.css'
+    const handleStake = async(item, template_id) => {
+        if (!stakedItems.includes(item)) {
+            setStakedItems([...stakedItems, item]);
+        }
 
+        if (account) {
+            try {
+                await signAndSubmitTransaction({
+                    sender: account.address,
+                    data: {
+                        function: `${contract_address}::minter::mint`,
+                        functionArguments: [
+                            account.address,
+                            template_id
+                        ],
+                    },
+                });
 
+                toast.success('Staked!');
 
-import Footer from '../../components/FooterGameNav/FooterGameNav'
-import UpgradeCard from '../../Modal/UpgradeCard'
-import UserTool from '../../components/UserTool/UserTool'
+            } catch (error) {
+                console.error("Transaction failed:", error);
+            }
+        }
+        
+    };
 
-
-export default function Market() {
-
-    const {
-        itemList,
-    } = useApp();
-
-    const [selectedTool, setSelectTool] = useState([])
-    // const [selectedToolImg, setSelectToolImg] = useState([])
-    // const [toolName, setToolName] = useState([])
-
-    const toastyErr = () => {
-        toast.error('First select tool');
-    }
-    const redirectMarket = () => {
-       window.open('https://wax-test.atomichub.io/market?collection_name=rush2prosper&order=desc&sort=created&symbol=WAX', '_blank')
-    }
-
-    console.log(selectedTool)
-
-
-    if (!itemList.length){
-        return (
-            <section className='workplace'>
-                <div className="main-workplace market">
-                    <div className="main-main">
-                        <div className="main-title">
-                            <h2>Upgrade</h2>
-                        </div>
-                        <div className="container">
-                                <div className="header-market">
-                                    <div className="header-market__wrapper">
-                                        <div className="filter">
-                                            <select name="">
-                                                <option>Hunters Lodge</option>
-                                            </select>
-                                            <select name="">
-                                                <option>Rarity Filter</option>
-                                            </select>
-                                        </div>
-                                        <div className="btn">
-                                            <button onClick={redirectMarket}>Go to Market</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                                <div className="main-main-contant">
-                                    <div className="main-main-list no-inventory">
-                                        You do not have inventory tool
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                <Footer />
-            </section>
-        )
-    }
+    const isStaked = (item) => stakedItems.includes(item);
 
     return (
         <section className='workplace'>
-            <div className="main-workplace market">
+            <div className="main-workplace">
                 <div className="main-main">
                     <div className="main-title">
-                        <h2>Upgrade</h2>
+                        <h2>Free Mint</h2>
                     </div>
-                    <div className="container">
-                            <div className="header-market">
-                                <div className="header-market__wrapper">
-                                    <div className="filter">
-                                        <select name="">
-                                            <option>Hunters Lodge</option>
-                                        </select>
-                                        <select name="">
-                                            <option>Rarity Filter</option>
-                                        </select>
-                                    </div>
-                                    <div className="btn">
-                                        {/*<button onClick={redirectMarket}>Go to Market</button>*/}
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div className="main-main-contant">
-                                    <div className="market-list">
-                                        {itemList.length ?
-                                            itemList.map( item => <UserTool
-                                                item={item}
-                                                setSelectTool={setSelectTool}
-                                                selectedTool={selectedTool}
-                                            />)
-                                            :
-                                            <p className={'no-workplaces'}>No tools</p>
-                                        }
-                                    </div>
-
-                            </div>
-                            <div className="market-btn">
-                                {!selectedTool ?
-                                    <button onClick={toastyErr}>
-                                        Upgrade
-                                    </button>
-                                :
-                                    <UpgradeCard
-                                        selectedTool={selectedTool}
-                                        // selectedToolImg={selectedToolImg}
-                                        // toolName={toolName}
-                                    />
-                                }
-                            </div>
-                            <div className="market-lvl">
-                                {/*<div className="market-lvl_wrapper">*/}
-                                {/*    <p className="lv">1 lv - 25/hr</p>*/}
-                                {/*    <p>2 lv - 50/hr</p>*/}
-                                {/*</div>*/}
-                            </div>
+                    <div className="tabs">
+                        <button 
+                            className={activeTab === 'workplace' ? 'active-tab' : ''} 
+                            onClick={() => setActiveTab('workplace')}
+                        >
+                            Workplace
+                        </button>
+                        <button 
+                            className={activeTab === 'instruments' ? 'active-tab' : ''} 
+                            onClick={() => setActiveTab('instruments')}
+                        >
+                            Instruments
+                        </button>
+                    </div>
+                    <div className="container-market">
+                        {activeTab === 'workplace' && (
+                            <ul className="item-list">
+                                {workplaceItems.map(item => (
+                                    <li key={item.name} className={`list-item ${isStaked(item.name) ? 'staked-item' : ''}`}>
+                                        {/* <img src={item.uri} alt={item.name} className="item-image" /> */}
+                                        <span>{item.name}</span>
+                                        <button 
+                                            className={`stake-button ${isStaked(item.name) ? 'staked-button' : ''}`} 
+                                            onClick={() => handleStake(item.name, item.template_id)}
+                                            disabled={isStaked(item.name)}
+                                        >
+                                            {isStaked(item.name) ? 'Staked' : 'Stake'}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                        
+                        {activeTab === 'instruments' && (
+                            <ul className="item-list">
+                                {instrumentItems.map(item => (
+                                    <li key={item.name} className={`list-item ${isStaked(item.name) ? 'staked-item' : ''}`}>
+                                        {/* <img src={item.uri} alt={item.name} className="item-image" /> */}
+                                        <span>{item.name}</span>
+                                        <button 
+                                            className={`stake-button ${isStaked(item.name) ? 'staked-button' : ''}`} 
+                                            onClick={() => handleStake(item.name, item.template_id)}
+                                            disabled={isStaked(item.name)}
+                                        >
+                                            {isStaked(item.name) ? 'Staked' : 'Stake'}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                 </div>
             </div>
             <Footer />
         </section>
-    )
-}
+    );
+};
+
+export default Market;
