@@ -32,12 +32,12 @@ const Workplaces = () => {
     const [loading, setLoading] = useState(0);
 
     const history = createBrowserHistory();
-    // console.log(setTools);
-    // console.log(setMiningCount);
-    // console.log(loading);
+    console.log(setTools);
+    console.log(setMiningCount);
+    console.log(loading);
 
-    // console.log(wp);
-    // console.log(miningCount);
+    console.log(wp);
+    console.log(miningCount);
 
 
     useEffect(() => {

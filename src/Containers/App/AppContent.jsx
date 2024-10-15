@@ -117,6 +117,7 @@ const AppContent = () => {
         };
     
         registerCoins();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [account]);
     
  
@@ -131,11 +132,9 @@ const AppContent = () => {
     useEffect(() => {
         if (!account) {
             userLogoutHandler();
-            // userLoginHandler();
-
-         
             
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [account]);
 
 //     useEffect(() => {

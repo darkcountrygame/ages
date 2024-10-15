@@ -37,7 +37,7 @@ const WaxLogo = ({ waxBalance, rtpBalance }) => {
                 ) : (
                     <>
                         <div className="crypto">
-                            <p><span className="rtp">{0 || '0'} LOA</span></p>
+                            {/* <p><span className="rtp">{0 || '0'} LOA</span></p> */}
                         </div>
                         <p>
                             <img className='aptos_logo' src={AptosIcon} alt="wax" />
