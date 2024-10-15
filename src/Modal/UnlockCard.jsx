@@ -41,7 +41,7 @@ export default ({wpID}) => {
               <div className="actions" onClick={handleUnLock}>
                   <button>
                       {!wpConfig || !wpConfig.length || !wpConfig[0].price_unlock_slot
-                          ? '100 LOA'
+                          ? '2000 LOA'
                           : Math.floor(+wpConfig[0].price_unlock_slot.split(' ')[0]) + ' LOA'}
                   </button>
               </div>
