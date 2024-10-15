@@ -98,27 +98,27 @@ const AppContent = () => {
 
     // const [poolConfigLoading, setPoolConfgLoading] = useState(false);
 
-
-    useEffect(() => {
-        const registerCoins = async () => {
-            if (account) {
-                try {
-                    await signAndSubmitTransaction({
-                        sender: account.address,
-                        data: {
-                            function: `${contract_address}::farm::register`, // String interpolation
-                            functionArguments: [],
-                        },
-                    });
-                } catch (error) {
-                    console.error("Transaction failed:", error); // Error handling
-                }
-            }
-        };
+    // РОЗКОМЕНТУВАТИ
+    // useEffect(() => {
+    //     const registerFunc = async () => {
+    //         if (account) {
+    //             try {
+    //                 await signAndSubmitTransaction({
+    //                     sender: account.address,
+    //                     data: {
+    //                         function: `${contract_address}::farm::register`, // String interpolation
+    //                         functionArguments: [],
+    //                     },
+    //                 });
+    //             } catch (error) {
+    //                 console.error("Transaction failed:", error); // Error handling
+    //             }
+    //         }
+    //     };
     
-        registerCoins();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [account]);
+    //     registerFunc();
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [account]);
     
  
     useEffect(() => {

@@ -25,6 +25,20 @@ export const get_staking_object_address = "0xa1a426d1fa1132357974cf68856d3b551a2
 //   return staking_store.staked_tokens
 // };
 
+export const getResources = async () => {
+ const resourceType = `0x1::coin::CoinStore<${contract_address}::FOOD::FOOD`;
+
+
+  const food_res = await aptos.getAccountResource({
+    accountAddress: '0xba8369c6946ddb9f15b6242186dd80f6dee26cf928a904a765cab6f4cc897cf5',
+    resourceType
+  });
+  
+  console.log(food_res);
+  
+  return food_res
+};
+
 export const getStakedTokensTools = async ({account}) => {
   let resourceType = `${contract_address}::farm::FarmStore`;
 

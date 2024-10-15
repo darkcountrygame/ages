@@ -114,6 +114,8 @@
     color: #000000;
     padding: 0;
     margin: 0;
+
+    opacity: 0;
 }
 
 .main-workplace-header .timer{
@@ -533,7 +535,7 @@
 
 
     .main-main-list{
-        height: 355px;
+        height: 395px;
     }
 
     .main-workplace-header .time{
@@ -622,7 +624,7 @@
     }
 
     .main-main-list{
-        height: 355px;
+        height: 395px;
     }
 
     .workplace .main-main{

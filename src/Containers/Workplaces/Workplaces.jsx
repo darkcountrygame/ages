@@ -32,8 +32,6 @@ const Workplaces = () => {
 
     const history = createBrowserHistory();
 
-    console.log(stakedTools);
-
 
     useEffect(() => {
         getAptosStakedTools({ account })
@@ -80,7 +78,6 @@ const Workplaces = () => {
         setWP(selectedWorkPlace);
     }, [selectedWorkPlace]);
 
-    console.log(loading);
 
     useEffect(() => {
         if (wp?.token_name) {
@@ -104,11 +101,21 @@ const Workplaces = () => {
         }
     };
 
+    const handleCollect = () => {
+
+    }
+
     const renderWorkPlaceTools = () => {
         const slots = wp?.res?.[0]?.slots || 0;
-
-        const equipItems = stakedTools.length < slots && (
-            Array.from({ length: slots - stakedTools.length }).map((_, i) => (
+        
+        // Отримуємо кількість зайнятих слотів
+        const occupiedSlots = stakedTools.filter(item => wp.res[0].resource_type === item.res[0].resource_type).length;
+        
+        // Кількість вільних слотів
+        const freeSlots = Math.max(0, slots - occupiedSlots);
+    
+        const equipItems = (
+            Array.from({ length: freeSlots }).map((_, i) => (
                 <div key={i} className="workplaces-item equip">
                     <div className="workplaces-img unequip-img">
                         <img src={equip} alt="equip" />
@@ -119,9 +126,9 @@ const Workplaces = () => {
                 </div>
             ))
         );
-
-        const lockItems = stakedTools.length <= slots && (
-            Array.from({ length: 4 - slots }).map((_, i) => (
+    
+        const lockItems = (
+            Array.from({ length: Math.max(0, 4 - slots) }).map((_, i) => (
                 <div key={i} className="workplaces-item lock">
                     <div className="workplaces-img locked-img">
                         <img src={lock} alt="lock" />
@@ -132,59 +139,41 @@ const Workplaces = () => {
                 </div>
             ))
         );
-
+    
         const handlerFarmItem = async (name) => {
             if (account) {
                 try {
                     await signAndSubmitTransaction({
                         sender: account.address,
                         data: {
-                            function: `${contract_address}::farm::farm_instrument`, // String interpolation
-                            functionArguments: [
-                                name
-                            ],
+                            function: `${contract_address}::farm::farm_instrument`,
+                            functionArguments: [name],
                         },
                     });
-
+    
                     toast.success('Farming...');
-
+    
                     getAptosStakedTools({ account })
                     .then(setStakedTools)
                     .catch(console.log);
                 } catch (error) {
-                    console.error("Transaction failed:", error); // Error handling
+                    console.error("Transaction failed:", error);
                 }
             }
-        }
-
+        };
+    
         return (
             <div className="container">
                 <div className="main-main-wrapper">
-                    <div className="main-workplace-header">
-                        <p className="time">
-                            Left to the next production:
-                            <div className="timer">
-                                <Timer wp={wp} stakedWP={stakedItemList} />
-                            </div>
-                        </p>
-                        <div className="workplace-header-right">
-                            {wp?.res?.length > 0 && (
-                                <img src={getResourceIcon(wp.res[0]?.resource_type)} alt="resource" />
-                            )}
-                            {/* <button className="start-work_btn" onClick={() => handleClaim(wp?.token_name?.replace('#', ''))}>
-                                Claim
-                            </button> */}
-                        </div>
-                    </div>
                     <div className="main-main-content">
                         {wp?.res?.[0] ? (
                             <div className="main-main-list">
                                 {stakedTools
                                     .filter(item => wp.res[0].resource_type === item.res[0].resource_type)
                                     .map(item => {
-                                        const isFarming = item.res[0].last_farm_time !== "0"; // Перевірка, чи айтем фармиться
+                                        const isFarming = item.res[0].last_farm_time !== "0";
                                         const cooldownTime = isFarming ? calculateCooldown(item.res[0].last_farm_time, item.res[0].cooldown) : 0;
-
+    
                                         return (
                                             <div key={item.asset_id} className="workplaces-item">
                                                 <div className="workplaces-img available-img">
@@ -193,16 +182,16 @@ const Workplaces = () => {
                                                         Unequip
                                                     </button>
                                                 </div>
-
+    
                                                 <div className="produces">
                                                     <p>Produces:</p>
                                                 </div>
                                                 <div className="btn-equip">
                                                     {isFarming ? (
-                                                        cooldownTime !== "0:00" ? ( // Перевіряємо, чи cooldown не завершився
-                                                            <p>Cooldown: {cooldownTime}</p> // Відображаємо зворотний відлік у форматі "60:00" або "59:59"
+                                                        cooldownTime !== "0:00" ? (
+                                                            <p>Cooldown: {cooldownTime}</p>
                                                         ) : (
-                                                            <p>Ready to collect!</p> // Коли cooldown закінчився
+                                                            <button onClick={() => handleCollect(item.token_name)}>Collect</button>
                                                         )
                                                     ) : (
                                                         <button onClick={() => handlerFarmItem(item.token_name)}>
@@ -210,8 +199,6 @@ const Workplaces = () => {
                                                         </button>
                                                     )}
                                                 </div>
-
-
                                             </div>
                                         );
                                     })}
@@ -228,6 +215,7 @@ const Workplaces = () => {
             </div>
         );
     };
+    
 
     const handleUnEquip = async (name) => {
         try {

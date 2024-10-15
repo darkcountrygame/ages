@@ -55,6 +55,11 @@
     background-size: cover;
 }
 
+.footer{
+    /* position: absolute;
+    bottom: -100px; */
+}
+
 @media screen and (max-width: 1699px) {
     .nav-list li{
         width: 180px;
