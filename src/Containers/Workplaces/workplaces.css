@@ -91,7 +91,7 @@
     justify-content: space-between;
     margin-bottom: 10px;
 
-    opacity: 0;
+    /* opacity: 0; */
 
 }
 
@@ -136,6 +136,8 @@
     color: #ffffff;
     font-size: 22px;
     border: 0;
+
+    opacity: 0;
 }
 
 .start-work_btn.disabled{
@@ -495,6 +497,8 @@
 
     .main-workplace-header .time{
         font-size: 14px;
+
+        opacity: 0;
     }
 
     .main-main .main-title{

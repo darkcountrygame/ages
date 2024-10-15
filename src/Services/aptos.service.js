@@ -26,16 +26,22 @@ export const get_staking_object_address = "0xa1a426d1fa1132357974cf68856d3b551a2
 // };
 
 export const getStakedTokens = async ({account}) => {
-  let resourceType = `${contract_address}::farm::StakingStore`;
+  let resourceType = `${contract_address}::farm::FarmStore`;
 
   const staking_store = await aptos.getAccountResource({
     accountAddress: account.address,
     resourceType
   });
   
-  console.log(staking_store);
+  const worksiteKeys = Object.keys(staking_store).filter(key => key.endsWith('_worksite'));
+
+  const worksites = worksiteKeys
+  .map(key => staking_store[key])
+  .filter(worksite => worksite.trim() !== "");
+
+  console.log(worksites);
   
-  return staking_store.staked_tokens
+  return worksites;
 };
 
 
