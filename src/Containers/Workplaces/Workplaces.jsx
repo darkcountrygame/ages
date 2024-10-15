@@ -192,9 +192,9 @@ const Workplaces = () => {
         }
     };
 
-    const unstakeHandler = (wpId, assetId) => {
-        // Unstake logic here
-    };
+    // const unstakeHandler = (wpId, assetId) => {
+    //     // Unstake logic here
+    // };
 
     return (
         <section className="workplace">
