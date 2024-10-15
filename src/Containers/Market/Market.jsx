@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import Footer from '../../components/FooterGameNav/FooterGameNav';
 import './market.css';
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
-import { contract_address } from '../../Services';
+import { contract_address, getUserNfts } from '../../Services';
 import { toast } from 'react-toastify';
+import { useApp } from '../../Data/AppContext';
 
 const Market = () => {
+    const { setItems } = useApp();
     const { account, signAndSubmitTransaction } = useWallet();
     const [activeTab, setActiveTab] = useState('workplace');
     const [stakedItems, setStakedItems] = useState([]);
@@ -49,6 +51,9 @@ const Market = () => {
                 });
 
                 toast.success('Staked!');
+
+                const userNfts = await getUserNfts({ account: account.address });
+                setItems(userNfts);
 
             } catch (error) {
                 console.error("Transaction failed:", error);
