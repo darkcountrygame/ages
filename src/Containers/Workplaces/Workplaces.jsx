@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useApp } from "../../Data/AppContext";
-import './workplaces.css';
+
 import meat from '../../images/market-items/meat.png';
 import stone from '../../images/market-items/rock.png';
 import wood from '../../images/market-items/wood.png';
@@ -17,6 +17,9 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { contract_address, getAptosStakedTools, getUserNfts } from "../../Services";
 import { toast } from "react-toastify";
 
+
+import './workplaces.css';
+
 const Workplaces = () => {
     const { account, signAndSubmitTransaction } = useWallet();
     const { stakedItemList, itemList, setItems } = useApp();
@@ -25,14 +28,53 @@ const Workplaces = () => {
     const [wp, setWP] = useState([]);
     const [stakedTools, setStakedTools] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [currentTime, setCurrentTime] = useState(Math.floor(Date.now() / 1000));
 
     const history = createBrowserHistory();
+
+    console.log(stakedTools);
+
 
     useEffect(() => {
         getAptosStakedTools({ account })
             .then(setStakedTools)
             .catch(console.log);
     }, [account]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTime(Math.floor(Date.now() / 1000)); // Оновлюємо час кожну секунду
+        }, 1000);
+
+        return () => clearInterval(interval); // Очищаємо таймер, коли компонент відмонтовано
+    }, []);
+
+    const calculateCooldown = (lastFarmTime, cooldown) => {
+        const lastFarmTimeInt = parseInt(lastFarmTime, 10); // Перетворюємо last_farm_time на число
+        const cooldownInt = parseInt(cooldown, 10) * 60; // Перетворюємо cooldown на секунди
+        const timePassed = currentTime - lastFarmTimeInt; // Обчислюємо, скільки часу минуло
+
+        const remainingCooldown = cooldownInt - timePassed; // Залишок часу до завершення фарму
+
+        if (remainingCooldown <= 0) {
+            return "0:00"; // Коли фарм завершився, показуємо 0:00
+        }
+
+        const minutes = Math.floor(remainingCooldown / 60); // Залишкові хвилини
+        const seconds = remainingCooldown % 60; // Залишкові секунди
+
+        // Якщо повна хвилина, показуємо 60:00, інакше формат хвилини:секунди
+        if (seconds === 0 && minutes > 0) {
+            return "60:00"; // Показуємо 60, коли повна хвилина
+        } else {
+            return `${minutes}:${seconds.toString().padStart(2, '0')}`; // Формат хвилини:секунди
+        }
+    };
+
+
+
+
+
 
     useEffect(() => {
         setWP(selectedWorkPlace);
@@ -135,21 +177,38 @@ const Workplaces = () => {
                             <div className="main-main-list">
                                 {stakedTools
                                     .filter(item => wp.res[0].resource_type === item.res[0].resource_type)
-                                    .map(item => (
-                                        <div key={item.asset_id} className="workplaces-item">
-                                            <div className="workplaces-img available-img">
-                                                <img src={item.token_uri} alt="tool" />
+                                    .map(item => {
+                                        const isFarming = item.res[0].last_farm_time !== "0"; // Перевірка, чи айтем фармиться
+                                        const cooldownTime = isFarming ? calculateCooldown(item.res[0].last_farm_time, item.res[0].cooldown) : 0;
+
+                                        console.log(cooldownTime);
+
+                                        return (
+                                            <div key={item.asset_id} className="workplaces-item">
+                                                <div className="workplaces-img available-img">
+                                                    <img src={item.token_uri} alt="tool" />
+                                                </div>
+                                                <div className="produces">
+                                                    <p>Produces:</p>
+                                                </div>
+                                                <div className="btn-equip">
+                                                    {isFarming ? (
+                                                        cooldownTime !== "0:00" ? ( // Перевіряємо, чи cooldown не завершився
+                                                            <p>Cooldown: {cooldownTime}</p> // Відображаємо зворотний відлік у форматі "60:00" або "59:59"
+                                                        ) : (
+                                                            <p>Ready to collect!</p> // Коли cooldown закінчився
+                                                        )
+                                                    ) : (
+                                                        <button onClick={() => handlerFarmItem(item.token_name)}>
+                                                            Farm
+                                                        </button>
+                                                    )}
+                                                </div>
+
+
                                             </div>
-                                            <div className="produces">
-                                                <p>Produces:</p>
-                                            </div>
-                                            <div className="btn-equip">
-                                                <button onClick={() => handlerFarmItem(item.token_name)}>
-                                                    Farm
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                 {equipItems}
                                 {lockItems}
                             </div>
