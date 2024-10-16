@@ -24,7 +24,7 @@ import './workplaces.css';
 
 const Workplaces = () => {
     const { account, signAndSubmitTransaction } = useWallet();
-    const { itemList, setItems } = useApp();
+    const { itemList, setItems, stakedItemList } = useApp();
     const [selectItem, setSelectItem] = useState([]);
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([]);
     const [wp, setWP] = useState([]);
@@ -34,10 +34,9 @@ const Workplaces = () => {
 
     const history = createBrowserHistory();
 
-    console.log();
 
-
-
+    console.log(stakedItemList);
+    
     useEffect(() => {
         getAptosStakedTools({ account })
             .then(setStakedTools)

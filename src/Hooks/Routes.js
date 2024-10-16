@@ -15,9 +15,6 @@ const history = createBrowserHistory();
 export const useRoutes = () => {
      const {isAuthenticated} = useApp();
 
-     console.log(isAuthenticated);
-    
-
      if (isAuthenticated){
          return (
              <Router history={history}>
