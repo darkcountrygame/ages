@@ -6,6 +6,19 @@ import { contract_address, getUserNfts } from '../../Services';
 import { toast } from 'react-toastify';
 import { useApp } from '../../Data/AppContext';
 
+import BasketMiles from '../../images/items/Basket_miles.png';
+import ChopperStone from '../../images/items/Chopper_stone.png';
+import HandAxeWood from '../../images/items/HandAxe_wood.png';
+import HuntersLodge from '../../images/items/Hunters_lodge.png';
+import StoneAxeWood from '../../images/items/StoneAxe_wood.png';
+import StonemasonsCave from '../../images/items/Stonemasons_cave_.png';
+import StonePickaxeStone from '../../images/items/StonePickaxe_stone.png';
+import WarehouseInTheCave from '../../images/items/Warehouse_in_the_cave_.png';
+import WheelbarrowMiles from '../../images/items/Wheelbarrow_miles.png';
+import WoodcuttersCave from '../../images/items/Woodcutters_cave_.png';
+import WoodenRaftFood from '../../images/items/WoodenRaft_food.png';
+import WoodenSpearFood from '../../images/items/WoodenSpear_food.png';
+
 const Market = () => {
     const { setItems } = useApp();
     const { account, signAndSubmitTransaction } = useWallet();
@@ -14,21 +27,21 @@ const Market = () => {
 
     // Дані для Workplace та Instruments з вашої таблиці, включаючи URI для зображень
     const workplaceItems = [
-        { name: "Hunter's Lodge", uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Barn.png', template_id: 8 },
-        { name: "Stonemasons Cave", uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Field.png', template_id: 9 },
-        { name: "Warehouse in the Cave", uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Mill.png', template_id: 10 },
-        { name: "Woodcutters Cave", uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Storehouse.png', template_id: 11 }
+        { name: "Hunter's Lodge", uri: HuntersLodge, template_id: 8 },
+        { name: "Stonemasons Cave", uri: StonemasonsCave, template_id: 9 },
+        { name: "Warehouse in the Cave", uri: WarehouseInTheCave, template_id: 10 },
+        { name: "Woodcutters Cave", uri: WoodcuttersCave, template_id: 11 }
     ];
     
     const instrumentItems = [
-        { name: 'Basket', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Basket.png', template_id: 0 },
-        { name: 'Wheel Barrow', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Wheel_Barrow.png', template_id: 1 },
-        { name: 'Wooden Raft', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Wooden_Raft.png', template_id: 2 },
-        { name: 'Wooden Spear', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Wooden_Spear.png', template_id: 3 },
-        { name: 'Chopper', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Chopper.png', template_id: 4 },
-        { name: 'Stone Pickaxe', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Stone_Pickaxe.png', template_id: 5 },
-        { name: 'Hand Axe', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Hand_Axe.png', template_id: 6 },
-        { name: 'Stone Axe', uri: 'https://indigo-peculiar-emu-121.mypinata.cloud/ipfs/QmYdUMYsNf4pVmRf6XPxk1LtNgAXm2TrA4AHQETLZbE92M/Stone_Axe.png', template_id: 7 }
+        { name: 'Basket', uri: BasketMiles, template_id: 0 },
+        { name: 'Wheel Barrow', uri: WheelbarrowMiles, template_id: 1 },
+        { name: 'Wooden Raft', uri: WoodenRaftFood, template_id: 2 },
+        { name: 'Wooden Spear', uri: WoodenSpearFood, template_id: 3 },
+        { name: 'Chopper', uri: ChopperStone, template_id: 4 },
+        { name: 'Stone Pickaxe', uri: StonePickaxeStone, template_id: 5 },
+        { name: 'Hand Axe', uri: HandAxeWood, template_id: 6 },
+        { name: 'Stone Axe', uri: StoneAxeWood, template_id: 7 }
     ];
     
 
@@ -90,7 +103,7 @@ const Market = () => {
                             <ul className="item-list">
                                 {workplaceItems.map(item => (
                                     <li key={item.name} className={`list-item ${isStaked(item.name) ? 'staked-item' : ''}`}>
-                                        {/* <img src={item.uri} alt={item.name} className="item-image" /> */}
+                                        <img src={item.uri} alt={item.name} className="item-image" />
                                         <span>{item.name}</span>
                                         <button 
                                             className={`stake-button ${isStaked(item.name) ? 'staked-button' : ''}`} 
@@ -108,7 +121,7 @@ const Market = () => {
                             <ul className="item-list">
                                 {instrumentItems.map(item => (
                                     <li key={item.name} className={`list-item ${isStaked(item.name) ? 'staked-item' : ''}`}>
-                                        {/* <img src={item.uri} alt={item.name} className="item-image" /> */}
+                                        <img src={item.uri} alt={item.name} className="item-image" />
                                         <span>{item.name}</span>
                                         <button 
                                             className={`stake-button ${isStaked(item.name) ? 'staked-button' : ''}`} 
