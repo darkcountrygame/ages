@@ -30,7 +30,7 @@ const Staking = () => {
         await signAndSubmitTransaction({
           sender: account.address,
           data: {
-            function: `${contract_address}::farm::unstake_worksite`,
+            function: `${contract_address}::farm::stake_worksite`,
             functionArguments: [selectedWP.token_name],
           },
         });
