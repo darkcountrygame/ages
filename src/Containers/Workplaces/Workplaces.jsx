@@ -24,7 +24,7 @@ import './workplaces.css';
 
 const Workplaces = () => {
     const { account, signAndSubmitTransaction } = useWallet();
-    const { itemList, setItems, stakedItemList } = useApp();
+    const { itemList, setItems, setResources } = useApp();
     const [selectItem, setSelectItem] = useState([]);
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([]);
     const [wp, setWP] = useState([]);
@@ -33,9 +33,6 @@ const Workplaces = () => {
     const [currentTime, setCurrentTime] = useState(Math.floor(Date.now() / 1000));
 
     const history = createBrowserHistory();
-
-
-    console.log(stakedItemList);
     
     useEffect(() => {
         getAptosStakedTools({ account })
@@ -150,7 +147,15 @@ const Workplaces = () => {
                         .then(setStakedTools)
                         .catch(console.log);
 
-                    await getResources({ account })
+                    await getResources({
+                            account: account
+                        })
+                            .then((resurce) => setResources(resurce))
+                            .catch(e => {
+                                console.log(e)
+            
+                                setResources([]);
+                            })
                        
                 } catch (error) {
                     console.error("Transaction failed:", error);

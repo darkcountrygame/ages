@@ -20,6 +20,7 @@ import {
     // fetchWpConfig,
     // fetchPoolConfig,
     getAptosStakedWP,
+    getResources,
     getUserNfts
     // fetchStakedTools,
 
@@ -47,9 +48,9 @@ const AppContent = () => {
         stakedItemListFetched,
         setStakedItems,
         setItems,
-        userLogoutHandler
-        // resourcesFetched,
-        // setResources,
+        userLogoutHandler,
+        resourcesFetched,
+        setResources,
         //  setProbability,
         //  probabilityFetched,
 
@@ -83,7 +84,7 @@ const AppContent = () => {
     const [stakedItemsLoading, setStakedItemsLoading] = useState(false);
     // const [stakedToolsLoading, setStakedToolsLoading] = useState(false);
 
-    // const [resourcesLoading, setResourcesLoading] = useState(false);
+    const [resourcesLoading, setResourcesLoading] = useState(false);
     //  const [probabilityLoading, setProbabilityLoading] = useState(false);
     // const [spConfigLoading, setSpConfigLoading] = useState(false);
 
@@ -191,24 +192,24 @@ const AppContent = () => {
         }
     }, [account, setStakedItemsLoading, stakedItemListFetched, setStakedItems, stakedItemsLoading]);
 
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && !resourcesFetched && setResources
-//             && !resourcesLoading
-//         ) {
-//             setResourcesLoading(true);
+    useEffect(() => {
+        if (account && account.address && !resourcesFetched && setResources
+            && !resourcesLoading
+        ) {
+            setResourcesLoading(true);
+            
+            getResources({
+                account: account
+            })
+                .then((resurce) => setResources(resurce))
+                .catch(e => {
+                    console.log(e)
 
-//             fetchResources({
-//                 account: activeUser.accountName
-//             })
-//                 .then((resurce) => setResources(resurce))
-//                 .catch(e => {
-//                     console.log(e)
-
-//                     setResources([]);
-//                 })
-//                 .finally(() => setResourcesLoading(false));
-//         }
-//     }, [activeUser, setResourcesLoading, resourcesFetched, setResources, resourcesLoading]);
+                    setResources([]);
+                })
+                .finally(() => setResourcesLoading(false));
+        }
+    }, [account, setResourcesLoading, resourcesFetched, setResources, resourcesLoading]);
 
 
 

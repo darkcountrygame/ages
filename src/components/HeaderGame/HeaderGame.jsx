@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import './header.css'
 
 import {Link} from 'react-router-dom'
@@ -12,34 +12,14 @@ import rock from '../../images/market-items/rock.png'
 import wheel from  '../../images/market-items/wheel.png'
 import wood from '../../images/market-items/wood.png'
 import plus from '../../images/plus.png'
-import { getResources } from '../../Services';
-import { useWallet } from '@aptos-labs/wallet-adapter-react';
 
 
 export default function Header() {
-    const { account } = useWallet();
-    const { waxBalance, rtpBalance, eraConf, totalSp } = useApp();
-    const [resources, setResources] = useState({
+    const { waxBalance, rtpBalance, eraConf, totalSp, resourcesList } = useApp();
 
-    });
-
-
-    useEffect(() => {
-        const fetchResources = async () => {
-            await getResources({ account })
-                .then((data) => {
-                    setResources(data)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        };
-        
-        fetchResources();
-    }, [account]);
 
     const findResourceAmount = (resource) => {
-        return resources[resource] ?? 0;
+        return resourcesList[resource] ?? 0;
     };
 
     return(
