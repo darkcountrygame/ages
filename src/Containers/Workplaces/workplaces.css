@@ -326,13 +326,19 @@
     color: #ffffff;
 }
 
+.produces-product{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+
 .produces .produces-product-count{
     display: flex;
     gap: 7px;
     justify-content: flex-start;
     align-items: center;
 }
-
 
 .produces .produces-energy-count{
     display: flex;
@@ -341,12 +347,10 @@
     align-items: center;
 }
 
-
 .equip .workplaces-img{
     width: 92px;
     height: 92px;
 }
-
 
 
 .lock .workplaces-img{

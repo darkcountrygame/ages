@@ -6,7 +6,7 @@ import stone from '../../images/market-items/rock.png';
 import wood from '../../images/market-items/wood.png';
 import wheel from '../../images/market-items/wheel.png';
 import equip from '../../images/plus_icon_section.png';
-import energyIcon from '../../images/market-items/energy.png';
+// import energyIcon from '../../images/market-items/energy.png';
 
 import lock from '../../images/lock.png';
 import Footer from '../../components/FooterGameNav/FooterGameNav';
@@ -200,13 +200,13 @@ const Workplaces = () => {
                                                             <img src={getResourceIcon(item.res[0].resource_type)} alt="" />
                                                         </div>
                                                     </div>
-                                                    <div className="produces-energy">
+                                                    {/* <div className="produces-energy">
                                                         <p>Energy consume:</p>
                                                         <div className="produces-energy-count">
                                                             <span>0</span>
                                                             <img src={energyIcon} alt="" />
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
 
                                                 <div className="btn-equip">

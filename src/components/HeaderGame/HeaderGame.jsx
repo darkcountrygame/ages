@@ -7,7 +7,7 @@ import UserLogIn from './UserLogIn'
 import { useApp } from "../../Data/AppContext";
 
 import meat from  '../../images/market-items/meat.png'
-import energy from  '../../images/market-items/energy.png'
+// import energy from  '../../images/market-items/energy.png'
 import rock from '../../images/market-items/rock.png'
 import wheel from  '../../images/market-items/wheel.png'
 import wood from '../../images/market-items/wood.png'
@@ -50,7 +50,7 @@ export default function Header() {
                 </div>
                 <div className="header-items">
                     <ul className="header-items_list">
-                        <li><img src={energy} alt="energy" /> <span>{findResourceAmount("energy")}</span></li>
+                        {/* <li><img src={energy} alt="energy" /> <span>{findResourceAmount("energy")}</span></li> */}
                         <li><img src={meat} alt="meat" /> <span>{findResourceAmount("food")}</span></li>
                         <li><img src={rock} alt="rock" /><span>{findResourceAmount("stone")}</span></li>
                         <li><img src={wood} alt="wood" /><span>{findResourceAmount("wood")}</span></li>
