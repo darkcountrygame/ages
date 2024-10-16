@@ -1,48 +1,26 @@
 import React, { useEffect, useState } from 'react';
-
 import { useApp } from '../../Data/AppContext';
 import { useRoutes } from '../../Hooks/Routes';
 import { ToastContainer } from "react-toastify";
-
 import {
     contract_address,
     getAccountBalanceAptos,
-    // fetchWaxBalance,
-    // fetchRtpBalance,
-    // fetchItems,
-    // fetchResources,
-    // fetchStakedWp,
-    // probabilityGetPoints,
-    // spConfig,
-    // totalSp,
-    // fetchCurrentEra,
-    // fetchWaxCourse,
-    // fetchToolConfig,
-    // fetchWpConfig,
-    // fetchPoolConfig,
     getAptosStakedWP,
     getResources,
     getUserNfts
-    // fetchStakedTools,
-
 } from "../../Services";
 import Header from "../../components/HeaderGame/HeaderGame";
-
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
-
 import '../../index.css'
 
 const AppContent = () => {
     const routes = useRoutes();
     const { account, signAndSubmitTransaction } = useWallet();
     
-
     const {
         isAuthenticated,
         userLoginHandler,
         setUserDataHandler,
-        // setWaxBalance,
-        // waxBalanceFetched,
         setRtpBalance,
         rtpBalanceFetched,
         itemListFetched,
@@ -51,58 +29,17 @@ const AppContent = () => {
         setItems,
         userLogoutHandler,
         resourcesFetched,
-        setResources,
-        //  setProbability,
-        //  probabilityFetched,
-
-        // setSpConfig,
-        // spConfigFetched,
-
-        // setTotalSp,
-        // totalSpFetched,
-
-        // setEraConf,
-        // eraConfFetched,
-
-        // setWaxCourse,
-        // waxCourseFetched,
-
-        // setToolConfig,
-        // toolConfigFetched,
-
-        // setWpConfig,
-        // wpConfigFetched,
-
-        // setPoolConfig,
-        // poolConfigFetched,
-
+        setResources
     } = useApp();
 
-    // const [waxBalanceLoading, setWaxBalanceLoading] = useState(false);
     const [rtpBalanceLoading, setRtpBalanceLoading] = useState(false);
-
     const [itemsLoading, setItemsLoading] = useState(false);
     const [stakedItemsLoading, setStakedItemsLoading] = useState(false);
-    // const [stakedToolsLoading, setStakedToolsLoading] = useState(false);
-
     const [resourcesLoading, setResourcesLoading] = useState(false);
-    //  const [probabilityLoading, setProbabilityLoading] = useState(false);
-    // const [spConfigLoading, setSpConfigLoading] = useState(false);
-
-    // const [totalSpLoading, setTotalSpLoading] = useState(false);
-
-    // const [eraConfLoading, setEraConfLoading] = useState(false);
-
-    // const [waxCourseLoading, setWaxCourseLoading] = useState(false);
-
-    // const [toolConfigLoading, setToolConfgLoading] = useState(false);
-    // const [wpConfigLoading, setWpConfgLoading] = useState(false);
-
-    // const [poolConfigLoading, setPoolConfgLoading] = useState(false);
 
     useEffect(() => {
         const registerFunc = async () => {
-            const transactionKey = "transactionSigned"; // Ключ для збереження стану в localStorage
+            const transactionKey = "transactionSigned";
             const isTransactionSigned = localStorage.getItem(transactionKey);
     
             if (account && !isTransactionSigned) {
@@ -110,132 +47,89 @@ const AppContent = () => {
                     await signAndSubmitTransaction({
                         sender: account.address,
                         data: {
-                            function: `${contract_address}::farm::register`, // Інтерполяція рядка
+                            function: `${contract_address}::farm::register`,
                             functionArguments: [],
                         },
                     });
-                    // Якщо транзакція успішна, зберігаємо у localStorage
                     localStorage.setItem(transactionKey, "true");
                 } catch (error) {
-                    console.error("Transaction failed:", error); // Обробка помилки
+                    console.error("Transaction failed:", error);
                 }
             }
         };
-    
         registerFunc();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [account]);
-    
- 
+    }, [account, signAndSubmitTransaction]);
+
     useEffect(() => {
         if (account && setUserDataHandler && userLoginHandler && !isAuthenticated) {
             setUserDataHandler(account);
             userLoginHandler();
-            
         }
     }, [account, setUserDataHandler, userLoginHandler, isAuthenticated]);
 
     useEffect(() => {
         if (!account) {
             userLogoutHandler();
-            
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [account]);
+    }, [account, userLogoutHandler]);
 
     useEffect(() => {
-        if (account && account.address && setRtpBalance && !rtpBalanceLoading && !rtpBalanceFetched) {
+        if (account?.address && setRtpBalance && !rtpBalanceLoading && !rtpBalanceFetched) {
             setRtpBalanceLoading(true);
-
             getAccountBalanceAptos({ account: account.address })
                 .then(balance => setRtpBalance(balance))
-                .catch(e => {
-                    setRtpBalance(0);
-
-
-                    console.log(e.message)
-                    console.log(e)
-
-                })
+                .catch(() => setRtpBalance(0))
                 .finally(() => setRtpBalanceLoading(false));
         }
     }, [account, rtpBalanceFetched, rtpBalanceLoading, setRtpBalance]);
 
     useEffect(() => {
-        if (account && account.address && !itemListFetched && setItems
-            && !itemsLoading
-        ) {
+        if (account?.address && !itemListFetched && setItems && !itemsLoading) {
             setItemsLoading(true);
-
-            getUserNfts({
-                account: account.address
-            })
-                .then((items) => setItems(items))
-                .catch(e => {
-                    console.log(e)
-
-                    setItems([]);
-                })
+            getUserNfts({ account: account.address })
+                .then(items => setItems(items))
+                .catch(() => setItems([]))
                 .finally(() => setItemsLoading(false));
         }
-    }, [account, setItemsLoading, itemListFetched, setItems, itemsLoading]);
+    }, [account, setItems, itemListFetched, itemsLoading]);
 
     useEffect(() => {
-        if (account && account.address && !stakedItemListFetched && setStakedItems
-            && !stakedItemsLoading
-        ) {
+        if (account?.address && !stakedItemListFetched && setStakedItems && !stakedItemsLoading) {
             setStakedItemsLoading(true);
-
-            getAptosStakedWP({account})
-                .then((items) => setStakedItems(items))
-                .catch(e => {
-                    console.log(e)
-
-                    setStakedItems([]);
-                })
+            getAptosStakedWP({ account })
+                .then(items => setStakedItems(items))
+                .catch(() => setStakedItems([]))
                 .finally(() => setStakedItemsLoading(false));
         }
-    }, [account, setStakedItemsLoading, stakedItemListFetched, setStakedItems, stakedItemsLoading]);
+    }, [account, setStakedItems, stakedItemListFetched, stakedItemsLoading]);
 
     useEffect(() => {
-        if (account && account.address && !resourcesFetched && setResources
-            && !resourcesLoading
-        ) {
+        if (account?.address && !resourcesFetched && setResources && !resourcesLoading) {
             setResourcesLoading(true);
-            
-            getResources({
-                account: account
-            })
-                .then((resurce) => setResources(resurce))
-                .catch(e => {
-                    console.log(e)
-
-                    setResources([]);
-                })
+            getResources({ account })
+                .then(res => setResources(res))
+                .catch(() => setResources([]))
                 .finally(() => setResourcesLoading(false));
         }
-    }, [account, setResourcesLoading, resourcesFetched, setResources, resourcesLoading]);
-
-
+    }, [account, setResources, resourcesFetched, resourcesLoading]);
 
     return (
-            <div>
-                <main className={'main-bg'}>
-                    {isAuthenticated && <Header />}
-                    { routes }
-                </main>
-
-                <ToastContainer
-                    position="bottom-left"
-                    autoClose={4000}
-                    newestOnTop={false}
-                    closeOnClick={false}
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                />
-            </div>
-    )
+        <div>
+            <main className='main-bg'>
+                {isAuthenticated && <Header />}
+                {routes}
+            </main>
+            <ToastContainer
+                position="bottom-left"
+                autoClose={4000}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+            />
+        </div>
+    );
 }
 
 export default AppContent;

@@ -1,8 +1,8 @@
 import React from "react";
-import { Router ,Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
- import { useApp } from "../Data/AppContext";
+import { useApp } from "../Data/AppContext";
 import {
     MainPage,
     Workpalces,
@@ -14,49 +14,27 @@ import {
 const history = createBrowserHistory();
 
 export const useRoutes = () => {
-     const {isAuthenticated} = useApp();
+    const { isAuthenticated } = useApp();
 
-     if (isAuthenticated){
-         return (
-             <Router history={history}>
-                 <Switch>
-                     <Route exact path="/workplace">
-                         <Workpalces />
-                     </Route>
-
-                     <Route exact path="/workplace/:id">
-                         <Workpalces />
-                     </Route>
-
-                     <Route exact path="/inventory">
-                         <Staking />
-                     </Route>
-
-                     <Route exact path="/free-mint">
-                         <Market />
-                     </Route>
-
-                    <Route exact path="/craft">
-                         <Swap />
-                     </Route>
-
-                       {/* <Route exact path="/research">
-                         <Research />
-                     </Route> */}
-
-                     <Redirect exact to="/workplace" />
-                 </Switch>
-             </Router>
-
-         )
-     }
-
+    if (isAuthenticated) {
+        return (
+            <Router history={history}>
+                <Switch>
+                    <Route exact path="/workplace" component={Workpalces} />
+                    <Route path="/workplace/:id" component={Workpalces} />
+                    <Route exact path="/inventory" component={Staking} />
+                    <Route exact path="/free-mint" component={Market} />
+                    <Route exact path="/craft" component={Swap} />
+                    {/* <Route exact path="/research" component={Research} /> */}
+                    <Redirect to="/workplace" />
+                </Switch>
+            </Router>
+        );
+    }
 
     return (
         <Switch>
-            <Route exact path="/">
-                <MainPage />
-            </Route>
+            <Route exact path="/" component={MainPage} />
             <Redirect to="/" />
         </Switch>
     );

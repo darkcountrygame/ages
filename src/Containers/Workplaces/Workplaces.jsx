@@ -13,7 +13,6 @@ import Footer from '../../components/FooterGameNav/FooterGameNav';
 import UnlockCard from '../../Modal/UnlockCard';
 import EquipTool from '../../Modal/EquipTool';
 import Sidebar from '../../components/Sidebar/Sidebar';
-// import Timer from "../../components/Countdown/Timer";
 import { createBrowserHistory } from "history";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { contract_address, getAptosStakedTools, getResources, getUserNfts } from "../../Services";
@@ -47,7 +46,7 @@ const Workplaces = () => {
 
         return () => clearInterval(interval); // Очищаємо таймер, коли компонент відмонтовано
     }, []);
-
+    
     const calculateCooldown = (lastFarmTime, cooldown) => {
         const lastFarmTimeInt = parseInt(lastFarmTime, 10); // Перетворюємо last_farm_time на число
         const cooldownInt = parseInt(cooldown, 10) * 60; // Перетворюємо cooldown на секунди
