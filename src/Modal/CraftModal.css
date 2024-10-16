@@ -1,0 +1,28 @@
+.craft-last-step {
+    font-size: 12px;
+    background-image: url('../images/popup1_bg.png');
+    background-repeat: no-repeat;
+    height: 168px;
+    width: 619px;
+    color: #815F50;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.craft-last-step > .close {
+    width: 26px;
+    position: absolute;
+    right: 3%;
+    top: 11%;
+    cursor: pointer;
+}
+
+.craft-last-step_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px;
+}

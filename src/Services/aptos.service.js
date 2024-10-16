@@ -12,18 +12,33 @@ export const collection_hash = "0xeff1ba2e966e999481c64601e19e67f1cb09728b1a7ee5
 export const get_staking_object_address = "0xa1a426d1fa1132357974cf68856d3b551a208263ddbdcdcc8d41afd6fe0564c7";
 
 
-// export const getStakedTokens = async () => {
-//   let resourceType = `${contract_address}::farm::StakingStore`;
 
-//   const staking_store = await aptos.getAccountResource({
-//     accountAddress: '0xba8369c6946ddb9f15b6242186dd80f6dee26cf928a904a765cab6f4cc897cf5',
-//     resourceType
-//   });
+export const getAccountBalanceAptos = async ({account}) => {
   
-//   console.log(staking_store);
+  const resource = await aptos.getAccountResource({
+    accountAddress: account,
+    resourceType: "0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>",
+  });
   
-//   return staking_store.staked_tokens
-// };
+
+  return Number(resource.coin.value) / 1e8;
+};
+
+export const getInfoAboutCraftAptos = async ({template_id}) => {
+
+      const res = await aptos.view({
+        payload: {
+          function: `${contract_address}::craft::get_recipe`,
+          typeArguments: [],
+          functionArguments: [
+            template_id,
+          ],
+        },
+      });
+      
+
+      return res;
+};
 
 export const getResources = async ({account}) => {
   const resource_typeFOOD = `0x1::coin::CoinStore<${contract_address}::FOOD::FOOD>`;

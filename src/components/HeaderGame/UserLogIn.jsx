@@ -5,7 +5,7 @@ import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import AptosIcon from "../../images/AptosIcon.png";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-const WaxLogo = ({ waxBalance, rtpBalance }) => {
+const WaxLogo = ({ rtpBalance }) => {
     const history  = useHistory();
     const { account, disconnect } = useWallet();
     const { isAuthenticated, userLogoutHandler } = useApp();
@@ -16,6 +16,9 @@ const WaxLogo = ({ waxBalance, rtpBalance }) => {
         disconnect();
        
     };
+
+    console.log(rtpBalance);
+    
 
     const handleLogin = () => {
         // Logic for login goes here
@@ -37,7 +40,7 @@ const WaxLogo = ({ waxBalance, rtpBalance }) => {
                 ) : (
                     <>
                         <div className="crypto">
-                            {/* <p><span className="rtp">{0 || '0'} LOA</span></p> */}
+                            <p><span className="rtp">{rtpBalance|| 0} APT</span></p>
                         </div>
                         <p>
                             <img className='aptos_logo' src={AptosIcon} alt="wax" />

@@ -1,166 +1,166 @@
-import React, {useEffect, useState} from 'react'
-import {useApp} from "../../Data/AppContext";
+import React, { useState, useEffect } from 'react';
+import Footer from '../../components/FooterGameNav/FooterGameNav';
+import testImg from "../../images/items/HandAxe_wood.png";
 
-import Footer from '../../components/FooterGameNav/FooterGameNav'
+import BasketMiles from '../../images/items/Basket_miles.png';
+import ChopperStone from '../../images/items/Chopper_stone.png';
+import HandAxeWood from '../../images/items/HandAxe_wood.png';
+import HuntersLodge from '../../images/items/Hunters_lodge.png';
+import StoneAxeWood from '../../images/items/StoneAxe_wood.png';
+import StonemasonsCave from '../../images/items/Stonemasons_cave_.png';
+import StonePickaxeStone from '../../images/items/StonePickaxe_stone.png';
+import WarehouseInTheCave from '../../images/items/Warehouse_in_the_cave_.png';
+import WheelbarrowMiles from '../../images/items/Wheelbarrow_miles.png';
+import WoodcuttersCave from '../../images/items/Woodcutters_cave_.png';
+import WoodenRaftFood from '../../images/items/WoodenRaft_food.png';
+import WoodenSpearFood from '../../images/items/WoodenSpear_food.png';
 
-// import {UALContext} from "ual-reactjs-renderer";
+import meat from  '../../images/market-items/meat.png';
+import rock from '../../images/market-items/rock.png';
+import gems from  '../../images/market-items/wheel.png';
+import wood from '../../images/market-items/wood.png';
 
-import './Swap.css'
+import { getInfoAboutCraftAptos } from '../../Services/aptos.service';
+
+import './Swap.css';
+import CraftLastStepModal from '../../Modal/CraftLastStepModal';
 
 
+// Константи з даними
+const workplaceItems = [
+    { name: "Hunter's Lodge", uri: HuntersLodge, template_id: 8 },
+    { name: "Stonemasons Cave", uri: StonemasonsCave, template_id: 9 },
+    { name: "Warehouse in the Cave", uri: WarehouseInTheCave, template_id: 10 },
+    { name: "Woodcutters Cave", uri: WoodcuttersCave, template_id: 11 }
+];
 
+const instrumentItems = [
+    { name: 'Basket', uri: BasketMiles, template_id: 0 },
+    { name: 'Wheel Barrow', uri: WheelbarrowMiles, template_id: 1 },
+    { name: 'Wooden Raft', uri: WoodenRaftFood, template_id: 2 },
+    { name: 'Wooden Spear', uri: WoodenSpearFood, template_id: 3 },
+    { name: 'Chopper', uri: ChopperStone, template_id: 4 },
+    { name: 'Stone Pickaxe', uri: StonePickaxeStone, template_id: 5 },
+    { name: 'Hand Axe', uri: HandAxeWood, template_id: 6 },
+    { name: 'Stone Axe', uri: StoneAxeWood, template_id: 7 }
+];
 
 export default function Swap() {
-    // const { activeUser } = useContext(UALContext);
-    const { rtpBalance, resourcesList, poolConfig, eraConf } = useApp();
 
-    const [amount, setAmount] = useState('');
-    const [result, setResult] = useState(0);
-    const [totalToken, setTotalToken] = useState(0);
-    const [isInitialInputChange, setIsInitialInputChange] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('');
-    const [selectedResourceAmount, setSelectedResourceAmount] = useState(0);
-    const [selectedResource, setSelectedResource] = useState('')
-    const [selectedResourceValue, setSelectedResourceValue] = useState('')
+    // Ініціалізація стану з першим елементом
+    const [selectedItem, setSelectedItem] = useState([...instrumentItems, ...workplaceItems][0]);
+    const [craftInfo, setCraftInfo] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-
-    const handleInputChange = (e) => {
-        if (selectedOption) {
-            setAmount(e.target.value);
-        }
+    // Обробка вибору айтема
+    const handleItemClick = (item) => {
+        setSelectedItem(item);
     };
 
+    // Функція для отримання інформації про крафт
+    const fetchCraftInfo = async (templateId) => {
+        setLoading(true);
+        try {
+            const data = await getInfoAboutCraftAptos({ template_id: templateId });
+            setCraftInfo(data[0]);
+        } catch (error) {
+            console.error("Error fetching craft info:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
 
     useEffect(() => {
-        if (isInitialInputChange) {
-            handleRefreshPool();
-        } else {
-            setIsInitialInputChange(true);
+        if (selectedItem) {
+            fetchCraftInfo(selectedItem.template_id);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [amount, isInitialInputChange]);
-
-    const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value);
-        setSelectedResource(e.target.value)
-        const selectedResource = resourcesList.find(
-            (resource) => resource.resource === e.target.value
-        );
-        setSelectedResourceAmount(selectedResource?.amount || 0);
-        setAmount('');
-    };
-
-    const handleInputBlur = () => {
-        if (amount > selectedResourceAmount) {
-            setAmount(selectedResourceAmount);
-        }
-    };
-
-    const handleSwapClick = () => {
-        // exchangeResources({activeUser, resource: selectedOption, count: amount})
-        //     .then(() => {
-        //         fetchResources({ account: activeUser.accountName })
-        //             .then(resource => setResources(resource))
-        //             .catch(e => console.log(e));
-
-
-        //         toast.success('Exchanged');
-        //     })
-        //     .catch(e => toast.error(e.message))
-
-    }
-
-    const handleRefreshPool = (
-        resourceAmount = amount,
-        resourceMultiplier = 1,
-        totalResources = poolConfig ? poolConfig.total_minted_resources : 1 ,
-        totalTokens = poolConfig ? Number(poolConfig.total_minted_tokens?.split(' ')[0]) : 0,
-        lastUpdate = 1678534452,
-        tokenMiningRate = 0.001) => {
-
-        const currentTime = Math.floor(Date.now() / 1000);
-        const newTotalTokens = totalTokens + ((currentTime - lastUpdate) * tokenMiningRate);
-        let resultSwap = ((resourceAmount * resourceMultiplier) / totalResources) * newTotalTokens
-        setResult(resultSwap)
-        setAmount(amount)
-        setTotalToken(newTotalTokens)
-    }
-
-
-    const isSwapButtonDisabled = !amount.length && !selectedOption.length;
-
-
-    useEffect(() => {
-        if (Array.isArray(resourcesList)) {
-            const selectedResourceObject = resourcesList.find(resource => resource.resource === selectedResource);
-            const res = selectedResourceObject ? selectedResourceObject.amount : '';
-            setSelectedResourceValue(res)
-        }
-    }, [resourcesList, selectedResource])
-
+    }, [selectedItem]);
 
     return (
         <section className='workplace'>
-            {/*<Header />*/}
             <div className="main-workplace swap">
                 <div className="main-main">
                     <div className="main-title">
-                        <h2>Swap</h2>
+                        <h2>Craft</h2>
                     </div>
                     <div className="swap-container">
-                        <div className="swap-block">
-                            <div className="swiper">
-                                <div className="swiper-field">
-                                    <input
-                                        placeholder={0}
-                                        type="text"
-                                        onChange={handleInputChange}
-                                        onBlur={handleInputBlur}
-                                        value={amount}
-                                        disabled={!selectedOption}
-                                    />
-                                    <div className={'options'}>
-                                        <select className={'resource-block'} name="Select token" onChange={handleOptionChange} value={selectedOption}>
-                                            <option disabled selected value="">Select token</option>
-                                            {Array.isArray(resourcesList) && resourcesList.map(({resource}) => (
-                                                <option key={resource} value={resource}>{resource}</option>
-                                            ))}
-                                        </select>
-                                        {selectedResource &&
-                                            <p onClick={() => setAmount(selectedResourceValue)} className={'resource-amount'}>Amount: {selectedResourceValue}</p>
-                                        }
+                        <div className="block-craft">
+                            <div className="block-craft_container">
+                                {[...instrumentItems, ...workplaceItems].map((item) => (
+                                    <div
+                                        key={item.template_id}
+                                        className={`craft-item ${selectedItem?.template_id === item.template_id ? 'active' : ''}`}
+                                        onClick={() => handleItemClick(item)}
+                                    >
+                                        <img src={item.uri} alt={item.name} />
                                     </div>
-                                </div>
-                                <div className="swiper-field">
-                                    <p className={'result'}>{result ? result.toFixed(4) : 0}</p>
-                                    <div className="token-block">
-                                        <p>LOA</p>
-                                        <p className={'balance'}>Balance: {rtpBalance}</p>
-                                    </div>
-                                </div>
-                                <button className={`swap-btn ${isSwapButtonDisabled ? 'disabled' : ''}`} onClick={handleSwapClick} disabled={isSwapButtonDisabled}><p>Swap</p></button>
+                                ))}
                             </div>
-                            <div className="statistic">
-                                <div className="statistic-title">
-                                    <h4>Statistic:</h4>
-                                </div>
-                                <div className="statistic-field">
-                                    <h5>Total amount of mined resources:</h5>
-                                    <div className={'resource'}>
-                                        <p>{poolConfig ? poolConfig.total_minted_resources : 0}</p>
+                        </div>
+                        <div className="block-selected-craft">
+                            <img src={selectedItem?.uri || testImg} alt={selectedItem?.name || "Select an item"} />
+                        </div>
+                        <div className="block-craft-info">
+                            {loading ? (
+                                <div className="loading">Loading...</div>
+                            ) : selectedItem && craftInfo ? (
+                                <>
+                                    <div className="title-block-craft-info">
+                                        <h3>{selectedItem.name}</h3>
                                     </div>
-                                </div>
-                                <div className="statistic-field">
-                                    <h5>Total mined tokens:</h5>
-                                    <p>{totalToken.toFixed(4)} RTP</p>
-                                </div>
-                                <div className="statistic-field">
-                                    <h5>Mining rate per second:</h5>
-                                    <p>{eraConf.length && eraConf[0].token_mining_rate}</p>
-                                </div>
+                                    <div className="main-info-about-craft">
+                                        <div>
+                                            <p className="info">Level:</p> <span>3</span>
+                                        </div>
+                                        <div>
+                                            <p className="info">Rarity:</p> <span>Rare</span>
+                                        </div>
+                                        <div>
+                                            <p className="info">Produced:</p> <span>20 /hour</span>
+                                        </div>
+                                        <div>
+                                            <p className="info">Energy consume:</p> <span>12 /hour</span>
+                                        </div>
 
-                                <button className={`swap-btn`} onClick={() => handleRefreshPool()}><p>Refresh</p></button>
+                                    </div>
+                                    <div className="cost-block-craft">
+                                        <div className='cost-aptos-token'>
+                                            <p>Cost:</p>
+                                            <div><span>{Number(craftInfo.aptos_amount) / 1e8 } APT</span></div>
+                                        </div>
+
+                                        <div className='cost-resources'>
+                                            <div>
+                                                <span>{craftInfo.food_amount}</span>
+                                                <img src={meat} alt="meat" />
+                                            </div>
+
+                                            <div>
+                                                <span>{craftInfo.wood_amount}</span>
+                                                <img src={wood} alt="wood" />
+                                            </div>
+
+                                            <div>
+                                                <span>{craftInfo.stone_amount}</span>
+                                                <img src={rock} alt="stone" />
+                                            </div>
+
+                                            <div>
+                                                <span>{craftInfo.gems_amount}</span>
+                                                <img src={gems} alt="gems" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="title-block-craft-info">
+                                    <h3>Select an item to view details</h3>
+                                </div>
+                            )}
+                            <div className="stake-btn">
+                                <CraftLastStepModal template_id={selectedItem?.template_id}/>
                             </div>
                         </div>
                     </div>
@@ -169,5 +169,4 @@ export default function Swap() {
             <Footer />
         </section>
     );
-
 }

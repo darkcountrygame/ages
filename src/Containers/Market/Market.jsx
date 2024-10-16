@@ -110,7 +110,7 @@ const Market = () => {
                                             onClick={() => handleStake(item.name, item.template_id)}
                                             disabled={isStaked(item.name)}
                                         >
-                                            {isStaked(item.name) ? 'Staked' : 'Stake'}
+                                            {isStaked(item.name) ? 'Minted' : 'Mint'}
                                         </button>
                                     </li>
                                 ))}
@@ -128,7 +128,7 @@ const Market = () => {
                                             onClick={() => handleStake(item.name, item.template_id)}
                                             disabled={isStaked(item.name)}
                                         >
-                                            {isStaked(item.name) ? 'Staked' : 'Stake'}
+                                            {isStaked(item.name) ? 'Minted' : 'Mint'}
                                         </button>
                                     </li>
                                 ))}

@@ -24,3 +24,8 @@ ul{
     padding: 10px 25px;
     border-radius: 10px;
 }
+
+
+.stake-button:hover {
+    background-color: #218838;
+}

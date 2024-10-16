@@ -8,6 +8,7 @@ import {
     Workpalces,
     Staking,
     Market,
+    Swap,
 } from "../Containers";
 
 const history = createBrowserHistory();
@@ -35,11 +36,11 @@ export const useRoutes = () => {
                          <Market />
                      </Route>
 
-                     {/* <Route exact path="/swap">
+                    <Route exact path="/craft">
                          <Swap />
                      </Route>
 
-                     <Route exact path="/research">
+                       {/* <Route exact path="/research">
                          <Research />
                      </Route> */}
 

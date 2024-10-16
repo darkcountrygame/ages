@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 
 import {
     contract_address,
+    getAccountBalanceAptos,
     // fetchWaxBalance,
     // fetchRtpBalance,
     // fetchItems,
@@ -42,8 +43,8 @@ const AppContent = () => {
         setUserDataHandler,
         // setWaxBalance,
         // waxBalanceFetched,
-        // setRtpBalance,
-        // rtpBalanceFetched,
+        setRtpBalance,
+        rtpBalanceFetched,
         itemListFetched,
         stakedItemListFetched,
         setStakedItems,
@@ -78,7 +79,7 @@ const AppContent = () => {
     } = useApp();
 
     // const [waxBalanceLoading, setWaxBalanceLoading] = useState(false);
-    // const [rtpBalanceLoading, setRtpBalanceLoading] = useState(false);
+    const [rtpBalanceLoading, setRtpBalanceLoading] = useState(false);
 
     const [itemsLoading, setItemsLoading] = useState(false);
     const [stakedItemsLoading, setStakedItemsLoading] = useState(false);
@@ -138,23 +139,23 @@ const AppContent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [account]);
 
-//     useEffect(() => {
-//         if (activeUser && activeUser.accountName && setRtpBalance && !rtpBalanceLoading && !rtpBalanceFetched) {
-//             setRtpBalanceLoading(true);
+    useEffect(() => {
+        if (account && account.address && setRtpBalance && !rtpBalanceLoading && !rtpBalanceFetched) {
+            setRtpBalanceLoading(true);
 
-//             fetchRtpBalance({ account: activeUser.accountName })
-//                 .then(balance => setRtpBalance(balance))
-//                 .catch(e => {
-//                     setRtpBalance(0);
+            getAccountBalanceAptos({ account: account.address })
+                .then(balance => setRtpBalance(balance))
+                .catch(e => {
+                    setRtpBalance(0);
 
 
-//                     console.log(e.message)
-//                     console.log(e)
+                    console.log(e.message)
+                    console.log(e)
 
-//                 })
-//                 .finally(() => setRtpBalanceLoading(false));
-//         }
-//     }, [activeUser, rtpBalanceLoading, setRtpBalance, rtpBalanceFetched]);
+                })
+                .finally(() => setRtpBalanceLoading(false));
+        }
+    }, [account, rtpBalanceFetched, rtpBalanceLoading, setRtpBalance]);
 
     useEffect(() => {
         if (account && account.address && !itemListFetched && setItems

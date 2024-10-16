@@ -22,48 +22,60 @@ const Staking = () => {
 
   const handleStake = async () => {
     if (!selectedWP) return toast.error("Please select an item to stake.");
-    try {
-      setLoading(true);
-      await signAndSubmitTransaction({
-        sender: account.address,
-        data: {
-          function: `${contract_address}::farm::stake_worksite`,
-          functionArguments: [selectedWP.token_name],
-        },
-      });
+  
+    if (account) {
+      try {
+        setLoading(true);
 
-      setItems(itemList.filter((item) => item.token_name !== selectedWP.token_name));
-      toast.success("Success staked!");
-      const stakedItems = await getAptosStakedWP();
-      setStakedItems(stakedItems);
-    } catch (error) {
-      toast.error(error.message || error);
-    } finally {
-      setLoading(false);
+        await signAndSubmitTransaction({
+          sender: account.address,
+          data: {
+            function: `${contract_address}::farm::unstake_worksite`,
+            functionArguments: [selectedWP.token_name],
+          },
+        });
+  
+        setItems(itemList.filter((item) => item.token_name !== selectedWP.token_name));
+        toast.success("Success staked!");
+  
+        /// Retrieve staked items
+        const stakedItems = await getAptosStakedWP({ account });
+        console.log(stakedItems);
+        
+        setStakedItems(stakedItems);
+      } catch (error) {
+        toast.error(error.message || error);
+      } finally {
+        setLoading(false);
+      }
     }
   };
+  
 
   const handleUnStake = async () => {
     if (!selectedWP) return toast.error("Please select an item to unstake.");
-    try {
-      setLoading(true);
-      await signAndSubmitTransaction({
-        sender: account.address,
-        data: {
-          function: `${contract_address}::farm::unstake_worksite`,
-          functionArguments: [selectedWP.token_name],
-        },
-      });
-
-      setStakedItems(stakedItemList.filter((item) => item.token_name !== selectedWP.token_name));
-      const userNfts = await getUserNfts({ account: account.address });
-      setItems(userNfts);
-      toast.success("Success unstaked!");
-    } catch (error) {
-      toast.error(error.message || error);
-    } finally {
-      setLoading(false);
+    if (account) {
+      try {
+        setLoading(true);
+        await signAndSubmitTransaction({
+          sender: account.address,
+          data: {
+            function: `${contract_address}::farm::unstake_worksite`,
+            functionArguments: [selectedWP.token_name],
+          },
+        });
+  
+        setStakedItems(stakedItemList.filter((item) => item.token_name !== selectedWP.token_name));
+        const userNfts = await getUserNfts({ account: account.address });
+        setItems(userNfts);
+        toast.success("Success unstaked!");
+      } catch (error) {
+        toast.error(error.message || error);
+      } finally {
+        setLoading(false);
+      }
     }
+ 
   };
 
   const renderToolList = (items, filter) =>

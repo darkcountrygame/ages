@@ -15,7 +15,7 @@ import plus from '../../images/plus.png'
 
 
 export default function Header() {
-    const { waxBalance, rtpBalance, eraConf, totalSp, resourcesList } = useApp();
+    const { rtpBalance, eraConf, totalSp, resourcesList } = useApp();
 
 
     const findResourceAmount = (resource) => {
@@ -54,10 +54,10 @@ export default function Header() {
                         <li><img src={meat} alt="meat" /> <span>{findResourceAmount("food")}</span></li>
                         <li><img src={rock} alt="rock" /><span>{findResourceAmount("stone")}</span></li>
                         <li><img src={wood} alt="wood" /><span>{findResourceAmount("wood")}</span></li>
-                        <li><img src={wheel} alt="miles" /><span>{findResourceAmount("miles")}</span></li>
+                        <li><img src={wheel} alt="miles" /><span>{findResourceAmount("gems")}</span></li>
                     </ul>
                 </div>
-                <UserLogIn waxBalance={waxBalance} rtpBalance={rtpBalance} />
+                <UserLogIn rtpBalance={rtpBalance} />
             </div>
         </header>
     )

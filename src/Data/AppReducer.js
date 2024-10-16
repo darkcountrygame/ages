@@ -35,7 +35,7 @@ const AppReducer = (state, action) => {
                 userData: null,
                 waxBalance: 0,
                 waxBalanceFetched: false,
-                rtpBalance: 0.0000,
+                rtpBalance: 0,
                 rtpBalanceFetched: false,
                 itemList: [],
                 itemListFetched: false,
