@@ -35,7 +35,7 @@ export const useRoutes = () => {
     return (
         <Switch>
             <Route exact path="/" component={MainPage} />
-            <Redirect to="/" />
+            {/* <Redirect to="/" /> */}
         </Switch>
     );
 };

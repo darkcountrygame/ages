@@ -20,7 +20,7 @@ export default function Sidebar({ setSelectedWorkPlace, selectedWorkPlace }) {
                     <div className="main-workplace-sidebar__list">
                         {stakedItemList.map((item, index) => (
                             <SidebarItem
-                                index={index}
+                                index={item.token_name || index}
                                 item={item}
                                 setSelectedWorkPlace={setSelectedWorkPlace}
                                 selectedWorkPlace={selectedWorkPlace}

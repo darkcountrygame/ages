@@ -73,6 +73,7 @@ const AppContent = () => {
         }
     }, [account, userLogoutHandler]);
 
+    
     useEffect(() => {
         if (account?.address && setRtpBalance && !rtpBalanceLoading && !rtpBalanceFetched) {
             setRtpBalanceLoading(true);

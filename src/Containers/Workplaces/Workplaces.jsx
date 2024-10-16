@@ -13,17 +13,20 @@ import Footer from '../../components/FooterGameNav/FooterGameNav';
 import UnlockCard from '../../Modal/UnlockCard';
 import EquipTool from '../../Modal/EquipTool';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import { createBrowserHistory } from "history";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { contract_address, getAptosStakedTools, getResources, getUserNfts } from "../../Services";
 import { toast } from "react-toastify";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 
 import './workplaces.css';
 
+
 const Workplaces = () => {
+    const history = useHistory()
+    const { id } = useParams();
     const { account, signAndSubmitTransaction } = useWallet();
-    const { itemList, setItems, setResources } = useApp();
+    const { itemList, setItems, setResources, stakedItemList } = useApp();
     const [selectItem, setSelectItem] = useState([]);
     const [selectedWorkPlace, setSelectedWorkPlace] = useState([]);
     const [wp, setWP] = useState([]);
@@ -31,7 +34,48 @@ const Workplaces = () => {
     // const [loading, setLoading] = useState(false);
     const [currentTime, setCurrentTime] = useState(Math.floor(Date.now() / 1000));
 
-    const history = createBrowserHistory();
+useEffect(() => {
+    // Якщо дані ще не завантажились
+    if (stakedItemList.length === 0) {
+      return; // чекаємо, поки масив не заповниться
+    }
+
+    if (!id) {
+      // Якщо id немає (URL тільки /workplace)
+      const firstWorkPlace = stakedItemList[0];
+
+      if (firstWorkPlace) {
+        // Якщо перший об'єкт існує, редіректимо на нього
+        history.replace(`/workplace/${firstWorkPlace.token_name.slice(1)}`);
+      } else {
+        // Якщо масив порожній, залишаємо на /workplace
+        history.replace("/workplace");
+      }
+    } else {
+      // Шукаємо об'єкт з відповідним token_name
+      const selectedWorkPlace = stakedItemList.find(
+        (item) => item.token_name === `#${id}`
+      );
+
+      // Якщо об'єкт знайдений, встановлюємо його
+      if (selectedWorkPlace) {
+        setSelectedWorkPlace(selectedWorkPlace);
+      } else {
+        // Якщо об'єкт не знайдений, повертаємо перший об'єкт і оновлюємо URL
+        const firstWorkPlace = stakedItemList[0];
+        setSelectedWorkPlace(firstWorkPlace);
+        history.replace(`/workplace/${firstWorkPlace.token_name.slice(1)}`);
+      }
+    }
+  }, [id, stakedItemList, setSelectedWorkPlace, history]);
+  
+    // useEffect(() => {
+    //     if (wp?.token_name) {
+    //         history.push(`/workplace/${wp.token_name.replace('#', '')}`);
+    //     } else {
+    //         history.push(`/workplace`);
+    //     }
+    // }, [wp, history]);
     
     useEffect(() => {
         getAptosStakedTools({ account })
@@ -69,15 +113,6 @@ const Workplaces = () => {
         setWP(selectedWorkPlace);
     }, [selectedWorkPlace]);
 
-
-    useEffect(() => {
-        if (wp?.token_name) {
-            history.push(`/workplace/${wp.token_name.replace('#', '')}`);
-        } else {
-            history.push(`/workplace`);
-        }
-    }, [wp, history]);
-
     const getResourceIcon = (name) => {
         switch (name) {
             case "food":
@@ -100,7 +135,6 @@ const Workplaces = () => {
             : 0;
 
 
-        // Кількість вільних слотів
         const freeSlots = Math.max(0, slots - occupiedSlots);
 
         const equipItems = (
@@ -170,12 +204,12 @@ const Workplaces = () => {
                             <div className="main-main-list">
                                 {stakedTools
                                     .filter(item => wp.res[0].resource_type === item.res[0].resource_type)
-                                    .map(item => {
+                                    .map((item, index) => {
                                         const isFarming = item.res[0].last_farm_time !== "0";
                                         const cooldownTime = isFarming ? calculateCooldown(item.res[0].last_farm_time, item.res[0].cooldown) : 0;
 
                                         return (
-                                            <div key={item.asset_id} className="workplaces-item">
+                                            <div key={index} className="workplaces-item">
                                                 <div className="workplaces-img available-img">
                                                     <img src={item.token_uri} alt="tool" />
                                                     <button className="unequip-btn" onClick={() => handleUnEquip(item.token_name)}>

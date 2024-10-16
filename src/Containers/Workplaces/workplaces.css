@@ -278,6 +278,28 @@
     }
 }
 
+@media screen and (max-width: 1690px) {
+    .cooldown {
+        span {
+            display: block;
+            font-size: 15px;
+            color: #ffffff;
+            text-align: center;
+        }
+    }
+
+    .cooldown {
+        p {
+            font-size: 12px;
+        }
+    }
+
+    .produces span {
+        font-size: 15px;
+        color: #ffffff;
+    }
+}
+
 @media screen and (max-width: 1599px) {
     .cooldown{
         p{
@@ -326,11 +348,29 @@
     color: #ffffff;
 }
 
+@media screen and (max-width: 1690px) {
+    .produces-product{
+        gap: 5px;
+    }
+ 
+    .produces span {
+        font-size: 15px;
+        color: #ffffff;
+    }
+}
+
 .produces-product{
     display: flex;
     gap: 10px;
     align-items: center;
     flex-direction: column;
+}
+
+@media screen and (max-width: 1690px) {
+    .produces-product{
+        gap: 5px;
+    }
+
 }
 
 .produces .produces-product-count{
@@ -621,11 +661,11 @@
     }
 
     .main-main-wrapper{
-        padding: 50px 74px 44px 74px;
+        padding: 67px 122px 44px 122px;
     }
 
     .workplaces-item{
-        width: 195px;
+        width: 175px;
         height: 100%;
     }
 
@@ -723,6 +763,10 @@
         padding: 5px 30px;
     }
 
+    .main-main-wrapper{
+        padding: 67px 68px 44px 68px;
+    }
+
     .main-workplace-sidebar{
         width: 180px;
         height: 500px;
@@ -746,22 +790,4 @@
         padding: 10px;
     }
 }
-
-/*@media screen and (max-width: 1540px) {*/
-/*    .workplace .main-main{*/
-/*        margin-right: 215px;*/
-/*    }*/
-/*}*/
-
-
-/*@media screen and (max-width: 1680px) {*/
-/*    .workplaces-item{*/
-/*        width: 200px;*/
-/*        height: 360px;*/
-/*        background-color: rgba(0, 0, 0, 0.103);*/
-/*        border-radius: 10px;*/
-/*    }*/
-/*}*/
-
-
 

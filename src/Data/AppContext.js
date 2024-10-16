@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useReducer, useCallback } from 'react';
 import AppReducer from './AppReducer';
 
 import {
@@ -82,7 +82,9 @@ export const AppProvider = ({ children }) => {
 
     const userLoginHandler = () => dispatch({ type: USER_LOGIN });
     const setUserDataHandler = data => dispatch({ type: SET_USER_DATA, data});
-    const userLogoutHandler = () => dispatch({ type: USER_LOGOUT });
+    const userLogoutHandler = useCallback(() => {
+        dispatch({ type: USER_LOGOUT });
+    }, [dispatch]);
 
     const setWaxBalance = value => dispatch({ type: USER_WAX_BALANCE, value });
     const setRtpBalance = value => dispatch({ type: USER_RTP_BALANCE, value });
