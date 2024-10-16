@@ -100,20 +100,24 @@ const AppContent = () => {
 
     // const [poolConfigLoading, setPoolConfgLoading] = useState(false);
 
-    // РОЗКОМЕНТУВАТИ
     useEffect(() => {
         const registerFunc = async () => {
-            if (account) {
+            const transactionKey = "transactionSigned"; // Ключ для збереження стану в localStorage
+            const isTransactionSigned = localStorage.getItem(transactionKey);
+    
+            if (account && !isTransactionSigned) {
                 try {
                     await signAndSubmitTransaction({
                         sender: account.address,
                         data: {
-                            function: `${contract_address}::farm::register`, // String interpolation
+                            function: `${contract_address}::farm::register`, // Інтерполяція рядка
                             functionArguments: [],
                         },
                     });
+                    // Якщо транзакція успішна, зберігаємо у localStorage
+                    localStorage.setItem(transactionKey, "true");
                 } catch (error) {
-                    console.error("Transaction failed:", error); // Error handling
+                    console.error("Transaction failed:", error); // Обробка помилки
                 }
             }
         };

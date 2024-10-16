@@ -32,6 +32,19 @@
 
 }
 
+.or{
+    margin: 0 auto;
+    width: 50%;
+    background: #e67111;
+    text-align: center;
+    margin-bottom: 0;
+    color: #FFFFFF;
+    padding: 2px 0;
+}
+
+.or p {
+    margin: 0;
+}
 
 .block-craft_container{
     padding: 20px;
@@ -95,7 +108,7 @@
 .main-info-about-craft{
     display: flex;
     flex-direction: column;
-    gap: 11px;
+    gap: 2px;
     align-items: flex-start;
     margin-bottom: 43px;
 }
@@ -115,7 +128,7 @@
 
 .main-info-about-craft span{
     color: #FFFFFF;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .cost-block-craft{
@@ -132,7 +145,7 @@
    margin: 0;
    color: #512B47;
    font-size: 18px;
-   margin-bottom: 8px;
+   margin-bottom: 5px;
 }
 
 .cost-block-craft .cost-aptos-token span{
@@ -149,8 +162,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 35px;
+    gap: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
  }
 
 .cost-block-craft .cost-resources div{
@@ -170,7 +184,7 @@
 
 .cost-block-craft .cost-resources span{
     color: #FFFFFF;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 
@@ -212,7 +226,7 @@
     .title-block-craft-info h3 {
         font-size: 22px;
     }
-    
+
     .cost-block-craft .cost-aptos-token span {
         font-size: 18px;
     }
@@ -223,6 +237,10 @@
 
     .cost-block-craft .cost-resources div {
         width: 110px;
+    }
+
+    .cost-resources img{
+        width: 19px;
     }
     
 }
@@ -272,7 +290,7 @@
 
     .main-info-about-craft span {
         color: #FFFFFF;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .main-info-about-craft {
@@ -280,9 +298,12 @@
     }
 
     .cost-block-craft .cost-resources {
-
         gap: 5px;
         margin-bottom: 20px;
+    }
+
+    .cost-resources img{
+        width: 19px;
     }
 
     .cost-block-craft .cost-aptos-token span {
@@ -290,7 +311,7 @@
     }
 
     .cost-block-craft .cost-resources span {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .cost-block-craft .cost-resources div {

@@ -130,24 +130,28 @@ export default function Swap() {
                                             <div><span>{Number(craftInfo.aptos_amount) / 1e8 } APT</span></div>
                                         </div>
 
+                                        <div className="or">
+                                            <p>OR</p>
+                                        </div>
+
                                         <div className='cost-resources'>
                                             <div>
-                                                <span>{craftInfo.food_amount}</span>
+                                                <span>{Number(craftInfo.food_amount) / 1e4}</span>
                                                 <img src={meat} alt="meat" />
                                             </div>
 
                                             <div>
-                                                <span>{craftInfo.wood_amount}</span>
+                                                <span>{Number(craftInfo.wood_amount) / 1e4}</span>
                                                 <img src={wood} alt="wood" />
                                             </div>
 
                                             <div>
-                                                <span>{craftInfo.stone_amount}</span>
+                                                <span>{Number(craftInfo.stone_amount) / 1e4}</span>
                                                 <img src={rock} alt="stone" />
                                             </div>
 
                                             <div>
-                                                <span>{craftInfo.gems_amount}</span>
+                                                <span>{Number(craftInfo.gems_amount) / 1e4}</span>
                                                 <img src={gems} alt="gems" />
                                             </div>
 
