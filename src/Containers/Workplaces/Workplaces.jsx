@@ -10,7 +10,7 @@ import equip from '../../images/plus_icon_section.png';
 
 import lock from '../../images/lock.png';
 import Footer from '../../components/FooterGameNav/FooterGameNav';
-import UnlockCard from '../../Modal/UnlockCard';
+// import UnlockCard from '../../Modal/UnlockCard';
 import EquipTool from '../../Modal/EquipTool';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
@@ -157,7 +157,7 @@ useEffect(() => {
                         <img src={lock} alt="lock" />
                     </div>
                     <div className="btn-lock">
-                        <UnlockCard wpID={wp?.token_name?.replace('#', '')} />
+                      <button>SOON</button>
                     </div>
                 </div>
             ))

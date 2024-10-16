@@ -19,14 +19,14 @@ export default ({wpID}) => {
 
     // const { activeUser } = useContext(UALContext);
 
-    const handleUnLock = () => {
+    // const handleUnLock = () => {
        
-    }
+    // }
 
 
   return (
       <Popup
-          trigger={<button>Unlock</button>}
+          trigger={<button>SOON</button>}
           modal
           nested
       >
@@ -38,7 +38,7 @@ export default ({wpID}) => {
                 <img src={cardIcon} alt="icon"/>
                 <p>Open a cell to speed up progress</p>
               </div>
-              <div className="actions" onClick={handleUnLock}>
+              <div className="actions" onClick={null}>
                   <button>
                       {!wpConfig || !wpConfig.length || !wpConfig[0].price_unlock_slot
                           ? '2000 LOA'
