@@ -268,7 +268,7 @@ useEffect(() => {
                             </div>
                         ) : (
                             <div className="main-main-list">
-                                <p>Firstly mint a Workplace</p>
+                                <p>Stake a Workplace first</p>
                             </div>
                         )}
                     </div>
