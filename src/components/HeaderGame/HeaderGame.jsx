@@ -51,7 +51,7 @@ export default function Header() {
                 <div className="header-items">
                     <ul className="header-items_list">
                         {probabilityPoints &&
-                            <li><img src={energy} alt="energy" /> <span>{probabilityPoints.energy} /{probabilityPoints.max_energy}</span></li>
+                            <li><img src={energy} alt="energy" /> <span>{probabilityPoints.energy ?? 0} /{probabilityPoints.max_energy ?? 0}</span></li>
                         }
                         <li><img src={meat} alt="meat" /> <span>{findResourceAmount("food")}</span></li>
                         <li><img src={rock} alt="rock" /><span>{findResourceAmount("stone")}</span></li>
