@@ -14,7 +14,8 @@ import {
     USER_STAKED_ITEMS,
     TOOL_CONFIG,
     WP_CONFIG,
-    POOL_CONFIG, SP_CONFIG, TOTAL_SP
+    POOL_CONFIG, SP_CONFIG, TOTAL_SP,
+    USER_ENERGY
 
 } from './AppActionTypes';
 
@@ -39,6 +40,8 @@ const AppReducer = (state, action) => {
                 rtpBalanceFetched: false,
                 itemList: [],
                 itemListFetched: false,
+                userEnergy: [],
+                userEnergyFetched: false,
             };
         }
 
@@ -64,6 +67,10 @@ const AppReducer = (state, action) => {
         
         case USER_RESOURCES: {
             return { ...state, resourcesList: action.value, resourcesFetched: true }
+        }
+
+        case USER_ENERGY: {
+            return { ...state, userEnergy: action.value, userEnergyFetched: true }
         }
 
          case USER_PROBABILITY_GET_POINTS: {

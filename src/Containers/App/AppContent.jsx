@@ -7,6 +7,7 @@ import {
     getAccountBalanceAptos,
     getAptosStakedWP,
     getResources,
+    getUserEnergy,
     getUserNfts
 } from "../../Services";
 import Header from "../../components/HeaderGame/HeaderGame";
@@ -29,13 +30,16 @@ const AppContent = () => {
         setItems,
         userLogoutHandler,
         resourcesFetched,
-        setResources
+        setResources,
+        setProbability,
+        probabilityFetched,
     } = useApp();
 
     const [rtpBalanceLoading, setRtpBalanceLoading] = useState(false);
     const [itemsLoading, setItemsLoading] = useState(false);
     const [stakedItemsLoading, setStakedItemsLoading] = useState(false);
     const [resourcesLoading, setResourcesLoading] = useState(false);
+    const [probabilityLoading, setProbabilityLoading] = useState(false);
 
     useEffect(() => {
         const registerFunc = async () => {
@@ -105,7 +109,7 @@ const AppContent = () => {
     }, [account, setStakedItems, stakedItemListFetched, stakedItemsLoading]);
 
     useEffect(() => {
-        if (account?.address && !resourcesFetched && setResources && !resourcesLoading) {
+        if (account && !resourcesFetched && setResources && !resourcesLoading) {
             setResourcesLoading(true);
             getResources({ account })
                 .then(res => setResources(res))
@@ -113,6 +117,24 @@ const AppContent = () => {
                 .finally(() => setResourcesLoading(false));
         }
     }, [account, setResources, resourcesFetched, resourcesLoading]);
+
+    useEffect(() => {
+        if (account && account.address && !probabilityFetched && setProbability
+            && !probabilityLoading
+        ) {
+            setProbabilityLoading(true);
+
+            getUserEnergy({
+                account: account
+            })
+                .then((value) => setProbability(value))
+                .catch(e => {
+                    console.log(e)
+                    setProbability([]);
+                })
+                .finally(() => setProbabilityLoading(false));
+        }
+    }, [setProbabilityLoading, probabilityFetched, setProbability, probabilityLoading, account]);
 
     return (
         <div>

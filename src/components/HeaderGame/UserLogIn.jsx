@@ -17,9 +17,6 @@ const WaxLogo = ({ rtpBalance }) => {
        
     };
 
-    console.log(rtpBalance);
-    
-
     const handleLogin = () => {
         // Logic for login goes here
     };

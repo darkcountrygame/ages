@@ -11,6 +11,7 @@ import {
     USER_STAKED_ITEMS,
     USER_STAKED_TOOLS,
     USER_RESOURCES,
+    USER_ENERGY,
     USER_PROBABILITY_GET_POINTS,
     USER_ERA,
     DELPHI_ORACLE_COURSE,
@@ -51,7 +52,10 @@ const initialState = {
     resourcesList: [],
     resourcesFetched: false,
 
-     probabilityPoints: 0,
+    userEnergy: [],
+    userEnergyFetched: false,
+
+     probabilityPoints: [],
      probabilityFetched: false,
 
     spConfig: [],
@@ -95,7 +99,9 @@ export const AppProvider = ({ children }) => {
 
     const setResources = value => dispatch({ type: USER_RESOURCES, value });
 
-     const setProbability = value => dispatch({type: USER_PROBABILITY_GET_POINTS, value });
+    const setUserEnergy = value => dispatch({ type: USER_ENERGY, value });
+
+    const setProbability = value => dispatch({type: USER_PROBABILITY_GET_POINTS, value });
 
     const setSpConfig = value => dispatch({type: SP_CONFIG, value });
     const setTotalSp = value => dispatch({type: TOTAL_SP, value });
@@ -135,8 +141,11 @@ export const AppProvider = ({ children }) => {
             resourcesList: state.resourcesList,
             resourcesFetched: state.resourcesFetched,
 
+            userEnergy: state.userEnergy,
+            userEnergyFetched: state.userEnergyFetched,
+
             probabilityPoints: state.probabilityPoints,
-             probabilityFetched: state.probabilityFetched,
+            probabilityFetched: state.probabilityFetched,
 
             spConfig: state.spConfig,
             spConfigFetched: state.spConfigFetched,
@@ -168,7 +177,8 @@ export const AppProvider = ({ children }) => {
             setStakedItems,
             setStakedTools,
             setResources,
-             setProbability,
+            setUserEnergy,
+            setProbability,
             setSpConfig,
             setTotalSp,
             setEraConf,

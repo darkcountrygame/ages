@@ -221,23 +221,48 @@
 
 .unequip-btn {
     position: absolute;
-    width: 160px;
-    height: 50px;
-    font-size: 22px;
+    width: 140px;
+    height: 43px;
+    font-size: 16px;
     color: #ffffff;
     border: none;
     background: transparent;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: none; /* Спочатку приховуємо кнопку */
     cursor: pointer;
     background-image: url('../../images/red_btn.png');
+    background-repeat: no-repeat;
     background-size: contain;
  
 }
 
 .available-img:hover .unequip-btn {
+    display: block; /* Показуємо кнопку при наведенні */
+}
+
+.repair-btn {
+    position: absolute;
+    width: 140px;
+    height: 43px;
+    font-size: 16px;
+    color: #ffffff;
+    border: none;
+    background: transparent;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Спочатку приховуємо кнопку */
+    cursor: pointer;
+    background-image: url('../../images/green_btn.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+ 
+}
+
+
+.available-img:hover .repair-btn {
     display: block; /* Показуємо кнопку при наведенні */
 }
 
@@ -295,7 +320,7 @@
     }
 
     .produces span {
-        font-size: 15px;
+        font-size: 13px;
         color: #ffffff;
     }
 }
@@ -325,7 +350,7 @@
 }
 
 .produces img{
-   width: 28px;
+   width: 24px;
 }
 
 @media screen and (max-width: 1599px) {
@@ -349,10 +374,6 @@
 }
 
 @media screen and (max-width: 1690px) {
-    .produces-product{
-        gap: 5px;
-    }
- 
     .produces span {
         font-size: 15px;
         color: #ffffff;
@@ -361,14 +382,14 @@
 
 .produces-product{
     display: flex;
-    gap: 10px;
+    /* gap: 10px; */
     align-items: center;
     flex-direction: column;
 }
 
 @media screen and (max-width: 1690px) {
     .produces-product{
-        gap: 5px;
+        /* gap: 5px; */
     }
 
 }
@@ -573,7 +594,7 @@
     }
 
     .workplaces-item{
-        width: 200px;
+        width: 235px;
         height: 100%;
     }
 
@@ -583,7 +604,7 @@
     }
 
     .main-main-wrapper{
-        padding: 62px 120px 7px 120px;
+        padding: 62px 50px 7px 50px;
     }
 
     .main-workplace-sidebar__item{
@@ -667,17 +688,21 @@
     }
 
     .main-main-wrapper{
-        padding: 67px 122px 44px 122px;
+        padding: 67px 50px 44px 50px;
     }
 
     .workplaces-item{
-        width: 175px;
+        width: 215px;
         height: 100%;
     }
 
     .main-workplace-sidebar{
         width: 220px;
         height: 575px;
+    }
+
+    .workplaces-img{
+        width: 65%;
     }
 
     .workplaces-img_name{
@@ -749,7 +774,7 @@
     }
 
     .workplaces-item{
-        width: 195px;
+        width: 205px;
         height: 100%;
     }
 
@@ -770,7 +795,7 @@
     }
 
     .main-main-wrapper{
-        padding: 67px 68px 44px 68px;
+        padding: 67px 50px 44px 50px;
     }
 
     .main-workplace-sidebar{

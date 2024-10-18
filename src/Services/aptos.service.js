@@ -99,6 +99,17 @@ export const getStakedTokensTools = async ({account}) => {
   return worksites;
 };
 
+export const getUserEnergy = async ({ account }) => {
+  let resourceType = `${contract_address}::farm::EnergyStore`;
+
+  const energy_store = await aptos.getAccountResource({
+    accountAddress: account.address,
+    resourceType
+  });
+
+  return energy_store;
+};
+
 export const getStakedTokensWP = async ({account}) => {
   let resourceType = `${contract_address}::farm::FarmStore`;
 
